@@ -90,29 +90,6 @@
     <!-- Placed js at the end of the document so the pages load faster -->
     <!-- jquery latest version -->
     <?php include_once('scripts.php'); ?>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#submitForm").on("submit", function(e) {
-                e.preventDefault();
-                var formData = $(this).serialize();
-                $.ajax({
-                    url: "signup.php",
-                    type: "POST",
-                    cache: false,
-                    data: formData,
-                    success: function(result) {
-                        if (result == "yes") {
-                            alert("Registration sucessfully Please login");
-                            window.location = 'login.php';
-                        } else {
-                            alert("Registration failed try again!");
-                        }
-                    }
-                });
-            });
-        });
-    </script>
-
 </body>
 
 </html>
