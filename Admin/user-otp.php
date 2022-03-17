@@ -1,11 +1,17 @@
 <?php require_once "controllerUserData.php"; ?>
-<!doctype html>
+<?php
+$email = $_SESSION['email'];
+if ($email == false) {
+    header('Location: login.php');
+}
+?>
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PDPPN - Sign Up</title>
+    <title>PDPPN - Procesi Verifikimit</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
@@ -36,7 +42,7 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <ul class="login__register__menu">
-                            <li role="presentation" class="register"><a style="pointer-events: none;">Register</a></li>
+                            <li role="presentation" class="register"><a style="pointer-events: none;">Verefikimi i Email-it</a></li>
                         </ul>
                     </div>
                 </div>
@@ -46,7 +52,16 @@
                         <div class="htc__login__register__wrap">
                             <!-- Start Single Content -->
                             <?php
-                            if (count($errors) == 1) {
+                            if (isset($_SESSION['info'])) {
+                            ?>
+                                <div class="alert alert-success text-center">
+                                    <?php echo $_SESSION['info']; ?>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <?php
+                            if (count($errors) > 0) {
                             ?>
                                 <div class="alert alert-danger text-center">
                                     <?php
@@ -56,32 +71,16 @@
                                     ?>
                                 </div>
                             <?php
-                            } elseif (count($errors) > 1) {
-                            ?>
-                                <div class="alert alert-danger">
-                                    <?php
-                                    foreach ($errors as $showerror) {
-                                    ?>
-                                        <li><?php echo $showerror; ?></li>
-                                    <?php
-                                    }
-                                    ?>
-                                </div>
-                            <?php
                             }
                             ?>
                             <!-- End Single Content -->
                             <!-- Start Single Content -->
                             <div id="register" class="single__tabs__panel">
-                                <form class="login" action="index.php" method="POST">
-                                    <input type="text" name="name" placeholder="Emri dhe Mbiemri*" required value="<?php echo $name ?>">
-                                    <input type="email" name="email" placeholder="Email-i*" required value="<?php echo $email ?>">
-                                    <input type="password" name="password" placeholder="Fjalëkalimi*" required>
-                                    <input type="password" name="cpassword" placeholder="Rishkruaj Fjalëkalimin*" required>
-                                    <div class="htc__login__btn">
-                                        <button type="submit" name="signup" class="regBtn">Regjistrohu</button>
+                                <form class="login" action="user-otp.php" method="POST" autocomplete="off">
+                                    <input type="number" name="otp" placeholder="Vendos numri Verefikues*" required>
+                                    <div style="margin-top: 15px;" class="htc__login__btn">
+                                        <button type="submit" name="check" class="regBtn">Verefiko</button>
                                     </div>
-                                    <div style="margin-top: 15px;" class="link login-link text-center">Keni llogari? <a href="login.php">Kyçu këtu</a></div>
                                 </form>
                             </div>
                             <!-- End Single Content -->

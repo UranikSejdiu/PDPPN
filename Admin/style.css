@@ -634,7 +634,6 @@
     display: flex;
     justify-content: center;
     margin: 0 auto 51px;
-    max-width: 370px;
 }
 .login__register__menu li a {
     color: #000000;

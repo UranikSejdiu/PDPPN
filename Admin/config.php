@@ -5,7 +5,7 @@ $username = "root";
 $password = "";
 $db = "pdppn";
 
-$con = new mysqli($hostname, $username, $password, $db);
+$con = mysqli_connect($hostname, $username, $password, $db);
 
 if ($con->connect_error) {
     die("Gabim ne lidhje: " .$con->connect_error);
