@@ -16,7 +16,6 @@
 <body>
 
     <!-- Body main wrapper start -->
-    <div class="wrapper fixed__footer">
         <!-- Start Header Style -->
         <header id="header" class="htc-header header--3 bg__white">
             <!-- Start Mainmenu Area -->
@@ -35,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <ul class="login__register__menu">
-                            <li role="presentation" class="register"><a style="pointer-events: none;">Login</a></li>
+                            <li role="presentation" class="register"><a style="pointer-events: none;">Kyçu</a></li>
                         </ul>
                     </div>
                 </div>
@@ -93,7 +92,6 @@
             </div>
         </footer>
         <!-- End Footer Area -->
-    </div>
     <!-- Body main wrapper end -->
     <!-- Placed js at the end of the document so the pages load faster -->
 
