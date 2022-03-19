@@ -5,15 +5,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PDPPN - Kyçja në sistem</title>
+    <title>PDPPN - Regjisrimi në sistem</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Place favicon.ico in the root directory -->
     <?php include_once('links.php'); ?>
 </head>
 
 <body>
+    <!---
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> -->
 
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
@@ -35,35 +36,53 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <ul class="login__register__menu">
-                            <li role="presentation" class="register"><a style="pointer-events: none;">Login</a></li>
+                            <li role="presentation" class="register"><a style="pointer-events: none;">Register</a></li>
                         </ul>
                     </div>
                 </div>
                 <!-- Start Login Register Content -->
                 <div class="row">
-                    <div class="alert alert-success alert-dismissible" style="display: none;">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <span class="success-message"></span>
-                    </div>
                     <div class="col-md-6 col-md-offset-3">
                         <div class="htc__login__register__wrap">
                             <!-- Start Single Content -->
-
+                            <?php
+                            if (count($errors) == 1) {
+                            ?>
+                                <div class="alert alert-danger text-center">
+                                    <?php
+                                    foreach ($errors as $showerror) {
+                                        echo $showerror;
+                                    }
+                                    ?>
+                                </div>
+                            <?php
+                            } elseif (count($errors) > 1) {
+                            ?>
+                                <div class="alert alert-danger">
+                                    <?php
+                                    foreach ($errors as $showerror) {
+                                    ?>
+                                        <li><?php echo $showerror; ?></li>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                            <?php
+                            }
+                            ?>
                             <!-- End Single Content -->
                             <!-- Start Single Content -->
-                            <div id="login" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
-                                <form action="index.php" class="login" method="POST" autocomplete="">
-                                    <input type="text" name="email" id="email" placeholder="Email-i*" value="<?php echo $email ?>" required>
-                                    <input type="password" name="password" id="password" placeholder="Fjalëkalimi*" required>
-                                    <div class="tabs__checkbox">
-                                        <span class="forgetPass"><a href="forgetPassword.php">Harruat fjalëkalimin?</a></span>
-                                    </div>
+                            <div id="register" class="single__tabs__panel">
+                                <form class="login" action="index.php" method="POST">
+                                    <input type="text" name="name" placeholder="Emri dhe Mbiemri*" required value="<?php echo $name ?>">
+                                    <input type="email" name="email" placeholder="Email-i*" required value="<?php echo $email ?>">
+                                    <input type="password" name="password" placeholder="Fjalëkalimi*" required>
+                                    <input type="password" name="cpassword" placeholder="Rishkruaj Fjalëkalimin*" required>
                                     <div class="htc__login__btn">
-                                        <button type="submit" class="regBtn" name="login">Kyçu</button>
+                                        <button type="submit" name="signup" class="regBtn">Regjistrohu</button>
                                     </div>
-                                    <div class="tabs__checkbox text-center">Nuk keni llogari ende? <a href="sign-up.php">Krijo tani</a></div>
+                                    <div style="margin-top: 15px;" class="link login-link text-center">Keni llogari? <a href="index.php">Kyçu këtu</a></div>
                                 </form>
-
                             </div>
                             <!-- End Single Content -->
                         </div>
@@ -96,10 +115,8 @@
     </div>
     <!-- Body main wrapper end -->
     <!-- Placed js at the end of the document so the pages load faster -->
-
     <!-- jquery latest version -->
     <?php include_once('scripts.php'); ?>
-
 </body>
 
 </html>

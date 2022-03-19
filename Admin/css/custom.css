@@ -29,3 +29,15 @@
   text-transform: uppercase;
   background: none;
 }
+
+.tabs__checkbox span.forgetPass a {
+  float: left;
+  color: #ff4136;
+  font-size: 12px;
+}
+
+.tabs__checkbox span.forget a {
+  float: middle;
+  color: #ff4136;
+  font-size: 12px;
+}
