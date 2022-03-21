@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="css/shortcode/shortcodes.css">
 <!-- Theme main style -->
 <link rel="stylesheet" href="style.css">
-<!-- Responsive css -->
 <link rel="stylesheet" href="css/responsive.css">
 <!-- User style -->
 <link rel="stylesheet" href="css/custom.css">
@@ -22,3 +21,7 @@
 
 <!-- Modernizr JS -->
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  <!--load all Font Awesome styles -->
+<link href="css/all.min.css" rel="stylesheet">
+<link href="css/tooltip.css" rel="stylesheet">
+

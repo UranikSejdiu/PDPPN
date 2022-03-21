@@ -1,4 +1,5 @@
 <?php require_once "controllerUserData.php"; ?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -16,82 +17,90 @@
 <body>
 
     <!-- Body main wrapper start -->
-        <!-- Start Header Style -->
-        <header id="header" class="htc-header header--3 bg__white">
-            <!-- Start Mainmenu Area -->
+    <!-- Start Header Style -->
+    <!-- End Header Style -->
 
-            <!-- End Mainmenu Area -->
-        </header>
-        <!-- End Header Style -->
+    <div class="body__overlay"></div>
+    <!-- Start Offset Wrapper -->
 
-        <div class="body__overlay"></div>
-        <!-- Start Offset Wrapper -->
-
-        <!-- End Offset Wrapper -->
-        <!-- Start Login Register Area -->
-        <div class="htc__login__register bg__white ptb--130" style="background: rgba(0, 0, 0, 0) url(images/bg/5.jpg) no-repeat center center / cover ;height:100vh;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <ul class="login__register__menu">
-                            <li role="presentation" class="register"><a style="pointer-events: none;">Kyçu</a></li>
-                        </ul>
-                    </div>
+    <!-- End Offset Wrapper -->
+    <!-- Start Login Register Area -->
+    <div class="htc__login__register bg__white ptb--130" style="background: rgba(0, 0, 0, 0) url(images/bg/5.jpg) no-repeat center center / cover ;height:100vh;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <ul class="login__register__menu">
+                        <li role="presentation" class="register"><a style="pointer-events: none;">Kyçu</a></li>
+                    </ul>
                 </div>
-                <!-- Start Login Register Content -->
-                <div class="row">
-                    <div class="alert alert-success alert-dismissible" style="display: none;">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <span class="success-message"></span>
-                    </div>
-                    <div class="col-md-6 col-md-offset-3">
-                        <div class="htc__login__register__wrap">
-                            <!-- Start Single Content -->
-
-                            <!-- End Single Content -->
-                            <!-- Start Single Content -->
-                            <div id="login" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
-                                <form action="index.php" class="login" method="POST" autocomplete="">
-                                    <input type="text" name="email" id="email" placeholder="Email-i*" value="<?php echo $email ?>" required>
-                                    <input type="password" name="password" id="password" placeholder="Fjalëkalimi*" required>
-                                    <div class="tabs__checkbox">
-                                        <span class="forgetPass"><a href="forgetPassword.php">Harruat fjalëkalimin?</a></span>
-                                    </div>
-                                    <div class="htc__login__btn">
-                                        <button type="submit" class="regBtn" name="login">Kyçu</button>
-                                    </div>
-                                    <div class="tabs__checkbox text-center">Nuk keni llogari ende? <a href="sign-up.php">Krijo tani</a></div>
-                                </form>
-
-                            </div>
-                            <!-- End Single Content -->
-                        </div>
-                    </div>
-                </div>
-                <!-- End Login Register Content -->
             </div>
-        </div>
-        <!-- End Login Register Area -->
-        <!-- Start Footer Area -->
-        <footer class="htc__foooter__area gray-bg">
-            <div class="container">
-                <!-- Start Copyright Area -->
-                <div class="htc__copyright__area">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                            <div class="copyright__inner">
-                                <div class="copyright">
-                                    <p>© 2017 <a href="https://freethemescloud.com/">Free themes Cloud</a>
-                                        All Right Reserved.</p>
+            <!-- Start Login Register Content -->
+            <div class="row">
+                <div class="alert alert-success alert-dismissible" style="display: none;">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <span class="success-message"></span>
+                </div>
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="htc__login__register__wrap">
+                        <!-- Start Single Content -->
+
+                        <!-- End Single Content -->
+                        <!-- Start Single Content -->
+                        <div id="login" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
+                            <?php
+                            if (count($errors) > 0) {
+                            ?>
+                                <div class="alert alert-danger text-center">
+                                    <?php
+                                    foreach ($errors as $showerror) {
+                                        echo $showerror;
+                                    }
+                                    ?>
                                 </div>
+                            <?php
+                            }
+                            ?>
+                            <form id="login" class="login" method="POST" autocomplete="">
+                                <input type="text" name="email" id="email" placeholder="Email-i*" value="<?php echo $email ?>" required>
+                                <input type="password" name="password" id="password" placeholder="Fjalëkalimi*" required>
+                                <div class="tabs__checkbox">
+                                    <span class="forgetPass"><a href="forgetPassword.php">Harruat fjalëkalimin?</a></span>
+                                </div>
+                                <div class="htc__login__btn">
+                                    <button type="submit" class="regBtn" name="login">Kyçu</button>
+                                </div>
+                                <div class="tabs__checkbox text-center">Nuk keni llogari ende? <a href="sign-up.php">Krijo tani</a></div>
+                            </form>
+
+                        </div>
+                        <!-- End Single Content -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Login Register Content -->
+        </div>
+    </div>
+    <!-- End Login Register Area -->
+    <!-- Start Footer Area -->
+    <footer class="htc__foooter__area gray-bg">
+        <div class="container">
+            <!-- Start Copyright Area -->
+            <div class="htc__copyright__area">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="copyright__inner">
+                            <div class="copyright">
+                                <p>© 2017 <a href="https://freethemescloud.com/">Free themes Cloud</a>
+                                    All Right Reserved.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End Copyright Area -->
             </div>
-        </footer>
-        <!-- End Footer Area -->
+            <!-- End Copyright Area -->
+        </div>
+    </footer>
+    <!-- End Footer Area -->
     <!-- Body main wrapper end -->
     <!-- Placed js at the end of the document so the pages load faster -->
 

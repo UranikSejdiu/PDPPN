@@ -1,59 +1,72 @@
 <?php require_once "controllerUserData.php"; ?>
-<?php 
+<?php
 $email = $_SESSION['email'];
-if($email == false){
-  header('Location: index.php');
+if ($email == false) {
+    header('Location: index.php');
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Create a New Password</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>PDPPN - Përditsimi i fjalëkalimit</title>
+    <?php include_once('links.php'); ?>
 </head>
+
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-4 form">
-                <form action="new-password.php" method="POST" autocomplete="off">
-                    <h2 class="text-center">New Password</h2>
-                    <?php 
-                    if(isset($_SESSION['info'])){
-                        ?>
-                        <div class="alert alert-success text-center">
-                            <?php echo $_SESSION['info']; ?>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    <?php
-                    if(count($errors) > 0){
-                        ?>
-                        <div class="alert alert-danger text-center">
+    <div class="wrapper fixed__footer">
+        <!-- Start Header Style -->
+        <header id="header" class="htc-header header--3 bg__white">
+            <!-- Start Mainmenu Area -->
+
+            <!-- End Mainmenu Area -->
+        </header>
+        <!-- End Header Style -->
+
+        <div class="body__overlay"></div>
+        <div class="htc__login__register bg__white ptb--130" style="background: rgba(0, 0, 0, 0) url(images/bg/5.jpg) no-repeat center center / cover ;height:100vh;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <form class="login" action="new-password.php" method="POST" autocomplete="off">
+                            <ul class="login__register__menu">
+                                <li role="presentation" class="register"><a style="pointer-events: none;">Përditsimi i fjalëkalimit</a></li>
+                            </ul>
                             <?php
-                            foreach($errors as $showerror){
-                                echo $showerror;
+                            if (isset($_SESSION['info'])) {
+                            ?>
+                                <div class="alert alert-success text-center">
+                                    <?php echo $_SESSION['info']; ?>
+                                </div>
+                            <?php
                             }
                             ?>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    <div class="form-group">
-                        <input class="form-control" type="password" name="password" placeholder="Create new password" required>
+                            <?php
+                            if (count($errors) > 0) {
+                            ?>
+                                <div class="alert alert-danger text-center">
+                                    <?php
+                                    foreach ($errors as $showerror) {
+                                        echo $showerror;
+                                    }
+                                    ?>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                                <input type="password" name="password" placeholder="Fjalëkalimi i ri*" required>
+                                <input type="password" name="cpassword" placeholder="Fjalëkalimi i ri*" required>
+                            <div style="margin-top: 15px;" class="htc__login__btn">
+                                <button type="submit" name="change-password" class="regBtn">Përditso</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" type="password" name="cpassword" placeholder="Confirm your password" required>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control button" type="submit" name="change-password" value="Change">
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-    
+    <?php include_once('scripts.php'); ?>
 </body>
+
 </html>
