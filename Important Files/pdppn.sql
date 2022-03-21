@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2022 at 05:46 PM
+-- Generation Time: Mar 21, 2022 at 05:48 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `code`, `status`) VALUES
-(2, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', '$2y$10$B3NibXimDXb6SGlimmFgxujS.y3AOCf7wUzSw9ryO6usCIzlEh9Qm', 0, 'verified'),
+(2, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', '$2y$10$MXGcAYVZKJJOFzMSL3ARAe4DmpjO6dD07kEjfhN.us2twYOkIhDwK', 0, 'verified'),
 (4, 'Filan', 'ferizaj0006@gmail.com', '$2y$10$Zz5cp17ovaWUysbYvQQFNeX2pIE0uWMfWsvbXO6NUfl1tb1.UUmHO', 0, 'verified');
 
 --
