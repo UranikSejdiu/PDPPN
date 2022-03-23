@@ -505,11 +505,7 @@ body {
 /*-------------------------
   13. Input
 --------------------------*/
-input[type=text],
-input[type=email],
-input[type=password]{
-    width: 100%;
-}
+
 select {
     width: 100%;
     

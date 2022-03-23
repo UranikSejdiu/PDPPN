@@ -1,3 +1,4 @@
+
 <?php include_once('checkSession.php'); ?>
 <!doctype html>
 <html class="no-js" lang="en">
