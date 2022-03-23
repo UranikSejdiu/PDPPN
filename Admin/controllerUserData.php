@@ -1,6 +1,6 @@
 <?php
-session_start();
-require "config.php";
+
+include_once('checkSession.php');
 $email = "";
 $name = "";
 $errors = array();

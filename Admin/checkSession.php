@@ -1,4 +1,6 @@
 <?php 
+session_start();
+include_once('config.php');
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
 if($email != false && $password != false){
