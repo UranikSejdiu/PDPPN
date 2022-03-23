@@ -135,7 +135,7 @@ input::-webkit-inner-spin-button {
   font-size: 35px;
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 8px 10px;
 }
 
 .search:focus + .searchbutton {
@@ -250,4 +250,7 @@ input::-webkit-inner-spin-button {
   border-radius: 0;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+textarea{
+  padding: 2px;
 }

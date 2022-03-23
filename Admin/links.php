@@ -13,7 +13,7 @@
 <!-- Theme shortcodes/elements style -->
 <link rel="stylesheet" href="css/shortcode/shortcodes.css">
 <!-- Theme main style -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 <!-- User style -->
 <link rel="stylesheet" href="css/custom.css">
