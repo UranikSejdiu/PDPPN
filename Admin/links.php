@@ -24,4 +24,5 @@
   <!--load all Font Awesome styles -->
 <link href="css/all.min.css" rel="stylesheet">
 <link href="css/tooltip.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
 

@@ -1,6 +1,7 @@
 <?php
-session_start();
+
 require "config.php";
+include('checkSession.php');
 $email = "";
 $name = "";
 $errors = array();
@@ -226,11 +227,6 @@ if (isset($_POST['change-password'])) {
             $errors['db-error'] = "Gabim gjatë përditsimit të fjalëkalimit tuaj!";
         }
     }
-}
-
-//if login now button click
-if (isset($_POST['login-now'])) {
-    header('Location: index.php');
 }
 
 
