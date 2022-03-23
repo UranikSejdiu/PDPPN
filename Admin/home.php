@@ -1,3 +1,4 @@
+<?php require_once "controllerUserData.php"; ?>
 <?php include('checkSession.php'); ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -5,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PDPPN - Faqja Kryesore</title>
+    <title>PDPPN - Faqja</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,6 +33,24 @@
         <div class="body__overlay"></div>
         <!-- Start Offset Wrapper -->
         <div class="offset__wrapper">
+            <!-- Start Search Popap -->
+            <div class="search__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="search__inner">
+                                <form action="#" method="get">
+                                    <input placeholder="Search here... " type="text">
+                                    <button type="submit"></button>
+                                </form>
+                                <div class="search__close__btn">
+                                    <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- End Search Popap -->
             <!-- Start Cart Panel -->
             <div class="shopping__cart">
