@@ -10,4 +10,4 @@
 <!-- Main js file that contents all jQuery plugins activation. -->
 <script src="js/main.js"></script>
 <script src="js/alert.js"></script>
-<script type="text/javascript" src="js/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.11.5/af-2.3.7/datatables.min.js"></script>

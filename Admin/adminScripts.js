@@ -8,6 +8,7 @@ $(document).ready(function () {
       paging: true,
       pagingType: "simple_numbers",
       info: false,
+      "bSort": true,
       dom: "tip",
       order: [],
       language: {
