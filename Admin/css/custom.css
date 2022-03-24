@@ -112,6 +112,54 @@ input::-webkit-inner-spin-button {
   text-align: center;
 }
 
+.searchBtn {
+  display: inline-block;
+  margin: 4px 2px;
+  font-size: 20px;
+  padding: 0;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #fff;
+  background-color: #ff4136;
+  border-color: #ff4136;
+  text-align: center;
+  width: 100%;
+}
+
+.addBtn{
+  display: inline-block;
+  margin: 4px 2px;
+  font-size: 25px;
+  padding-left: 13px;
+  padding-right: 13px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #fff;
+  background-color: #ff4136;
+  border-color: #ff4136;
+  text-align: center;
+}
+
+.addBtn:hover{
+  background-color: #ffffff;
+  color: #ff4136;
+  transition: 0.3s;
+}
+
 .search-container {
   position: relative;
   display: inline-block;

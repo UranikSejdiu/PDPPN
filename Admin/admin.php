@@ -48,12 +48,12 @@
                                     <div class="search-container">
                                         <form action="/search" method="get">
                                             <input class="search expandright searchAdmin" id="searchAdmin" type="text" name="p" placeholder="Kërko administratorin">
-                                            <label class="button searchbutton" for="searchAdmin"><span class="ti-search"></span></label>
+                                            <label class="searchBtn searchbutton" for="searchAdmin"><i class="ti-search"></i></label>
                                         </form>
                                     </div>
-                                    <button class="button btn btn-secondary but" data-toggle="modal" data-target="#addPrd"><i class="fas fa-plus-circle"></i></button>
+                                    <button class="addBtn" data-toggle="modal" data-target="#addAdmin"><i class="fas fa-plus-circle"></i></button>
                                 </div>
-                                
+
                                 <div class="table-responsive">
                                     <table id="dtAdmin" class="table" style="width:100%;">
                                         <thead class="thead-dark">
@@ -103,6 +103,24 @@
     <!-- Placed js at the end of the document so the pages load faster -->
 
     <!-- jquery latest version -->
+    <!-- Add Admin Modal Start -->
+    <div class="modal fade" id="addAdmin" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+      </div>
+      <div class="modal-body">
+        <h3>Modal Body</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     <?php include_once('scripts.php'); ?>
     <script src="adminScripts.js"></script>
 
