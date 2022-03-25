@@ -39,7 +39,7 @@ switch ($_POST["action"]) {
             $sub_array[] = $row['id'];
             $sub_array[] = $row['name'];
             $sub_array[] = $row['email'];
-            $sub_array[] = '<textarea style="overflow-y: auto;resize: none;border: none;">'.$row['password'].'</textarea>';
+            $sub_array[] = '<textarea style="overflow-y: auto;resize: none;border: none;">' . $row['password'] . '</textarea>';
             $sub_array[] = $row['status'];
             $sub_array[] = '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm editbtnadmin" >Ndrysho</a>';
             $sub_array[] =  '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm deleteBtn" >Fshi</a>';
@@ -57,37 +57,44 @@ switch ($_POST["action"]) {
         break;
 
     case "addAdmin":
-        $EmriMbiemri = mysqli_real_escape_string($con, $_POST['emri']);
-        $Email = mysqli_real_escape_string($con, $_POST['email']);
-        $Fjalekalimi = mysqli_real_escape_string($con, $_POST['password']);
+        $name = mysqli_real_escape_string($con, $_POST['name']);
+        $email = mysqli_real_escape_string($con, $_POST['email']);
+        $password = mysqli_real_escape_string($con, $_POST['password']);
+        $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
 
-        $query = "SELECT * FROM administratoret WHERE Email='$Email' LIMIT 1";
+        $query = "SELECT * FROM admin WHERE email='$email' LIMIT 1";
         $result = mysqli_query($con, $query);
         $fetch = mysqli_fetch_assoc($result);
 
 
 
-        if (strlen($Fjalekalimi) < '8') {
+        if (strlen($password) < '8') {
             $data = array(
                 'status' => 'passwordError'
             );
             echo json_encode($data);
             return;
-        } elseif (!preg_match("#[0-9]+#", $Fjalekalimi)) {
+        } elseif (!preg_match("#[0-9]+#", $password)) {
             $data = array(
                 'status' => 'passwordError'
             );
             echo json_encode($data);
             return;
-        } elseif (!preg_match("#[A-Z]+#", $Fjalekalimi)) {
+        } elseif (!preg_match("#[A-Z]+#", $password)) {
             $data = array(
                 'status' => 'passwordError'
             );
             echo json_encode($data);
             return;
-        } elseif (!preg_match("#[a-z]+#", $Fjalekalimi)) {
+        } elseif (!preg_match("#[a-z]+#", $password)) {
             $data = array(
                 'status' => 'passwordError'
+            );
+            echo json_encode($data);
+            return;
+        } elseif ($password != $cpassword) {
+            $data = array(
+                'status' => 'passwordVerify'
             );
             echo json_encode($data);
             return;
@@ -98,8 +105,10 @@ switch ($_POST["action"]) {
             echo json_encode($data);
             return;
         } else {
-            $Fjalekalimi = MD5($_POST['password']);
-            $sql = "INSERT INTO administratoret (EmriMbiemri,Email,Fjalekalimi,date_created) values ('$EmriMbiemri', '$Email', '$Fjalekalimi',CURRENT_TIMESTAMP)";
+            $Fjalekalimi = password_hash($password, PASSWORD_BCRYPT);
+            $status = "notverified";
+            $code = "0";
+            $sql = "INSERT INTO admin (name, email, password, code, status) values ('$name', '$email', '$Fjalekalimi', '$code', '$status')";
             $query = mysqli_query($con, $sql);
             $lastId = mysqli_insert_id($con);
             if ($query == true) {
@@ -194,7 +203,7 @@ switch ($_POST["action"]) {
 
             echo json_encode($data);
         }
-    break;
+        break;
 
     case "singleAdminData":
         $id_admin = $_POST['id_admin'];
@@ -202,7 +211,7 @@ switch ($_POST["action"]) {
         $query = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($query);
         echo json_encode($row);
-    break;
+        break;
 
     case "deleteAdmin":
         $id_admin = $_POST['id_admin'];
@@ -223,5 +232,5 @@ switch ($_POST["action"]) {
 
             echo json_encode($data);
         }
-    break;
+        break;
 }

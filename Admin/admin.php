@@ -43,15 +43,19 @@
                                     </li>
                                 </ul>
                             </div>
+                            <br>
+                            <div id="alerts"></div>
+                            <br>
+                            <br>
                             <div class="tab-content another-product-style jump">
                                 <div class="btn-search mt-5">
                                     <div class="search-container">
                                         <form action="/search" method="get">
                                             <input class="search expandright searchAdmin" id="searchAdmin" type="text" name="p" placeholder="Kërko administratorin">
-                                            <label class="searchBtn searchbutton" for="searchAdmin"><i class="ti-search"></i></label>
+                                            <label class="button searchbutton" for="searchAdmin"><i class="ti-search"></i></label>
                                         </form>
                                     </div>
-                                    <button class="addBtn" data-toggle="modal" data-target="#addAdmin"><i class="fas fa-plus-circle"></i></button>
+                                    <button class="button" data-toggle="modal" data-target="#addAdmin"><i class="fas fa-plus-circle"></i></button>
                                 </div>
 
                                 <div class="table-responsive">
@@ -105,22 +109,41 @@
     <!-- jquery latest version -->
     <!-- Add Admin Modal Start -->
     <div class="modal fade" id="addAdmin" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
-      </div>
-      <div class="modal-body">
-        <h3>Modal Body</h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="myModalLabel">Shto administratorin e ri</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="login" id="insert_Admin">
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="name">Emri dhe mbiemri:</label>
+                            <input style="margin-top:0;" type="text" name="name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="email">Email adresa:</label>
+                            <input style="margin-top:0;" type="email" name="email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="password">Fjalëkalimi:</label>
+                            <input style="margin-top:0;" type="password" name="password" id="password">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="cpassword">Verifiko fjalëkalimi:</label>
+                            <input style="margin-top:0;" type="password" name="cpassword" id="cpassword">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
+                            <button type="submit" class="btn btn-info">Shto</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
     </div>
-  </div>
-</div>
     <?php include_once('scripts.php'); ?>
     <script src="adminScripts.js"></script>
 

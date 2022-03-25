@@ -26,20 +26,15 @@ function successAlert(message) {
   
   function dangerAlert(message) {
     $("#alerts").html(
-      '<div class="alert alert-danger shadow" role="alert" style="border-left:#721C24 5px solid; border-radius: 0px">' +
-        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-        '<span aria-hidden="true" style="color:#721C24">&times;</span>' +
-        "</button>" +
-        '<div class="row">' +
-        '<svg width="1.25em" height="1.25em" viewBox="0 0 16 16" class="m-1 bi bi-exclamation-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">' +
-        '<path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>' +
-        "	</svg>" +
-        '<p style="font-size:18px" class="mb-0 font-weight-light"><b class="mr-1">' +
-        message +
-        "</b></p>" +
-        "</div>" +
-        "</div>"
-    );
+      ' <br><br>'+
+        ' <div class="error-notice">'+
+          ' <div class="oaerror danger">'+
+            ' <strong><i style="font-size:25px;" class="fa-solid fa-circle-exclamation"></i></strong> - '+ message +
+          ' </div>'+
+        ' </div>'+
+     '</div>'+
+  ' </div>'
+ );
     window.scrollTo({
       top: 100,
       behavior: "smooth",
@@ -53,19 +48,14 @@ function successAlert(message) {
   
   function warningAlert(message) {
     $("#alerts").html(
-      '<div class="alert alert-primary shadow" role="alert" style="border-left:#155724 5px solid; border-radius: 0px">' +
-        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-        '<span aria-hidden="true" style="color:#155724">&times;</span>' +
-        "</button>" +
-        '<div class="row">' +
-        '<svg width="1.25em" height="1.25em" viewBox="0 0 16 16" class="m-1 bi bi-bell-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>' +
-        "</svg>" +
-        '<p style="font-size:18px" class="mb-0 font-weight-light"><b class="mr-1">' +
-        message +
-        "</b></p>" +
-        "</div>" +
-        "	</div>"
+         ' <br><br>'+
+		       ' <div class="error-notice">'+
+             ' <div class="oaerror warning">'+
+               ' <strong><i style="font-size: 25px;" class="fa-solid fa-triangle-exclamation"></i> </strong> &nbsp '+ message +
+             ' </div>'+
+           ' </div>'+
+	      '</div>'+
+     ' </div>'
     );
     window.scrollTo({
       top: 100,
