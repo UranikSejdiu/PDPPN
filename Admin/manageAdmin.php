@@ -41,8 +41,8 @@ switch ($_POST["action"]) {
             $sub_array[] = $row['email'];
             $sub_array[] = '<textarea style="overflow-y: auto;resize: none;border: none;">' . $row['password'] . '</textarea>';
             $sub_array[] = $row['status'];
-            $sub_array[] = '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm editbtnadmin" >Ndrysho</a>';
-            $sub_array[] =  '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn btn-danger btn-sm deleteBtn" >Fshi</a>';
+            $sub_array[] = '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn button-success btn-sm editbtnadmin" >Ndrysho</a>';
+            $sub_array[] =  '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn button-danger btn-sm deleteBtn" >Fshi</a>';
             $data[] = $sub_array;
         }
 
@@ -65,9 +65,6 @@ switch ($_POST["action"]) {
         $query = "SELECT * FROM admin WHERE email='$email' LIMIT 1";
         $result = mysqli_query($con, $query);
         $fetch = mysqli_fetch_assoc($result);
-
-
-
         if (strlen($password) < '8') {
             $data = array(
                 'status' => 'passwordError'
@@ -107,76 +104,113 @@ switch ($_POST["action"]) {
         } else {
             $Fjalekalimi = password_hash($password, PASSWORD_BCRYPT);
             $status = "notverified";
-            $code = "0";
+            $code = rand(999999, 111111);
             $sql = "INSERT INTO admin (name, email, password, code, status) values ('$name', '$email', '$Fjalekalimi', '$code', '$status')";
             $query = mysqli_query($con, $sql);
             $lastId = mysqli_insert_id($con);
-            if ($query == true) {
-
-                $data = array(
-                    'status' => 'true'
-                );
-                echo json_encode($data);
-            } else {
-                $data = array(
-                    'status' => 'false'
-                );
-                echo json_encode($data);
+            if ($query) {
+                $subject = "Kodi i verifikimit të Email-it";
+                $message = ' <body style="margin: 0;">
+                <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #f1f5f8; font-family: system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif; min-height: 100vh; padding-left: 1rem; padding-right: 1rem; padding-top: 2rem; padding-bottom: 2rem;">
+                  <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-left: auto; margin-right: auto; max-width: 40rem;">
+                    <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #fff; padding: 2rem; box-shadow: 0 4px 8px 0 rgba(0,0,0,.12),0 2px 4px 0 rgba(0,0,0,.08);">
+                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; text-align: center; letter-spacing: .05em;">
+                        <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; font-weight: 700; color: #e3342f; font-size: .875rem;">PDPPN</div>
+                        <h1 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; align-items: center; justify-content: center; font-size: 1.875rem;">Konfirmimi i email adresës</h1>
+                      </div>
+                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; padding-top: 2rem; padding-bottom: 2rem;">
+                        <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">
+                          Përshendetje ' . $name . ', <br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"><br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;">Përdor kodin më posht për të konfirmuar email adresën dhe pastaj mund të kyçeni në
+                          platformën tonë.
+                        </p>
+                        <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; background-color: #e3342f; border-radius: .25rem; margin-top: 2rem; margin-bottom: 2rem; padding: 1rem; color: #fff; letter-spacing: .05em; text-align: center;" class="text-white tracking-wide bg-red rounded w-full my-8 p-4 ">' . $code . '</h3>
+                        <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; font-size: .875rem;">
+                          Shpresojmë që jeni mirë!<br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"> Nga stafi i PDPPN
+                        </p>
+                      </div>
+                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-top: 2rem; text-align: center; color: #606f7b;">
+                        <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; margin-bottom: 1rem; font-size: 1rem;">Ju Faleminderit që përdorni shërbimet tona!</h3>
+                        <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">Ekipi PDPPN</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               </body>';
+                $sender = 'From: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
+                    'Reply-To: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
+                    'X-Mailer: PHP/' . PHP_EOL . 'Content-type: text/html; charset=UTF-8' . phpversion();
+                if (mail($email, $subject, $message, $sender)) {
+                    $data = array(
+                        'status' => 'true'
+                    );
+                    echo json_encode($data);
+                } else {
+                    $data = array(
+                        'status' => 'false'
+                    );
+                    echo json_encode($data);
+                }
             }
+            
+            
         }
-        break;
+    break;
 
     case "updateAdmin":
-        $update_emri = mysqli_real_escape_string($con,  $_POST['update_emri']);
-        $update_email = mysqli_real_escape_string($con,  $_POST['update_email']);
+        $updateName = mysqli_real_escape_string($con,  $_POST['updateName']);
+        $updateEmail = mysqli_real_escape_string($con,  $_POST['updateEmail']);
         $updateidadmin = mysqli_real_escape_string($con,  $_POST['updateidadmin']);
-        $password = mysqli_real_escape_string($con,  $_POST['update_password']);
+        $updatePassword = mysqli_real_escape_string($con,  $_POST['updatePassword']);
+        $updateCpassword = mysqli_real_escape_string($con,  $_POST['updateCpassword']);
 
-        $query = "SELECT * FROM administratoret WHERE ID_admin=$updateidadmin LIMIT 1";
+        $query = "SELECT * FROM admin WHERE id=$updateidadmin LIMIT 1";
         $sql = mysqli_query($con, $query);
         while ($row = $sql->fetch_assoc()) {
-            $fjalekalimibackup = $row['Fjalekalimi'];
-            $emailbackup = $row['Email'];
+            $fjalekalimibackup = $row['password'];
+            $emailbackup = $row['email'];
         }
-        if ($password) {
-            if ($password != $fjalekalimibackup) {
-                if (strlen($password) < '8') {
+        if ($updatePassword == $updateCpassword) {
+                if (strlen($updatePassword) < '8') {
                     $data = array(
                         'status' => 'passwordError'
                     );
                     echo json_encode($data);
                     return;
-                } elseif (!preg_match("#[0-9]+#", $password)) {
+                } elseif (!preg_match("#[0-9]+#", $updatePassword)) {
                     $data = array(
                         'status' => 'passwordError'
                     );
                     echo json_encode($data);
                     return;
-                } elseif (!preg_match("#[A-Z]+#", $password)) {
+                } elseif (!preg_match("#[A-Z]+#", $updatePassword)) {
                     $data = array(
                         'status' => 'passwordError'
                     );
                     echo json_encode($data);
                     return;
-                } elseif (!preg_match("#[a-z]+#", $password)) {
+                } elseif (!preg_match("#[a-z]+#", $updatePassword)) {
                     $data = array(
                         'status' => 'passwordError'
                     );
                     echo json_encode($data);
                     return;
                 }
-                $newPassword = MD5($password);
+                $newPassword = password_hash($updatePassword, PASSWORD_BCRYPT);
             } else {
-                $newPassword = $password;
+                $data = array(
+                    'status' => 'passwordVerify'
+                );
+                echo json_encode($data);
+                return;
             }
-        }
-        if ($update_email == $emailbackup) {
-            $update_email = $emailbackup;
+        
+        if ($updateEmail == $emailbackup) {
+            $updateEmail = $emailbackup;
         } else {
-            $user_check_query = "SELECT * FROM administratoret WHERE Email='$update_email' LIMIT 1";
+            $user_check_query = "SELECT * FROM admin WHERE email='$updateEmail' LIMIT 1";
             $result = mysqli_query($con, $user_check_query);
             $user = mysqli_fetch_assoc($result);
-            if ($user['Email'] === $update_email) {
+            if ($user['email'] === $updateEmail) {
                 $data = array('status' => 'emailError');
                 echo json_encode($data);
                 return;
@@ -184,7 +218,7 @@ switch ($_POST["action"]) {
         }
 
 
-        $sql = "UPDATE administratoret SET  EmriMbiemri='$update_emri' , Email= '$update_email', Fjalekalimi='$newPassword',date_created=CURRENT_TIMESTAMP WHERE ID_admin=$updateidadmin";
+        $sql = "UPDATE admin SET  name='$updateName' , email= '$updateEmail', password='$newPassword' WHERE id=$updateidadmin";
         $query = mysqli_query($con, $sql);
         $lastId = mysqli_insert_id($con);
         if ($query == true) {
@@ -203,11 +237,12 @@ switch ($_POST["action"]) {
 
             echo json_encode($data);
         }
+    
         break;
-
+    
     case "singleAdminData":
-        $id_admin = $_POST['id_admin'];
-        $sql = "SELECT * FROM administratoret WHERE ID_admin='$id_admin' LIMIT 1";
+        $id = $_POST['id'];
+        $sql = "SELECT * FROM admin WHERE id='$id' LIMIT 1";
         $query = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($query);
         echo json_encode($row);

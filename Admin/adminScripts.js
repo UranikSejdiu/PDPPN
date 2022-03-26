@@ -104,3 +104,86 @@ $(document).ready(function () {
       warningAlert("Ju lutem plotësoni të gjitha fushat!");
     }
   });
+
+  $(document).on("submit", "#update_Admin", function (e) {
+    e.preventDefault();
+    //var tr = $(this).closest('tr');
+    var updateName = $("#updateName").val();
+    var updateEmail = $("#updateEmail").val();
+    var updatePassword = $("#updatePassword").val();
+    var updateCpassword = $("#updateCpassword").val();
+    var trid = $("#trid").val();
+    var updateidadmin = $("#updateidadmin").val();
+    if (updateName != "" && updateEmail != "" && updatePassword != "" && updateCpassword != "") {
+      $.ajax({
+        url: "manageAdmin.php",
+        type: "post",
+        data: {
+          updateName: updateName,
+          updateEmail: updateEmail,
+          updatePassword: updatePassword,
+          updateCpassword:updateCpassword,
+          updateidadmin: updateidadmin,
+          action: "updateAdmin",
+        },
+        success: function (data) {
+          var json = JSON.parse(data);
+          var status = json.status;
+          if (status == "true") {
+            table = $("#dtAdmin").DataTable();
+            table.draw();
+            $("#editAdmin").modal("hide");
+            $("#update_Admin")[0].reset();
+            successAlert("Ndryshimet u ruajtën me sukses!");
+  
+          } else if (status == "false") {
+            $("#update_Admin")[0].reset();
+            dangerAlert("Gabim gjatë ruajtjes së ndryshimit në databazë!");
+  
+          } else if (status == "passwordError") {
+            $("#editAdmin").modal("toggle");
+            $("#update_Admin")[0].reset();
+            warningAlert("Ju lutem plotësoni kërkesat e fjalekalimit!");
+  
+          }else if(status == "passwordVerify"){
+            $("#editAdmin").modal('hide');
+            $("#updatePassword").val("");
+            $("#updateCpassword").val("");
+            warningAlert("Ju lutem plotësoni fjalëkalimin e njejtë!");
+
+          }else if (status == 'emailError') {
+            $('#editAdmin').modal('toggle');
+            $("#update_Admin")[0].reset();
+            warningAlert("Ekziston përdorues me këtë email!");
+          }
+        },
+      });
+    } else {
+      $("#editAdmin").modal("toggle");
+      $("#update_Admin")[0].reset();
+      warningAlert("Ju lutem plotësoni të gjitha fushat!");
+    }
+  });
+
+  $("#dtAdmin").on("click", ".editbtnadmin ", function (event) {
+    var table = $("#dtAdmin").DataTable();
+    var trid = $(this).closest("tr").attr("id");
+    var id = $(this).data("id");
+    $("#editAdmin").modal("toggle");
+    $.ajax({
+      url: "manageAdmin.php",
+      data: {
+        id: id,
+        action: "singleAdminData",
+      },
+      type: "post",
+      success: function (data) {
+        var json = JSON.parse(data);
+        $("#updateName").val(json.name);
+        $("#updateEmail").val(json.email);
+        $("#updateidadmin").val(id);
+        $("#trid").val(trid);
+      },
+    });
+  });
+  

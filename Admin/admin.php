@@ -43,9 +43,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <br>
                             <div id="alerts"></div>
-                            <br>
                             <br>
                             <div class="tab-content another-product-style jump">
                                 <div class="btn-search mt-5">
@@ -60,7 +58,7 @@
 
                                 <div class="table-responsive">
                                     <table id="dtAdmin" class="table" style="width:100%;">
-                                        <thead class="thead-dark">
+                                        <thead class="text-center thead-dark">
                                             <tr>
                                                 <th data-orderable="false">Nr.</th>
                                                 <th>Emri dhe Mbiemri</th>
@@ -144,9 +142,71 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="editAdmin" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="myModalLabel">Shto administratorin e ri</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="login" id="update_Admin">
+                        <input type="hidden" name="id" id="updateidadmin" value="">
+                        <input type="hidden" name="trid" id="trid" value="">
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="updateName">Emri dhe mbiemri:</label>
+                            <input style="margin-top:0;" type="text" name="updateName" id="updateName">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="updateEmail">Email adresa:</label>
+                            <input style="margin-top:0;" type="email" name="updateEmail" id="updateEmail">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="updatePassword">Fjalëkalimi:</label>
+                            <input style="margin-top:0;" type="password" name="updatePassword" id="updatePassword">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="updateCpassword">Verifiko fjalëkalimi:</label>
+                            <input style="margin-top:0;" type="password" name="updateCpassword" id="updateCpassword">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
+                            <button type="submit" class="btn btn-info">Ruaj</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
     <?php include_once('scripts.php'); ?>
     <script src="adminScripts.js"></script>
 
+    <script>
+        $('#addAdmin').on('hidden.bs.modal', function() {
+            $(this).find('form').trigger('reset');
+        });
+        $('#password').PassRequirements({
+            popoverPlacement: 'auto',
+            trigger: 'focus'
+        });
+        $('#cpassword').PassRequirements({
+            popoverPlacement: 'auto',
+            trigger: 'focus'
+        });
+        $('#updatePassword').PassRequirements({
+            popoverPlacement: 'auto',
+            trigger: 'focus'
+        });
+        $('#updateCpassword').PassRequirements({
+            popoverPlacement: 'auto',
+            trigger: 'focus'
+        });
+    </script>
 </body>
 
 </html>
