@@ -126,10 +126,12 @@
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="password">Fjalëkalimi:</label>
                             <input style="margin-top:0;" type="password" name="password" id="password">
+                            <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password" id="spanPass"></span>
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="cpassword">Verifiko fjalëkalimi:</label>
                             <input style="margin-top:0;" type="password" name="cpassword" id="cpassword">
+                            <span toggle="#cpassword" class="fa fa-fw fa-eye field-icon toggle-password" id="spanCpass"></span>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
@@ -165,10 +167,12 @@
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="updatePassword">Fjalëkalimi:</label>
                             <input style="margin-top:0;" type="password" name="updatePassword" id="updatePassword">
+                            <span toggle="#updatePassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="updateCpassword">Verifiko fjalëkalimi:</label>
                             <input style="margin-top:0;" type="password" name="updateCpassword" id="updateCpassword">
+                            <span toggle="#updateCpassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
@@ -189,6 +193,11 @@
     <script>
         $('#addAdmin').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
+            $('#spanPass').removeClass( "fa-eye-slash" ).addClass( "fa-eye" );
+            $('#password').get(0).type = 'password';
+
+            $('#spanCpass').removeClass( "fa-eye-slash" ).addClass( "fa-eye" );
+            $('#cpassword').get(0).type = 'password';
         });
         $('#password').PassRequirements({
             popoverPlacement: 'auto',

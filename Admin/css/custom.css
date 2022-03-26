@@ -1024,3 +1024,11 @@ textarea{
   background-color: #eee !important;
   border-color: #ddd !important;
 }
+
+.field-icon {
+  float: right;
+  cursor: pointer;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}

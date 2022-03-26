@@ -12,3 +12,4 @@
 <script src="js/alert.js"></script>
 <script type="text/javascript" src="js/datatables.min.js"></script>
 <script src="js/passwordVerify.js"></script>
+<script src="js/showPassword.js"></script>
