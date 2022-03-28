@@ -144,7 +144,7 @@
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="lokacioni">Lokacioni</label>
-                            <input class="lokacioni_add" style="margin-top:0;" name="lokacioni" id="lokacioni" type="text" value="42.560057,20.855082"><br>
+                            <input class="lokacioni_add" style="margin-top:0;" name="lokacioni" id="lokacioni" type="text" value="42.560057,20.855082" autofocus><br>
                             <div id="mapContainer"></div>
                         </div>
                         <div class="modal-footer">
@@ -203,6 +203,7 @@
     </div>
     <?php include_once('scripts.php'); ?>
     <script src="kompaniScripts.js"></script>
+    
     <script>
         $('.lokacioni_add').leafletLocationPicker({
             alwaysOpen: true,
@@ -222,6 +223,9 @@
     </script>
 
     <script>
+        $('#addKompani').on('shown.bs.modal', function() {
+            $('#lokacioni').focus();
+        });
         $('#addAdmin').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
             $('#spanPass').removeClass("fa-eye-slash").addClass("fa-eye");
