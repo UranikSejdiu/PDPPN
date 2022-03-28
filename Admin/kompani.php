@@ -139,11 +139,11 @@
                             <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password" id="spanPass"></span>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="name">Numri Fiskal:</label>
-                            <input style="margin-top:0;" type="text" name="name" id="name">
+                            <label style="margin-bottom:0;" for="fiskal">Numri Fiskal:</label>
+                            <input style="margin-top:0;" type="number" name="fiskal" id="fiskal">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="name">Lokacioni</label>
+                            <label style="margin-bottom:0;" for="lokacioni">Lokacioni</label>
                             <input class="lokacioni_add" style="margin-top:0;" name="lokacioni" id="lokacioni" type="text" value="42.560057,20.855082"><br>
                             <div id="mapContainer"></div>
                         </div>

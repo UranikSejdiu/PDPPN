@@ -40,7 +40,7 @@
 
 		var baseClassName = 'leaflet-locpicker',
 			baseLayers = {
-				'OSM': http + '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+				'OSM': http + '//tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png',
 				'SAT': http + '//otile1.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png'
 				//TODO add more free base layers
 			};

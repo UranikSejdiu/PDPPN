@@ -13,5 +13,5 @@
 <script type="text/javascript" src="js/datatables.min.js"></script>
 <script src="js/passwordVerify.js"></script>
 <script src="js/showPassword.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+<script src="js/leaflet.js"></script>
 <script src="js/leaflet-locationpicker.src.js"></script>
