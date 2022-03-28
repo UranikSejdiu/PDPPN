@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2022 at 06:00 PM
+-- Generation Time: Mar 28, 2022 at 05:47 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -42,9 +42,28 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `code`, `status`) VALUES
 (2, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', '$2y$10$jy/YVXAnWknld8Ptd/D13utJA/dEJIU92wnp0F38Fm6rGTORrcOqO', 0, 'verified'),
-(4, 'Filan Fisteku', 'ferizaj0006@gmail.com', '$2y$10$ZNvxlt7S8GBEaiLtZhlZ5.Ktj1h37EZP5LOm43yyZRxu/1xmU5qJy', 0, 'verified'),
 (10, 'Filan Fisteku', 'ferizaj0004@gmail.com', '$2y$10$Hb9wtq2/vboRcb4UBSFT1.okSz7pFdyhjxZbnC/a2BYuEivF4USTu', 0, 'verified'),
-(11, 'Filan Fisteku', 'u.sejdiu56@gmail.com', '$2y$10$D7YN1dt6VXd98X9TQ7Z/Zecevy3U5CkqweVHNbTljDC6CGXW/4AXa', 0, 'verified');
+(11, 'Filan Fisteku', 'u.sejdiu56@gmail.com', '$2y$10$D7YN1dt6VXd98X9TQ7Z/Zecevy3U5CkqweVHNbTljDC6CGXW/4AXa', 0, 'verified'),
+(12, 'PDPPN', 'ferizaj0006@gmail.com', '$2y$10$JHw8o7FKckyiyn4039aIO.hrxpBfti2Th/aymJtJnTNTS6PspEwr.', 0, 'verified');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kompanite`
+--
+
+CREATE TABLE `kompanite` (
+  `id` int(11) NOT NULL,
+  `logo` varchar(250) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `nrfiskal` int(9) NOT NULL,
+  `lokacioni` varchar(200) NOT NULL,
+  `telefoni` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(999) NOT NULL,
+  `code` mediumint(50) NOT NULL,
+  `status` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -57,6 +76,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `kompanite`
+--
+ALTER TABLE `kompanite`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -64,7 +89,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `kompanite`
+--
+ALTER TABLE `kompanite`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

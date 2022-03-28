@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PDPPN - Menaxhimi i Administratorëve</title>
+    <title>PDPPN - Menaxhimi i Kompanive</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,7 +38,7 @@
                                 <ul class="tab-style text-center" role="tablist">
                                     <li class="active">
                                         <div class="tab-menu-text">
-                                            <h4 class="text-center">Menaxhimi i Administratorëve</h4>
+                                            <h4 class="text-center">Menaxhimi i Kompanive</h4>
                                         </div>
                                     </li>
                                 </ul>
@@ -49,22 +49,26 @@
                                 <div class="btn-search mt-5">
                                     <div class="search-container">
                                         <form action="/search" method="get">
-                                            <input class="search expandright searchAdmin" id="searchAdmin" type="text" name="p" placeholder="Kërko administratorin">
-                                            <label class="button searchbutton" for="searchAdmin"><i class="ti-search"></i></label>
+                                            <input class="search expandright searchAdmin" id="searchKompani" type="text" name="p" placeholder="Kërko kompaninë">
+                                            <label class="button searchbutton" for="searchKompani"><i class="ti-search"></i></label>
                                         </form>
                                     </div>
-                                    <button class="button" data-toggle="modal" data-target="#addAdmin"><i class="fas fa-plus-circle"></i></button>
+                                    <button class="button" data-toggle="modal" data-target="#addKompani"><i class="fas fa-plus-circle"></i></button>
                                 </div>
 
                                 <div class="table-responsive">
-                                    <table id="dtAdmin" class="table" style="width:100%;">
+                                    <table id="dtKompani" class="table " style="width:100%;">
                                         <thead class="text-center thead-dark">
                                             <tr>
                                                 <th data-orderable="false">Nr.</th>
-                                                <th>Emri dhe Mbiemri</th>
-                                                <th>Email-i</th>
-                                                <th data-orderable="false">Fjalëkalimi</th>
-                                                <th>Status</th>
+                                                <th data-orderable="false">Logo</th>
+                                                <th>Kompania</th>
+                                                <th>Numri Fiskal</th>
+                                                <th data-orderable="false">Lokacioni</th>
+                                                <th data-orderable="false">Telefoni</th>
+                                                <th>Email</th>
+                                                <th data-orderable="false">Fjalekalimi</th>
+                                                <th>Statusi</th>
                                                 <th data-orderable="false">Modifiko</th>
                                                 <th data-orderable="false">Fshi</th>
                                             </tr>
@@ -106,7 +110,7 @@
 
     <!-- jquery latest version -->
     <!-- Add Admin Modal Start -->
-    <div class="modal fade" id="addAdmin" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal fade" id="addKompani" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -114,9 +118,15 @@
                     <h3 class="modal-title" id="myModalLabel">Shto administratorin e ri</h3>
                 </div>
                 <div class="modal-body">
-                    <form class="login" id="insert_Admin">
+                    <form class="login" id="insert_kompani" enctype='multipart/form-data'>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="name">Emri dhe mbiemri:</label>
+                            <label style="margin-bottom:0;" for="name">Logoja:</label>
+                            <input style="margin-top:0;border:none;" name="logo" id="logo" type="file">
+                            <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
+                            <div id="image-holder"></div>
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="name">Emri kompanisë:</label>
                             <input style="margin-top:0;" type="text" name="name" id="name">
                         </div>
                         <div class="form-group">
@@ -129,9 +139,13 @@
                             <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password" id="spanPass"></span>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="cpassword">Verifiko fjalëkalimi:</label>
-                            <input style="margin-top:0;" type="password" name="cpassword" id="cpassword">
-                            <span toggle="#cpassword" class="fa fa-fw fa-eye field-icon toggle-password" id="spanCpass"></span>
+                            <label style="margin-bottom:0;" for="name">Numri Fiskal:</label>
+                            <input style="margin-top:0;" type="text" name="name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="name">Lokacioni</label>
+                            <input class="lokacioni_add" style="margin-top:0;" name="lokacioni" id="lokacioni" type="text" value="42.560057,20.855082"><br>
+                            <div id="mapContainer"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
@@ -145,7 +159,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editAdmin" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal fade" id="editKompani" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -188,25 +202,39 @@
 
     </div>
     <?php include_once('scripts.php'); ?>
-    <script src="adminScripts.js"></script>
+    <script src="kompaniScripts.js"></script>
+    <script>
+        $('.lokacioni_add').leafletLocationPicker({
+            alwaysOpen: true,
+            height: 300,
+            width: 250,
+            cursorSize: '15px',
+            mapContainer: "#mapContainer"
+        });
+
+        $('.lokacioni_update').leafletLocationPicker({
+            alwaysOpen: true,
+            height: 300,
+            width: 250,
+            cursorSize: '15px',
+            mapContainer: "#mapContainerUpdate"
+        });
+    </script>
 
     <script>
         $('#addAdmin').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
-            $('#spanPass').removeClass( "fa-eye-slash" ).addClass( "fa-eye" );
+            $('#spanPass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#password').get(0).type = 'password';
 
-            $('#spanCpass').removeClass( "fa-eye-slash" ).addClass( "fa-eye" );
+            $('#spanCpass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#cpassword').get(0).type = 'password';
         });
 
         $('#editAdmin').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
-            $('#spanUpass').removeClass( "fa-eye-slash" ).addClass( "fa-eye" );
+            $('#spanUpass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#updatePassword').get(0).type = 'password';
-
-            $('#spanUcpass').removeClass( "fa-eye-slash" ).addClass( "fa-eye" );
-            $('#updateCpassword').get(0).type = 'password';
         });
         $('#password').PassRequirements({
             popoverPlacement: 'auto',

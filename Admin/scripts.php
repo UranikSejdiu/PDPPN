@@ -1,4 +1,4 @@
-<script src="js/vendor/jquery-1.12.0.min.js"></script>
+<script src="js/vendor/jquery-2.2.4.min.js"></script>
 <!-- Bootstrap framework js -->
 <script src="js/bootstrap.min.js"></script>
 <!-- All js plugins included in this file. -->
@@ -13,3 +13,5 @@
 <script type="text/javascript" src="js/datatables.min.js"></script>
 <script src="js/passwordVerify.js"></script>
 <script src="js/showPassword.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+<script src="js/leaflet-locationpicker.src.js"></script>

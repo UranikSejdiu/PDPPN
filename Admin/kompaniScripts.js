@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#dtAdmin").DataTable({
+    $("#dtkompani").DataTable({
       fnCreatedRow: function (nRow, aData, iDataIndex) {
         $(nRow).attr("id", aData[0]);
       },

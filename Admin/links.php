@@ -25,4 +25,5 @@
 <link href="css/all.min.css" rel="stylesheet">
 <link href="css/tooltip.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css">
+<link rel="stylesheet" href="css/leaflet-locationpicker.src.css">

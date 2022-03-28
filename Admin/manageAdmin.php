@@ -248,9 +248,10 @@ switch ($_POST["action"]) {
         echo json_encode($row);
         break;
 
+
     case "deleteAdmin":
-        $id_admin = $_POST['id_admin'];
-        $sql = "DELETE FROM administratoret WHERE ID_admin=$id_admin";
+        $id = $_POST['id'];
+        $sql = "DELETE FROM admin WHERE id=$id";
         $delQuery = mysqli_query($con, $sql);
         if ($delQuery == true) {
             $data = array(
