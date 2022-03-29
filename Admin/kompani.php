@@ -49,7 +49,7 @@
                                 <div class="btn-search mt-5">
                                     <div class="search-container">
                                         <form action="/search" method="get">
-                                            <input class="search expandright searchAdmin" id="searchKompani" type="text" name="p" placeholder="Kërko kompaninë">
+                                            <input class="search expandright searchKompani" id="searchKompani" type="text" name="p" placeholder="Kërko kompaninë">
                                             <label class="button searchbutton" for="searchKompani"><i class="ti-search"></i></label>
                                         </form>
                                     </div>
@@ -60,17 +60,18 @@
                                     <table id="dtKompani" class="table " style="width:100%;">
                                         <thead class="text-center thead-dark">
                                             <tr>
-                                                <th data-orderable="false">Nr.</th>
-                                                <th data-orderable="false">Logo</th>
-                                                <th>Kompania</th>
-                                                <th>Numri Fiskal</th>
-                                                <th data-orderable="false">Lokacioni</th>
-                                                <th data-orderable="false">Telefoni</th>
-                                                <th>Email</th>
-                                                <th data-orderable="false">Fjalekalimi</th>
+                                                <th class="text-center" data-orderable="false">Nr.</th>
+                                                <th class="text-center" data-orderable="false">Logo</th>
+                                                <th class="text-center">Kompania</th>
+                                                <th class="text-center" data-orderable="false">Numri Fiskal</th>
+                                                <th class="text-center" data-orderable="false">Lokacioni</th>
+                                                <th class="text-center" data-orderable="false">Telefoni</th>
+                                                <th class="text-center">Email</th>
+                                                <th class="text-center" data-orderable="false">Fjalekalimi</th>
+                                                <th class="text-center" data-orderable="false">Kodi</th>
                                                 <th>Statusi</th>
-                                                <th data-orderable="false">Modifiko</th>
-                                                <th data-orderable="false">Fshi</th>
+                                                <th class="text-center" data-orderable="false">Modifiko</th>
+                                                <th class="text-center" data-orderable="false">Fshi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -140,7 +141,11 @@
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="fiskal">Numri Fiskal:</label>
-                            <input style="margin-top:0;" type="number" name="fiskal" id="fiskal">
+                            <input style="margin-top:0;" type="number" name="fiskal" id="fiskal" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="phone">Numri telefonit:</label>
+                            <input style="margin-top:0;" type="tel" name="phone" id="phone">
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="lokacioni">Lokacioni</label>
@@ -203,7 +208,7 @@
     </div>
     <?php include_once('scripts.php'); ?>
     <script src="kompaniScripts.js"></script>
-    
+
     <script>
         $('.lokacioni_add').leafletLocationPicker({
             alwaysOpen: true,
@@ -223,19 +228,24 @@
     </script>
 
     <script>
+        $(":input").inputmask();
+        $("#phone").inputmask({
+            "mask": "(+383)49/999-999"
+        });
+        $("#tel_update").inputmask({
+            "mask": "(+383)49/999-999"
+        });
+
         $('#addKompani').on('shown.bs.modal', function() {
             $('#lokacioni').focus();
         });
-        $('#addAdmin').on('hidden.bs.modal', function() {
+        $('#addKompani').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
             $('#spanPass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#password').get(0).type = 'password';
-
-            $('#spanCpass').removeClass("fa-eye-slash").addClass("fa-eye");
-            $('#cpassword').get(0).type = 'password';
         });
 
-        $('#editAdmin').on('hidden.bs.modal', function() {
+        $('#editKompani').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
             $('#spanUpass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#updatePassword').get(0).type = 'password';
@@ -244,15 +254,7 @@
             popoverPlacement: 'auto',
             trigger: 'focus'
         });
-        $('#cpassword').PassRequirements({
-            popoverPlacement: 'auto',
-            trigger: 'focus'
-        });
         $('#updatePassword').PassRequirements({
-            popoverPlacement: 'auto',
-            trigger: 'focus'
-        });
-        $('#updateCpassword').PassRequirements({
             popoverPlacement: 'auto',
             trigger: 'focus'
         });

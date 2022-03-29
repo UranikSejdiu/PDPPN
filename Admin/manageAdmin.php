@@ -107,7 +107,6 @@ switch ($_POST["action"]) {
             $code = rand(999999, 111111);
             $sql = "INSERT INTO admin (name, email, password, code, status) values ('$name', '$email', '$Fjalekalimi', '$code', '$status')";
             $query = mysqli_query($con, $sql);
-            $lastId = mysqli_insert_id($con);
             if ($query) {
                 $subject = "Kodi i verifikimit të Email-it";
                 $message = ' <body style="margin: 0;">
@@ -220,7 +219,6 @@ switch ($_POST["action"]) {
 
         $sql = "UPDATE admin SET  name='$updateName' , email= '$updateEmail', password='$newPassword' WHERE id=$updateidadmin";
         $query = mysqli_query($con, $sql);
-        $lastId = mysqli_insert_id($con);
         if ($query == true) {
 
             $data = array(

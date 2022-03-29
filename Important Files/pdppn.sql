@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2022 at 05:47 PM
+-- Generation Time: Mar 29, 2022 at 01:41 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -66,6 +66,14 @@ CREATE TABLE `kompanite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `kompanite`
+--
+
+INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefoni`, `email`, `password`, `code`, `status`) VALUES
+(1, 'img/kompanite/1648552616-6242eaa8d4ff1.png', 'asdasd', 123123, '42.560057,20.855082', '(383)48/434-177', 'u.sejdiu4@gmail.com', '$2y$10$3IwAJs2p46o7higYsFYB8ejSmAwegnbXIJ9nZs6dLwE.M1FXEgBb6', 441186, 'notverified'),
+(2, 'img/kompanite/1648553826-6242ef6251728.png', 'pdppn', 9898, '42.560057,20.855082', '(+383)48/434-177', 'ferizaj0006@gmail.com', '$2y$10$dWdMCxjMrHVRQxw0wVva6OANjD8dKnHoBhNhNGZGqMG.Y0NyfhwXO', 959432, 'notverified');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -95,7 +103,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `kompanite`
 --
 ALTER TABLE `kompanite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
