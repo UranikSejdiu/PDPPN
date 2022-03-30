@@ -190,72 +190,72 @@ switch ($_POST["action"]) {
         break;
 
     case "updateKompani":
-        $kompania_update = mysqli_real_escape_string($con,  $_POST['kompania_update']);
-        $fiskal_update = mysqli_real_escape_string($con,  $_POST['fiskal_update']);
-        $lokacioni_update = mysqli_real_escape_string($con,  $_POST['lokacioni_update']);
-        $tel_update = mysqli_real_escape_string($con,  $_POST['tel_update']);
-        $email_update = mysqli_real_escape_string($con,  $_POST['email_update']);
-        $pass_update = mysqli_real_escape_string($con,  $_POST['pass_update']);
+        $updateName = mysqli_real_escape_string($con,  $_POST['updateName']);
+        $updateFiskal = mysqli_real_escape_string($con,  $_POST['updateFiskal']);
+        $updateLokacioni = mysqli_real_escape_string($con,  $_POST['updateLokacioni']);
+        $updatePhone = mysqli_real_escape_string($con,  $_POST['updatePhone']);
+        $updateEmail = mysqli_real_escape_string($con,  $_POST['updateEmail']);
+        $updatePassword = mysqli_real_escape_string($con,  $_POST['updatePassword']);
         $updateIdKomp = mysqli_real_escape_string($con,  $_POST['updateIdKomp']);
 
-        if (isset($_FILES['logo_update'])) {
-            $file_name = $_FILES['logo_update']['name'];
+        if (isset($_FILES['updateLogo'])) {
+            $file_name = $_FILES['updateLogo']['name'];
             $uniquename = time() . '-' . uniqid();
-            $file_size = $_FILES['logo_update']['size'];
-            $file_tmp = $_FILES['logo_update']['tmp_name'];
-            $file_type = $_FILES['logo_update']['type'];
+            $file_size = $_FILES['updateLogo']['size'];
+            $file_tmp = $_FILES['updateLogo']['tmp_name'];
+            $file_type = $_FILES['updateLogo']['type'];
             $ext = pathinfo($file_name, PATHINFO_EXTENSION);
             $extensions = array("jpeg", "jpg", "png");
             $filedestionation = "img/kompanite/" . $uniquename . '.' . $ext;
         }
 
 
-        $query1 = "SELECT * FROM kompanite WHERE ID_kompania=$updateIdKomp LIMIT 1";
+        $query1 = "SELECT * FROM kompanite WHERE id=$updateIdKomp LIMIT 1";
         $sql = mysqli_query($con, $query1);
         while ($row = $sql->fetch_assoc()) {
-            $fjalekalimibackup = $row['Fjalekalimi'];
-            $emailbackup = $row['Email'];
-            $photoBackup = $row['Logo'];
+            $fjalekalimibackup = $row['password'];
+            $emailbackup = $row['email'];
+            $photoBackup = $row['logo'];
         }
-        if ($pass_update) {
-            if ($pass_update != $fjalekalimibackup) {
-                if (strlen($password) <= '8') {
+        if ($updatePassword) {
+            if ($updatePassword != $fjalekalimibackup) {
+                if (strlen($updatePassword) <= '8') {
                     $data = array(
                         'status' => 'passwordError'
                     );
                     echo json_encode($data);
                     return;
-                } elseif (!preg_match("#[0-9]+#", $pass_update)) {
+                } elseif (!preg_match("#[0-9]+#", $updatePassword)) {
                     $data = array(
                         'status' => 'passwordError'
                     );
                     echo json_encode($data);
                     return;
-                } elseif (!preg_match("#[A-Z]+#", $pass_update)) {
+                } elseif (!preg_match("#[A-Z]+#", $updatePassword)) {
                     $data = array(
                         'status' => 'passwordError'
                     );
                     echo json_encode($data);
                     return;
-                } elseif (!preg_match("#[a-z]+#", $pass_update)) {
+                } elseif (!preg_match("#[a-z]+#", $updatePassword)) {
                     $data = array(
                         'status' => 'passwordError'
                     );
                     echo json_encode($data);
                     return;
                 }
-                $newPassword = MD5($pass_update);
+                $newPassword = password_hash($updatePassword, PASSWORD_BCRYPT);
             } else {
-                $newPassword = $pass_update;
+                $newPassword = $updatePassword;
             }
         }
-        if ($email_update == $emailbackup) {
-            $email_update = $emailbackup;
+        if ($updateEmail == $emailbackup) {
+            $updateEmail = $emailbackup;
         } else {
-            $user_check_query = "SELECT * FROM kompanite WHERE Email='$email_update' LIMIT 1";
+            $user_check_query = "SELECT * FROM kompanite WHERE email='$updateEmail' LIMIT 1";
             $result = mysqli_query($con, $user_check_query);
             $user = mysqli_fetch_assoc($result);
-            if ($user['Email'] === $email_update) {
+            if ($user['email'] === $updateEmail) {
                 $data = array('status' => 'emailError');
                 echo json_encode($data);
                 return;
@@ -275,14 +275,14 @@ switch ($_POST["action"]) {
                 echo json_encode($data);
                 return;
             } else {
-                $sql = "UPDATE kompanite SET Logo = '$filedestionation' WHERE ID_kompania = $updateIdKomp";
+                $sql = "UPDATE kompanite SET logo = '$filedestionation' WHERE id = $updateIdKomp";
                 unlink($photoBackup);
                 move_uploaded_file($file_tmp, $filedestionation);
                 mysqli_query($con, $sql);
             }
         }
 
-        $sql = "UPDATE kompanite SET  Emri='$kompania_update' , NumriFiskal= '$fiskal_update', Lokacioni='$lokacioni_update', Telefoni='$tel_update', Email='$email_update', Fjalekalimi='$newPassword',date_created=CURRENT_TIMESTAMP WHERE ID_kompania=$updateIdKomp";
+        $sql = "UPDATE kompanite SET  name='$updateName' , nrfiskal= '$updateFiskal', lokacioni='$updateLokacioni', telefoni='$updatePhone', email='$updateEmail', password='$newPassword' WHERE id=$updateIdKomp";
         $query = mysqli_query($con, $sql);
         if ($query == true) {
 
@@ -303,8 +303,8 @@ switch ($_POST["action"]) {
         break;
 
     case "singleKompaniData":
-        $id_kompania = $_POST['id_kompania'];
-        $sql = "SELECT * FROM  kompanite WHERE ID_kompania='$id_kompania' LIMIT 1";
+        $id = $_POST['id'];
+        $sql = "SELECT * FROM  kompanite WHERE id='$id' LIMIT 1";
         $query = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($query);
         echo json_encode($row);

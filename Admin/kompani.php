@@ -164,19 +164,27 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editKompani" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal fade" id="updateKompani" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3 class="modal-title" id="myModalLabel">Ndrysho të dhënat e administratorëve</h3>
+                    <h3 class="modal-title" id="myModalLabel">Ndysho të dhënat e kompanisë</h3>
                 </div>
                 <div class="modal-body">
-                    <form class="login" id="update_Admin">
-                        <input type="hidden" name="id" id="updateidadmin" value="">
+                    <form class="login" id="update_kompani" enctype='multipart/form-data'>
+                        <input type="hidden" name="updateIdKomp" id="updateIdKomp" value="">
                         <input type="hidden" name="trid" id="trid" value="">
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="updateName">Emri dhe mbiemri:</label>
+                            <label style="margin-bottom:0;" for="updateLogo">Logoja:</label>
+                            <input style="margin-top:0;border:none;" name="updateLogo" id="updateLogo" type="file">
+                            <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
+                            <div id="image-holderUP">
+                                <img width="100" height="100" id="logoUp" src="" alt=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="updateName">Emri kompanisë:</label>
                             <input style="margin-top:0;" type="text" name="updateName" id="updateName">
                         </div>
                         <div class="form-group">
@@ -189,13 +197,21 @@
                             <span toggle="#updatePassword" class="fa fa-fw fa-eye field-icon toggle-password" id="spanUpass"></span>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="updateCpassword">Verifiko fjalëkalimi:</label>
-                            <input style="margin-top:0;" type="password" name="updateCpassword" id="updateCpassword">
-                            <span toggle="#updateCpassword" class="fa fa-fw fa-eye field-icon toggle-password" id="spanUcpass"></span>
+                            <label style="margin-bottom:0;" for="updateFiskal">Numri Fiskal:</label>
+                            <input style="margin-top:0;" type="number" name="updateFiskal" id="updateFiskal" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="updatePhone">Numri telefonit:</label>
+                            <input style="margin-top:0;" type="tel" name="updatePhone" id="updatePhone">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="updateLokacioni">Lokacioni</label>
+                            <input class="updateLokacioni" style="margin-top:0;" name="updateLokacioni" id="updateLokacioni" type="text"><br>
+                            <div id="mapContainerUpdate"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
-                            <button type="submit" class="btn btn-info">Ruaj</button>
+                            <button type="submit" class="btn btn-info">Ndrysho</button>
                         </div>
 
                     </form>
@@ -204,11 +220,46 @@
             </div>
         </div>
     </div>
-
-    </div>
     <?php include_once('scripts.php'); ?>
     <script src="kompaniScripts.js"></script>
 
+    <script>
+        $("#updateLogo").on('change', function() {
+            if (typeof(FileReader) != "undefined") {
+                var imageHolderUp = $("#imageHolderUp");
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#logoUp')
+                        .attr('src', e.target.result)
+                        .width(100)
+                        .height(120);
+                }
+                imageHolderUp.show();
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("This browser does not support FileReader.");
+            }
+        });
+
+        $("#logo").on('change', function() {
+            if (typeof(FileReader) != "undefined") {
+                var image_holder = $("#image-holderUP");
+                image_holder.empty();
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $("<img />", {
+                        "src": e.target.result,
+                        "class": "thumb-image"
+                    }).appendTo(image_holder);
+
+                }
+                image_holder.show();
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("This browser does not support FileReader.");
+            }
+        });
+    </script>
     <script>
         $('.lokacioni_add').leafletLocationPicker({
             alwaysOpen: true,
@@ -218,7 +269,7 @@
             mapContainer: "#mapContainer"
         });
 
-        $('.lokacioni_update').leafletLocationPicker({
+        $('.updateLokacioni').leafletLocationPicker({
             alwaysOpen: true,
             height: 300,
             width: 250,
@@ -232,20 +283,25 @@
         $("#phone").inputmask({
             "mask": "(+383)49/999-999"
         });
-        $("#tel_update").inputmask({
+        $("#updatePhone").inputmask({
             "mask": "(+383)49/999-999"
         });
 
         $('#addKompani').on('shown.bs.modal', function() {
             $('#lokacioni').focus();
         });
+
+        $('#updateKompani').on('shown.bs.modal', function() {
+            $('#updateLokacioni').focus();
+        });
+
         $('#addKompani').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
             $('#spanPass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#password').get(0).type = 'password';
         });
 
-        $('#editKompani').on('hidden.bs.modal', function() {
+        $('#updateKompani').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
             $('#spanUpass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#updatePassword').get(0).type = 'password';

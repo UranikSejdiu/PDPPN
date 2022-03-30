@@ -129,25 +129,24 @@ $(document).on("submit", "#insert_kompani", function (e) {
 $(document).on("submit", "#update_kompani", function (e) {
   e.preventDefault();
 
-  var kompania_update = $("#kompania_update").val();
-  var fiskal_update = $("#fiskal_update").val();
-  var lokacioni_update = $("#lokacioni_update").val();
-  var tel_update = $("#tel_update").val();
-  var email_update = $("#email_update").val();
-  var pass_update = $("#pass_update").val();
+  var updateName = $("#updateName").val();
+  var updateFiskal = $("#updateFiskal").val();
+  var updateLokacioni = $("#updateLokacioni").val();
+  var updatePhone = $("#updatePhone").val();
+  var updateEmail = $("#updateEmail").val();
+  var updatePassword = $("#updatePassword").val();
   var trid = $("#trid").val();
   var updateIdKomp = $("#updateIdKomp").val();
-console.log(updateIdKomp);
   var form = document.getElementById("update_kompani");
-  var file_data = $("#logo_update").prop("file");
+  var file_data = $("#updateLogo").prop("file");
   var formData = new FormData(form);
-  formData.append("#logo_update", file_data);
+  formData.append("#updateLogo", file_data);
   formData.append("#updateIdKomp", updateIdKomp);
   formData.append("action", "updateKompani");
 
-  if (kompania_update != "" && fiskal_update != "" && lokacioni_update != "" && tel_update != "" && email_update != "" && pass_update != "") {
+  if (updateName != "" && updateFiskal != "" && updateLokacioni != "" && updatePhone != "" && updateEmail != "" && updatePassword != "") {
     $.ajax({
-      url: "manage_Kompani.php",
+      url: "manageKompani.php",
       type: "post",
       processData: false,
       contentType: false,
@@ -158,54 +157,58 @@ console.log(updateIdKomp);
         var status = json.status;
 
         if (status == "true") {
-          table = $("#tabelaKompani").DataTable();
+          table = $("#dtKompani").DataTable();
           table.draw();
-          $("#updateKompani").modal("toggle");
+          $("#updateKompani").modal('hide');
+          $("#updateKompani")[0].reset();
           successAlert("Ndryshimet u ruajtën me sukses!");
 
         } else if (status == "false") {
-          $("#updateKompani").modal("toggle");
+          $("#updateKompani").modal('hide');
+          $("#updateKompani")[0].reset();
           dangerAlert("Gabim gjatë ruajtjes së ndryshimit në databazë!");
 
         } else if (status == "passwordError") {
-          $("#updateKompani").modal("toggle");
+          $("#updateKompani").modal('hide');
+          $("#updateKompani")[0].reset();
           warningAlert("Ju lutem plotësoni kërkesat e fjalekalimit!");
 
         } else if (status == "emailError") {
-          $("#updateKompani").modal("toggle");
+          $("#updateKompani").modal('hide');
+          $("#updateKompani")[0].reset();
           warningAlert("Ekziston përdorues me këtë email!");
         }
       },
     });
   } else {
-    $("#updateKompani").modal("toggle");
-    $("#update_kompani")[0].reset();
+    $("#updateKompani").modal('hide');
+          $("#updateKompani")[0].reset();
     warningAlert("Ju lutem plotësoni të gjitha fushat!");
   }
 });
-$("#tabelaKompani").on("click", ".editBtnKomp ", function (event) {
+$("#dtKompani").on("click", ".editBtnKomp ", function (event) {
   //var table = $("#tabelaKompani").DataTable();
-  var trid = $(this).closest("tr").attr("id_kompania");
+  var trid = $(this).closest("tr").attr("id");
 
-  var id_kompania = $(this).data("id");
+  var id = $(this).data("id");
   $("#updateKompani").modal("toggle");
   $.ajax({
-    url: "manage_Kompani.php",
+    url: "manageKompani.php",
     data: {
-      id_kompania: id_kompania,
+      id: id,
       action: "singleKompaniData",
     },
     type: "post",
     success: function (data) {
       var json = JSON.parse(data);
-      $("#logoUp").attr("src", json.Logo);
-      $("#kompania_update").val(json.Emri);
-      $("#fiskal_update").val(json.NumriFiskal);
-      $("#lokacioni_update").val(json.Lokacioni);
-      $("#tel_update").val(json.Telefoni);
-      $("#email_update").val(json.Email);
-      $("#pass_update").val(json.Fjalekalimi);
-      $("#updateIdKomp").val(id_kompania);
+      $("#updateLogo").attr("src", json.logo);
+      $("#logoUp").attr("src", json.logo);
+      $("#updateName").val(json.name);
+      $("#updateFiskal").val(json.nrfiskal);
+      $("#updateLokacioni").val(json.lokacioni);
+      $("#updatePhone").val(json.telefoni);
+      $("#updateEmail").val(json.email);
+      $("#updateIdKomp").val(id);
       $("#trid").val(trid);
     },
   });
