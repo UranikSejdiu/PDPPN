@@ -312,17 +312,17 @@ switch ($_POST["action"]) {
 
 
     case "deleteKompani":
-        $id_kompania = $_POST['id_kompania'];
+        $id = $_POST['id'];
 
-        $sql1 = "SELECT Logo FROM kompanite WHERE ID_kompania='$id_kompania' LIMIT 1";
+        $sql1 = "SELECT logo FROM kompanite WHERE id='$id' LIMIT 1";
         $query = mysqli_query($con, $sql1);
         while ($row = mysqli_fetch_assoc($query)) {
-            $nameoffile = $row['Logo'];
+            $nameoffile = $row['logo'];
         }
 
 
 
-        $sql = "DELETE FROM kompanite WHERE ID_kompania=$id_kompania";
+        $sql = "DELETE FROM kompanite WHERE id=$id";
         $delQuery = mysqli_query($con, $sql);
         if ($delQuery == true) {
             unlink($nameoffile);

@@ -218,12 +218,12 @@ $(document).on("click", ".deleteBtnKomp", function (event) {
   //var table = $("#tabelaKompani").DataTable();
   event.preventDefault();
   thisfordelete = $(this);
-  var id_kompania = $(this).data("id");
+  var id = $(this).data("id");
   if (confirm("A jeni i sigurt që dëshironi të fshini të dhënën? ")) {
     $.ajax({
-      url: "manage_Kompani.php",
+      url: "manageKompani.php",
       data: {
-        id_kompania: id_kompania,
+        id: id,
         action: "deleteKompani",
       },
       type: "post",
