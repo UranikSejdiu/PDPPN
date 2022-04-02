@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2022 at 04:11 PM
+-- Generation Time: Apr 02, 2022 at 05:45 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -49,6 +49,17 @@ INSERT INTO `admin` (`id`, `name`, `email`, `password`, `code`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cities`
+--
+
+CREATE TABLE `cities` (
+  `id_city` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kompanite`
 --
 
@@ -72,6 +83,24 @@ CREATE TABLE `kompanite` (
 INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefoni`, `email`, `password`, `code`, `status`) VALUES
 (2, 'img/kompanite/1648904652-624849cc47b45.png', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0005@gmail.com', '$2y$10$/Q7yWzh8BMnFKqSNVzyXCufKI0vT96Dm.MPhYpZyWpN2ZGCBdynui', 959432, 'notverified');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perdoruesit`
+--
+
+CREATE TABLE `perdoruesit` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `id_city` int(11) NOT NULL,
+  `adress` varchar(150) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(999) NOT NULL,
+  `code` mediumint(50) NOT NULL,
+  `status` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -83,9 +112,21 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cities`
+--
+ALTER TABLE `cities`
+  ADD PRIMARY KEY (`id_city`);
+
+--
 -- Indexes for table `kompanite`
 --
 ALTER TABLE `kompanite`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `perdoruesit`
+--
+ALTER TABLE `perdoruesit`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -99,10 +140,22 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `cities`
+--
+ALTER TABLE `cities`
+  MODIFY `id_city` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `kompanite`
 --
 ALTER TABLE `kompanite`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `perdoruesit`
+--
+ALTER TABLE `perdoruesit`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
