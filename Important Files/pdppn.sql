@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2022 at 01:41 PM
+-- Generation Time: Apr 02, 2022 at 04:11 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -70,8 +70,7 @@ CREATE TABLE `kompanite` (
 --
 
 INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefoni`, `email`, `password`, `code`, `status`) VALUES
-(1, 'img/kompanite/1648552616-6242eaa8d4ff1.png', 'asdasd', 123123, '42.560057,20.855082', '(383)48/434-177', 'u.sejdiu4@gmail.com', '$2y$10$3IwAJs2p46o7higYsFYB8ejSmAwegnbXIJ9nZs6dLwE.M1FXEgBb6', 441186, 'notverified'),
-(2, 'img/kompanite/1648553826-6242ef6251728.png', 'pdppn', 9898, '42.560057,20.855082', '(+383)48/434-177', 'ferizaj0006@gmail.com', '$2y$10$dWdMCxjMrHVRQxw0wVva6OANjD8dKnHoBhNhNGZGqMG.Y0NyfhwXO', 959432, 'notverified');
+(2, 'img/kompanite/1648904652-624849cc47b45.png', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0005@gmail.com', '$2y$10$/Q7yWzh8BMnFKqSNVzyXCufKI0vT96Dm.MPhYpZyWpN2ZGCBdynui', 959432, 'notverified');
 
 --
 -- Indexes for dumped tables
