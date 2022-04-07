@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2022 at 05:45 PM
+-- Generation Time: Apr 07, 2022 at 12:46 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -57,6 +57,13 @@ CREATE TABLE `cities` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `cities`
+--
+
+INSERT INTO `cities` (`id_city`, `name`) VALUES
+(1, 'Ferizaj');
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +109,13 @@ CREATE TABLE `perdoruesit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `perdoruesit`
+--
+
+INSERT INTO `perdoruesit` (`id`, `name`, `id_city`, `adress`, `phone`, `email`, `password`, `code`, `status`) VALUES
+(1, 'Uranik Sejdiu', 1, 'Gaqke', '123456789', 'u.sejdiu4@gmail.com', '232323', 232323, 'notverified');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -127,7 +141,8 @@ ALTER TABLE `kompanite`
 -- Indexes for table `perdoruesit`
 --
 ALTER TABLE `perdoruesit`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cityForeignKey` (`id_city`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -143,7 +158,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id_city` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_city` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kompanite`
@@ -155,7 +170,17 @@ ALTER TABLE `kompanite`
 -- AUTO_INCREMENT for table `perdoruesit`
 --
 ALTER TABLE `perdoruesit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `perdoruesit`
+--
+ALTER TABLE `perdoruesit`
+  ADD CONSTRAINT `cityForeignKey` FOREIGN KEY (`id_city`) REFERENCES `cities` (`id_city`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
