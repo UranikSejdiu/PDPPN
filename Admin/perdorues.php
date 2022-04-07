@@ -124,7 +124,17 @@
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="city">Qyteti:</label>
-                            <input style="margin-top:0;" type="text" name="city" id="city">
+                            <!--<select name="id_city" required>
+                                <option selected="selected">Zgjedh qytetin tuaj</option>
+                                
+                                $res = mysqli_query($con, "");
+                                while ($row = $res->fetch_array()) {
+                                ?>
+                                    <option value=" echo $row['id_city']; ?>">echo $row['name']; ?></option>
+                                
+                                }
+                                ?> -->
+                            </select>
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="adress">Adresa:</label>
@@ -213,7 +223,7 @@
     </div>
     <?php include_once('scripts.php'); ?>
     <script src="perdoruesScripts.js"></script>
-   
+
     <script>
         $(":input").inputmask();
         $("#phone").inputmask({

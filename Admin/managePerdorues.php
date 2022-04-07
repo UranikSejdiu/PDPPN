@@ -6,16 +6,17 @@ switch ($_POST["action"]) {
     case "fetchallprddata":
 
         $output = array();
-        $sql = "SELECT * FROM perdoruesit";
+        $sql = "SELECT perdoruesit.id,perdoruesit.name, cities.name, perdoruesit.adress, perdoruesit.phone, perdoruesit.email, perdoruesit.password, perdoruesit.code, perdoruesit.status
+        FROM perdoruesit INNER JOIN cities ON perdoruesit.id_city=cities.id_city";
 
         $totalQuery = mysqli_query($con, $sql);
         $total_all_rows = mysqli_num_rows($totalQuery);
 
         if (isset($_POST['search']['value'])) {
             $search_value = $_POST['search']['value'];
-            $sql .= " WHERE name like '" . $search_value . "%'";
-            $sql .= " OR email like '" . $search_value . "%'";
-            $sql .= " OR city like '" . $search_value . "%'";
+            $sql .= " WHERE perdoruesit.name like '" . $search_value . "%'";
+            $sql .= " OR perdoruesit.email like '" . $search_value . "%'";
+            $sql .= " OR cities.name like '" . $search_value . "%'";
         }
 
         if (isset($_POST['order'])) {
@@ -23,7 +24,7 @@ switch ($_POST["action"]) {
             $order = $_POST['order'][0]['dir'];
             $sql .= " ORDER BY " . $column_name . " " . $order . "";
         } else {
-            $sql .= " ORDER BY id desc";
+            $sql .= " ORDER BY perdoruesit.id desc";
         }
 
         if ($_POST['length'] != -1) {
@@ -31,7 +32,6 @@ switch ($_POST["action"]) {
             $length = $_POST['length'];
             $sql .= " LIMIT  " . $start . ", " . $length;
         }
-
         $query = mysqli_query($con, $sql);
         $count_rows = mysqli_num_rows($query);
         $data = array();
@@ -39,7 +39,7 @@ switch ($_POST["action"]) {
             $sub_array = array();
             $sub_array[] = $row['id'];
             $sub_array[] = $row['name'];
-            $sub_array[] = $row['city'];
+            $sub_array[] = $row['name'];
             $sub_array[] = $row['adress'];
             $sub_array[] = $row['phone'];
             $sub_array[] = $row['email'];
@@ -155,10 +155,8 @@ switch ($_POST["action"]) {
                     echo json_encode($data);
                 }
             }
-            
-            
         }
-    break;
+        break;
 
     case "updateAdmin":
         $updateName = mysqli_real_escape_string($con,  $_POST['updateName']);
@@ -174,40 +172,40 @@ switch ($_POST["action"]) {
             $emailbackup = $row['email'];
         }
         if ($updatePassword == $updateCpassword) {
-                if (strlen($updatePassword) < '8') {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                } elseif (!preg_match("#[0-9]+#", $updatePassword)) {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                } elseif (!preg_match("#[A-Z]+#", $updatePassword)) {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                } elseif (!preg_match("#[a-z]+#", $updatePassword)) {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                }
-                $newPassword = password_hash($updatePassword, PASSWORD_BCRYPT);
-            } else {
+            if (strlen($updatePassword) < '8') {
                 $data = array(
-                    'status' => 'passwordVerify'
+                    'status' => 'passwordError'
+                );
+                echo json_encode($data);
+                return;
+            } elseif (!preg_match("#[0-9]+#", $updatePassword)) {
+                $data = array(
+                    'status' => 'passwordError'
+                );
+                echo json_encode($data);
+                return;
+            } elseif (!preg_match("#[A-Z]+#", $updatePassword)) {
+                $data = array(
+                    'status' => 'passwordError'
+                );
+                echo json_encode($data);
+                return;
+            } elseif (!preg_match("#[a-z]+#", $updatePassword)) {
+                $data = array(
+                    'status' => 'passwordError'
                 );
                 echo json_encode($data);
                 return;
             }
-        
+            $newPassword = password_hash($updatePassword, PASSWORD_BCRYPT);
+        } else {
+            $data = array(
+                'status' => 'passwordVerify'
+            );
+            echo json_encode($data);
+            return;
+        }
+
         if ($updateEmail == $emailbackup) {
             $updateEmail = $emailbackup;
         } else {
@@ -240,9 +238,9 @@ switch ($_POST["action"]) {
 
             echo json_encode($data);
         }
-    
+
         break;
-    
+
     case "singleAdminData":
         $id = $_POST['id'];
         $sql = "SELECT * FROM admin WHERE id='$id' LIMIT 1";
