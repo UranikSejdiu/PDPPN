@@ -1032,3 +1032,21 @@ textarea{
   position: relative;
   z-index: 2;
 }
+
+.login select{
+  -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: currentcolor currentcolor #8e8e8e;
+    border-image: none;
+    border-style: none none solid;
+    border-width: 0 0 1px;
+    color: #686868;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    width: 100%;
+    background: transparent;
+}

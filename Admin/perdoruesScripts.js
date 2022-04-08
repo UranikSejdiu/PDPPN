@@ -218,3 +218,20 @@ $(document).ready(function () {
       return null;
     }
   });
+
+  $('#addPrd').on("click", function (event) {
+    $('#qytetet').empty();
+    $.ajax({
+      type: "post",
+      url: "managePerdorues.php",
+      dataType:"json",
+      data:{action:'selectCity'},
+      success: function (data) {
+        $("#qytetet").empty();
+        $("#qytetet").append("<option value='0'> Zgjedh Qytetin </option>");
+        $.each(data,function(i, item){
+          $('#qytetet').append('<option value="'+data[i].id_city+'">'+ data[i].name+'</option>');
+        });
+      }
+    });
+  });

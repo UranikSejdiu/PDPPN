@@ -53,7 +53,7 @@
                                             <label class="button searchbutton" for="searchPerdorues"><i class="ti-search"></i></label>
                                         </form>
                                     </div>
-                                    <button class="button" data-toggle="modal" data-target="#addPerdorues"><i class="fas fa-plus-circle"></i></button>
+                                    <button class="button" id="addPrd" data-toggle="modal" data-target="#addPerdorues"><i class="fas fa-plus-circle"></i></button>
                                 </div>
 
                                 <div class="table-responsive">
@@ -124,17 +124,7 @@
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="city">Qyteti:</label>
-                            <!--<select name="id_city" required>
-                                <option selected="selected">Zgjedh qytetin tuaj</option>
-                                
-                                $res = mysqli_query($con, "");
-                                while ($row = $res->fetch_array()) {
-                                ?>
-                                    <option value=" echo $row['id_city']; ?>">echo $row['name']; ?></option>
-                                
-                                }
-                                ?> -->
-                            </select>
+                            <select  id="qytetet"></select>
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="adress">Adresa:</label>

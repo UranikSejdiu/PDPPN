@@ -270,4 +270,21 @@ switch ($_POST["action"]) {
             echo json_encode($data);
         }
         break;
+
+    case "selectCity":
+        $sql = "SELECT * FROM cities";
+        $query = mysqli_query($con, $sql);
+        if (mysqli_num_rows($query)) {
+            $data = array();
+            while ($row = mysqli_fetch_array($query)) {
+                $data[] = array(
+                    'id_city' => $row['id_city'],
+                    'name' => $row['name']
+                );
+            }
+            header('Content-type: application/json');
+            echo json_encode($data);
+        }
+
+        break;
 }
