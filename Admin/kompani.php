@@ -116,7 +116,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3 class="modal-title" id="myModalLabel">Shto administratorin e ri</h3>
+                    <h3 class="modal-title" id="myModalLabel">Shto kompaninë e re</h3>
                 </div>
                 <div class="modal-body">
                     <form class="login" id="insert_kompani" enctype='multipart/form-data'>
@@ -226,7 +226,7 @@
     <script>
         $("#updateLogo").on('change', function() {
             if (typeof(FileReader) != "undefined") {
-                var imageHolderUp = $("#imageHolderUp");
+                var imageHolderUp = $("#image-holderUP");
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     $('#logoUp')
@@ -243,7 +243,7 @@
 
         $("#logo").on('change', function() {
             if (typeof(FileReader) != "undefined") {
-                var image_holder = $("#image-holderUP");
+                var image_holder = $("#image-holder");
                 image_holder.empty();
                 var reader = new FileReader();
                 reader.onload = function(e) {
