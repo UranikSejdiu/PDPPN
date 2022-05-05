@@ -123,7 +123,7 @@
                             <input style="margin-top:0;" type="text" name="name" id="name">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="city">Qyteti:</label>
+                            <label style="margin-bottom:0;" for="qytetet">Qyteti:</label>
                             <select  id="qytetet"></select>
                         </div>
                         <div class="form-group">
@@ -147,7 +147,6 @@
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
                             <button type="submit" class="btn btn-info">Shto</button>
                         </div>
-
                     </form>
                 </div>
 

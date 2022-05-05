@@ -6,15 +6,15 @@ switch ($_POST["action"]) {
     case "fetchallprddata":
 
         $output = array();
-        $sql = "SELECT perdoruesit.id,perdoruesit.name, cities.name, perdoruesit.adress, perdoruesit.phone, perdoruesit.email, perdoruesit.password, perdoruesit.code, perdoruesit.status
-        FROM perdoruesit INNER JOIN cities ON perdoruesit.id_city=cities.id_city";
+        $sql = "SELECT perdoruesit.id,perdoruesit.fullName, cities.name, perdoruesit.adress, perdoruesit.phone, perdoruesit.email, perdoruesit.password, perdoruesit.code, perdoruesit.status
+        FROM perdoruesit LEFT OUTER JOIN cities ON perdoruesit.id_city=cities.id_city";
 
         $totalQuery = mysqli_query($con, $sql);
         $total_all_rows = mysqli_num_rows($totalQuery);
 
         if (isset($_POST['search']['value'])) {
             $search_value = $_POST['search']['value'];
-            $sql .= " WHERE perdoruesit.name like '" . $search_value . "%'";
+            $sql .= " WHERE perdoruesit.fullName like '" . $search_value . "%'";
             $sql .= " OR perdoruesit.email like '" . $search_value . "%'";
             $sql .= " OR cities.name like '" . $search_value . "%'";
         }
@@ -38,7 +38,7 @@ switch ($_POST["action"]) {
         while ($row = mysqli_fetch_assoc($query)) {
             $sub_array = array();
             $sub_array[] = $row['id'];
-            $sub_array[] = $row['name'];
+            $sub_array[] = $row['fullName'];
             $sub_array[] = $row['name'];
             $sub_array[] = $row['adress'];
             $sub_array[] = $row['phone'];
@@ -63,8 +63,8 @@ switch ($_POST["action"]) {
     case "addPerdorues":
         $name = mysqli_real_escape_string($con, $_POST['name']);
         $city = mysqli_real_escape_string($con, $_POST['city']);
-        $name = mysqli_real_escape_string($con, $_POST['adress']);
-        $adress = mysqli_real_escape_string($con, $_POST['phone']);
+        $adress = mysqli_real_escape_string($con, $_POST['adress']);
+        $phone = mysqli_real_escape_string($con, $_POST['phone']);
         $email = mysqli_real_escape_string($con, $_POST['email']);
         $password = mysqli_real_escape_string($con, $_POST['password']);
 
@@ -95,12 +95,6 @@ switch ($_POST["action"]) {
             );
             echo json_encode($data);
             return;
-        } elseif ($password != $cpassword) {
-            $data = array(
-                'status' => 'passwordVerify'
-            );
-            echo json_encode($data);
-            return;
         } elseif ($fetch !== null) {
             $data = array(
                 'status' => 'emailError'
@@ -111,9 +105,9 @@ switch ($_POST["action"]) {
             $Fjalekalimi = password_hash($password, PASSWORD_BCRYPT);
             $status = "notverified";
             $code = rand(999999, 111111);
-            $sql = "INSERT INTO perdoruesit (name, city, adress, phone, email, password, code, status) values ('$name', '$city', '$adress', '$phone' '$email', '$Fjalekalimi', '$code', '$status')";
-            $query = mysqli_query($con, $sql);
-            if ($query) {
+            $sql = "INSERT INTO perdoruesit (fullName, city, adress, phone, email, password, code, status) values ('$name', '$city', '$adress', '$phone' '$email', '$Fjalekalimi', '$code', '$status')";
+            $insertData = mysqli_query($con, $sql);
+            if ($insertData) {
                 $subject = "Kodi i verifikimit të Email-it";
                 $message = ' <body style="margin: 0;">
                 <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #f1f5f8; font-family: system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif; min-height: 100vh; padding-left: 1rem; padding-right: 1rem; padding-top: 2rem; padding-bottom: 2rem;">
@@ -125,7 +119,7 @@ switch ($_POST["action"]) {
                       </div>
                       <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; padding-top: 2rem; padding-bottom: 2rem;">
                         <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">
-                          Përshendetje ' . $name . ', <br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"><br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;">Përdor kodin më posht për të konfirmuar email adresën dhe pastaj mund të kyçeni në platformën tonë.
+                          Përshendetje ' . $fullName . ', <br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"><br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;">Përdor kodin më posht për të konfirmuar email adresën dhe pastaj mund të kyçeni në platformën tonë.
                         </p>
                         <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; background-color: #e3342f; border-radius: .25rem; margin-top: 2rem; margin-bottom: 2rem; padding: 1rem; color: #fff; letter-spacing: .05em; text-align: center;" class="text-white tracking-wide bg-red rounded w-full my-8 p-4 ">' . $code . '</h3>
                         <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; font-size: .875rem;">

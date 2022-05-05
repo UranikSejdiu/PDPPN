@@ -177,16 +177,15 @@ switch ($_POST["action"]) {
                     $data = array(
                         'status' => 'true'
                     );
-                }
-
-                echo json_encode($data);
-            } else {
+                    echo json_encode($data);
+                }else {
                 $data = array(
                     'status' => 'false'
                 );
                 echo json_encode($data);
             }
         }
+    }
         break;
 
     case "updateKompani":

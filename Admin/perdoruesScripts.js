@@ -47,16 +47,16 @@ $(document).ready(function () {
     });
   });
 
-  $(document).on("submit", "#insert_Perdorues", function (e) {
+  $(document).on("submit", "#insert_perdorues", function (e) {
     e.preventDefault();
     var name = $("#name").val();
-    var city = $("#city").val();
+    var city = $('#qytetet').children(":selected").attr("id");
     var adress = $("#adress").val();
     var phone = $("#phone").val();
     var email = $("#email").val();
     var password = $("#password").val();
   
-    if (name != "" && city != "" && adress != "" && phone != "" && email != "" && password != "") {
+    if (name != "" && city != '0' && adress != "" && phone != "" && email != "" && password != "") {
       $.ajax({
         url: "managePerdorues.php",
         type: "post",
@@ -73,16 +73,15 @@ $(document).ready(function () {
           var json = JSON.parse(data);
           var status = json.status;
           if (status == "true") {
-            var message = json.message;
             mytable = $("#dtPerdorues").DataTable();
             mytable.draw();
             $("#addPerdorues").modal('hide');
-            $("#insert_Perdorues")[0].reset();
+            $("#insert_perdorues")[0].reset();
             successAlert("E dhëna u shtua me sukses!");
   
           } else if (status == "false") {
             $("#addPerdorues").modal('hide');
-            $("#insert_Perdorues")[0].reset();
+            $("#insert_perdorues")[0].reset();
             dangerAlert("Gabim gjate shtimit te dhenave ne databaze!");
   
           } else if (status == "passwordError") {
@@ -90,12 +89,7 @@ $(document).ready(function () {
             $("#password").val("");
             warningAlert("Ju lutem plotësoni kërkesat e fjalekalimit!");
   
-          }else if(status == "passwordVerify"){
-            $("#addPerdorues").modal('hide');
-            $("#password").val("");
-            warningAlert("Ju lutem plotësoni fjalëkalimin e njejtë!");
-
-          } else if (status == 'emailError') {
+          }else if (status == 'emailError') {
             $("#addPerdorues").modal('hide');
             warningAlert("Ekziston administrator me këtë email!");
           }
