@@ -105,7 +105,7 @@ switch ($_POST["action"]) {
             $Fjalekalimi = password_hash($password, PASSWORD_BCRYPT);
             $status = "notverified";
             $code = rand(999999, 111111);
-            $sql = "INSERT INTO perdoruesit (fullName, city, adress, phone, email, password, code, status) values ('$name', '$city', '$adress', '$phone' '$email', '$Fjalekalimi', '$code', '$status')";
+            $sql = "INSERT INTO perdoruesit (fullName, id_city, adress, phone, email, password, code, status) values ('$name', '$city', '$adress', '$phone' '$email', '$Fjalekalimi', '$code', '$status')";
             $insertData = mysqli_query($con, $sql);
             if ($insertData) {
                 $subject = "Kodi i verifikimit të Email-it";
@@ -263,22 +263,5 @@ switch ($_POST["action"]) {
 
             echo json_encode($data);
         }
-        break;
-
-    case "selectCity":
-        $sql = "SELECT * FROM cities";
-        $query = mysqli_query($con, $sql);
-        if (mysqli_num_rows($query)) {
-            $data = array();
-            while ($row = mysqli_fetch_array($query)) {
-                $data[] = array(
-                    'id_city' => $row['id_city'],
-                    'name' => $row['name']
-                );
-            }
-            header('Content-type: application/json');
-            echo json_encode($data);
-        }
-
         break;
 }

@@ -123,8 +123,18 @@
                             <input style="margin-top:0;" type="text" name="name" id="name">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="qytetet">Qyteti:</label>
-                            <select  id="qytetet"></select>
+                            <label style="margin-bottom:0;" for="city">Qyteti:</label>
+                            <select name="city" id="city" required>
+                                <option selected="selected">Zgjedh qytetin: </option>
+                                <?php
+                                $res = mysqli_query($con, "CALL selQytet()");
+                                while ($row = $res->fetch_array()) {
+                                ?>
+                                    <option value="<?php echo $row['id_city']; ?>"><?php echo $row['name']; ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="adress">Adresa:</label>
