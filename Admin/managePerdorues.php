@@ -105,39 +105,40 @@ switch ($_POST["action"]) {
             $Fjalekalimi = password_hash($password, PASSWORD_BCRYPT);
             $status = "notverified";
             $code = rand(999999, 111111);
-            $sql = "INSERT INTO perdoruesit (fullName, id_city, adress, phone, email, password, code, status) values ('$name', '$city', '$adress', '$phone' '$email', '$Fjalekalimi', '$code', '$status')";
-            $insertData = mysqli_query($con, $sql);
-            if ($insertData) {
-                $subject = "Kodi i verifikimit të Email-it";
-                $message = ' <body style="margin: 0;">
-                <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #f1f5f8; font-family: system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif; min-height: 100vh; padding-left: 1rem; padding-right: 1rem; padding-top: 2rem; padding-bottom: 2rem;">
-                  <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-left: auto; margin-right: auto; max-width: 40rem;">
-                    <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #fff; padding: 2rem; box-shadow: 0 4px 8px 0 rgba(0,0,0,.12),0 2px 4px 0 rgba(0,0,0,.08);">
-                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; text-align: center; letter-spacing: .05em;">
-                        <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; font-weight: 700; color: #e3342f; font-size: .875rem;">PDPPN</div>
-                        <h1 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; align-items: center; justify-content: center; font-size: 1.875rem;">Konfirmimi i email adresës</h1>
-                      </div>
-                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; padding-top: 2rem; padding-bottom: 2rem;">
-                        <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">
-                          Përshendetje ' . $fullName . ', <br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"><br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;">Përdor kodin më posht për të konfirmuar email adresën dhe pastaj mund të kyçeni në platformën tonë.
-                        </p>
-                        <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; background-color: #e3342f; border-radius: .25rem; margin-top: 2rem; margin-bottom: 2rem; padding: 1rem; color: #fff; letter-spacing: .05em; text-align: center;" class="text-white tracking-wide bg-red rounded w-full my-8 p-4 ">' . $code . '</h3>
-                        <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; font-size: .875rem;">
-                          Shpresojmë që jeni mirë!<br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"> Nga stafi i PDPPN
-                        </p>
-                      </div>
-                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-top: 2rem; text-align: center; color: #606f7b;">
-                        <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; margin-bottom: 1rem; font-size: 1rem;">Ju Faleminderit që përdorni shërbimet tona!</h3>
-                        <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">Ekipi PDPPN</p>
+            $subject = "Kodi i verifikimit të Email-it";
+            $message = ' <body style="margin: 0;">
+                    <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #f1f5f8; font-family: system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif; min-height: 100vh; padding-left: 1rem; padding-right: 1rem; padding-top: 2rem; padding-bottom: 2rem;">
+                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-left: auto; margin-right: auto; max-width: 40rem;">
+                        <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #fff; padding: 2rem; box-shadow: 0 4px 8px 0 rgba(0,0,0,.12),0 2px 4px 0 rgba(0,0,0,.08);">
+                          <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; text-align: center; letter-spacing: .05em;">
+                            <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; font-weight: 700; color: #e3342f; font-size: .875rem;">PDPPN</div>
+                            <h1 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; align-items: center; justify-content: center; font-size: 1.875rem;">Konfirmimi i email adresës</h1>
+                          </div>
+                          <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; padding-top: 2rem; padding-bottom: 2rem;">
+                            <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">
+                              Përshendetje ' . $name . ', <br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"><br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;">Përdor kodin më posht për të konfirmuar email adresën dhe pastaj mund të kyçeni në
+                              platformën tonë.
+                            </p>
+                            <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; background-color: #e3342f; border-radius: .25rem; margin-top: 2rem; margin-bottom: 2rem; padding: 1rem; color: #fff; letter-spacing: .05em; text-align: center;" class="text-white tracking-wide bg-red rounded w-full my-8 p-4 ">' . $code . '</h3>
+                            <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; font-size: .875rem;">
+                              Shpresojmë që jeni mirë!<br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"> Nga stafi i PDPPN
+                            </p>
+                          </div>
+                          <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-top: 2rem; text-align: center; color: #606f7b;">
+                            <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; margin-bottom: 1rem; font-size: 1rem;">Ju Faleminderit që përdorni shërbimet tona!</h3>
+                            <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">Ekipi PDPPN</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-               </body>';
-                $sender = 'From: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
-                    'Reply-To: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
-                    'X-Mailer: PHP/' . PHP_EOL . 'Content-type: text/html; charset=UTF-8' . phpversion();
-                if (mail($email, $subject, $message, $sender)) {
+                   </body>';
+            $sender = 'From: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
+                'Reply-To: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
+                'X-Mailer: PHP/' . PHP_EOL . 'Content-type: text/html; charset=UTF-8' . phpversion();
+            if (mail($email, $subject, $message, $sender)) {
+                $sql = "INSERT INTO perdoruesit (fullName, id_city, adress, phone, email, password, code, status) values ('$name', '$city', '$adress', '$phone', '$email', '$Fjalekalimi', '$code', '$status')";
+                $query = mysqli_query($con, $sql);
+                if ($query) {
                     $data = array(
                         'status' => 'true'
                     );

@@ -50,12 +50,13 @@ $(document).ready(function () {
   $(document).on("submit", "#insert_perdorues", function (e) {
     e.preventDefault();
     var name = $("#name").val();
-    var city = $('#city').val();
+    var city = $("#city").val();
     var adress = $("#adress").val();
     var phone = $("#phone").val();
     var email = $("#email").val();
     var password = $("#password").val();
-    if (name != "" && city != '0' && adress != "" && phone != "" && email != "" && password != "") {
+  
+    if (name != "" && city != "" && adress != "" && phone != "" && email != "" && password != "") {
       $.ajax({
         url: "managePerdorues.php",
         type: "post",
@@ -72,6 +73,7 @@ $(document).ready(function () {
           var json = JSON.parse(data);
           var status = json.status;
           if (status == "true") {
+            var message = json.message;
             mytable = $("#dtPerdorues").DataTable();
             mytable.draw();
             $("#addPerdorues").modal('hide');
@@ -89,13 +91,13 @@ $(document).ready(function () {
             warningAlert("Ju lutem plotësoni kërkesat e fjalekalimit!");
   
           }else if (status == 'emailError') {
-            $("#addPerdorues").modal('hide');
+            $('#addPerdorues').modal('hide');
             warningAlert("Ekziston administrator me këtë email!");
           }
         },
       });
     } else {
-        $("#addPerdorues").modal('hide');
+      $("#addPerdorues").modal('hide');
       warningAlert("Ju lutem plotësoni të gjitha fushat!");
     }
   });
