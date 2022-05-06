@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 06, 2022 at 07:44 AM
+-- Generation Time: May 06, 2022 at 01:33 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -20,6 +20,15 @@ SET time_zone = "+00:00";
 --
 -- Database: `pdppn`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+DROP PROCEDURE IF EXISTS `selQytet`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `selQytet` ()  Select * From cities$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
