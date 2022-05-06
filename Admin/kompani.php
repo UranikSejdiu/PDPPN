@@ -221,7 +221,7 @@
         </div>
     </div>
     <?php include_once('scripts.php'); ?>
-    <script src="kompaniScripts.js"></script>
+    <script src="scriptsKompani.js"></script>
 
     <script>
         $("#updateLogo").on('change', function() {

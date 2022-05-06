@@ -221,7 +221,7 @@
         </div>
     </div>
     <?php include_once('scripts.php'); ?>
-    <script src="perdoruesScripts.js"></script>
+    <script src="scriptsPerdorues.js"></script>
 
     <script>
         $(":input").inputmask();

@@ -188,7 +188,7 @@
 
     </div>
     <?php include_once('scripts.php'); ?>
-    <script src="adminScripts.js"></script>
+    <script src="scriptsAdmin.js"></script>
 
     <script>
         $('#addAdmin').on('hidden.bs.modal', function() {
