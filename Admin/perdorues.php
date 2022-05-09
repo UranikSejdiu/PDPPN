@@ -125,7 +125,7 @@
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="city">Qyteti:</label>
                             <select name="city" id="city" required>
-                                <option selected="selected" hidden>Zgjedh qytetin: </option>
+                                <option selected="selected">Zgjedh qytetin: </option>
                                 <?php
                                 $res = mysqli_query($con, "CALL selQytet()");
                                 while ($row = $res->fetch_array()) {
@@ -163,52 +163,51 @@
             </div>
         </div>
     </div>
-    <!-- Update Perdorues Modal Start -->
+
     <div class="modal fade" id="updatePerdorues" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3 class="modal-title" id="myModalLabel">Ndysho të dhënat e përdoruesit</h3>
+                    <h3 class="modal-title" id="myModalLabel">Ndysho të dhënat e kompanisë</h3>
                 </div>
                 <div class="modal-body">
-                    <form class="login" id="update_perdorues">
-                        <input type="hidden" name="updateIdPrd" id="updateIdPrd" value="">
+                    <form class="login" id="update_kompani" enctype='multipart/form-data'>
+                        <input type="hidden" name="updateIdKomp" id="updateIdKomp" value="">
                         <input type="hidden" name="trid" id="trid" value="">
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="uName">Emri dhe Mbiemri:</label>
-                            <input style="margin-top:0;" type="text" name="uName" id="uName">
+                            <label style="margin-bottom:0;" for="updateLogo">Logoja:</label>
+                            <input style="margin-top:0;border:none;" name="updateLogo" id="updateLogo" type="file">
+                            <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
+                            <div id="image-holderUP">
+                                <img width="100" height="100" id="logoUp" src="" alt="" />
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="uCity">Qyteti:</label>
-                            <select name="uCity" id="uCity" required>
-                                <option hidden>Zgjedh qytetin: </option>
-                                <?php
-                                $res = mysqli_query($con1, "CALL selQytet()");
-                                while ($row = $res->fetch_array()) {
-                                ?>
-                                    <option value="<?php echo $row['id_city']; ?>"><?php echo $row['name']; ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
+                            <label style="margin-bottom:0;" for="updateName">Emri kompanisë:</label>
+                            <input style="margin-top:0;" type="text" name="updateName" id="updateName">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="uAdress">Adresa:</label>
-                            <input style="margin-top:0;" type="text" name="uAdress" id="uAdress">
+                            <label style="margin-bottom:0;" for="updateEmail">Email adresa:</label>
+                            <input style="margin-top:0;" type="email" name="updateEmail" id="updateEmail">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="uPhone">Numri telefonit:</label>
-                            <input style="margin-top:0;" type="tel" name="uPhone" id="uPhone">
+                            <label style="margin-bottom:0;" for="updatePassword">Fjalëkalimi:</label>
+                            <input style="margin-top:0;" type="password" name="updatePassword" id="updatePassword">
+                            <span toggle="#updatePassword" class="fa fa-fw fa-eye field-icon toggle-password" id="spanUpass"></span>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="uEmail">Email adresa:</label>
-                            <input style="margin-top:0;" type="email" name="uEmail" id="uEmail">
+                            <label style="margin-bottom:0;" for="updateFiskal">Numri Fiskal:</label>
+                            <input style="margin-top:0;" type="number" name="updateFiskal" id="updateFiskal" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="uPassword">Fjalëkalimi:</label>
-                            <input style="margin-top:0;" type="password" name="uPassword" id="uPassword">
-                            <span toggle="#uPassword" class="fa fa-fw fa-eye field-icon toggle-password" id="spanUpass"></span>
+                            <label style="margin-bottom:0;" for="updatePhone">Numri telefonit:</label>
+                            <input style="margin-top:0;" type="tel" name="updatePhone" id="updatePhone">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="updateLokacioni">Lokacioni</label>
+                            <input class="updateLokacioni" style="margin-top:0;" name="updateLokacioni" id="updateLokacioni" type="text"><br>
+                            <div id="mapContainerUpdate"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
@@ -229,7 +228,7 @@
         $("#phone").inputmask({
             "mask": "(+383)49/999-999"
         });
-        $("#uPhone").inputmask({
+        $("#updatePhone").inputmask({
             "mask": "(+383)49/999-999"
         });
 
@@ -242,13 +241,13 @@
         $('#updatePerdorues').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
             $('#spanUpass').removeClass("fa-eye-slash").addClass("fa-eye");
-            $('#uPassword').get(0).type = 'password';
+            $('#updatePassword').get(0).type = 'password';
         });
         $('#password').PassRequirements({
             popoverPlacement: 'auto',
             trigger: 'focus'
         });
-        $('#uPassword').PassRequirements({
+        $('#updatePassword').PassRequirements({
             popoverPlacement: 'auto',
             trigger: 'focus'
         });

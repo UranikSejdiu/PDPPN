@@ -45,7 +45,7 @@ switch ($_POST["action"]) {
             $sub_array[] = $row['email'];
             $sub_array[] = '<textarea style="overflow-y: auto;resize: none;border: none;">' . $row['password'] . '</textarea>';
             $sub_array[] = $row['status'];
-            $sub_array[] = '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn button-success btn-sm editbtnprd" >Ndrysho</a>';
+            $sub_array[] = '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn button-success btn-sm editbtnadmin" >Ndrysho</a>';
             $sub_array[] =  '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn button-danger btn-sm deleteBtn" >Fshi</a>';
             $data[] = $sub_array;
         }
@@ -153,60 +153,61 @@ switch ($_POST["action"]) {
         }
         break;
 
-    case "updatePerdorues":
-        $uName = mysqli_real_escape_string($con,  $_POST['uName']);
-        $uCity = mysqli_real_escape_string($con,  $_POST['uCity']);
-        $uAdress = mysqli_real_escape_string($con,  $_POST['uAdress']);
-        $uPhone = mysqli_real_escape_string($con,  $_POST['uPhone']);
-        $uEmail = mysqli_real_escape_string($con,  $_POST['uEmail']);
-        $uPassword = mysqli_real_escape_string($con,  $_POST['uPassword']);
-        $updateIdPrd = mysqli_real_escape_string($con,  $_POST['updateIdPrd']);
+    case "updateAdmin":
+        $updateName = mysqli_real_escape_string($con,  $_POST['updateName']);
+        $updateEmail = mysqli_real_escape_string($con,  $_POST['updateEmail']);
+        $updateidadmin = mysqli_real_escape_string($con,  $_POST['updateidadmin']);
+        $updatePassword = mysqli_real_escape_string($con,  $_POST['updatePassword']);
+        $updateCpassword = mysqli_real_escape_string($con,  $_POST['updateCpassword']);
 
-        $query = "SELECT * FROM perdoruesit WHERE id=$updateIdPrd LIMIT 1";
+        $query = "SELECT * FROM admin WHERE id=$updateidadmin LIMIT 1";
         $sql = mysqli_query($con, $query);
         while ($row = $sql->fetch_assoc()) {
             $fjalekalimibackup = $row['password'];
             $emailbackup = $row['email'];
         }
-        if ($uPassword) {
-            if ($uPassword != $fjalekalimibackup) {
-                if (strlen($uPassword) <= '8') {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                } elseif (!preg_match("#[0-9]+#", $uPassword)) {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                } elseif (!preg_match("#[A-Z]+#", $uPassword)) {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                } elseif (!preg_match("#[a-z]+#", $uPassword)) {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                }
-                $newPassword = password_hash($uPassword, PASSWORD_BCRYPT);
-            } else {
-                $newPassword = $uPassword;
+        if ($updatePassword == $updateCpassword) {
+            if (strlen($updatePassword) < '8') {
+                $data = array(
+                    'status' => 'passwordError'
+                );
+                echo json_encode($data);
+                return;
+            } elseif (!preg_match("#[0-9]+#", $updatePassword)) {
+                $data = array(
+                    'status' => 'passwordError'
+                );
+                echo json_encode($data);
+                return;
+            } elseif (!preg_match("#[A-Z]+#", $updatePassword)) {
+                $data = array(
+                    'status' => 'passwordError'
+                );
+                echo json_encode($data);
+                return;
+            } elseif (!preg_match("#[a-z]+#", $updatePassword)) {
+                $data = array(
+                    'status' => 'passwordError'
+                );
+                echo json_encode($data);
+                return;
             }
-        }
-        if ($uEmail == $emailbackup) {
-            $uEmail = $emailbackup;
+            $newPassword = password_hash($updatePassword, PASSWORD_BCRYPT);
         } else {
-            $user_check_query = "SELECT * FROM perdoruesit WHERE email='$uEmail' LIMIT 1";
+            $data = array(
+                'status' => 'passwordVerify'
+            );
+            echo json_encode($data);
+            return;
+        }
+
+        if ($updateEmail == $emailbackup) {
+            $updateEmail = $emailbackup;
+        } else {
+            $user_check_query = "SELECT * FROM admin WHERE email='$updateEmail' LIMIT 1";
             $result = mysqli_query($con, $user_check_query);
             $user = mysqli_fetch_assoc($result);
-            if ($user['email'] === $uEmail) {
+            if ($user['email'] === $updateEmail) {
                 $data = array('status' => 'emailError');
                 echo json_encode($data);
                 return;
@@ -214,7 +215,7 @@ switch ($_POST["action"]) {
         }
 
 
-        $sql = "UPDATE perdoruesit SET  fullName='$uName' , id_city= '$uCity', adress='$uAdress', phone='$uPhone', email='$uEmail', password='$newPassword' WHERE id=$updateIdPrd";
+        $sql = "UPDATE admin SET  name='$updateName' , email= '$updateEmail', password='$newPassword' WHERE id=$updateidadmin";
         $query = mysqli_query($con, $sql);
         if ($query == true) {
 
@@ -232,20 +233,21 @@ switch ($_POST["action"]) {
 
             echo json_encode($data);
         }
+
         break;
 
-    case "singlePerdoruesData":
+    case "singleAdminData":
         $id = $_POST['id'];
-        $sql = "SELECT * FROM perdoruesit WHERE id='$id' LIMIT 1";
+        $sql = "SELECT * FROM admin WHERE id='$id' LIMIT 1";
         $query = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($query);
         echo json_encode($row);
         break;
 
 
-    case "deletePerdorues":
+    case "deleteAdmin":
         $id = $_POST['id'];
-        $sql = "DELETE FROM perdoruesit WHERE id=$id";
+        $sql = "DELETE FROM admin WHERE id=$id";
         $delQuery = mysqli_query($con, $sql);
         if ($delQuery == true) {
             $data = array(
