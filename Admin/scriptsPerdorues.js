@@ -102,99 +102,105 @@ $(document).ready(function () {
     }
   });
 
-  $(document).on("submit", "#update_Admin", function (e) {
+  $(document).on("submit", "#update_perdorues", function (e) {
     e.preventDefault();
     //var tr = $(this).closest('tr');
-    var updateName = $("#updateName").val();
-    var updateEmail = $("#updateEmail").val();
-    var updatePassword = $("#updatePassword").val();
-    var updateCpassword = $("#updateCpassword").val();
+    var uName = $("#uName").val();
+    var uCity = $("#uCity").val();
+    var uAdress = $("#uAdress").val();
+    var uPhone = $("#uPhone").val();
+    var uEmail = $("#uEmail").val();
+    var uPassword = $("#uPassword").val();
     var trid = $("#trid").val();
-    var updateidadmin = $("#updateidadmin").val();
-    if (updateName != "" && updateEmail != "" && updatePassword != "" && updateCpassword != "") {
+    var updateIdPrd = $("#updateIdPrd").val();
+    if (uName != "" && uCity != "" && uAdress != "" && uPhone != "" && uEmail != "" && uPassword != "") {
       $.ajax({
-        url: "manageAdmin.php",
+        url: "managePerdorues.php",
         type: "post",
         data: {
-          updateName: updateName,
-          updateEmail: updateEmail,
-          updatePassword: updatePassword,
-          updateCpassword:updateCpassword,
-          updateidadmin: updateidadmin,
-          action: "updateAdmin",
+          uName: uName,
+          uCity: uCity,
+          uAdress: uAdress,
+          uPhone:uPhone,
+          uEmail:uEmail,
+          uPassword:uPassword,
+          updateIdPrd: updateIdPrd,
+          action: "updatePerdorues",
         },
         success: function (data) {
           var json = JSON.parse(data);
           var status = json.status;
           if (status == "true") {
-            table = $("#dtAdmin").DataTable();
+            table = $("#dtPerdorues").DataTable();
             table.draw();
-            $("#editAdmin").modal("hide");
-            $("#update_Admin")[0].reset();
+            $("#updatePerdorues").modal("toggle");
+            $("#update_perdorues")[0].reset();
             successAlert("Ndryshimet u ruajtën me sukses!");
   
           } else if (status == "false") {
-            $("#update_Admin")[0].reset();
+            $("#update_perdorues")[0].reset();
             dangerAlert("Gabim gjatë ruajtjes së ndryshimit në databazë!");
   
           } else if (status == "passwordError") {
-            $("#editAdmin").modal("toggle");
-            $("#update_Admin")[0].reset();
+            $("#updatePerdorues").modal("toggle");
+            $("#update_perdorues")[0].reset();
             warningAlert("Ju lutem plotësoni kërkesat e fjalekalimit!");
   
           }else if(status == "passwordVerify"){
-            $("#editAdmin").modal('hide');
-            $("#updatePassword").val("");
-            $("#updateCpassword").val("");
+            $("#updatePerdorues").modal('toggle');
+            $("#uPassword").val("");
             warningAlert("Ju lutem plotësoni fjalëkalimin e njejtë!");
 
           }else if (status == 'emailError') {
-            $('#editAdmin').modal('toggle');
-            $("#update_Admin")[0].reset();
+            $('#updatePerdorues').modal('toggle');
+            $("#update_perdorues")[0].reset();
             warningAlert("Ekziston përdorues me këtë email!");
           }
         },
       });
     } else {
-      $("#editAdmin").modal("toggle");
-      $("#update_Admin")[0].reset();
+      $("#updatePerdorues").modal("toggle");
+      $("#update_perdorues")[0].reset();
       warningAlert("Ju lutem plotësoni të gjitha fushat!");
     }
   });
 
-  $("#dtAdmin").on("click", ".editbtnadmin ", function (event) {
-    var table = $("#dtAdmin").DataTable();
+  $("#dtPerdorues").on("click", ".editbtnprd ", function (event) {
+    var table = $("#dtPerdorues").DataTable();
     var trid = $(this).closest("tr").attr("id");
     var id = $(this).data("id");
-    $("#editAdmin").modal("toggle");
+    $("#updatePerdorues").modal("toggle");
     $.ajax({
-      url: "manageAdmin.php",
+      url: "managePerdorues.php",
       data: {
         id: id,
-        action: "singleAdminData",
+        action: "singlePerdoruesData",
       },
       type: "post",
       success: function (data) {
         var json = JSON.parse(data);
-        $("#updateName").val(json.name);
-        $("#updateEmail").val(json.email);
-        $("#updateidadmin").val(id);
+        $("#uName").val(json.fullName);
+        $("#uCity").val(json.id_city);
+        $("#uAdress").val(json.adress);
+        $("#uPhone").val(json.phone);
+        $("#uEmail").val(json.email);
+        $("#updateIdPrd").val(id);
         $("#trid").val(trid);
       },
     });
   });
   
   $(document).on("click", ".deleteBtn", function (event) {
-    var table = $("#dtAdmin").DataTable();
+    var table = $("#dtPerdoruesit").DataTable();
     event.preventDefault();
     thisfordelete = $(this);
     var id = $(this).data("id");
     if (confirm("A jeni i sigurt që dëshironi të fshini të dhënën? ")) {
       $.ajax({
-        url: "manageAdmin.php",
+        url: "managePerdorues.php",
         data: {
           id: id,
-          action: "deleteAdmin",
+          action: "deletePerdorues",
         },
         type: "post",
         success: function (data) {
