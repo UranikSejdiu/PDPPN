@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 06, 2022 at 01:33 PM
+-- Generation Time: May 09, 2022 at 03:27 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -53,9 +53,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `code`, `status`) VALUES
 (2, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', '$2y$10$t8HEHOUB.HzLaDceZUoq2e3xLgsH4NfvP43KNdGm3AsWiRyD2qQ4q', 0, 'verified'),
-(10, 'Filan Fisteku', 'ferizaj0004@gmail.com', '$2y$10$Hb9wtq2/vboRcb4UBSFT1.okSz7pFdyhjxZbnC/a2BYuEivF4USTu', 0, 'verified'),
-(11, 'Filan Fisteku', 'u.sejdiu56@gmail.com', '$2y$10$D7YN1dt6VXd98X9TQ7Z/Zecevy3U5CkqweVHNbTljDC6CGXW/4AXa', 0, 'verified'),
-(12, 'PDPPN', 'ferizaj0006@gmail.com', '$2y$10$JHw8o7FKckyiyn4039aIO.hrxpBfti2Th/aymJtJnTNTS6PspEwr.', 0, 'verified');
+(11, 'Filan Fisteku', 'u.sejdiu56@gmail.com', '$2y$10$D7YN1dt6VXd98X9TQ7Z/Zecevy3U5CkqweVHNbTljDC6CGXW/4AXa', 0, 'verified');
 
 -- --------------------------------------------------------
 
@@ -125,14 +123,14 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
   `status` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cityForeignKey` (`id_city`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `perdoruesit`
 --
 
 INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `phone`, `email`, `password`, `code`, `status`) VALUES
-(1, 'Uranik Sejdiu', 2, 'Gaqke', '123456789', 'u.sejdiu4@gmail.com', '232323', 232323, 'notverified');
+(2, 'Filan Fisteku', 2, 'Mataj', '(+383)45/333-333', 'ferizaj0004@gmail.com', '$2y$10$e5FDa2mXvJ3IiDmnEAVeIeMrzT7oUMRtEYNgE4ZCAiLHRMBctdldS', 547301, 'notverified');
 
 --
 -- Constraints for dumped tables
