@@ -39,7 +39,7 @@ switch ($_POST["action"]) {
             $sub_array[] = $row['id'];
             $sub_array[] = $row['name'];
             $sub_array[] = $row['email'];
-            $sub_array[] = '<textarea style="overflow-y: auto;resize: none;border: none;">' . $row['password'] . '</textarea>';
+            $sub_array[] = '<textarea disabled style="overflow-y: auto;resize: none;border: none;">' . $row['password'] . '</textarea>';
             $sub_array[] = $row['status'];
             $sub_array[] = '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn button-success btn-sm editbtnadmin" >Ndrysho</a>';
             $sub_array[] =  '<a href="javascript:void(0);" data-id="' . $row['id'] . '"  class="btn button-danger btn-sm deleteBtn" >Fshi</a>';

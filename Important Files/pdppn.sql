@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 09, 2022 at 03:27 PM
+-- Generation Time: May 11, 2022 at 01:31 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `code` mediumint(50) NOT NULL,
   `status` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
@@ -103,6 +103,30 @@ CREATE TABLE IF NOT EXISTS `kompanite` (
 
 INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefoni`, `email`, `password`, `code`, `status`) VALUES
 (2, 'img/kompanite/1648904652-624849cc47b45.png', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0005@gmail.com', '$2y$10$/Q7yWzh8BMnFKqSNVzyXCufKI0vT96Dm.MPhYpZyWpN2ZGCBdynui', 959432, 'notverified');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kontaktet`
+--
+
+DROP TABLE IF EXISTS `kontaktet`;
+CREATE TABLE IF NOT EXISTS `kontaktet` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `subjekti` varchar(100) NOT NULL,
+  `mesazhi` varchar(500) NOT NULL,
+  `moduli` varchar(50) NOT NULL,
+  `createdDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kontaktet`
+--
+
+INSERT INTO `kontaktet` (`id`, `subjekti`, `mesazhi`, `moduli`, `createdDate`) VALUES
+(1, 'asdasdasdasdasd', 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd', 'Admin', '2022-05-11 15:11:53'),
+(4, 'admin', 'adminadminadm', 'Admin', '2022-05-11 15:19:32');
 
 -- --------------------------------------------------------
 

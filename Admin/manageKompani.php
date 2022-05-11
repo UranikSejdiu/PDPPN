@@ -44,7 +44,7 @@ switch ($_POST["action"]) {
             $sub_array[] = $row['lokacioni'];
             $sub_array[] = $row['telefoni'];
             $sub_array[] = $row['email'];
-            $sub_array[] = '<textarea style="overflow-y: auto;resize: none;border: none;">' . $row['password'] . '</textarea>';
+            $sub_array[] = '<textarea disabled style="overflow-y: auto;resize: none;border: none;">' . $row['password'] . '</textarea>';
             $sub_array[] = $row['code'];
             $sub_array[] = $row['status'];
             $sub_array[] = '<a href="javascript:void(0)" data-id="' . $row['id'] . '"  class="btn btn-success btn-sm editBtnKomp" >Ndrysho</a>';

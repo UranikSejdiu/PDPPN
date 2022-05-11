@@ -514,19 +514,6 @@ input:focus {
     background: transparent;
     border: 1px solid #ff4136;
 }
-textarea {
-    resize: none;
-    background: #ff4136;
-    border: 1px solid #ff4136;
-    padding: 10px;
-    width: 100%;
-    font-size: 14px;
-}
-textarea:focus {
-    background: transparent;
-    border: 1px solid #ff4136;
-    outline: none;
-}
 /*----------------------------
   14. Basic margin padding
 -----------------------------*/

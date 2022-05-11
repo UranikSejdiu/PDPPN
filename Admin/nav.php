@@ -19,20 +19,7 @@
                             <li><a href="perdorues.php">Përdoruesit</a></li>
                         </ul>
                     </li>
-                    <li class="drop"><a href="#">portfolio</a>
-                        <ul class="dropdown">
-                            <li><a href="#">portfolio</a></li>
-                            <li><a href="#">Single portfolio</a></li>
-                        </ul>
-                    </li>
-                    <li class="drop"><a href="#">Blog</a>
-                        <ul class="dropdown">
-                            <li><a href="#">blog 3 column</a></li>
-                            <li><a href="#">Blog details</a></li>
-                        </ul>
-                    </li>
-                    <!-- End Single Mega MEnu -->
-                    <li><a href="#">contact</a></li>
+                    <li><a href="kontakt.php">Kontakti</a></li>
                 </ul>
 
             </nav>
@@ -47,27 +34,7 @@
                                 <li><a href="perdorues.php">Përdoruesit</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">blog</a>
-                            <ul>
-                                <li><a href="#">blog 3 column</a></li>
-                                <li><a href="#">Blog details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">pages</a>
-                            <ul>
-                                <li><a href="#">about</a></li>
-                                <li><a href="#">customer review</a></li>
-                                <li><a href="#">shop</a></li>
-                                <li><a href="#">shop sidebar</a></li>
-                                <li><a href="#">product details</a></li>
-                                <li><a href="#">cart</a></li>
-                                <li><a href="#">wishlist</a></li>
-                                <li><a href="#">checkout</a></li>
-                                <li><a href="#">team</a></li>
-                                <li><a href="#">login & register</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">contact</a></li>
+                        <li><a href="kontakt.php">Kontakti</a></li>
                     </ul>
                 </nav>
             </div>
