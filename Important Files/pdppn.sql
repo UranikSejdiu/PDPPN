@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 11, 2022 at 01:31 PM
+-- Generation Time: May 13, 2022 at 03:17 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `kompanite` (
 --
 
 INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefoni`, `email`, `password`, `code`, `status`) VALUES
-(2, 'img/kompanite/1648904652-624849cc47b45.png', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0005@gmail.com', '$2y$10$/Q7yWzh8BMnFKqSNVzyXCufKI0vT96Dm.MPhYpZyWpN2ZGCBdynui', 959432, 'notverified');
+(2, 'img/kompanite/1648904652-624849cc47b45.png', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0006@gmail.com', '$2y$10$SNxLF7mx43tMd6RbWvZLpem/F0ydGwdmFnohfDndbPVbsEcisZXQ2', 0, 'verified');
 
 -- --------------------------------------------------------
 
