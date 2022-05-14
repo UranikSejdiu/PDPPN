@@ -83,7 +83,7 @@ switch ($_POST["action"]) {
             $file_type = $_FILES['logo']['type'];
             $ext = pathinfo($file_name, PATHINFO_EXTENSION);
             $extensions = array("jpeg", "jpg", "png");
-            $filedestionation = "img/kompanite/" . $uniquename . '.' . $ext;
+            $filedestionation = "../images/kompani/". $uniquename . '.' . $ext;
         }
 
         if (strlen($password) < '8') {
@@ -204,7 +204,7 @@ switch ($_POST["action"]) {
             $file_type = $_FILES['updateLogo']['type'];
             $ext = pathinfo($file_name, PATHINFO_EXTENSION);
             $extensions = array("jpeg", "jpg", "png");
-            $filedestionation = "img/kompanite/" . $uniquename . '.' . $ext;
+            $filedestionation = "../images/kompani/". $uniquename . '.' . $ext;
         }
 
 
