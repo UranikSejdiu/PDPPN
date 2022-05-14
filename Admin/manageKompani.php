@@ -74,7 +74,6 @@ switch ($_POST["action"]) {
         $query = "SELECT * FROM kompanite WHERE email='$email' LIMIT 1";
         $result = mysqli_query($con, $query);
         $fetch = mysqli_fetch_assoc($result);
-        $limit = 9;
 
         if (isset($_FILES['logo'])) {
             $file_name = $_FILES['logo']['name'];

@@ -9,56 +9,93 @@ $errors = array();
 //if user signup button
 if (isset($_POST['signup'])) {
     $name = mysqli_real_escape_string($con, $_POST['name']);
+    $fiskal = mysqli_real_escape_string($con, $_POST['fiskal']);
+    $lokacioni = mysqli_real_escape_string($con, $_POST['lokacioni']);
+    $phone = mysqli_real_escape_string($con, $_POST['phone']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
     $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
+
     if ($password !== $cpassword) {
         $errors['password'] = "Fjalëkalimi jo i njejtë!";
     }
+
     $email_check = "SELECT * FROM kompanite WHERE email = '$email'";
     $res = mysqli_query($con, $email_check);
     if (mysqli_num_rows($res) > 0) {
         $errors['email'] = "Email-i ekziston në sistemin tonë!";
     }
-    if (count($errors) === 0) {
-        $encpass = password_hash($password, PASSWORD_BCRYPT);
-        $code = rand(999999, 111111);
+    if (isset($_FILES['logo'])) {
+        $file_name = $_FILES['logo']['name'];
+        $uniquename = time() . '-' . uniqid();
+        $file_size = $_FILES['logo']['size'];
+        $file_tmp = $_FILES['logo']['tmp_name'];
+        $file_type = $_FILES['logo']['type'];
+        $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+        $extensions = array("jpeg", "jpg", "png");
+        $filedestionation = "../Admin/img/kompanite/" . $uniquename . '.' . $ext;
+    }
+
+    if (strlen($password) < '8') {
+        $errors['password'] = "Plotëso kërkesat e fjalëkalimit!";
+        return;
+    } elseif (!preg_match("#[0-9]+#", $password)) {
+        $errors['password'] = "Plotëso kërkesat e fjalëkalimit!";
+        return;
+    } elseif (!preg_match("#[A-Z]+#", $password)) {
+        $errors['password'] = "Plotëso kërkesat e fjalëkalimit!";
+        return;
+    } elseif (!preg_match("#[a-z]+#", $password)) {
+        $errors['password'] = "Plotëso kërkesat e fjalëkalimit!";
+        return;
+    } elseif ($fetch !== null) {
+        $errors['email'] = "Email-i ekziston në sistemin tonë!";
+        return;
+    } elseif ($file_name && in_array($ext, $extensions) === false) {
+        $errors['format'] = "Provoni njërin nga formatet e lejuara!";
+        return;
+    } elseif ($file_size > 5097152) {
+        $errors['madhesia'] = "Logoja kalon madhësinë e lejuar prej 5MB!";
+        return;
+    } else {
+        $hashPassword = password_hash($password, PASSWORD_BCRYPT);
         $status = "notverified";
-        $insert_data = "INSERT INTO kompanite (name, email, password, code, status)
-                        values('$name', '$email', '$encpass', '$code', '$status')";
-        $data_check = mysqli_query($con, $insert_data);
-        if ($data_check) {
+        $code = rand(999999, 111111);
+        $sql = "INSERT INTO kompanite (logo, name, nrfiskal, lokacioni, telefoni, email, password, code, status) values ('$filedestionation', '$name','$fiskal', '$lokacioni','$phone','$email','$hashPassword','$code','$status')";
+        $insertData = mysqli_query($con, $sql);
+        if ($insertData) {
             $subject = "Kodi i verifikimit të Email-it";
             $message = ' <body style="margin: 0;">
-            <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #f1f5f8; font-family: system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif; min-height: 100vh; padding-left: 1rem; padding-right: 1rem; padding-top: 2rem; padding-bottom: 2rem;">
-              <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-left: auto; margin-right: auto; max-width: 40rem;">
-                <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #fff; padding: 2rem; box-shadow: 0 4px 8px 0 rgba(0,0,0,.12),0 2px 4px 0 rgba(0,0,0,.08);">
-                  <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; text-align: center; letter-spacing: .05em;">
-                    <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; font-weight: 700; color: #e3342f; font-size: .875rem;">PDPPN</div>
-                    <h1 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; align-items: center; justify-content: center; font-size: 1.875rem;">Konfirmimi i email adresës</h1>
-                  </div>
-                  <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; padding-top: 2rem; padding-bottom: 2rem;">
-                    <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">
-                      Përshendetje ' . $name . ', <br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"><br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;">Përdor kodin më posht për të konfirmuar email adresën dhe pastaj mund të kyçeni në
-                      platformën tonë.
-                    </p>
-                    <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; background-color: #e3342f; border-radius: .25rem; margin-top: 2rem; margin-bottom: 2rem; padding: 1rem; color: #fff; letter-spacing: .05em; text-align: center;" class="text-white tracking-wide bg-red rounded w-full my-8 p-4 ">' . $code . '</h3>
-                    <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; font-size: .875rem;">
-                      Shpresojmë që jeni mirë!<br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"> Nga stafi i PDPPN
-                    </p>
-                  </div>
-                  <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-top: 2rem; text-align: center; color: #606f7b;">
-                    <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; margin-bottom: 1rem; font-size: 1rem;">Ju Faleminderit që përdorni shërbimet tona!</h3>
-                    <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">Ekipi PDPPN</p>
+                <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #f1f5f8; font-family: system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif; min-height: 100vh; padding-left: 1rem; padding-right: 1rem; padding-top: 2rem; padding-bottom: 2rem;">
+                  <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-left: auto; margin-right: auto; max-width: 40rem;">
+                    <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #fff; padding: 2rem; box-shadow: 0 4px 8px 0 rgba(0,0,0,.12),0 2px 4px 0 rgba(0,0,0,.08);">
+                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; text-align: center; letter-spacing: .05em;">
+                        <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; font-weight: 700; color: #e3342f; font-size: .875rem;">PDPPN</div>
+                        <h1 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; align-items: center; justify-content: center; font-size: 1.875rem;">Konfirmimi i email adresës</h1>
+                      </div>
+                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; padding-top: 2rem; padding-bottom: 2rem;">
+                        <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">
+                          Përshendetje ' . $name . ', <br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"><br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;">Përdor kodin më posht për të konfirmuar email adresën dhe pastaj mund të kyçeni në
+                          platformën tonë.
+                        </p>
+                        <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; background-color: #e3342f; border-radius: .25rem; margin-top: 2rem; margin-bottom: 2rem; padding: 1rem; color: #fff; letter-spacing: .05em; text-align: center;" class="text-white tracking-wide bg-red rounded w-full my-8 p-4 ">' . $code . '</h3>
+                        <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; font-size: .875rem;">
+                          Shpresojmë që jeni mirë!<br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"> Nga stafi i PDPPN
+                        </p>
+                      </div>
+                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-top: 2rem; text-align: center; color: #606f7b;">
+                        <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; margin-bottom: 1rem; font-size: 1rem;">Ju Faleminderit që përdorni shërbimet tona!</h3>
+                        <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">Ekipi PDPPN</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-           </body>';
+               </body>';
             $sender = 'From: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
                 'Reply-To: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
                 'X-Mailer: PHP/' . PHP_EOL . 'Content-type: text/html; charset=UTF-8' . phpversion();
             if (mail($email, $subject, $message, $sender)) {
+                move_uploaded_file($file_tmp, $filedestionation);
                 $info = "Kodi për verifikim të email-it u dërgua - $email";
                 $_SESSION['info'] = $info;
                 $_SESSION['email'] = $email;
@@ -222,7 +259,6 @@ if (isset($_POST['change-password'])) {
             $info = "Fjalëkalimi juaj u përditsua me sukses.";
             $_SESSION['info'] = $info;
             header('Location: password-changed.php');
-            
         } else {
             $errors['db-error'] = "Gabim gjatë përditsimit të fjalëkalimit tuaj!";
         }
@@ -233,8 +269,3 @@ if (isset($_POST['change-password'])) {
 if (isset($_POST['login-now'])) {
     header('Location: index.php');
 }
-
-
-
-
-?>

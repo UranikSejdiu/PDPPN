@@ -1057,3 +1057,15 @@ input::-webkit-inner-spin-button {
   border-style: none none solid;
   border-width: 0 0 1px;
 }
+
+
+.typeFile > [type='file'] {
+ display: none;
+}
+
+.typeFile > .btnGet {
+  background: #eee;
+  padding: 8px 16px;
+  border-radius: 2px;
+  margin-right: 8px;
+}

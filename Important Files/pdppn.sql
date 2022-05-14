@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 13, 2022 at 03:17 PM
+-- Generation Time: May 14, 2022 at 12:16 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -95,14 +95,15 @@ CREATE TABLE IF NOT EXISTS `kompanite` (
   `code` mediumint(50) NOT NULL,
   `status` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kompanite`
 --
 
 INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefoni`, `email`, `password`, `code`, `status`) VALUES
-(2, 'img/kompanite/1648904652-624849cc47b45.png', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0006@gmail.com', '$2y$10$SNxLF7mx43tMd6RbWvZLpem/F0ydGwdmFnohfDndbPVbsEcisZXQ2', 0, 'verified');
+(2, 'img/kompanite/1648904652-624849cc47b45.png', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0006@gmail.com', '$2y$10$SNxLF7mx43tMd6RbWvZLpem/F0ydGwdmFnohfDndbPVbsEcisZXQ2', 0, 'verified'),
+(5, '../Admin/img/kompanite/1652528844-627f96cc68a64.png', 'Filan Fisteku', 545454545, '42.560057,20.855082', '(+383)44/879-569', 'u.sejdiu4@gmail.com', '$2y$10$Lee7Nl8gMHAh7BvN6t6NWeUYzKwGq4PfFaQPWumt1OyBAprTIg1Hy', 0, 'verified');
 
 -- --------------------------------------------------------
 
