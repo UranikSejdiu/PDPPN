@@ -3789,7 +3789,7 @@ a.shipping-calculator-button:hover {
     -moz-appearance: none;
     -webkit-appearance: none;
     -o-appearance: none;
-    background: rgba(0, 0, 0, 0) url("images/icons/select-option.png") no-repeat scroll 96% 14px / 11px 9px;
+    background: rgba(0, 0, 0, 0) url("../../images/icons/select-option.png") no-repeat scroll 96% 14px / 11px 9px;
     border: 1px solid #c1c1c1;
     height: 40px;
     line-height: 40px;
