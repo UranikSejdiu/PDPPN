@@ -3,7 +3,7 @@
         <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
             <div class="logo">
                 <a href="home.php">
-                    <img src="images/logo/logo.png" alt="logo" >
+                    <img src="images/logo/logo.png" alt="logo">
                 </a>
             </div>
         </div>
@@ -11,14 +11,8 @@
         <div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
             <nav class="mainmenu__nav hidden-xs hidden-sm">
                 <ul class="main__menu">
-                <li><a href="home.php">Kryefaçja</a></li>
-                    <li class="drop"><a href="#">Llogaritë</a>
-                        <ul class="dropdown">
-                            <li><a href="admin.php">Administratorët</a></li>
-                            <li><a href="kompani.php">Kompanitë</a></li>
-                            <li><a href="perdorues.php">Përdoruesit</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="home.php">Kryefaçja</a></li>
+                    <li><a href="produkt.php">Produktet</a></li>
                     <li><a href="kontakt.php">Kontakti</a></li>
                 </ul>
 
@@ -27,13 +21,7 @@
                 <nav id="mobile_dropdown">
                     <ul>
                         <li><a href="home.php">Kryefaçja</a></li>
-                        <li><a href="#">Llogaritë</a>
-                            <ul>
-                                <li><a href="admin.php">Administratorët</a></li>
-                                <li><a href="kompani.php">Kompanitë</a></li>
-                                <li><a href="perdorues.php">Përdoruesit</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="produkt.php">Produktet</a></li>
                         <li><a href="kontakt.php">Kontakti</a></li>
                     </ul>
                 </nav>
@@ -42,7 +30,7 @@
         <!-- End MAinmenu Ares -->
         <div class="col-md-2 col-sm-4 col-xs-3">
             <ul class="menu-extra">
-                <!--<li><a href="profile.php"><span aria-label="Profili" data-cooltipz-dir="bottom"><i class="ti-user"></i></span></a></li> -->
+                <li><a href="profile.php"><span aria-label="Profili" data-cooltipz-dir="bottom"><i class="ti-user"></i></span></a></li>
                 <li><a href="logout-user.php"><span aria-label="Çkyçu" data-cooltipz-dir="bottom"><i class="ti-unlink"></i></span></a></li>
             </ul>
         </div>
