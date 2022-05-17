@@ -33,15 +33,7 @@ if ($email == false) {
                             <ul class="login__register__menu">
                                 <li role="presentation" class="register"><a style="pointer-events: none;">Përditsimi i fjalëkalimit</a></li>
                             </ul>
-                            <?php
-                            if (isset($_SESSION['info'])) {
-                            ?>
-                                <div class="alert alert-success text-center">
-                                    <?php echo $_SESSION['info']; ?>
-                                </div>
-                            <?php
-                            }
-                            ?>
+                            
                             <?php
                             if (count($errors) > 0) {
                             ?>

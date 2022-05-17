@@ -24,6 +24,7 @@
             <!-- Start Mainmenu Area -->
             <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header">
                 <?php include_once('nav.php'); ?>
+                <input type="hidden" id="hiddenEmail" value="<?php $email ?>"></input>
             </div>
             <!-- End Mainmenu Area -->
         </header>
@@ -199,7 +200,7 @@
     <!-- END QUICKVIEW PRODUCT -->
     <!-- Placed js at the end of the document so the pages load faster -->
     <?php include_once('scripts.php'); ?>
-
+    <?php include_once('scriptsProfili.js'); ?>
 </body>
 
 </html>

@@ -10,6 +10,7 @@ if($email != false && $password != false){
         $fetch_info = mysqli_fetch_assoc($run_Sql);
         $status = $fetch_info['status'];
         $code = $fetch_info['code'];
+        $id= $fetch_info['id'];
         if($status == "verified"){
             if($code != 0){
                 header('Location: reset-code.php');

@@ -1,4 +1,21 @@
 <?php include('checkSession.php'); ?>
+
+<?php if (isset($_GET['ID'])) {
+    $id = $_GET['ID'];
+    $sql = "SELECT * FROM kompanite WHERE id=$id";
+    $query = mysqli_query($con, $sql);
+    while ($row = $query->fetch_assoc()) {
+        $logo = $row['logo'];
+        $name = $row['name'];
+        $nrFiskal = $row['nrfiskal'];
+        $lokacioni = $row['lokacioni'];
+        $telefoni = $row['telefoni'];
+        $email = $row['email'];
+    }
+}
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -45,38 +62,34 @@
                             </div>
                             <div id="alerts"></div>
                             <br>
-                            <section class="our-checkout-area ptb--120 bg__white">
+                            <section class="our-checkout-area bg__white">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-6 col-lg-8 col-lg-offset-2">
+                                        <div class="col-md-6 col-lg-10 col-md-offset-1">
+
                                             <div class="ckeckout-left-sidebar">
                                                 <form class="checkout-form">
                                                     <div class="checkout-form-inner">
-                                                        <div class="single-checkout-box">
-                                                            <input type="text" placeholder="First Name*">
-                                                            <input type="text" placeholder="Last Name*">
+                                                        <div class="single-checkout-box" style="margin:2% 0 ;">
+                                                            <img id="logo" class="img-circle img-responsive center-block" width="200" height="200" src="<?php echo $logo; ?>" alt="" style="object-fit: cover;">
                                                         </div>
                                                         <div class="single-checkout-box">
-                                                            <input type="email" placeholder="Emil*">
-                                                            <input type="text" placeholder="Phone*">
+                                                            <input disabled id="name" type="text" id="name" value="<?php echo $name; ?>">
+                                                            <input disabled id="nrfiskal" type="text" value="<?php echo $nrFiskal; ?>">
                                                         </div>
                                                         <div class="single-checkout-box">
-                                                            <select>
-                                                                <option>Country*</option>
-                                                                <option>Bangladesh</option>
-                                                                <option>Bangladesh</option>
-                                                                <option>Bangladesh</option>
-                                                                <option>Bangladesh</option>
-                                                            </select>
-                                                            
+                                                            <input disabled id="phone" value="<?php echo $telefoni; ?>" type="email">
+                                                            <input disabled id="email" value="<?php echo $email; ?>" type="text">
                                                         </div>
                                                         <div class="single-checkout-box">
-                                                        <input type="text" placeholder="Company Name*">
-                                                            <input type="email" placeholder="State*">
-                                                            <input type="text" placeholder="Zip Code*">
+
                                                         </div>
-                                                        <div class="single-checkout-box">
-                                                        <div style="width: 100%"><iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=42.349188,21.17604+(Your%20Business%20Name)&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
+                                                        <div class="single-checkout-box" style="border-bottom:1px solid #8e8e8e ;">
+                                                            <?php echo '<div style="width: 100%"><iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q='.$lokacioni.'+&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>'; ?>
+                                                        </div>
+                                                        <div class="single-checkout-box" style="margin-top:1%;">
+                                                            <a href="new-password.php" ><i class="ti-pencil"></i> Përditso fjalëkalimin</a>
+                                                            <button style="float: right;"><i class="ti-pencil"></i> Përditso te dhënat</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -121,17 +134,8 @@
 
     </div>
     <?php include_once('scripts.php'); ?>
-
+    <?php include_once('scriptsProfili.js'); ?>
     <script>
-        $('#addAdmin').on('hidden.bs.modal', function() {
-            $(this).find('form').trigger('reset');
-            $('#spanPass').removeClass("fa-eye-slash").addClass("fa-eye");
-            $('#password').get(0).type = 'password';
-
-            $('#spanCpass').removeClass("fa-eye-slash").addClass("fa-eye");
-            $('#cpassword').get(0).type = 'password';
-        });
-
         $('#editAdmin').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
             $('#spanUpass').removeClass("fa-eye-slash").addClass("fa-eye");
@@ -140,14 +144,6 @@
             $('#spanUcpass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#updateCpassword').get(0).type = 'password';
         });
-        $('#password').PassRequirements({
-            popoverPlacement: 'auto',
-            trigger: 'focus'
-        });
-        $('#cpassword').PassRequirements({
-            popoverPlacement: 'auto',
-            trigger: 'focus'
-        });
         $('#updatePassword').PassRequirements({
             popoverPlacement: 'auto',
             trigger: 'focus'
@@ -155,6 +151,10 @@
         $('#updateCpassword').PassRequirements({
             popoverPlacement: 'auto',
             trigger: 'focus'
+        });
+        $(":input").inputmask();
+        $("#phone").inputmask({
+            "mask": "(+383)49/999-999"
         });
     </script>
 </body>

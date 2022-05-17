@@ -3794,6 +3794,9 @@ a.shipping-calculator-button:hover {
     height: 40px;
     line-height: 40px;
     padding-left: 20px;
+    font-size: 12px;
+    width: 47.5%;
+    margin-right: 35px;
 }
 .payment-form-inner .single-checkout-box.select-option {
     margin-top: 0;
