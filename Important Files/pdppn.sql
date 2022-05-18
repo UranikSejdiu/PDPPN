@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 17, 2022 at 02:30 PM
+-- Generation Time: May 18, 2022 at 03:28 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `kompanite` (
   `code` mediumint(50) NOT NULL,
   `status` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kompanite`
