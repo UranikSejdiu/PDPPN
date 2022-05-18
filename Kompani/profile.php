@@ -5,9 +5,10 @@
     $sql = "SELECT * FROM kompanite WHERE id=$id";
     $query = mysqli_query($con, $sql);
     while ($row = $query->fetch_assoc()) {
+        $id= $row['id'];
         $logo = $row['logo'];
         $name = $row['name'];
-        $nrFiskal = $row['nrfiskal'];
+        $nrfiskal = $row['nrfiskal'];
         $lokacioni = $row['lokacioni'];
         $telefoni = $row['telefoni'];
         $email = $row['email'];
@@ -25,7 +26,6 @@
     <title>PDPPN - Profili</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <?php include_once('links.php'); ?>
 </head>
 
@@ -55,42 +55,51 @@
                                 <ul class="tab-style text-center" role="tablist">
                                     <li class="active">
                                         <div class="tab-menu-text">
-                                            <h4 class="text-center">Të dhënat e kompanisë </h4>
+                                            <h4 class="text-center">Të dhënat e kompanisë</h4>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                             <div id="alerts"></div>
                             <br>
-                            <section class="our-checkout-area bg__white">
+                            <section id="sectionProfili" class="our-checkout-area bg__white" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-10 col-md-offset-1">
-
                                             <div class="ckeckout-left-sidebar">
-                                                <form class="checkout-form">
-                                                    <div class="checkout-form-inner">
-                                                        <div class="single-checkout-box" style="margin:2% 0 ;">
-                                                            <img id="logo" class="img-circle img-responsive center-block" width="200" height="200" src="<?php echo $logo; ?>" alt="" style="object-fit: cover;">
+                                                <form class="login" action="manageProfili.php" method="POST" enctype='multipart/form-data' style="margin-top:2%;">
+                                                    <input type="hidden" name="updateIdKomp" id="updateIdKomp" value="<?php echo $id; ?>">
+                                                    <div class="form-group">
+                                                        <label style="margin-bottom:0;" for="updateLogo">Logoja:</label>
+                                                        <input style="margin-top:0;border:none;" name="updateLogo" id="updateLogo" type="file">
+                                                        <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
+                                                        <div id="image-holderUP">
+                                                            <img width="100" height="100" id="logoUp" src="<?php echo $logo; ?>" alt="" />
                                                         </div>
-                                                        <div class="single-checkout-box">
-                                                            <input disabled id="name" type="text" id="name" value="<?php echo $name; ?>">
-                                                            <input disabled id="nrfiskal" type="text" value="<?php echo $nrFiskal; ?>">
-                                                        </div>
-                                                        <div class="single-checkout-box">
-                                                            <input disabled id="phone" value="<?php echo $telefoni; ?>" type="email">
-                                                            <input disabled id="email" value="<?php echo $email; ?>" type="text">
-                                                        </div>
-                                                        <div class="single-checkout-box">
-
-                                                        </div>
-                                                        <div class="single-checkout-box" style="border-bottom:1px solid #8e8e8e ;">
-                                                            <?php echo '<div style="width: 100%"><iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q='.$lokacioni.'+&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>'; ?>
-                                                        </div>
-                                                        <div class="single-checkout-box" style="margin-top:1%;">
-                                                            <a href="new-password.php" ><i class="ti-pencil"></i> Përditso fjalëkalimin</a>
-                                                            <button style="float: right;"><i class="ti-pencil"></i> Përditso te dhënat</button>
-                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label style="margin-bottom:0;" for="updateName">Emri kompanisë:</label>
+                                                        <input style="margin-top:0;" type="text" name="updateName" id="updateName" value="<?php echo $name; ?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label style="margin-bottom:0;" for="updateEmail">Email adresa:</label>
+                                                        <input style="margin-top:0;" type="email" name="updateEmail" id="updateEmail" value="<?php echo $email; ?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label style="margin-bottom:0;" for="updateFiskal">Numri Fiskal:</label>
+                                                        <input style="margin-top:0;" type="number" name="updateFiskal" id="updateFiskal" value="<?php echo $nrfiskal; ?>" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label style="margin-bottom:0;" for="updatePhone">Numri telefonit:</label>
+                                                        <input style="margin-top:0;" type="tel" name="updatePhone" id="updatePhone" value="<?php echo $telefoni; ?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label style="margin-bottom:0;" for="updateLokacioni">Lokacioni</label>
+                                                        <input class="updateLokacioni" style="margin-top:0;" name="updateLokacioni" id="updateLokacioni" type="text" value="<?php echo $lokacioni; ?>" autofocus><br>
+                                                        <div id="mapContainerUpdate"></div>
+                                                    </div>
+                                                    <div class="form-group text-right">
+                                                        <button type="submit" value="ruaj" name="ruaj" class="btn btn-success">Ruaj</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -98,6 +107,9 @@
                                     </div>
                                 </div>
                             </section>
+                            <div class="single-checkout-box" style="padding:1%;margin-top:2%;box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;">
+                                Për të përditsuar fjalëkalimin kliko <a href="new-password.php"></i><strong> KËTU!</strong></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -155,6 +167,13 @@
         $(":input").inputmask();
         $("#phone").inputmask({
             "mask": "(+383)49/999-999"
+        });
+        $('.updateLokacioni').leafletLocationPicker({
+            alwaysOpen: true,
+            height: 300,
+            width: 250,
+            cursorSize: '15px',
+            mapContainer: "#mapContainerUpdate"
         });
     </script>
 </body>
