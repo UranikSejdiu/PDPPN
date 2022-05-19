@@ -492,6 +492,7 @@
     border-style: solid;
     border-width: 2px 1px 1px;
     padding: 14px 20px 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 .product-slider-active .col-lg-4,
 .product-slider-active .col-sm-4,
@@ -3794,6 +3795,9 @@ a.shipping-calculator-button:hover {
     height: 40px;
     line-height: 40px;
     padding-left: 20px;
+    font-size: 12px;
+    width: 47.5%;
+    margin-right: 35px;
 }
 .payment-form-inner .single-checkout-box.select-option {
     margin-top: 0;

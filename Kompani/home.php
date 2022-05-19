@@ -200,7 +200,6 @@
     <!-- END QUICKVIEW PRODUCT -->
     <!-- Placed js at the end of the document so the pages load faster -->
     <?php include_once('scripts.php'); ?>
-    <?php include_once('scriptsProfili.js'); ?>
 </body>
 
 </html>

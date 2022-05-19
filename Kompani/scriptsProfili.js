@@ -54,30 +54,29 @@ $(document).on("submit", "#updateProfili", function (e) {
                 var status = json.status;
 
                 if (status == "true") {
-                    singleKompaniData();
                     successAlert("Ndryshimet u ruajtën me sukses!");
-
-                } else if (status == "false") {
                     singleKompaniData();
+                } else if (status == "false") {
                     dangerAlert("Gabim gjatë ruajtjes së ndryshimit në databazë!");
+                    singleKompaniData();
 
                 } else if (status == "emailError") {
-                    singleKompaniData();
                     warningAlert("Ekziston përdorues me këtë email!");
+                    singleKompaniData();
 
                 } else if (status == "logoFormat") {
-                    singleKompaniData();
                     warningAlert("Ju lutem zgjedhni një imazh me format të lejuar!");
+                    singleKompaniData();
 
                 } else if (status == "logoMB") {
-                    singleKompaniData();
                     warningAlert("Imazhi kalon hapsirën e lejuar për ngarkim!");
+                    singleKompaniData();
                 }
             },
         });
     } else {
-        singleKompaniData();
         warningAlert("Ju lutem plotësoni të gjitha fushat!");
+        singleKompaniData();
     }
 });
 

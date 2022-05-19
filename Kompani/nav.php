@@ -12,8 +12,8 @@
             <nav class="mainmenu__nav hidden-xs hidden-sm">
                 <ul class="main__menu">
                     <li><a href="home.php">Kryefaçja</a></li>
-                    <li><a href="produkt.php">Produktet</a></li>
-                    <li><a href="kontakt.php">Kontakti</a></li>
+                    <li><a href="produktet.php">Produktet</a></li>
+                    <li><a href="kontakto.php">Kontakti</a></li>
                 </ul>
 
             </nav>
