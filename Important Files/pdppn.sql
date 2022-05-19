@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 18, 2022 at 03:28 PM
+-- Generation Time: May 19, 2022 at 12:33 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `kompanite` (
 
 INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefoni`, `email`, `password`, `code`, `status`) VALUES
 (2, '../images/kompani/1652531410-627fa0d2304fc.jpg', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0006@gmail.com', '$2y$10$Yvf3/GQmVlvMNrda83SKHe/rwYhYkr8EAV2v2swvUqD4eDDNn6ieS', 0, 'verified'),
-(5, '../images/kompani/1652528844-627f96cc68a64.png', 'Filan Fisteku', 545454545, '42.560057,20.855082', '(+383)44/879-569', 'u.sejdiu4@gmail.com', '$2y$10$Lee7Nl8gMHAh7BvN6t6NWeUYzKwGq4PfFaQPWumt1OyBAprTIg1Hy', 0, 'verified'),
+(5, '../images/kompani/1652963525-628638c5308e5.png', 'Uranik Sejdiu', 545454545, '42.560057,20.855082', '(+383)44/879-569', 'u.sejdiu4@gmail.com', '$2y$10$Lee7Nl8gMHAh7BvN6t6NWeUYzKwGq4PfFaQPWumt1OyBAprTIg1Hy', 0, 'verified'),
 (10, '../images/kompani/1652791679-6283997f66b8b.png', 'Hewlet Packard', 555555555, '42.697829,23.322001', '(+383)45/555-555', 'u.sejdiu56@gmail.com', '$2y$10$AbP.FHKxvt9xUJMVdVsupu3GO9Wj8KN2VwjWQojtd/7jBsoSy8m36', 0, 'verified');
 
 -- --------------------------------------------------------

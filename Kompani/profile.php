@@ -2,17 +2,6 @@
 
 <?php if (isset($_GET['ID'])) {
     $id = $_GET['ID'];
-    $sql = "SELECT * FROM kompanite WHERE id=$id";
-    $query = mysqli_query($con, $sql);
-    while ($row = $query->fetch_assoc()) {
-        $id= $row['id'];
-        $logo = $row['logo'];
-        $name = $row['name'];
-        $nrfiskal = $row['nrfiskal'];
-        $lokacioni = $row['lokacioni'];
-        $telefoni = $row['telefoni'];
-        $email = $row['email'];
-    }
 }
 
 ?>
@@ -66,36 +55,36 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-10 col-md-offset-1">
-                                            <div class="ckeckout-left-sidebar">
-                                                <form class="login" action="manageProfili.php" method="POST" enctype='multipart/form-data' style="margin-top:2%;">
+                                            <div class="checkout-left-sidebar" id="profiliDetails">
+                                                <form class="login" id="updateProfili" enctype='multipart/form-data' style="margin-top:2%;">
                                                     <input type="hidden" name="updateIdKomp" id="updateIdKomp" value="<?php echo $id; ?>">
                                                     <div class="form-group">
                                                         <label style="margin-bottom:0;" for="updateLogo">Logoja:</label>
                                                         <input style="margin-top:0;border:none;" name="updateLogo" id="updateLogo" type="file">
                                                         <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
                                                         <div id="image-holderUP">
-                                                            <img width="100" height="100" id="logoUp" src="<?php echo $logo; ?>" alt="" />
+                                                            <img width="100" height="100" id="logoUp" src="" alt="" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="margin-bottom:0;" for="updateName">Emri kompanisë:</label>
-                                                        <input style="margin-top:0;" type="text" name="updateName" id="updateName" value="<?php echo $name; ?>">
+                                                        <input style="margin-top:0;" type="text" name="updateName" id="updateName" >
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="margin-bottom:0;" for="updateEmail">Email adresa:</label>
-                                                        <input style="margin-top:0;" type="email" name="updateEmail" id="updateEmail" value="<?php echo $email; ?>">
+                                                        <input style="margin-top:0;" type="email" name="updateEmail" id="updateEmail">
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="margin-bottom:0;" for="updateFiskal">Numri Fiskal:</label>
-                                                        <input style="margin-top:0;" type="number" name="updateFiskal" id="updateFiskal" value="<?php echo $nrfiskal; ?>" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9">
+                                                        <input style="margin-top:0;" type="number" name="updateFiskal" id="updateFiskal"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9">
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="margin-bottom:0;" for="updatePhone">Numri telefonit:</label>
-                                                        <input style="margin-top:0;" type="tel" name="updatePhone" id="updatePhone" value="<?php echo $telefoni; ?>">
+                                                        <input style="margin-top:0;" type="tel" name="updatePhone" id="updatePhone">
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="margin-bottom:0;" for="updateLokacioni">Lokacioni</label>
-                                                        <input class="updateLokacioni" style="margin-top:0;" name="updateLokacioni" id="updateLokacioni" type="text" value="<?php echo $lokacioni; ?>" autofocus><br>
+                                                        <input class="updateLokacioni" style="margin-top:0;" name="updateLokacioni" id="updateLokacioni" type="text"  autofocus><br>
                                                         <div id="mapContainerUpdate"></div>
                                                     </div>
                                                     <div class="form-group text-right">
@@ -146,26 +135,27 @@
 
     </div>
     <?php include_once('scripts.php'); ?>
-    <?php include_once('scriptsProfili.js'); ?>
+    <script src="scriptsProfili.js"></script>
     <script>
-        $('#editAdmin').on('hidden.bs.modal', function() {
-            $(this).find('form').trigger('reset');
-            $('#spanUpass').removeClass("fa-eye-slash").addClass("fa-eye");
-            $('#updatePassword').get(0).type = 'password';
-
-            $('#spanUcpass').removeClass("fa-eye-slash").addClass("fa-eye");
-            $('#updateCpassword').get(0).type = 'password';
+        $("#updateLogo").on('change', function() {
+            if (typeof(FileReader) != "undefined") {
+                var imageHolderUp = $("#image-holderUP");
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#logoUp')
+                        .attr('src', e.target.result)
+                        .width(100)
+                        .height(120);
+                }
+                imageHolderUp.show();
+                reader.readAsDataURL($(this)[0].files[0]);
+            } else {
+                alert("This browser does not support FileReader.");
+            }
         });
-        $('#updatePassword').PassRequirements({
-            popoverPlacement: 'auto',
-            trigger: 'focus'
-        });
-        $('#updateCpassword').PassRequirements({
-            popoverPlacement: 'auto',
-            trigger: 'focus'
-        });
+        
         $(":input").inputmask();
-        $("#phone").inputmask({
+        $("#updatePhone").inputmask({
             "mask": "(+383)49/999-999"
         });
         $('.updateLokacioni').leafletLocationPicker({
