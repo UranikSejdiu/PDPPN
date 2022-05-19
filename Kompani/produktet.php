@@ -1,10 +1,5 @@
 <?php include('checkSession.php'); ?>
 
-<?php if (isset($_GET['ID'])) {
-    $id = $_GET['ID'];
-}
-
-?>
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -12,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PDPPN - Profili</title>
+    <title>PDPPN - Menaxhimi i produkteve</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php include_once('links.php'); ?>
@@ -79,6 +74,7 @@
 
     </div>
     <?php include_once('scripts.php'); ?>
+    <script src="scriptsProduktet.js"></script>
     
 </body>
 
