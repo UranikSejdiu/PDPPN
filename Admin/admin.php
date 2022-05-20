@@ -79,27 +79,28 @@
                 </div>
             </div>
         </section>
-    </div>
-    <!-- End Login Register Area -->
-    <!-- Start Footer Area -->
-    <footer class="htc__foooter__area gray-bg">
-        <div class="container">
-            <!-- Start Copyright Area -->
-            <div class="htc__copyright__area">
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div class="copyright__inner">
-                            <div class="copyright">
-                                <p>© 2017 <a href="https://freethemescloud.com/">Free themes Cloud</a>
-                                    All Right Reserved.</p>
+
+        <!-- End Login Register Area -->
+        <!-- Start Footer Area -->
+        <footer class="htc__foooter__area gray-bg">
+            <div class="container">
+                <!-- Start Copyright Area -->
+                <div class="htc__copyright__area">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                            <div class="copyright__inner">
+                                <div class="copyright">
+                                    <p>© 2017 <a href="https://freethemescloud.com/">Free themes Cloud</a>
+                                        All Right Reserved.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- End Copyright Area -->
             </div>
-            <!-- End Copyright Area -->
-        </div>
-    </footer>
+        </footer>
+    </div>
     <!-- End Footer Area -->
     <!-- Body main wrapper end -->
     <!-- Placed js at the end of the document so the pages load faster -->
@@ -193,19 +194,19 @@
     <script>
         $('#addAdmin').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
-            $('#spanPass').removeClass( "fa-eye-slash" ).addClass( "fa-eye" );
+            $('#spanPass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#password').get(0).type = 'password';
 
-            $('#spanCpass').removeClass( "fa-eye-slash" ).addClass( "fa-eye" );
+            $('#spanCpass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#cpassword').get(0).type = 'password';
         });
 
         $('#editAdmin').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
-            $('#spanUpass').removeClass( "fa-eye-slash" ).addClass( "fa-eye" );
+            $('#spanUpass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#updatePassword').get(0).type = 'password';
 
-            $('#spanUcpass').removeClass( "fa-eye-slash" ).addClass( "fa-eye" );
+            $('#spanUcpass').removeClass("fa-eye-slash").addClass("fa-eye");
             $('#updateCpassword').get(0).type = 'password';
         });
         $('#password').PassRequirements({
