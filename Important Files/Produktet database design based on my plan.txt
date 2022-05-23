@@ -1,4 +1,4 @@
-Tabela Produktet
+Tabela produktet
 ------------------
 produktID int(11) PRIMARY KEY AUTOINCREMENT
 produkti varchar(150) NOT NULL
@@ -11,8 +11,10 @@ nenKategoriaID int(11) foreign key
 pershkrimi text or largetext
 çmimi decimal
 stoku number
+madhesiaID
+ngjyraID
 ____________________________
-Tabela Kategoria
+Tabela kategoria
 ----------------------------
 kategoriaID int(11)
 kategoria varchar(50) NOT NULL
@@ -21,6 +23,13 @@ Tabela nenKategori
 nenKategoriaID
 nenKategoria
 kategoriaID
-
-
-
+_________________________________________
+Tabela madhesit
+madhesiaID
+madhesia
+kategoriaID
+______________________________________
+Tabela ngjyrat
+ngjyratID
+ngjyra
+kategoriaID
