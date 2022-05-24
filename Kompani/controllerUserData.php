@@ -152,6 +152,7 @@ if (isset($_POST['login'])) {
             if ($status == 'verified') {
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
+                $_SESSION['id'] = $id;
                 header('location: home.php');
             } else {
                 $info = "Ende nuk keni verifikuar Email adresen - $email";

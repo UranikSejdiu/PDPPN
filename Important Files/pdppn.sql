@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 23, 2022 at 04:05 PM
+-- Generation Time: May 24, 2022 at 03:54 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -25,6 +25,17 @@ DELIMITER $$
 --
 -- Procedures
 --
+DROP PROCEDURE IF EXISTS `selKategorit`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `selKategorit` ()  SELECT * FROM kategoria$$
+
+DROP PROCEDURE IF EXISTS `selMadhesit`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `selMadhesit` (IN `id` INT)  SELECT * FROM madhesit
+Where kategoriaID=id$$
+
+DROP PROCEDURE IF EXISTS `selNgjyrat`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `selNgjyrat` (IN `id` INT)  SELECT * FROM ngjyrat
+Where kategoriaID=id$$
+
 DROP PROCEDURE IF EXISTS `selQytet`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `selQytet` ()  Select * From cities$$
 
@@ -39,13 +50,13 @@ DELIMITER ;
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `code` mediumint(50) NOT NULL,
-  `status` text NOT NULL,
+  `status` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `admin`
@@ -64,9 +75,9 @@ INSERT INTO `admin` (`id`, `name`, `email`, `password`, `code`, `status`) VALUES
 DROP TABLE IF EXISTS `cities`;
 CREATE TABLE IF NOT EXISTS `cities` (
   `id_city` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_city`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `cities`
@@ -85,9 +96,18 @@ INSERT INTO `cities` (`id_city`, `name`) VALUES
 DROP TABLE IF EXISTS `kategoria`;
 CREATE TABLE IF NOT EXISTS `kategoria` (
   `kategoriaID` int(11) NOT NULL AUTO_INCREMENT,
-  `kategoria` tinytext NOT NULL,
+  `kategoria` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`kategoriaID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `kategoria`
+--
+
+INSERT INTO `kategoria` (`kategoriaID`, `kategoria`) VALUES
+(1, 'Veshje'),
+(2, 'Këpucë'),
+(3, 'Teknologji');
 
 -- --------------------------------------------------------
 
@@ -98,17 +118,17 @@ CREATE TABLE IF NOT EXISTS `kategoria` (
 DROP TABLE IF EXISTS `kompanite`;
 CREATE TABLE IF NOT EXISTS `kompanite` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `logo` varchar(250) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `logo` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `nrfiskal` int(9) NOT NULL,
-  `lokacioni` varchar(200) NOT NULL,
-  `telefoni` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(999) NOT NULL,
+  `lokacioni` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `telefoni` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(999) COLLATE utf8_unicode_ci NOT NULL,
   `code` mediumint(50) NOT NULL,
-  `status` text NOT NULL,
+  `status` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `kompanite`
@@ -128,12 +148,12 @@ INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefon
 DROP TABLE IF EXISTS `kontaktet`;
 CREATE TABLE IF NOT EXISTS `kontaktet` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `subjekti` varchar(100) NOT NULL,
-  `mesazhi` varchar(500) NOT NULL,
-  `moduli` varchar(50) NOT NULL,
+  `subjekti` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `mesazhi` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `moduli` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `createdDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `kontaktet`
@@ -152,25 +172,21 @@ INSERT INTO `kontaktet` (`id`, `subjekti`, `mesazhi`, `moduli`, `createdDate`) V
 DROP TABLE IF EXISTS `madhesit`;
 CREATE TABLE IF NOT EXISTS `madhesit` (
   `madhesiaID` int(11) NOT NULL AUTO_INCREMENT,
-  `madhesia` varchar(50) NOT NULL,
+  `madhesia` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `kategoriaID` int(11) NOT NULL,
-  PRIMARY KEY (`madhesiaID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+  PRIMARY KEY (`madhesiaID`),
+  KEY `kategoriaMadhesia` (`kategoriaID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Table structure for table `nenkategoria`
+-- Dumping data for table `madhesit`
 --
 
-DROP TABLE IF EXISTS `nenkategoria`;
-CREATE TABLE IF NOT EXISTS `nenkategoria` (
-  `nenKategoriaID` int(11) NOT NULL AUTO_INCREMENT,
-  `nenKategoria` tinytext NOT NULL,
-  `kategoriaID` int(11) NOT NULL,
-  PRIMARY KEY (`nenKategoriaID`),
-  KEY `subCatForeignKey` (`kategoriaID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `madhesit` (`madhesiaID`, `madhesia`, `kategoriaID`) VALUES
+(1, 'M', 1),
+(2, 'L', 1),
+(3, '40', 2),
+(4, '41', 2);
 
 -- --------------------------------------------------------
 
@@ -180,11 +196,23 @@ CREATE TABLE IF NOT EXISTS `nenkategoria` (
 
 DROP TABLE IF EXISTS `ngjyrat`;
 CREATE TABLE IF NOT EXISTS `ngjyrat` (
-  `ngjyratID` int(11) NOT NULL AUTO_INCREMENT,
-  `ngjyra` varchar(50) NOT NULL,
+  `ngjyraID` int(11) NOT NULL AUTO_INCREMENT,
+  `ngjyra` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `kategoriaID` int(11) NOT NULL,
-  PRIMARY KEY (`ngjyratID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`ngjyraID`),
+  KEY `ngjyraKetegorit` (`kategoriaID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ngjyrat`
+--
+
+INSERT INTO `ngjyrat` (`ngjyraID`, `ngjyra`, `kategoriaID`) VALUES
+(1, 'E Zezë', 1),
+(2, 'E Kuqe', 1),
+(3, 'E Kaltër', 1),
+(4, 'E Hirtë', 2),
+(5, 'E Zezë', 2);
 
 -- --------------------------------------------------------
 
@@ -195,17 +223,17 @@ CREATE TABLE IF NOT EXISTS `ngjyrat` (
 DROP TABLE IF EXISTS `perdoruesit`;
 CREATE TABLE IF NOT EXISTS `perdoruesit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fullName` varchar(150) NOT NULL,
+  `fullName` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `id_city` int(11) NOT NULL,
-  `adress` varchar(150) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(999) NOT NULL,
+  `adress` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(999) COLLATE utf8_unicode_ci NOT NULL,
   `code` mediumint(50) NOT NULL,
-  `status` text NOT NULL,
+  `status` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cityForeignKey` (`id_city`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `perdoruesit`
@@ -223,14 +251,13 @@ INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `phone`, `emai
 DROP TABLE IF EXISTS `produktet`;
 CREATE TABLE IF NOT EXISTS `produktet` (
   `produktID` int(11) NOT NULL AUTO_INCREMENT,
-  `produkti` varchar(150) NOT NULL,
-  `imazhi1` varchar(250) NOT NULL,
-  `imazhi2` varchar(250) NOT NULL,
-  `imazhi3` varchar(250) NOT NULL,
-  `imazhi4` varchar(250) NOT NULL,
+  `produkti` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `imazhi1` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `imazhi2` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `imazhi3` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `imazhi4` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `kategoriaID` int(11) NOT NULL,
-  `nenKategoriaID` int(11) DEFAULT NULL,
-  `pershkrimi` mediumtext NOT NULL,
+  `pershkrimi` longtext COLLATE utf8_unicode_ci NOT NULL,
   `qmimi` decimal(15,2) NOT NULL,
   `stoku` int(11) NOT NULL,
   `madhesiaID` int(11) DEFAULT NULL,
@@ -238,21 +265,33 @@ CREATE TABLE IF NOT EXISTS `produktet` (
   `kompaniaID` int(11) NOT NULL,
   PRIMARY KEY (`produktID`),
   KEY `katForeignKey` (`kategoriaID`),
-  KEY `sizeForeignKey` (`madhesiaID`),
   KEY `colorForeignKey` (`ngjyraID`),
-  KEY `nenKatForeignKey` (`nenKategoriaID`),
-  KEY `kompaniaForeignKey` (`kompaniaID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `kompaniaForeignKey` (`kompaniaID`),
+  KEY `sizeKatForeignkey` (`madhesiaID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `produktet`
+--
+
+INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3`, `imazhi4`, `kategoriaID`, `pershkrimi`, `qmimi`, `stoku`, `madhesiaID`, `ngjyraID`, `kompaniaID`) VALUES
+(1, 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'adasd', 3, 'asdasdadsadadsasdadsasd', '321.00', 1, NULL, 4, 5);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `nenkategoria`
+-- Constraints for table `madhesit`
 --
-ALTER TABLE `nenkategoria`
-  ADD CONSTRAINT `subCatForeignKey` FOREIGN KEY (`kategoriaID`) REFERENCES `kategoria` (`kategoriaID`);
+ALTER TABLE `madhesit`
+  ADD CONSTRAINT `kategoriaMadhesia` FOREIGN KEY (`kategoriaID`) REFERENCES `kategoria` (`kategoriaID`);
+
+--
+-- Constraints for table `ngjyrat`
+--
+ALTER TABLE `ngjyrat`
+  ADD CONSTRAINT `ngjyraKetegorit` FOREIGN KEY (`kategoriaID`) REFERENCES `kategoria` (`kategoriaID`);
 
 --
 -- Constraints for table `perdoruesit`
@@ -264,11 +303,10 @@ ALTER TABLE `perdoruesit`
 -- Constraints for table `produktet`
 --
 ALTER TABLE `produktet`
-  ADD CONSTRAINT `colorForeignKey` FOREIGN KEY (`ngjyraID`) REFERENCES `ngjyrat` (`ngjyratID`),
+  ADD CONSTRAINT `colorForeignKey` FOREIGN KEY (`ngjyraID`) REFERENCES `ngjyrat` (`ngjyraID`),
   ADD CONSTRAINT `katForeignKey` FOREIGN KEY (`kategoriaID`) REFERENCES `kategoria` (`kategoriaID`),
   ADD CONSTRAINT `kompaniaForeignKey` FOREIGN KEY (`kompaniaID`) REFERENCES `kompanite` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `nenKatForeignKey` FOREIGN KEY (`nenKategoriaID`) REFERENCES `nenkategoria` (`nenKategoriaID`),
-  ADD CONSTRAINT `sizeForeignKey` FOREIGN KEY (`madhesiaID`) REFERENCES `madhesit` (`madhesiaID`);
+  ADD CONSTRAINT `sizeKatForeignkey` FOREIGN KEY (`madhesiaID`) REFERENCES `madhesit` (`madhesiaID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
