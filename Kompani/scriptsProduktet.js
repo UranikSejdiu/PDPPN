@@ -52,6 +52,82 @@ $(document).ready(function () {
     mytable.search($(this).val()).draw();
   });
 
+  $(document).on("submit", "#insert_produkt", function (e) {
+    e.preventDefault();
+    var name = $("#name").val();
+    var kat = $("#kat").val();
+    var pershkrimi = $("#pershkrimi").val();
+    var qmimi = $("#qmimi").val();
+    var stok = $("#stok").val();
+    var madhesia = $("#madhesia").val();
+    var ngjyra =$("#ngjyra").val();
+    var kompania =$("#kompania").val();
+  
+    var form = document.getElementById("insert_produkt");
+    var logo = $("#logo").val();
+    var formData = new FormData(form);
+    formData.append("action", "addProdukt");
+  
+    if (
+      name != "" &&
+      kat != "" &&
+      pershkrimi != "" &&
+      qmimi != "" &&
+      stok != "" &&
+      kompania != "" &&
+      logo != ""
+    ) {
+      $.ajax({
+        url: "manageProduktet.php",
+        type: "post",
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function (data) {
+          var json = JSON.parse(data);
+          var status = json.status;
+          if (status == "true") {
+            mytable = $("#dtProduktet").DataTable();
+            mytable.draw();
+            $("#addProdukt").modal('hide');
+            $("#image-holder").html("");
+            successAlert("E dhena u shtua me sukses!");
+  
+          } else if (status == "false") {
+            $("#addProdukt").modal('hide');
+            $("#insert_produkt")[0].reset();
+            dangerAlert("Gabim gjate shtimit te dhenave ne databaze!");
+  
+          } else if (status == "passwordError") {
+            $("#addProdukt").modal('hide');
+            $("#insert_produkt")[0].reset();
+            warningAlert("Ju lutem plotësoni kërkesat e fjalekalimit!");
+  
+          } else if (status == "emailError") {
+            $("#addProdukt").modal('hide');
+            $("#insert_produkt")[0].reset();
+            warningAlert("Ekziston kompani me këtë email!");
+  
+          } else if (status == "logoFormat") {
+            $("#addProdukt").modal('hide');
+            $("#insert_produkt")[0].reset();
+            warningAlert("Lejohen vetëm formatet png,jpg,jpeg!");
+  
+          } else if (status == "logoMB") {
+            $("#addProdukt").modal('hide');
+            $("#insert_produkt")[0].reset();
+            warningAlert("Madhësia maksimale duhet të jetë 5MB!");
+  
+          }
+        },
+      });
+    } else {
+      $("#addProdukt").modal('hide');
+      $("#insert_produkt")[0].reset();
+      warningAlert("Ju lutem plotësoni të gjitha fushat!");
+    }
+  });
+
 });
 
 function selMadhesit(id) {
@@ -71,7 +147,7 @@ function selMadhesit(id) {
       } else {
         $('#size').show();
         $("#madhesia").empty();
-        $("#madhesia").append("<option value='" + 0 + "'>" + 'Zgjedh madhësinë' + "</option>");
+        $("#madhesia").append("<option hidden value='" + 0 + "'>" + 'Zgjedh madhësinë' + "</option>");
         for (var i = 0; i < len; i++) {
           var id = data[i]['madhesiaID'];
           var name = data[i]['madhesia'];
@@ -99,7 +175,7 @@ function selNgjyra(id) {
       } else {
         $('#color').show();
         $("#ngjyra").empty();
-        $("#ngjyra").append("<option value='" + 0 + "'>" + 'Zgjedh ngjyrën' + "</option>");
+        $("#ngjyra").append("<option value='" + 0 + "'hidden>" + 'Zgjedh ngjyrën' + "</option>");
         for (var i = 0; i < len; i++) {
           var id = data[i]['ngjyraID'];
           var name = data[i]['ngjyra'];

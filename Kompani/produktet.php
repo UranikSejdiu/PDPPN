@@ -1,4 +1,5 @@
-<?php include('checkSession.php'); ?>
+<?php include('checkSession.php');
+?>
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -119,15 +120,17 @@
                 </div>
                 <div class="modal-body">
                     <form class="login" id="insert_produkt" enctype='multipart/form-data'>
-                        <div class="form-group">
-                            <input type="hidden" name="kompania" id="kompania" value="<?php echo $id; ?>">
-                            <label style="margin-bottom:0;" for="foto">Logoja:</label>
-                            <input style="margin-top:0;border:none;" name="foto" id="foto" type="file">
+                        <input type="hidden" name="kompania" id="kompania" value="<?php echo $id; ?>">
+                        <div class="form-group typeFile" style="border-bottom: 1px solid #8e8e8e;">
+                            <label style="margin-bottom:0;" for="logo">Logoja:</label>
                             <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
-                            <div id="image-holder"></div>
+                            <input style="margin-top:0;border:none;" name="files[]" id="logo" type="file" multiple>
+                            <label for="logo" class="btnGet">Zgjedh logon tuaj</label>
+                            <br>
+                            <div id="image-holder" style="margin-bottom:5px;"></div>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="name">Emri i produktit:</label>
+                            <label style="margin-bottom:0;" for="name">Emri:</label>
                             <input style="margin-top:0;" type="text" name="name" id="name">
                         </div>
                         <div class="form-group">
@@ -145,24 +148,24 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="pershkrimi">Përshkrimi i produktit:</label>
+                            <label style="margin-bottom:0;" for="pershkrimi">Përshkrimi:</label>
                             <textarea rows="5" name="pershkrimi" id="pershkrimi"></textarea>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="qmimi">Çmimi i produktit:</label>
+                            <label style="margin-bottom:0;" for="qmimi">Çmimi:</label>
                             <input style="margin-top:0;" type="number" min="1" step="any" name="qmimi" id="qmimi">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="stok">Stoku i produktit:</label>
+                            <label style="margin-bottom:0;" for="stok">Stoku:</label>
                             <input style="margin-top:0;" type="number" min="1" name="stok" id="stok">
                         </div>
-                        <div class="form-group" id="size">
-                            <label style="margin-bottom:0;" for="lokacioni">Madhësia e produktit:</label>
+                        <div class="form-group" id="size" style="display: none;">
+                            <label style="margin-bottom:0;" for="madhesia">Madhësia:</label>
                             <select name="madhesia" id="madhesia">
                             </select>
                         </div>
-                        <div class="form-group" id="color">
-                            <label style="margin-bottom:0;" for="lokacioni">Ngjyra e produktit:</label>
+                        <div class="form-group" id="color" style="display: none;">
+                            <label style="margin-bottom:0;" for="ngjyra">Ngjyra:</label>
                             <select name="ngjyra" id="ngjyra">
                             </select>
                         </div>
@@ -241,13 +244,24 @@
     <script>
         $('#addProdukt').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
-            $('#size').show();
-            $('#color').show();
+            $('#size').hide();
+            $('#color').hide();
         });
 
         $('#updateProdukt').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
+
+        });
+
+        $("#logo").on('change', function() {
             
+            $('#image-holder').html("");
+
+            var total_file = document.getElementById("logo").files.length;
+            for (var i = 0; i < total_file; i++)
+            {
+                $('#image-holder').append("<img width='150' height='150' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[i]) + "'>");
+            }
         });
     </script>
 </body>

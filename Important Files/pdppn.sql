@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 24, 2022 at 03:54 PM
+-- Generation Time: May 26, 2022 at 02:05 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `kompanite` (
 INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefoni`, `email`, `password`, `code`, `status`) VALUES
 (2, '../images/kompani/1652531410-627fa0d2304fc.jpg', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0006@gmail.com', '$2y$10$Yvf3/GQmVlvMNrda83SKHe/rwYhYkr8EAV2v2swvUqD4eDDNn6ieS', 0, 'verified'),
 (5, '../images/kompani/1652963525-628638c5308e5.png', 'Uranik Sejdiu', 545454598, '42.560057,20.855082', '(+383)44/879-569', 'u.sejdiu4@gmail.com', '$2y$10$Lee7Nl8gMHAh7BvN6t6NWeUYzKwGq4PfFaQPWumt1OyBAprTIg1Hy', 0, 'verified'),
-(10, '../images/kompani/1652791679-6283997f66b8b.png', 'Hewlet Packard', 555555555, '42.697829,23.322001', '(+383)45/555-555', 'u.sejdiu56@gmail.com', '$2y$10$AbP.FHKxvt9xUJMVdVsupu3GO9Wj8KN2VwjWQojtd/7jBsoSy8m36', 0, 'verified');
+(10, '../images/kompani/1652791679-6283997f66b8b.png', 'Hewlet Packard', 555555555, '42.697829,23.322001', '(+383)45/555-555', 'u.sejdiu56@gmail.com', '$2y$10$uoDe4GN.X/1H..VgaZDo4uau5pynsWtfYzEfc4yQKVXHWb5KkLNna', 0, 'verified');
 
 -- --------------------------------------------------------
 
@@ -268,14 +268,15 @@ CREATE TABLE IF NOT EXISTS `produktet` (
   KEY `colorForeignKey` (`ngjyraID`),
   KEY `kompaniaForeignKey` (`kompaniaID`),
   KEY `sizeKatForeignkey` (`madhesiaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `produktet`
 --
 
 INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3`, `imazhi4`, `kategoriaID`, `pershkrimi`, `qmimi`, `stoku`, `madhesiaID`, `ngjyraID`, `kompaniaID`) VALUES
-(1, 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'adasd', 3, 'asdasdadsadadsasdadsasd', '321.00', 1, NULL, 4, 5);
+(1, 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'adasd', 3, 'asdasdadsadadsasdadsasd', '321.00', 1, NULL, 4, 5),
+(2, 'test', 'test', 'test', 'test', 'test', 2, 'testtesttesttesttesttesttest', '222.00', 2, 4, 1, 10);
 
 --
 -- Constraints for dumped tables

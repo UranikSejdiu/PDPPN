@@ -1,11 +1,9 @@
 <?php
 include('checkSession.php');
-
 switch ($_POST["action"]) {
 
     case "fetchalldata":
 
-        $ID = $_SESSION['id'];
 
         $output = array();
         $sql = "SELECT produktet.produktID, produktet.produkti, produktet.imazhi1, produktet.imazhi2, produktet.imazhi3, produktet.imazhi4, kategoria.kategoria, produktet.pershkrimi, produktet.qmimi, produktet.stoku, madhesit.madhesia, ngjyrat.ngjyra, produktet.kompaniaID
@@ -13,18 +11,15 @@ switch ($_POST["action"]) {
         LEFT OUTER JOIN kategoria ON produktet.kategoriaID=kategoria.kategoriaID 
         LEFT OUTER JOIN madhesit ON produktet.madhesiaID=madhesit.madhesiaID 
         LEFT OUTER JOIN ngjyrat ON produktet.ngjyraID=ngjyrat.ngjyraID
-        WHERE  produktet.kompaniaID=$ID";
+        WHERE  produktet.kompaniaID=$id";
 
         $totalQuery = mysqli_query($con, $sql);
         $total_all_rows = mysqli_num_rows($totalQuery);
-        
+
 
         if (isset($_POST['search']['value'])) {
-            $search_value = $_POST['search']['value'];
-            $sql .= " OR produktet.produkti like '" . $search_value . "%'";
-            $sql .= " OR kategoria.kategoria like '" . $search_value . "%'";
-            $sql .= " OR produktet.stoku like '" . $search_value . "%'";
-            $sql .= " OR produktet.qmimi like '" . $search_value . "%'";
+           $search_value = $_POST['search']['value'];
+           $sql .= " AND produktet.produkti like '" . $search_value . "%'";
         }
 
         if (isset($_POST['order'])) {
@@ -44,6 +39,8 @@ switch ($_POST["action"]) {
         $count_rows = mysqli_num_rows($query);
         $data = array();
         while ($row = mysqli_fetch_assoc($query)) {
+           
+            $sub_array = array();
             if ($row['madhesia'] == null) {
                 $madhesia = '&#10005;';
             } else {
@@ -54,7 +51,6 @@ switch ($_POST["action"]) {
             } else {
                 $ngjyra = $row['ngjyra'];
             }
-            $sub_array = array();
             $sub_array[] = $row['produktID'];
             $sub_array[] = $row['produkti'];
             $sub_array[] = $row['imazhi1'];
@@ -63,10 +59,10 @@ switch ($_POST["action"]) {
             $sub_array[] = $row['imazhi4'];
             $sub_array[] = $row['kategoria'];
             $sub_array[] = '<textarea disabled style="overflow-y: auto;resize: none;border: none;">' . $row['pershkrimi'] . '</textarea>';
-            $sub_array[] = $row['qmimi'];
+            $sub_array[] = $row['qmimi'].'€';
             $sub_array[] = $row['stoku'];
             $sub_array[] = $madhesia;
-            $sub_array[] = $row['ngjyra'];
+            $sub_array[] = $ngjyra;
             $sub_array[] = '<a href="javascript:void(0);" data-id="' . $row['produktID'] . '"  class="btn button-success btn-sm editbtnprd" >Ndrysho</a>';
             $sub_array[] =  '<a href="javascript:void(0);" data-id="' . $row['produktID'] . '"  class="btn button-danger btn-sm deleteBtn" >Fshi</a>';
             $data[] = $sub_array;
@@ -80,20 +76,18 @@ switch ($_POST["action"]) {
         );
         echo  json_encode($output);
 
-        break;
+    break;
 
     case "addKompani":
 
         $name = mysqli_real_escape_string($con, $_POST['name']);
-        $fiskal = mysqli_real_escape_string($con, $_POST['fiskal']);
-        $lokacioni = mysqli_real_escape_string($con, $_POST['lokacioni']);
-        $phone = mysqli_real_escape_string($con, $_POST['phone']);
-        $email = mysqli_real_escape_string($con, $_POST['email']);
-        $password = mysqli_real_escape_string($con, $_POST['password']);
-
-        $query = "SELECT * FROM kompanite WHERE email='$email' LIMIT 1";
-        $result = mysqli_query($con, $query);
-        $fetch = mysqli_fetch_assoc($result);
+        $kat = mysqli_real_escape_string($con, $_POST['kat']);
+        $pershkrimi = mysqli_real_escape_string($con, $_POST['pershkrimi']);
+        $qmimi = mysqli_real_escape_string($con, $_POST['qmimi']);
+        $stok = mysqli_real_escape_string($con, $_POST['stok']);
+        $madhesia = mysqli_real_escape_string($con, $_POST['madhesia']);
+        $ngjyra = mysqli_real_escape_string($con, $_POST['ngjyra']);
+        $kompania = mysqli_real_escape_string($con, $_POST['kompania']);
 
         if (isset($_FILES['logo'])) {
             $file_name = $_FILES['logo']['name'];
@@ -106,43 +100,7 @@ switch ($_POST["action"]) {
             $filedestionation = "../images/kompani/" . $uniquename . '.' . $ext;
         }
 
-        if (strlen($password) < '8') {
-            $data = array(
-                'status' => 'passwordError'
-            );
-            echo json_encode($data);
-            return;
-        } elseif (!preg_match("#[0-9]+#", $password)) {
-            $data = array(
-                'status' => 'passwordError'
-            );
-            echo json_encode($data);
-            return;
-        } elseif (!preg_match("#[A-Z]+#", $password)) {
-            $data = array(
-                'status' => 'passwordError'
-            );
-            echo json_encode($data);
-            return;
-        } elseif (!preg_match("#[a-z]+#", $password)) {
-            $data = array(
-                'status' => 'passwordError'
-            );
-            echo json_encode($data);
-            return;
-        } elseif ($fetch !== null) {
-            $data = array(
-                'status' => 'emailError'
-            );
-            echo json_encode($data);
-            return;
-        } elseif (strlen($fiskal) < '8') {
-            $data = array(
-                'status' => 'nrFError'
-            );
-            echo json_encode($data);
-            return;
-        } elseif ($file_name && in_array($ext, $extensions) === false) {
+        if  ($file_name && in_array($ext, $extensions) === false) {
             $data = array(
                 'status' => 'logoFormat'
             );
@@ -161,36 +119,6 @@ switch ($_POST["action"]) {
             $sql = "INSERT INTO kompanite (logo, name, nrfiskal, lokacioni, telefoni, email, password, code, status) values ('$filedestionation', '$name','$fiskal', '$lokacioni','$phone','$email','$hashPassword','$code','$status')";
             $insertData = mysqli_query($con, $sql);
             if ($insertData) {
-                $subject = "Kodi i verifikimit të Email-it";
-                $message = ' <body style="margin: 0;">
-                    <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #f1f5f8; font-family: system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif; min-height: 100vh; padding-left: 1rem; padding-right: 1rem; padding-top: 2rem; padding-bottom: 2rem;">
-                      <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-left: auto; margin-right: auto; max-width: 40rem;">
-                        <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; background-color: #fff; padding: 2rem; box-shadow: 0 4px 8px 0 rgba(0,0,0,.12),0 2px 4px 0 rgba(0,0,0,.08);">
-                          <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; text-align: center; letter-spacing: .05em;">
-                            <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; font-weight: 700; color: #e3342f; font-size: .875rem;">PDPPN</div>
-                            <h1 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; align-items: center; justify-content: center; font-size: 1.875rem;">Konfirmimi i email adresës</h1>
-                          </div>
-                          <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; border-bottom-width: 1px; padding-top: 2rem; padding-bottom: 2rem;">
-                            <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">
-                              Përshendetje ' . $name . ', <br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"><br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;">Përdor kodin më posht për të konfirmuar email adresën dhe pastaj mund të kyçeni në
-                              platformën tonë.
-                            </p>
-                            <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; background-color: #e3342f; border-radius: .25rem; margin-top: 2rem; margin-bottom: 2rem; padding: 1rem; color: #fff; letter-spacing: .05em; text-align: center;" class="text-white tracking-wide bg-red rounded w-full my-8 p-4 ">' . $code . '</h3>
-                            <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; font-size: .875rem;">
-                              Shpresojmë që jeni mirë!<br style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7;"> Nga stafi i PDPPN
-                            </p>
-                          </div>
-                          <div style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin-top: 2rem; text-align: center; color: #606f7b;">
-                            <h3 style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0; margin-bottom: 1rem; font-size: 1rem;">Ju Faleminderit që përdorni shërbimet tona!</h3>
-                            <p style="box-sizing: inherit; border-width: 0; border-style: solid; border-color: #dae1e7; margin: 0;">Ekipi PDPPN</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                   </body>';
-                $sender = 'From: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
-                    'Reply-To: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
-                    'X-Mailer: PHP/' . PHP_EOL . 'Content-type: text/html; charset=UTF-8' . phpversion();
                 if (mail($email, $subject, $message, $sender)) {
                     move_uploaded_file($file_tmp, $filedestionation);
                     $data = array(
