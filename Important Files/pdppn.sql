@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 26, 2022 at 02:05 PM
+-- Generation Time: May 27, 2022 at 02:14 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -98,13 +98,14 @@ CREATE TABLE IF NOT EXISTS `kategoria` (
   `kategoriaID` int(11) NOT NULL AUTO_INCREMENT,
   `kategoria` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `kategoria`
 --
 
 INSERT INTO `kategoria` (`kategoriaID`, `kategoria`) VALUES
+(0, 'E pa cekur'),
 (1, 'Veshje'),
 (2, 'Këpucë'),
 (3, 'Teknologji');
@@ -176,13 +177,14 @@ CREATE TABLE IF NOT EXISTS `madhesit` (
   `kategoriaID` int(11) NOT NULL,
   PRIMARY KEY (`madhesiaID`),
   KEY `kategoriaMadhesia` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `madhesit`
 --
 
 INSERT INTO `madhesit` (`madhesiaID`, `madhesia`, `kategoriaID`) VALUES
+(0, '0', 0),
 (1, 'M', 1),
 (2, 'L', 1),
 (3, '40', 2),
@@ -198,16 +200,17 @@ DROP TABLE IF EXISTS `ngjyrat`;
 CREATE TABLE IF NOT EXISTS `ngjyrat` (
   `ngjyraID` int(11) NOT NULL AUTO_INCREMENT,
   `ngjyra` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `kategoriaID` int(11) NOT NULL,
+  `kategoriaID` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ngjyraID`),
   KEY `ngjyraKetegorit` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `ngjyrat`
 --
 
 INSERT INTO `ngjyrat` (`ngjyraID`, `ngjyra`, `kategoriaID`) VALUES
+(0, '0', 0),
 (1, 'E Zezë', 1),
 (2, 'E Kuqe', 1),
 (3, 'E Kaltër', 1),
@@ -252,10 +255,10 @@ DROP TABLE IF EXISTS `produktet`;
 CREATE TABLE IF NOT EXISTS `produktet` (
   `produktID` int(11) NOT NULL AUTO_INCREMENT,
   `produkti` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `imazhi1` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `imazhi2` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `imazhi3` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `imazhi4` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `imazhi1` varchar(600) COLLATE utf8_unicode_ci NOT NULL,
+  `imazhi2` varchar(600) COLLATE utf8_unicode_ci NOT NULL,
+  `imazhi3` varchar(600) COLLATE utf8_unicode_ci NOT NULL,
+  `imazhi4` varchar(600) COLLATE utf8_unicode_ci NOT NULL,
   `kategoriaID` int(11) NOT NULL,
   `pershkrimi` longtext COLLATE utf8_unicode_ci NOT NULL,
   `qmimi` decimal(15,2) NOT NULL,
@@ -268,15 +271,20 @@ CREATE TABLE IF NOT EXISTS `produktet` (
   KEY `colorForeignKey` (`ngjyraID`),
   KEY `kompaniaForeignKey` (`kompaniaID`),
   KEY `sizeKatForeignkey` (`madhesiaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `produktet`
 --
 
 INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3`, `imazhi4`, `kategoriaID`, `pershkrimi`, `qmimi`, `stoku`, `madhesiaID`, `ngjyraID`, `kompaniaID`) VALUES
-(1, 'asdasd', 'asdasd', 'asdasd', 'asdasd', 'adasd', 3, 'asdasdadsadadsasdadsasd', '321.00', 1, NULL, 4, 5),
-(2, 'test', 'test', 'test', 'test', 'test', 2, 'testtesttesttesttesttesttest', '222.00', 2, 4, 1, 10);
+(17, 'Hewlet Packard', '../images/produktet/1653659980-6290d94c992e4.png', '../images/produktet/1653659980-6290d94c99601.png', '../images/produktet/1653659980-6290d94c99611.png', '../images/produktet/1653659980-6290d94c99625.png', 3, 'asdasdasdadsads', '21.00', 1, 0, 0, 5),
+(18, 'PDPPN', '../images/produktet/1653660030-6290d97e20592.png', '../images/produktet/1653660030-6290d97e20870.png', '../images/produktet/1653660030-6290d97e2087d.png', '../images/produktet/1653660030-6290d97e2088a.png', 1, 'TESTtest TESTtest TESTtest TESTtest TESTtest TESTtest', '122.00', 12, 1, 3, 5),
+(19, 'Company1', '../images/produktet/1653660319-6290da9f50ee8.png', '../images/produktet/1653660319-6290da9f52d1d.png', '../images/produktet/1653660319-6290da9f52d31.png', '../images/produktet/1653660319-6290da9f52e33.png', 2, 'Company1Company1Company1Company1Company1Company1Company1Company1', '123.32', 56, 4, 4, 2),
+(20, 'Company2', '../images/produktet/1653660391-6290dae71e58d.jpg', '../images/produktet/1653660391-6290dae71f14b.jpg', '../images/produktet/1653660391-6290dae71f15c.jpg', '../images/produktet/1653660391-6290dae71f165.jpg', 1, 'asdasdasdasdads', '155.96', 3, 1, 2, 2),
+(21, 'Filan Fisteku', '../images/produktet/1653660434-6290db12c4a63.jpg', '', '', '', 3, 'asdasdasdadsadsadsasd', '1.00', 1, 0, 0, 2),
+(22, 'test', '../images/produktet/1653660626-6290dbd27da1a.png', '', '', '', 3, '44545453', '45.00', 45, 0, 0, 2),
+(23, '111', '../images/produktet/1653660744-6290dc48ca7f9.png', '', '', '', 3, '11', '1.00', 1, 0, 0, 2);
 
 --
 -- Constraints for dumped tables

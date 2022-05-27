@@ -30,7 +30,7 @@
         </header>
         <!-- End Login Register Content -->
         <section class="htc__product__area bg__white">
-            <div class="container">
+            <div class="container" style="width: 80%;">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-style-tab">
@@ -91,7 +91,7 @@
     <!-- End Login Register Area -->
     <!-- Start Footer Area -->
     <footer class="htc__foooter__area gray-bg">
-        <div class="container">
+        <div class="container" >
             <!-- Start Copyright Area -->
             <div class="htc__copyright__area">
                 <div class="row">
@@ -121,15 +121,28 @@
                 <div class="modal-body">
                     <form class="login" id="insert_produkt" enctype='multipart/form-data'>
                         <input type="hidden" name="kompania" id="kompania" value="<?php echo $id; ?>">
-                        <div class="form-group typeFile" style="border-bottom: 1px solid #8e8e8e;">
-                            <label style="margin-bottom:0;" for="logo">Logoja:</label>
-                            <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
-                            <input style="margin-top:0;border:none;" name="files[]" id="logo" type="file" multiple>
-                            <label for="logo" class="btnGet">Zgjedh logon tuaj</label>
-                            <br>
-                            <div id="image-holder" style="margin-bottom:5px;"></div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="image1">Foto 1:</label>&nbsp;
+                            <input style="margin-top:0;border:none;" name="image1" id="image1" type="file">
                         </div>
                         <div class="form-group">
+                            <label style="margin-bottom:0;" for="image2">Foto 2:</label>&nbsp;
+                            <input style="margin-top:0;border:none;" name="image2" id="image2" type="file">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="image3">Foto 3:</label>&nbsp;
+                            <input style="margin-top:0;border:none;" name="image3" id="image3" type="file">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="image4">Foto 4:</label>&nbsp;
+                            <input style="margin-top:0;border:none;" name="image4" id="image4" type="file">
+                        </div>
+                        <div style="display:inline-block;" id="image-holder1"></div>
+                        <div style="display:inline-block;" id="image-holder2"></div>
+                        <div style="display:inline-block;" id="image-holder3"></div>
+                        <div style="display:inline-block;" id="image-holder4" style="margin-bottom:5px;"></div>
+
+                        <div class="form-group" style="margin-top:2%;border-top: 1px solid #8e8e8e;">
                             <label style="margin-bottom:0;" for="name">Emri:</label>
                             <input style="margin-top:0;" type="text" name="name" id="name">
                         </div>
@@ -246,22 +259,36 @@
             $(this).find('form').trigger('reset');
             $('#size').hide();
             $('#color').hide();
+            $('#image-holder1').html("");
+            $('#image-holder2').html("");
+            $('#image-holder3').html("");
+            $('#image-holder4').html("");
         });
 
         $('#updateProdukt').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
+            
 
         });
 
-        $("#logo").on('change', function() {
-            
-            $('#image-holder').html("");
+        $("#image1").on('change', function() {
+            $('#image-holder1').html("");
+            $('#image-holder1').append("<img width='120' height='120' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[0]) + "'>");
+        });
 
-            var total_file = document.getElementById("logo").files.length;
-            for (var i = 0; i < total_file; i++)
-            {
-                $('#image-holder').append("<img width='150' height='150' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[i]) + "'>");
-            }
+        $("#image2").on('change', function() {
+            $('#image-holder2').html("");
+            $('#image-holder2').append("<img width='120' height='120' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[0]) + "'>");
+        });
+
+        $("#image3").on('change', function() {
+            $('#image-holder3').html("");
+            $('#image-holder3').append("<img width='120' height='120' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[0]) + "'>");
+        });
+
+        $("#image4").on('change', function() {
+            $('#image-holder4').html("");
+            $('#image-holder4').append("<img width='120' height='120' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[0]) + "'>");
         });
     </script>
 </body>

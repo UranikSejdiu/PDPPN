@@ -59,24 +59,43 @@ $(document).ready(function () {
     var pershkrimi = $("#pershkrimi").val();
     var qmimi = $("#qmimi").val();
     var stok = $("#stok").val();
+
+    var ngjyra = $("#ngjyra").val();
     var madhesia = $("#madhesia").val();
-    var ngjyra =$("#ngjyra").val();
-    var kompania =$("#kompania").val();
-  
+
+    if (ngjyra == null) {
+      ngjyra = 0;
+    }
+
+    if (madhesia == null) {
+      madhesia = 0;
+    }
+    
+    var kompania = $("#kompania").val();
+
     var form = document.getElementById("insert_produkt");
-    var logo = $("#logo").val();
+    var image2 = $("#image2").val();
+    var image3 = $("#image3").val();
+    var image4 = $("#image4").val();
     var formData = new FormData(form);
+    var file_data1 = $("#image1").prop("file");
+    formData.append("image1", file_data1);
+
+    var file_data2 = $("#image2").prop("file");
+    formData.append("image2", file_data2);
+
+    var file_data3 = $("#image3").prop("file");
+    formData.append("image3", file_data3);
+
+    var file_data4 = $("#image4").prop("file");
+    formData.append("image4", file_data4);
+
     formData.append("action", "addProdukt");
-  
-    if (
-      name != "" &&
-      kat != "" &&
-      pershkrimi != "" &&
-      qmimi != "" &&
-      stok != "" &&
-      kompania != "" &&
-      logo != ""
-    ) {
+    formData.append("ngjyra", ngjyra);
+    formData.append("madhesia", madhesia);
+    console.log(madhesia);
+    console.log(ngjyra);
+    if (name != "" && kat != "" && pershkrimi != "" && qmimi != "" && stok != "" && kompania != "" && image1 != "" && image2 != "" && image3 != "" && image4 != "") {
       $.ajax({
         url: "manageProduktet.php",
         type: "post",
@@ -90,40 +109,30 @@ $(document).ready(function () {
             mytable = $("#dtProduktet").DataTable();
             mytable.draw();
             $("#addProdukt").modal('hide');
-            $("#image-holder").html("");
             successAlert("E dhena u shtua me sukses!");
-  
+            $(this).find('form').trigger('reset');
+
           } else if (status == "false") {
             $("#addProdukt").modal('hide');
-            $("#insert_produkt")[0].reset();
+            $(this).find('form').trigger('reset');
             dangerAlert("Gabim gjate shtimit te dhenave ne databaze!");
-  
-          } else if (status == "passwordError") {
-            $("#addProdukt").modal('hide');
-            $("#insert_produkt")[0].reset();
-            warningAlert("Ju lutem plotësoni kërkesat e fjalekalimit!");
-  
-          } else if (status == "emailError") {
-            $("#addProdukt").modal('hide');
-            $("#insert_produkt")[0].reset();
-            warningAlert("Ekziston kompani me këtë email!");
-  
+
           } else if (status == "logoFormat") {
             $("#addProdukt").modal('hide');
-            $("#insert_produkt")[0].reset();
+            $(this).find('form').trigger('reset');
             warningAlert("Lejohen vetëm formatet png,jpg,jpeg!");
-  
+
           } else if (status == "logoMB") {
             $("#addProdukt").modal('hide');
-            $("#insert_produkt")[0].reset();
+            $(this).find('form').trigger('reset');
             warningAlert("Madhësia maksimale duhet të jetë 5MB!");
-  
+
           }
         },
       });
     } else {
       $("#addProdukt").modal('hide');
-      $("#insert_produkt")[0].reset();
+      $(this).find('form').trigger('reset');
       warningAlert("Ju lutem plotësoni të gjitha fushat!");
     }
   });
@@ -147,7 +156,7 @@ function selMadhesit(id) {
       } else {
         $('#size').show();
         $("#madhesia").empty();
-        $("#madhesia").append("<option hidden value='" + 0 + "'>" + 'Zgjedh madhësinë' + "</option>");
+        $("#madhesia").append("<option  value='" + 0 + "' hidden>" + 'Zgjedh madhësinë' + "</option>");
         for (var i = 0; i < len; i++) {
           var id = data[i]['madhesiaID'];
           var name = data[i]['madhesia'];
@@ -175,7 +184,7 @@ function selNgjyra(id) {
       } else {
         $('#color').show();
         $("#ngjyra").empty();
-        $("#ngjyra").append("<option value='" + 0 + "'hidden>" + 'Zgjedh ngjyrën' + "</option>");
+        $("#ngjyra").append("<option value='" + 0 + "' hidden>" + 'Zgjedh ngjyrën' + "</option>");
         for (var i = 0; i < len; i++) {
           var id = data[i]['ngjyraID'];
           var name = data[i]['ngjyra'];

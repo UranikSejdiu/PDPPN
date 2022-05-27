@@ -18,8 +18,8 @@ switch ($_POST["action"]) {
 
 
         if (isset($_POST['search']['value'])) {
-           $search_value = $_POST['search']['value'];
-           $sql .= " AND produktet.produkti like '" . $search_value . "%'";
+            $search_value = $_POST['search']['value'];
+            $sql .= " AND produktet.produkti like '" . $search_value . "%'";
         }
 
         if (isset($_POST['order'])) {
@@ -39,27 +39,27 @@ switch ($_POST["action"]) {
         $count_rows = mysqli_num_rows($query);
         $data = array();
         while ($row = mysqli_fetch_assoc($query)) {
-           
+
             $sub_array = array();
-            if ($row['madhesia'] == null) {
+            if ($row['madhesia'] == '0') {
                 $madhesia = '&#10005;';
             } else {
                 $madhesia = $row['madhesia'];
             }
-            if ($row['ngjyra'] == null) {
+            if ($row['ngjyra'] == '0') {
                 $ngjyra = '&#10005;';
             } else {
                 $ngjyra = $row['ngjyra'];
             }
             $sub_array[] = $row['produktID'];
             $sub_array[] = $row['produkti'];
-            $sub_array[] = $row['imazhi1'];
-            $sub_array[] = $row['imazhi2'];
-            $sub_array[] = $row['imazhi3'];
-            $sub_array[] = $row['imazhi4'];
+            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="'. $row['imazhi1'] .'">';
+            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="'. $row['imazhi2'] .'">';
+            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="'. $row['imazhi3'] .'">';
+            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="'. $row['imazhi4'] .'">';
             $sub_array[] = $row['kategoria'];
             $sub_array[] = '<textarea disabled style="overflow-y: auto;resize: none;border: none;">' . $row['pershkrimi'] . '</textarea>';
-            $sub_array[] = $row['qmimi'].'€';
+            $sub_array[] = $row['qmimi'] . '€';
             $sub_array[] = $row['stoku'];
             $sub_array[] = $madhesia;
             $sub_array[] = $ngjyra;
@@ -76,9 +76,9 @@ switch ($_POST["action"]) {
         );
         echo  json_encode($output);
 
-    break;
+        break;
 
-    case "addKompani":
+    case "addProdukt":
 
         $name = mysqli_real_escape_string($con, $_POST['name']);
         $kat = mysqli_real_escape_string($con, $_POST['kat']);
@@ -89,48 +89,79 @@ switch ($_POST["action"]) {
         $ngjyra = mysqli_real_escape_string($con, $_POST['ngjyra']);
         $kompania = mysqli_real_escape_string($con, $_POST['kompania']);
 
-        if (isset($_FILES['logo'])) {
-            $file_name = $_FILES['logo']['name'];
-            $uniquename = time() . '-' . uniqid();
-            $file_size = $_FILES['logo']['size'];
-            $file_tmp = $_FILES['logo']['tmp_name'];
-            $file_type = $_FILES['logo']['type'];
-            $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-            $extensions = array("jpeg", "jpg", "png");
-            $filedestionation = "../images/kompani/" . $uniquename . '.' . $ext;
+        if (isset($_FILES['image1'])) {
+            $file_name1 = $_FILES['image1']['name'];
+            $uniquename1 = time() . '-' . uniqid();
+            $file_size1 = $_FILES['image1']['size'];
+            $file_tmp1 = $_FILES['image1']['tmp_name'];
+            $file_type1 = $_FILES['image1']['type'];
+            $ext1 = pathinfo($file_name1, PATHINFO_EXTENSION);
+            $extensions1 = array("jpeg", "jpg", "png");
+            $filedestionation1 = "../images/produktet/" . $uniquename1 . '.' . $ext1;
+        }
+        if (isset($_FILES['image2'])) {
+            $file_name2 = $_FILES['image2']['name'];
+            $uniquename2 = time() . '-' . uniqid();
+            $file_size2 = $_FILES['image2']['size'];
+            $file_tmp2 = $_FILES['image2']['tmp_name'];
+            $file_type2 = $_FILES['image2']['type'];
+            $ext2 = pathinfo($file_name2, PATHINFO_EXTENSION);
+            $extensions2 = array("jpeg", "jpg", "png");
+            $filedestionation2 = "../images/produktet/" . $uniquename2 . '.' . $ext2;
         }
 
-        if  ($file_name && in_array($ext, $extensions) === false) {
+        if (isset($_FILES['image3'])) {
+            $file_name3 = $_FILES['image3']['name'];
+            $uniquename3 = time() . '-' . uniqid();
+            $file_size3 = $_FILES['image3']['size'];
+            $file_tmp3 = $_FILES['image3']['tmp_name'];
+            $file_type3 = $_FILES['image3']['type'];
+            $ext3 = pathinfo($file_name3, PATHINFO_EXTENSION);
+            $extensions3 = array("jpeg", "jpg", "png");
+            $filedestionation3 = "../images/produktet/" . $uniquename3 . '.' . $ext3;
+        }else
+
+        if (isset($_FILES['image4'])) {
+            $file_name4 = $_FILES['image4']['name'];
+            $uniquename4 = time() . '-' . uniqid();
+            $file_size4 = $_FILES['image4']['size'];
+            $file_tmp4 = $_FILES['image4']['tmp_name'];
+            $file_type4 = $_FILES['image4']['type'];
+            $ext4 = pathinfo($file_name4, PATHINFO_EXTENSION);
+            $extensions4 = array("jpeg", "jpg", "png");
+            $filedestionation4 = "../images/produktet/" . $uniquename4 . '.' . $ext4;
+        }
+
+        if ($file_name1 && in_array($ext1, $extensions1) === false || $file_name2 && in_array($ext2, $extensions2) === false || $file_name3 && in_array($ext3, $extensions3) === false || $file_name4 && in_array($ext4, $extensions4) === false) {
             $data = array(
                 'status' => 'logoFormat'
             );
             echo json_encode($data);
             return;
-        } elseif ($file_size > 5097152) {
+        } elseif ($file_size1 > 5097152 || $file_size2 > 5097152 || $file_size3 > 5097152 || $file_size4 > 5097152) {
             $data = array(
                 'status' => 'logoMB'
             );
             echo json_encode($data);
             return;
         } else {
-            $hashPassword = password_hash($password, PASSWORD_BCRYPT);
-            $status = "notverified";
-            $code = rand(999999, 111111);
-            $sql = "INSERT INTO kompanite (logo, name, nrfiskal, lokacioni, telefoni, email, password, code, status) values ('$filedestionation', '$name','$fiskal', '$lokacioni','$phone','$email','$hashPassword','$code','$status')";
-            $insertData = mysqli_query($con, $sql);
-            if ($insertData) {
-                if (mail($email, $subject, $message, $sender)) {
-                    move_uploaded_file($file_tmp, $filedestionation);
-                    $data = array(
-                        'status' => 'true'
-                    );
-                    echo json_encode($data);
-                } else {
-                    $data = array(
-                        'status' => 'false'
-                    );
-                    echo json_encode($data);
-                }
+
+            $sql = "INSERT INTO produktet (produkti, imazhi1, imazhi2, imazhi3, imazhi4, kategoriaID, pershkrimi, qmimi, stoku, madhesiaID, ngjyraID, kompaniaID) values ('$name', '$filedestionation1', '$filedestionation2','$filedestionation3', '$filedestionation4', '$kat', '$pershkrimi', '$qmimi', '$stok', '$madhesia', '$ngjyra', '$kompania')";
+            $query = mysqli_query($con, $sql);
+            if ($query) {
+                move_uploaded_file($file_tmp1, $filedestionation1);
+                move_uploaded_file($file_tmp2, $filedestionation2);
+                move_uploaded_file($file_tmp3, $filedestionation3);
+                move_uploaded_file($file_tmp4, $filedestionation4);
+                $data = array(
+                    'status' => 'true'
+                );
+                echo json_encode($data);
+            } else {
+                $data = array(
+                    'status' => 'false'
+                );
+                echo json_encode($data);
             }
         }
         break;
