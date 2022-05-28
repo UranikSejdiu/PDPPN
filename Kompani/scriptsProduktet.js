@@ -5,6 +5,20 @@ $(document).ready(function () {
     selNgjyra(ID);
   });
 
+  $("select#uKat").on('change', function () {
+    var uID = $("#uKat").val();
+    uSelMadhesit(uID);
+    uSelNgjyra(uID);
+  });
+  $('#updateProdukt').on('shown.bs.modal', function () {
+    var uID = $("#uKat").val();
+    var madhesia = $("#uMadhesia").val()
+    var ngjyra = $("#uNgjyra").val()
+    uSelMadhesit(uID);
+    uSelNgjyra(uID);
+    $("#uMadhesia").val(madhesia);
+    $("#uNgjyra").val(ngjyra)
+  });
 
   $("#dtProduktet").DataTable({
     fnCreatedRow: function (nRow, aData, iDataIndex) {
@@ -70,7 +84,7 @@ $(document).ready(function () {
     if (madhesia == null) {
       madhesia = 0;
     }
-    
+
     var kompania = $("#kompania").val();
 
     var form = document.getElementById("insert_produkt");
@@ -139,6 +153,117 @@ $(document).ready(function () {
 
 });
 
+
+$(document).on("submit", "#update_kompani", function (e) {
+  e.preventDefault();
+  var updateName = $("#updateName").val();
+  var updateFiskal = $("#updateFiskal").val();
+  var updateLokacioni = $("#updateLokacioni").val();
+  var updatePhone = $("#updatePhone").val();
+  var updateEmail = $("#updateEmail").val();
+  var updatePassword = $("#updatePassword").val();
+  var trid = $("#trid").val();
+  var updateIdKomp = $("#updateIdKomp").val();
+  var form = document.getElementById("update_kompani");
+  var file_data = $("#updateLogo").prop("file");
+  var formData = new FormData(form);
+  formData.append("#updateLogo", file_data);
+  formData.append("#updateIdKomp", updateIdKomp);
+  formData.append("action", "updateKompani");
+
+  if (updateName != "" && updateFiskal != "" && updateLokacioni != "" && updatePhone != "" && updateEmail != "" && updatePassword != "") {
+    $.ajax({
+      url: "manageKompani.php",
+      type: "post",
+      processData: false,
+      contentType: false,
+      data: formData,
+      success: function (data) {
+
+        var json = JSON.parse(data);
+        var status = json.status;
+
+        if (status == "true") {
+          table = $("#dtKompani").DataTable();
+          table.draw();
+          $("#updateKompani").modal('hide');
+          $("#updateKompani")[0].reset();
+          successAlert("Ndryshimet u ruajtën me sukses!");
+
+        } else if (status == "false") {
+          $("#updateKompani").modal('hide');
+          $("#updateKompani")[0].reset();
+          dangerAlert("Gabim gjatë ruajtjes së ndryshimit në databazë!");
+
+        } else if (status == "passwordError") {
+          $("#updateKompani").modal('hide');
+          $("#updateKompani")[0].reset();
+          warningAlert("Ju lutem plotësoni kërkesat e fjalekalimit!");
+
+        } else if (status == "emailError") {
+          $("#updateKompani").modal('hide');
+          $("#updateKompani")[0].reset();
+          warningAlert("Ekziston përdorues me këtë email!");
+        }
+      },
+    });
+  } else {
+    $("#updateKompani").modal('hide');
+    $("#updateKompani")[0].reset();
+    warningAlert("Ju lutem plotësoni të gjitha fushat!");
+  }
+});
+
+
+
+
+$("#dtProduktet").on("click", ".editbtnProd ", function (event) {
+  var trid = $(this).closest("tr").attr("id");
+  var id = $(this).data("id");
+  $("#updateProdukt").modal("toggle");
+  uSelMadhesit(id);
+    uSelNgjyra(id);
+  $.ajax({
+    url: "manageProduktet.php",
+    data: {
+      id: id,
+      action: "singleProduktData",
+    },
+    type: "post",
+    success: function (data) {
+      var json = JSON.parse(data);
+      $("#uName").val(json.produkti);
+
+      $("#uImage1").attr("src", json.imazhi1);
+      $("#uImage-holder1").attr("src", json.imazhi1);
+
+      $("#uImage2").attr("src", json.imazhi2);
+      $("#uImage-holder2").attr("src", json.imazhi2);
+
+      $("#uImage3").attr("src", json.imazhi3);
+      $("#uImage-holder3").attr("src", json.imazh3);
+
+      $("#uImage4").attr("src", json.imazhi4);
+      $("#uImage-holder4").attr("src", json.imazhi4);
+
+      $("#uKat").val(json.kategoriaID);
+      $("#uPershkrim").val(json.pershkrimi);
+      $("#uQmimi").val(json.qmimi);
+      $("#uStok").val(json.stoku);
+      $("#uMadhesia").val(json.madhesiaID);
+      $("#uNgjyra").val(json.ngjyraID);
+      
+      $("#updateIdProd").val(id);
+      $("#trid").val(trid);
+    },
+  });
+});
+
+
+
+
+
+
 function selMadhesit(id) {
   var id = id;
   $.ajax({
@@ -195,3 +320,59 @@ function selNgjyra(id) {
   });
 }
 
+
+function uSelMadhesit(id) {
+  var id = id;
+  $.ajax({
+    url: "manageProduktet.php",
+    data: {
+      id: id,
+      action: "uSelMadhesia",
+    },
+    type: "post",
+    dataType: 'json',
+    success: function (data) {
+      var len = data.length;
+      if (len === 0) {
+        $('#uSize').hide();
+      } else {
+        $('#uSize').show();
+        $("#uMadhesia").empty();
+        $("#uMadhesia").append("<option  value='" + 0 + "' hidden>" + 'Zgjedh madhësinë' + "</option>");
+        for (var i = 0; i < len; i++) {
+          var id = data[i]['uMadhesiaID'];
+          var name = data[i]['uMadhesia'];
+          $("#uMadhesia").append("<option value='" + id + "'>" + name + "</option>");
+        }
+      }
+    }
+  });
+}
+
+function uSelNgjyra(id) {
+  var id = id;
+  $.ajax({
+    url: "manageProduktet.php",
+    data: {
+      id: id,
+      action: "uSelNgjyra",
+    },
+    type: "post",
+    dataType: 'json',
+    success: function (data) {
+      var len = data.length;
+      if (len === 0) {
+        $('#uColor').hide();
+      } else {
+        $('#uColor').show();
+        $("#uNgjyra").empty();
+        $("#uNgjyra").append("<option value='" + 0 + "' hidden>" + 'Zgjedh ngjyrën' + "</option>");
+        for (var i = 0; i < len; i++) {
+          var id = data[i]['uNgjyraID'];
+          var name = data[i]['uNgjyra'];
+          $("#uNgjyra").append("<option value='" + id + "'>" + name + "</option>");
+        }
+      }
+    }
+  });
+}

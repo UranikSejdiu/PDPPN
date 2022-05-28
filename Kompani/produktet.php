@@ -91,7 +91,7 @@
     <!-- End Login Register Area -->
     <!-- Start Footer Area -->
     <footer class="htc__foooter__area gray-bg">
-        <div class="container" >
+        <div class="container">
             <!-- Start Copyright Area -->
             <div class="htc__copyright__area">
                 <div class="row">
@@ -200,45 +200,72 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3 class="modal-title" id="myModalLabel">Ndysho të dhënat e kompanisë</h3>
+                    <h3 class="modal-title" id="myModalLabel">Ndysho të dhënat e produktit</h3>
                 </div>
                 <div class="modal-body">
-                    <form class="login" id="update_kompani" enctype='multipart/form-data'>
-                        <input type="hidden" name="updateIdKomp" id="updateIdKomp" value="">
+                    <form class="login" id="update_produkt" enctype='multipart/form-data'>
+                        <input type="hidden" name="updateIdProd" id="updateIdProd" value="">
                         <input type="hidden" name="trid" id="trid" value="">
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="updateLogo">Logoja:</label>
-                            <input style="margin-top:0;border:none;" name="updateLogo" id="updateLogo" type="file">
-                            <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
-                            <div id="image-holderUP">
-                                <img width="100" height="100" id="logoUp" src="" alt="" />
-                            </div>
+                            <label style="margin-bottom:0;" for="uImage1">Foto 1:</label>&nbsp;
+                            <input style="margin-top:0;border:none;" name="uImage1" id="uImage1" type="file">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="updateName">Emri kompanisë:</label>
-                            <input style="margin-top:0;" type="text" name="updateName" id="updateName">
+                            <label style="margin-bottom:0;" for="uImage2">Foto 2:</label>&nbsp;
+                            <input style="margin-top:0;border:none;" name="uImage2" id="uImage2" type="file">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="updateEmail">Email adresa:</label>
-                            <input style="margin-top:0;" type="email" name="updateEmail" id="updateEmail">
+                            <label style="margin-bottom:0;" for="uImage3">Foto 3:</label>&nbsp;
+                            <input style="margin-top:0;border:none;" name="uImage3" id="uImage3" type="file">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="updatePassword">Fjalëkalimi:</label>
-                            <input style="margin-top:0;" type="password" name="updatePassword" id="updatePassword">
-                            <span toggle="#updatePassword" class="fa fa-fw fa-eye field-icon toggle-password" id="spanUpass"></span>
+                            <label style="margin-bottom:0;" for="uImage4">Foto 4:</label>&nbsp;
+                            <input style="margin-top:0;border:none;" name="uImage4" id="uImage4" type="file">
+                        </div>
+                        <div style="display:inline-block;" id="uImage-holder1"></div>
+                        <div style="display:inline-block;" id="uImage-holder2"></div>
+                        <div style="display:inline-block;" id="uImage-holder3"></div>
+                        <div style="display:inline-block;" id="uImage-holder4" style="margin-bottom:5px;"></div>
+
+                        <div class="form-group" style="margin-top:2%;border-top: 1px solid #8e8e8e;">
+                            <label style="margin-bottom:0;" for="uName">Emri:</label>
+                            <input style="margin-top:0;" type="text" name="uName" id="uName">
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="updateFiskal">Numri Fiskal:</label>
-                            <input style="margin-top:0;" type="number" name="updateFiskal" id="updateFiskal" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9">
+                            <label style="margin-bottom:0;" for="uKat">Kategoria:</label>
+                            <select name="uKat" id="uKat" required>
+                                <option selected="selected" hidden>Zgjedh kategorinë: </option>
+                                <?php
+                                $res = mysqli_query($con1, "CALL selKategorit()");
+                                while ($row = $res->fetch_array()) {
+                                ?>
+                                    `<option value="<?php echo $row['kategoriaID']; ?>"><?php echo $row['kategoria']; ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="updatePhone">Numri telefonit:</label>
-                            <input style="margin-top:0;" type="tel" name="updatePhone" id="updatePhone">
+                            <label style="margin-bottom:0;" for="uPershkrim">Përshkrimi:</label>
+                            <textarea rows="5" name="uPershkrimi" id="uPershkrim"></textarea>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="updateLokacioni">Lokacioni</label>
-                            <input class="updateLokacioni" style="margin-top:0;" name="updateLokacioni" id="updateLokacioni" type="text"><br>
-                            <div id="mapContainerUpdate"></div>
+                            <label style="margin-bottom:0;" for="uQmimi">Çmimi:</label>
+                            <input style="margin-top:0;" type="number" min="1" step="any" name="uQmimi" id="uQmimi">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="uStok">Stoku:</label>
+                            <input style="margin-top:0;" type="number" min="1" name="uStok" id="uStok">
+                        </div>
+                        <div class="form-group" id="uSize" style="display: none;">
+                            <label style="margin-bottom:0;" for="uMadhesia">Madhësia:</label>
+                            <select name="uMadhesia" id="uMadhesia">
+                            </select>
+                        </div>
+                        <div class="form-group" id="uColor" style="display: none;">
+                            <label style="margin-bottom:0;" for="uNgjyra">Ngjyra:</label>
+                            <select name="uNgjyra" id="uNgjyra">
+                            </select>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
@@ -267,8 +294,10 @@
 
         $('#updateProdukt').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
-            
-
+            $('#uImage-holder1').html("");
+            $('#uImage-holder2').html("");
+            $('#uImage-holder3').html("");
+            $('#uImage-holder4').html("");
         });
 
         $("#image1").on('change', function() {

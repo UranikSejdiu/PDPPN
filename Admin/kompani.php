@@ -180,7 +180,7 @@
                             <input style="margin-top:0;border:none;" name="updateLogo" id="updateLogo" type="file">
                             <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
                             <div id="image-holderUP">
-                                <img width="100" height="100" id="logoUp" src="" alt=""/>
+                                <img width="100" height="100" id="logoUp" src="" alt="" />
                             </div>
                         </div>
                         <div class="form-group">

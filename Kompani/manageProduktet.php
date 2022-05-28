@@ -53,17 +53,17 @@ switch ($_POST["action"]) {
             }
             $sub_array[] = $row['produktID'];
             $sub_array[] = $row['produkti'];
-            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="'. $row['imazhi1'] .'">';
-            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="'. $row['imazhi2'] .'">';
-            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="'. $row['imazhi3'] .'">';
-            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="'. $row['imazhi4'] .'">';
+            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="' . $row['imazhi1'] . '">';
+            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="' . $row['imazhi2'] . '">';
+            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="' . $row['imazhi3'] . '">';
+            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="' . $row['imazhi4'] . '">';
             $sub_array[] = $row['kategoria'];
             $sub_array[] = '<textarea disabled style="overflow-y: auto;resize: none;border: none;">' . $row['pershkrimi'] . '</textarea>';
             $sub_array[] = $row['qmimi'] . '€';
             $sub_array[] = $row['stoku'];
             $sub_array[] = $madhesia;
             $sub_array[] = $ngjyra;
-            $sub_array[] = '<a href="javascript:void(0);" data-id="' . $row['produktID'] . '"  class="btn button-success btn-sm editbtnprd" >Ndrysho</a>';
+            $sub_array[] = '<a href="javascript:void(0);" data-id="' . $row['produktID'] . '"  class="btn button-success btn-sm editbtnProd" >Ndrysho</a>';
             $sub_array[] =  '<a href="javascript:void(0);" data-id="' . $row['produktID'] . '"  class="btn button-danger btn-sm deleteBtn" >Fshi</a>';
             $data[] = $sub_array;
         }
@@ -119,7 +119,7 @@ switch ($_POST["action"]) {
             $ext3 = pathinfo($file_name3, PATHINFO_EXTENSION);
             $extensions3 = array("jpeg", "jpg", "png");
             $filedestionation3 = "../images/produktet/" . $uniquename3 . '.' . $ext3;
-        }else
+        } else
 
         if (isset($_FILES['image4'])) {
             $file_name4 = $_FILES['image4']['name'];
@@ -165,6 +165,16 @@ switch ($_POST["action"]) {
             }
         }
         break;
+
+    case "singleProduktData":
+        $produktID = $_POST['id'];
+        $sql = "SELECT * FROM  produktet WHERE produktID='$produktID' AND kompaniaID='$id' LIMIT 1";
+        $query = mysqli_query($con, $sql);
+        $row = mysqli_fetch_assoc($query);
+        echo json_encode($row);
+        break;
+
+
 
     case "updateKompani":
         $updateName = mysqli_real_escape_string($con,  $_POST['updateName']);
@@ -313,6 +323,40 @@ switch ($_POST["action"]) {
         // encoding array to json format
         echo json_encode($ngjyrat);
         break;
+
+        case "uSelMadhesia":
+            $id = $_POST['id'];
+            $uMadhesit = array();
+            $sql = "SELECT * FROM  madhesit WHERE kategoriaID ='$id'";
+    
+            $result = mysqli_query($con, $sql);
+    
+            while ($row = mysqli_fetch_array($result)) {
+                $uMadhesiaID = $row['madhesiaID'];
+                $uMadhesia = $row['madhesia'];
+    
+                $uMadhesit[] = array("uMadhesiaID" => $uMadhesiaID, "uMadhesia" => $uMadhesia);
+            }
+            // encoding array to json format
+            echo json_encode($uMadhesit);
+            break;
+    
+        case "uSelNgjyra":
+            $id = $_POST['id'];
+            $uNgjyrat = array();
+            $sql = "SELECT * FROM  ngjyrat WHERE kategoriaID ='$id'";
+    
+            $result = mysqli_query($con, $sql);
+    
+            while ($row = mysqli_fetch_array($result)) {
+                $uNgjyraID = $row['ngjyraID'];
+                $uNgjyra = $row['ngjyra'];
+    
+                $uNgjyrat[] = array("uNgjyraID" => $uNgjyraID, "uNgjyra" => $uNgjyra);
+            }
+            // encoding array to json format
+            echo json_encode($uNgjyrat);
+            break;
 
 
     case "deleteKompani":
