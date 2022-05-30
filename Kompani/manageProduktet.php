@@ -132,13 +132,13 @@ switch ($_POST["action"]) {
             $filedestionation4 = "../images/produktet/" . $uniquename4 . '.' . $ext4;
         }
 
-        if ($file_name1 && in_array($ext1, $extensions1) === false || $file_name2 && in_array($ext2, $extensions2) === false || $file_name3 && in_array($ext3, $extensions3) === false || $file_name4 && in_array($ext4, $extensions4) === false) {
+        if ($file_name1 && in_array($ext1, $extensions1) === false && $file_name2 && in_array($ext2, $extensions2) === false && $file_name3 && in_array($ext3, $extensions3) === false && $file_name4 && in_array($ext4, $extensions4) === false) {
             $data = array(
                 'status' => 'logoFormat'
             );
             echo json_encode($data);
             return;
-        } elseif ($file_size1 > 5097152 || $file_size2 > 5097152 || $file_size3 > 5097152 || $file_size4 > 5097152) {
+        } elseif ($file_size1 > 5097152 && $file_size2 > 5097152 && $file_size3 > 5097152 && $file_size4 > 5097152) {
             $data = array(
                 'status' => 'logoMB'
             );
@@ -176,102 +176,155 @@ switch ($_POST["action"]) {
 
 
 
-    case "updateKompani":
-        $updateName = mysqli_real_escape_string($con,  $_POST['updateName']);
-        $updateFiskal = mysqli_real_escape_string($con,  $_POST['updateFiskal']);
-        $updateLokacioni = mysqli_real_escape_string($con,  $_POST['updateLokacioni']);
-        $updatePhone = mysqli_real_escape_string($con,  $_POST['updatePhone']);
-        $updateEmail = mysqli_real_escape_string($con,  $_POST['updateEmail']);
-        $updatePassword = mysqli_real_escape_string($con,  $_POST['updatePassword']);
-        $updateIdKomp = mysqli_real_escape_string($con,  $_POST['updateIdKomp']);
+    case "updateProdukt":
+        $uName = mysqli_real_escape_string($con,  $_POST['uName']);
+        $uKat = mysqli_real_escape_string($con,  $_POST['uKat']);
+        $uPershkrim = mysqli_real_escape_string($con,  $_POST['uPershkrimi']);
+        $uQmimi = mysqli_real_escape_string($con,  $_POST['uQmimi']);
+        $uStok = mysqli_real_escape_string($con,  $_POST['uStok']);
+        $uMadhesia = mysqli_real_escape_string($con,  $_POST['uMadhesia']);
+        $uNgjyra = mysqli_real_escape_string($con,  $_POST['uNgjyra']);
+        $updateIdProd = mysqli_real_escape_string($con,  $_POST['updateIdProd']);
+        $oldMadhesia = mysqli_real_escape_string($con,  $_POST['oldMadhesia']);
+        $oldNgjyra = mysqli_real_escape_string($con,  $_POST['oldNgjyra']);
 
-        if (isset($_FILES['updateLogo'])) {
-            $file_name = $_FILES['updateLogo']['name'];
-            $uniquename = time() . '-' . uniqid();
-            $file_size = $_FILES['updateLogo']['size'];
-            $file_tmp = $_FILES['updateLogo']['tmp_name'];
-            $file_type = $_FILES['updateLogo']['type'];
-            $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-            $extensions = array("jpeg", "jpg", "png");
-            $filedestionation = "../images/kompani/" . $uniquename . '.' . $ext;
+        if (isset($_FILES['uImage1'])) {
+            $file_name1 = $_FILES['uImage1']['name'];
+            $uniquename1 = time() . '-' . uniqid();
+            $file_size1 = $_FILES['uImage1']['size'];
+            $file_tmp1 = $_FILES['uImage1']['tmp_name'];
+            $file_type1 = $_FILES['uImage1']['type'];
+            $ext1 = pathinfo($file_name1, PATHINFO_EXTENSION);
+            $extensions1 = array("jpeg", "jpg", "png");
+            $filedestionation1 = "../images/produktet/" . $uniquename1 . '.' . $ext1;
+        }
+
+        if (isset($_FILES['uImage2'])) {
+            $file_name2 = $_FILES['uImage2']['name'];
+            $uniquename2 = time() . '-' . uniqid();
+            $file_size2 = $_FILES['uImage2']['size'];
+            $file_tmp2 = $_FILES['uImage2']['tmp_name'];
+            $file_type2 = $_FILES['uImage2']['type'];
+            $ext2 = pathinfo($file_name2, PATHINFO_EXTENSION);
+            $extensions2 = array("jpeg", "jpg", "png");
+            $filedestionation2 = "../images/produktet/" . $uniquename2 . '.' . $ext2;
+        }
+
+        if (isset($_FILES['uImage3'])) {
+            $file_name3 = $_FILES['uImage3']['name'];
+            $uniquename3 = time() . '-' . uniqid();
+            $file_size3 = $_FILES['uImage3']['size'];
+            $file_tmp3 = $_FILES['uImage3']['tmp_name'];
+            $file_type3 = $_FILES['uImage3']['type'];
+            $ext3 = pathinfo($file_name3, PATHINFO_EXTENSION);
+            $extensions3 = array("jpeg", "jpg", "png");
+            $filedestionation3 = "../images/produktet/" . $uniquename3 . '.' . $ext3;
+        }
+
+        if (isset($_FILES['uImage4'])) {
+            $file_name4 = $_FILES['uImage4']['name'];
+            $uniquename4 = time() . '-' . uniqid();
+            $file_size4 = $_FILES['uImage4']['size'];
+            $file_tmp4 = $_FILES['uImage4']['tmp_name'];
+            $file_type4 = $_FILES['uImage4']['type'];
+            $ext4 = pathinfo($file_name4, PATHINFO_EXTENSION);
+            $extension4 = array("jpeg", "jpg", "png");
+            $filedestionation4 = "../images/produktet/" . $uniquename4 . '.' . $ext4;
         }
 
 
-        $query1 = "SELECT * FROM kompanite WHERE id=$updateIdKomp LIMIT 1";
+        $query1 = "SELECT * FROM produktet WHERE produktID=$updateIdProd LIMIT 1";
         $sql = mysqli_query($con, $query1);
         while ($row = $sql->fetch_assoc()) {
-            $fjalekalimibackup = $row['password'];
-            $emailbackup = $row['email'];
-            $photoBackup = $row['logo'];
+            $img1 = $row['imazhi1'];
+            $img2 = $row['imazhi2'];
+            $img3 = $row['imazhi3'];
+            $img4 = $row['imazhi4'];
+            $backupMadhesia = $row['madhesiaID'];
+            $backupNgjyra = $row['ngjyraID'];
         }
-        if ($updatePassword) {
-            if ($updatePassword != $fjalekalimibackup) {
-                if (strlen($updatePassword) <= '8') {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                } elseif (!preg_match("#[0-9]+#", $updatePassword)) {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                } elseif (!preg_match("#[A-Z]+#", $updatePassword)) {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                } elseif (!preg_match("#[a-z]+#", $updatePassword)) {
-                    $data = array(
-                        'status' => 'passwordError'
-                    );
-                    echo json_encode($data);
-                    return;
-                }
-                $newPassword = password_hash($updatePassword, PASSWORD_BCRYPT);
-            } else {
-                $newPassword = $updatePassword;
-            }
-        }
-        if ($updateEmail == $emailbackup) {
-            $updateEmail = $emailbackup;
-        } else {
-            $user_check_query = "SELECT * FROM kompanite WHERE email='$updateEmail' LIMIT 1";
-            $result = mysqli_query($con, $user_check_query);
-            $user = mysqli_fetch_assoc($result);
-            if ($user['email'] === $updateEmail) {
-                $data = array('status' => 'emailError');
-                echo json_encode($data);
-                return;
-            }
-        }
-        if (!empty($file_name)) {
-            if ($file_name && in_array($ext, $extensions) === false) {
+        if (!empty($file_name1) && !empty($file_name2) && !empty($file_name3) && !empty($file_name4)) {
+            if ($file_name1 && in_array($ext1, $extensions1) === false && $file_name2 && in_array($ext2, $extensions2) === false && $file_name3 && in_array($ext3, $extensions3) === false && $file_name4 && in_array($ext4, $extensions4) === false) {
                 $data = array(
                     'status' => 'logoFormat'
                 );
                 echo json_encode($data);
                 return;
-            } elseif ($file_size > 5097152) {
+            } elseif ($file_size1 > 5097152 && $file_size2 > 5097152 && $file_size3 > 5097152 && $file_size4 > 5097152) {
                 $data = array(
                     'status' => 'logoMB'
                 );
                 echo json_encode($data);
                 return;
-            } else {
-                $sql = "UPDATE kompanite SET logo = '$filedestionation' WHERE id = $updateIdKomp";
-                unlink($photoBackup);
-                move_uploaded_file($file_tmp, $filedestionation);
-                mysqli_query($con, $sql);
+            } elseif ($filedestionation1 != $img1) {
+                $sql = "UPDATE produktet SET imazhi1 = '$filedestionation1' WHERE produktID = $updateIdProd";
+                if ($query = mysqli_query($con, $sql)) {
+                    move_uploaded_file($file_tmp1, $filedestionation1);
+                    unlink($img1);
+                } else {
+                    $data = array(
+                        'status' => 'imgFail'
+                    );
+                    echo json_encode($data);
+                    return;
+                }
+            } elseif ($filedestionation2 != $img2) {
+                $sql = "UPDATE produktet SET imazhi2 = '$filedestionation2' WHERE produktID = $updateIdProd";
+                if ($query = mysqli_query($con, $sql)) {
+                    move_uploaded_file($file_tmp2, $filedestionation2);
+                    unlink($img2);
+                } else {
+                    $data = array(
+                        'status' => 'imgFail'
+                    );
+                    echo json_encode($data);
+                    return;
+                }
+            } elseif ($filedestionation3 != $img3) {
+                $sql = "UPDATE produktet SET imazhi3 = '$filedestionation3' WHERE produktID = $updateIdProd";
+                if ($query = mysqli_query($con, $sql)) {
+                    move_uploaded_file($file_tmp3, $filedestionation3);
+                    unlink($img3);
+                } else {
+                    $data = array(
+                        'status' => 'imgFail'
+                    );
+                    echo json_encode($data);
+                    return;
+                }
+            } elseif ($filedestionation4 != $img4) {
+                $sql = "UPDATE produktet SET imazhi4 = '$filedestionation4' WHERE produktID = $updateIdProd";
+                if ($query = mysqli_query($con, $sql)) {
+                    move_uploaded_file($file_tmp4, $filedestionation4);
+                    unlink($img4);
+                } else {
+                    $data = array(
+                        'status' => 'imgFail'
+                    );
+                    echo json_encode($data);
+                    return;
+                }
             }
         }
+        if ($uMadhesia != null) {
+            if ($uMadhesia == $oldMadhesia ) {
+                $madhesia = $uMadhesia;
+            }
+        }else {
+            $madhesia= $backupMadhesia;
+        }
+        if ($uNgjyra != null) {
+            if ($uNgjyra == $oldNgjyra ) {
+                $ngjyra = $uNgjyra;
+            }
+        }else {
+            $ngjyra= $backupMadhesia;
+        }
 
-        $sql = "UPDATE kompanite SET  name='$updateName' , nrfiskal= '$updateFiskal', lokacioni='$updateLokacioni', telefoni='$updatePhone', email='$updateEmail', password='$newPassword' WHERE id=$updateIdKomp";
-        $query = mysqli_query($con, $sql);
-        if ($query == true) {
+
+        $sql = "UPDATE produktet SET  produkti='$uName' , kategoriaID= '$uKat', pershkrimi='$uPershkrim', qmimi='$uQmimi', stoku='$uStok', madhesiaID='$madhesia', ngjyraID='$ngjyra' WHERE produktID=$updateIdProd";
+        $insert = mysqli_query($con, $sql);
+        if ($insert == true) {
 
             $data = array(
                 'status' => 'true',
@@ -324,39 +377,39 @@ switch ($_POST["action"]) {
         echo json_encode($ngjyrat);
         break;
 
-        case "uSelMadhesia":
-            $id = $_POST['id'];
-            $uMadhesit = array();
-            $sql = "SELECT * FROM  madhesit WHERE kategoriaID ='$id'";
-    
-            $result = mysqli_query($con, $sql);
-    
-            while ($row = mysqli_fetch_array($result)) {
-                $uMadhesiaID = $row['madhesiaID'];
-                $uMadhesia = $row['madhesia'];
-    
-                $uMadhesit[] = array("uMadhesiaID" => $uMadhesiaID, "uMadhesia" => $uMadhesia);
-            }
-            // encoding array to json format
-            echo json_encode($uMadhesit);
-            break;
-    
-        case "uSelNgjyra":
-            $id = $_POST['id'];
-            $uNgjyrat = array();
-            $sql = "SELECT * FROM  ngjyrat WHERE kategoriaID ='$id'";
-    
-            $result = mysqli_query($con, $sql);
-    
-            while ($row = mysqli_fetch_array($result)) {
-                $uNgjyraID = $row['ngjyraID'];
-                $uNgjyra = $row['ngjyra'];
-    
-                $uNgjyrat[] = array("uNgjyraID" => $uNgjyraID, "uNgjyra" => $uNgjyra);
-            }
-            // encoding array to json format
-            echo json_encode($uNgjyrat);
-            break;
+    case "uSelMadhesia":
+        $id = $_POST['id'];
+        $uMadhesit = array();
+        $sql = "SELECT * FROM  madhesit WHERE kategoriaID ='$id'";
+
+        $result = mysqli_query($con, $sql);
+
+        while ($row = mysqli_fetch_array($result)) {
+            $uMadhesiaID = $row['madhesiaID'];
+            $uMadhesia = $row['madhesia'];
+
+            $uMadhesit[] = array("uMadhesiaID" => $uMadhesiaID, "uMadhesia" => $uMadhesia);
+        }
+        // encoding array to json format
+        echo json_encode($uMadhesit);
+        break;
+
+    case "uSelNgjyra":
+        $id = $_POST['id'];
+        $uNgjyrat = array();
+        $sql = "SELECT * FROM  ngjyrat WHERE kategoriaID ='$id'";
+
+        $result = mysqli_query($con, $sql);
+
+        while ($row = mysqli_fetch_array($result)) {
+            $uNgjyraID = $row['ngjyraID'];
+            $uNgjyra = $row['ngjyra'];
+
+            $uNgjyrat[] = array("uNgjyraID" => $uNgjyraID, "uNgjyra" => $uNgjyra);
+        }
+        // encoding array to json format
+        echo json_encode($uNgjyrat);
+        break;
 
 
     case "deleteKompani":

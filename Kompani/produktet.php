@@ -239,15 +239,15 @@
                                 $res = mysqli_query($con1, "CALL selKategorit()");
                                 while ($row = $res->fetch_array()) {
                                 ?>
-                                    `<option value="<?php echo $row['kategoriaID']; ?>"><?php echo $row['kategoria']; ?></option>
+                                    <option value="<?php echo $row['kategoriaID']; ?>"><?php echo $row['kategoria']; ?></option>
                                 <?php
                                 }
                                 ?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="uPershkrim">Përshkrimi:</label>
-                            <textarea rows="5" name="uPershkrimi" id="uPershkrim"></textarea>
+                            <label style="margin-bottom:0;" for="uPershkrimi">Përshkrimi:</label>
+                            <textarea rows="5" name="uPershkrimi" id="uPershkrimi"></textarea>
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="uQmimi">Çmimi:</label>
@@ -257,15 +257,17 @@
                             <label style="margin-bottom:0;" for="uStok">Stoku:</label>
                             <input style="margin-top:0;" type="number" min="1" name="uStok" id="uStok">
                         </div>
-                        <div class="form-group" id="uSize" style="display: none;">
+                        <div class="form-group" id="uSize">
                             <label style="margin-bottom:0;" for="uMadhesia">Madhësia:</label>
                             <select name="uMadhesia" id="uMadhesia">
                             </select>
+                            <input type="hidden" id="oldMadhesia">
                         </div>
-                        <div class="form-group" id="uColor" style="display: none;">
+                        <div class="form-group" id="uColor">
                             <label style="margin-bottom:0;" for="uNgjyra">Ngjyra:</label>
                             <select name="uNgjyra" id="uNgjyra">
                             </select>
+                            <input type="hidden" id="oldNgjyra">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
@@ -291,9 +293,10 @@
             $('#image-holder3').html("");
             $('#image-holder4').html("");
         });
-
         $('#updateProdukt').on('hidden.bs.modal', function() {
             $(this).find('form').trigger('reset');
+            $('#size').hide();
+            $('#color').hide();
             $('#uImage-holder1').html("");
             $('#uImage-holder2').html("");
             $('#uImage-holder3').html("");
@@ -318,6 +321,26 @@
         $("#image4").on('change', function() {
             $('#image-holder4').html("");
             $('#image-holder4').append("<img width='120' height='120' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[0]) + "'>");
+        });
+
+        $("#uImage1").on('change', function() {
+            $('#uImage-holder1').html("");
+            $('#uImage-holder1').append("<img width='120' height='120' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[0]) + "'>");
+        });
+
+        $("#uImage2").on('change', function() {
+            $('#uImage-holder2').html("");
+            $('#uImage-holder2').append("<img width='120' height='120' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[0]) + "'>");
+        });
+
+        $("#uImage3").on('change', function() {
+            $('#uImage-holder3').html("");
+            $('#uImage-holder3').append("<img width='120' height='120' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[0]) + "'>");
+        });
+
+        $("#uImage4").on('change', function() {
+            $('#uImage-holder4').html("");
+            $('#uImage-holder4').append("<img width='120' height='120' style='padding:2px;' src='" + URL.createObjectURL(event.target.files[0]) + "'>");
         });
     </script>
 </body>

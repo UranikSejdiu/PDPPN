@@ -9,17 +9,20 @@ $(document).ready(function () {
     var uID = $("#uKat").val();
     uSelMadhesit(uID);
     uSelNgjyra(uID);
+    var madhesia = $('#oldMadhesia').val();
+    var ngjyra = $('#oldNgjyra').val();
+
+    $('#uMadhesia').val(madhesia);
+    $('#uNgjyra').val(ngjyra);
+    console.log($('#uMadhesia').val());
+    console.log($('#uNgjyra').val());
   });
   $('#updateProdukt').on('shown.bs.modal', function () {
     var uID = $("#uKat").val();
-    var madhesia = $("#uMadhesia").val()
-    var ngjyra = $("#uNgjyra").val()
     uSelMadhesit(uID);
     uSelNgjyra(uID);
-    $("#uMadhesia").val(madhesia);
-    $("#uNgjyra").val(ngjyra)
-  });
 
+  });
   $("#dtProduktet").DataTable({
     fnCreatedRow: function (nRow, aData, iDataIndex) {
       $(nRow).attr("id", aData[0]);
@@ -88,6 +91,7 @@ $(document).ready(function () {
     var kompania = $("#kompania").val();
 
     var form = document.getElementById("insert_produkt");
+    var image1 = $("#image1").val();
     var image2 = $("#image2").val();
     var image3 = $("#image3").val();
     var image4 = $("#image4").val();
@@ -154,26 +158,52 @@ $(document).ready(function () {
 });
 
 
-$(document).on("submit", "#update_kompani", function (e) {
+$(document).on("submit", "#update_produkt", function (e) {
   e.preventDefault();
-  var updateName = $("#updateName").val();
-  var updateFiskal = $("#updateFiskal").val();
-  var updateLokacioni = $("#updateLokacioni").val();
-  var updatePhone = $("#updatePhone").val();
-  var updateEmail = $("#updateEmail").val();
-  var updatePassword = $("#updatePassword").val();
-  var trid = $("#trid").val();
-  var updateIdKomp = $("#updateIdKomp").val();
-  var form = document.getElementById("update_kompani");
-  var file_data = $("#updateLogo").prop("file");
-  var formData = new FormData(form);
-  formData.append("#updateLogo", file_data);
-  formData.append("#updateIdKomp", updateIdKomp);
-  formData.append("action", "updateKompani");
+  var uName = $("#uName").val();
+  var uKat = $("#uKat").val();
+  var uPershkrimi = $("#uPershkrimi").val();
+  var uQmimi = $("#uQmimi").val();
+  var uStok = $("#uStok").val();
+  var uMadhesia = $("#uMadhesia").val();
+  var oldMadhesia = $("#oldMadhesia").val();
+  var uNgjyra = $("#uNgjyra").val();
+  var oldNgjyra = $("#oldNgjyra").val();
 
-  if (updateName != "" && updateFiskal != "" && updateLokacioni != "" && updatePhone != "" && updateEmail != "" && updatePassword != "") {
+  var uImage1 = $("#uImage1").val();
+  var uImage2 = $("#uImage2").val();
+  var uImage3 = $("#uImage3").val();
+  var uImage4 = $("#uImage4").val();
+  if (uMadhesia == null) {
+    uMadhesia = 0;
+  }
+
+  if (uNgjyra == null) {
+    uNgjyra = 0;
+  }
+  var trid = $("#trid").val();
+  var updateIdProd = $("#updateIdProd").val();
+  var form = document.getElementById("update_produkt");
+
+  var formData = new FormData(form);
+  var file_data1 = $("#uImage1").prop("file");
+  var file_data2 = $("#uImage2").prop("file");
+  var file_data3 = $("#uImage3").prop("file");
+  var file_data4 = $("#uImage4").prop("file");
+  formData.append("#uImage1", file_data1);
+  formData.append("#uImage2", file_data2);
+  formData.append("#uImage3", file_data3);
+  formData.append("#uImage4", file_data4);
+  formData.append("uNgjyra", uNgjyra);
+  formData.append("uMadhesia", uMadhesia);
+  formData.append("oldNgjyra", oldNgjyra);
+  formData.append("oldMadhesia", oldMadhesia);
+  formData.append("#updateIdProd", updateIdProd);
+  formData.append("action", "updateProdukt");
+
+  if (uName != "" && uKat != "" && uPershkrimi != "" && uStok != "") {
     $.ajax({
-      url: "manageKompani.php",
+      url: "manageProduktet.php",
       type: "post",
       processData: false,
       contentType: false,
@@ -184,32 +214,32 @@ $(document).on("submit", "#update_kompani", function (e) {
         var status = json.status;
 
         if (status == "true") {
-          table = $("#dtKompani").DataTable();
+          table = $("#dtProduktet").DataTable();
           table.draw();
-          $("#updateKompani").modal('hide');
-          $("#updateKompani")[0].reset();
+          $("#updateProdukt").modal('hide');
+          $(this).find('form').trigger('reset');
           successAlert("Ndryshimet u ruajtën me sukses!");
 
         } else if (status == "false") {
-          $("#updateKompani").modal('hide');
-          $("#updateKompani")[0].reset();
+          $("#updateProdukt").modal('hide');
+          $(this).find('form').trigger('reset');
           dangerAlert("Gabim gjatë ruajtjes së ndryshimit në databazë!");
 
         } else if (status == "passwordError") {
-          $("#updateKompani").modal('hide');
-          $("#updateKompani")[0].reset();
+          $("#updateProdukt").modal('hide');
+          $(this).find('form').trigger('reset');
           warningAlert("Ju lutem plotësoni kërkesat e fjalekalimit!");
 
         } else if (status == "emailError") {
-          $("#updateKompani").modal('hide');
-          $("#updateKompani")[0].reset();
+          $("#updateProdukt").modal('hide');
+          $(this).find('form').trigger('reset');
           warningAlert("Ekziston përdorues me këtë email!");
         }
       },
     });
   } else {
-    $("#updateKompani").modal('hide');
-    $("#updateKompani")[0].reset();
+    $("#updateProdukt").modal('hide');
+    $(this).find('form').trigger('reset');
     warningAlert("Ju lutem plotësoni të gjitha fushat!");
   }
 });
@@ -222,7 +252,7 @@ $("#dtProduktet").on("click", ".editbtnProd ", function (event) {
   var id = $(this).data("id");
   $("#updateProdukt").modal("toggle");
   uSelMadhesit(id);
-    uSelNgjyra(id);
+  uSelNgjyra(id);
   $.ajax({
     url: "manageProduktet.php",
     data: {
@@ -233,26 +263,17 @@ $("#dtProduktet").on("click", ".editbtnProd ", function (event) {
     success: function (data) {
       var json = JSON.parse(data);
       $("#uName").val(json.produkti);
-
       $("#uImage1").attr("src", json.imazhi1);
-      $("#uImage-holder1").attr("src", json.imazhi1);
-
       $("#uImage2").attr("src", json.imazhi2);
-      $("#uImage-holder2").attr("src", json.imazhi2);
-
       $("#uImage3").attr("src", json.imazhi3);
-      $("#uImage-holder3").attr("src", json.imazh3);
-
       $("#uImage4").attr("src", json.imazhi4);
-      $("#uImage-holder4").attr("src", json.imazhi4);
-
       $("#uKat").val(json.kategoriaID);
-      $("#uPershkrim").val(json.pershkrimi);
+      $("#uPershkrimi").val(json.pershkrimi);
       $("#uQmimi").val(json.qmimi);
       $("#uStok").val(json.stoku);
-      $("#uMadhesia").val(json.madhesiaID);
-      $("#uNgjyra").val(json.ngjyraID);
-      
+      $("#oldMadhesia").val(json.madhesiaID);
+      $("#oldNgjyra").val(json.ngjyraID);
+
       $("#updateIdProd").val(id);
       $("#trid").val(trid);
     },

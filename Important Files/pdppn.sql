@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 27, 2022 at 02:14 PM
+-- Generation Time: May 30, 2022 at 03:57 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `kategoria` (
   `kategoriaID` int(11) NOT NULL AUTO_INCREMENT,
   `kategoria` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `kategoria`
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `madhesit` (
   `kategoriaID` int(11) NOT NULL,
   PRIMARY KEY (`madhesiaID`),
   KEY `kategoriaMadhesia` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `madhesit`
@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `ngjyrat` (
   `kategoriaID` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ngjyraID`),
   KEY `ngjyraKetegorit` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `ngjyrat`
@@ -284,7 +284,7 @@ INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3
 (20, 'Company2', '../images/produktet/1653660391-6290dae71e58d.jpg', '../images/produktet/1653660391-6290dae71f14b.jpg', '../images/produktet/1653660391-6290dae71f15c.jpg', '../images/produktet/1653660391-6290dae71f165.jpg', 1, 'asdasdasdasdads', '155.96', 3, 1, 2, 2),
 (21, 'Filan Fisteku', '../images/produktet/1653660434-6290db12c4a63.jpg', '', '', '', 3, 'asdasdasdadsadsadsasd', '1.00', 1, 0, 0, 2),
 (22, 'test', '../images/produktet/1653660626-6290dbd27da1a.png', '', '', '', 3, '44545453', '45.00', 45, 0, 0, 2),
-(23, '111', '../images/produktet/1653660744-6290dc48ca7f9.png', '', '', '', 3, '11', '1.00', 1, 0, 0, 2);
+(23, '111', '../images/produktet/1653660744-6290dc48ca7f9.png', '', '', '', 3, '65656565656565', '1.00', 1, 0, 0, 2);
 
 --
 -- Constraints for dumped tables
