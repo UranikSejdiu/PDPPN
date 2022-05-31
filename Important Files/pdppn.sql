@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 31, 2022 at 12:15 PM
+-- Generation Time: May 31, 2022 at 12:31 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `kompanite` (
 
 INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefoni`, `email`, `password`, `code`, `status`) VALUES
 (2, '../images/kompani/1652531410-627fa0d2304fc.jpg', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0006@gmail.com', '$2y$10$Yvf3/GQmVlvMNrda83SKHe/rwYhYkr8EAV2v2swvUqD4eDDNn6ieS', 0, 'verified'),
-(5, '../images/kompani/1652963525-628638c5308e5.png', 'Uranik Sejdiu', 545454598, '42.560057,20.855082', '(+383)44/879-569', 'u.sejdiu4@gmail.com', '$2y$10$Lee7Nl8gMHAh7BvN6t6NWeUYzKwGq4PfFaQPWumt1OyBAprTIg1Hy', 0, 'verified'),
+(5, '../images/kompani/1652963525-628638c5308e5.png', 'Uranik Sejdiu', 545454598, '41.521431,14.106445', '(+383)44/879-569', 'u.sejdiu4@gmail.com', '$2y$10$eWY04Hw/SIYuioxO1zKc7OcQNDLkm/FWC.Fz/OpIGN1eay7YayU7i', 0, 'verified'),
 (10, '../images/kompani/1652791679-6283997f66b8b.png', 'Hewlet Packard', 555555555, '42.697829,23.322001', '(+383)45/555-555', 'u.sejdiu56@gmail.com', '$2y$10$uoDe4GN.X/1H..VgaZDo4uau5pynsWtfYzEfc4yQKVXHWb5KkLNna', 0, 'verified');
 
 -- --------------------------------------------------------
@@ -278,8 +278,8 @@ CREATE TABLE IF NOT EXISTS `produktet` (
 --
 
 INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3`, `imazhi4`, `kategoriaID`, `pershkrimi`, `qmimi`, `stoku`, `madhesiaID`, `ngjyraID`, `kompaniaID`) VALUES
-(17, 'Hewlet Packard', '../images/produktet/1653659980-6290d94c992e4.png', '../images/produktet/1653659980-6290d94c99601.png', '../images/produktet/1653659980-6290d94c99611.png', '../images/produktet/1653659980-6290d94c99625.png', 3, 'asdasdasdadsads', '21.00', 1, 0, 0, 5),
-(18, 'PDPPN', '../images/produktet/1653660030-6290d97e20592.png', '../images/produktet/1653660030-6290d97e20870.png', '../images/produktet/1653660030-6290d97e2087d.png', '../images/produktet/1653660030-6290d97e2088a.png', 1, 'TESTtest TESTtest TESTtest TESTtest TESTtest TESTtest', '122.00', 12, 1, 3, 5),
+(17, 'Hewlet Packard', '../images/produktet/1653659980-6290d94c992e4.png', '../images/produktet/1653659980-6290d94c99601.png', '../images/produktet/1653659980-6290d94c99611.png', '../images/produktet/1653659980-6290d94c99625.png', 1, 'asdasdasdadsads', '21.00', 1, 1, 3, 5),
+(18, 'PDPPN', '../images/produktet/1653660030-6290d97e20592.png', '../images/produktet/1654000235-62960a6b7f1bf.jpg', '../images/produktet/1654000235-62960a6b7f9b8.png', '../images/produktet/1653660030-6290d97e2088a.png', 1, 'TESTtest TESTtest TESTtest TESTtest TESTtest TESTtest', '122.00', 12, 1, 3, 5),
 (19, 'Company', '../images/produktet/1653660319-6290da9f50ee8.png', '../images/produktet/1653999292-629606bcd4961.png', '../images/produktet/1653999292-629606bcd51de.png', '../images/produktet/1653660319-6290da9f52e33.png', 2, 'done done', '123.32', 56, 4, 4, 2),
 (20, 'Company2nd', '../images/produktet/1653660391-6290dae71e58d.jpg', '../images/produktet/1653660391-6290dae71f14b.jpg', '../images/produktet/1653660391-6290dae71f15c.jpg', '../images/produktet/1653660391-6290dae71f165.jpg', 1, 'asdasdasdasdads', '155.96', 3, 1, 2, 2),
 (21, 'Filan Fisteku', '../images/produktet/1653660434-6290db12c4a63.jpg', '../images/produktet/1653998323-629602f37fe76.jpg', '../images/produktet/1653998323-629602f3805cd.jpg', '../images/produktet/1653998468-62960384a120e.jpg', 1, 'asdasdasdadsadsadsasd', '1.00', 1, 2, 1, 2),

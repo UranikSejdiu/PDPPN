@@ -158,7 +158,7 @@
         $("#updatePhone").inputmask({
             "mask": "(+383)49/999-999"
         });
-        $('.updateLokacioni').leafletLocationPicker({
+        $('#updateLokacioni').leafletLocationPicker({
             alwaysOpen: true,
             height: 300,
             width: 250,
