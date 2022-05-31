@@ -418,7 +418,41 @@ switch ($_POST["action"]) {
         break;
 
 
-    case "deleteKompani":
+    case "deleteProdukt":
+        $prodID = $_POST['id'];
+        $kompani = $id;
+
+        $sql1 = "SELECT imazhi1, imazhi2, imazhi3, imazhi4, kompaniaID FROM produktet WHERE produktID='$prodID' LIMIT 1";
+        $query = mysqli_query($con, $sql1);
+
+        while ($row = mysqli_fetch_assoc($query)) {
+            $img1 = $row['imazhi1'];
+            $img2 = $row['imazhi2'];
+            $img3 = $row['imazhi3'];
+            $img4 = $row['imazhi4'];
+            $kompaniaID = $row['kompaniaID'];
+        }
+        if ($kompani == $kompaniaID) {
+            $sql = "DELETE FROM produktet WHERE produktID=$prodID";
+            $delQuery = mysqli_query($con, $sql);
+            if ($delQuery == true) {
+                unlink($img1);
+                unlink($img2);
+                unlink($img3);
+                unlink($img4);
+                $data = array(
+                    'status' => 'success',
+
+                );
+                echo json_encode($data);
+            } else {
+                $data = array(
+                    'status' => 'failed',
+
+                );
+                echo json_encode($data);
+            }
+        }
 
         break;
 }

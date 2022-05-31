@@ -398,3 +398,34 @@ function uSelNgjyra(id) {
     }
   });
 }
+
+$(document).on("click", ".deleteBtn", function (event) {
+  //var table = $("#tabelaKompani").DataTable();
+  event.preventDefault();
+  thisfordelete = $(this);
+  var id = $(this).data("id");
+  if (confirm("A jeni i sigurt që dëshironi të fshini produktin? ")) {
+    $.ajax({
+      url: "manageProduktet.php",
+      data: {
+        id: id,
+        action: "deleteProdukt",
+      },
+      type: "post",
+      success: function (data) {
+        var json = JSON.parse(data);
+        var status = json.status;
+        if (status == "success") {
+          $(thisfordelete).closest("tr").remove();
+          successAlert("Produkti u fshi me sukses!");
+          
+        } else {
+          dangerAlert("Gabim gjatë fshirjes në databazë!");
+          return;
+        }
+      },
+    });
+  } else {
+    return null;
+  }
+});

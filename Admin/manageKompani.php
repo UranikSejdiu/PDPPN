@@ -83,7 +83,7 @@ switch ($_POST["action"]) {
             $file_type = $_FILES['logo']['type'];
             $ext = pathinfo($file_name, PATHINFO_EXTENSION);
             $extensions = array("jpeg", "jpg", "png");
-            $filedestionation = "../images/kompani/". $uniquename . '.' . $ext;
+            $filedestionation = "../images/kompani/" . $uniquename . '.' . $ext;
         }
 
         if (strlen($password) < '8') {
@@ -177,14 +177,14 @@ switch ($_POST["action"]) {
                         'status' => 'true'
                     );
                     echo json_encode($data);
-                }else {
-                $data = array(
-                    'status' => 'false'
-                );
-                echo json_encode($data);
+                } else {
+                    $data = array(
+                        'status' => 'false'
+                    );
+                    echo json_encode($data);
+                }
             }
         }
-    }
         break;
 
     case "updateKompani":
@@ -204,7 +204,7 @@ switch ($_POST["action"]) {
             $file_type = $_FILES['updateLogo']['type'];
             $ext = pathinfo($file_name, PATHINFO_EXTENSION);
             $extensions = array("jpeg", "jpg", "png");
-            $filedestionation = "../images/kompani/". $uniquename . '.' . $ext;
+            $filedestionation = "../images/kompani/" . $uniquename . '.' . $ext;
         }
 
 
@@ -317,9 +317,6 @@ switch ($_POST["action"]) {
         while ($row = mysqli_fetch_assoc($query)) {
             $nameoffile = $row['logo'];
         }
-
-
-
         $sql = "DELETE FROM kompanite WHERE id=$id";
         $delQuery = mysqli_query($con, $sql);
         if ($delQuery == true) {
