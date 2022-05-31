@@ -243,85 +243,86 @@ switch ($_POST["action"]) {
             $backupMadhesia = $row['madhesiaID'];
             $backupNgjyra = $row['ngjyraID'];
         }
-        if (!empty($file_name1) && !empty($file_name2) && !empty($file_name3) && !empty($file_name4)) {
-            if ($file_name1 && in_array($ext1, $extensions1) === false && $file_name2 && in_array($ext2, $extensions2) === false && $file_name3 && in_array($ext3, $extensions3) === false && $file_name4 && in_array($ext4, $extensions4) === false) {
+        if ($file_name1 && in_array($ext1, $extensions1) === false && $file_name2 && in_array($ext2, $extensions2) === false && $file_name3 && in_array($ext3, $extensions3) === false && $file_name4 && in_array($ext4, $extensions4) === false) {
+            $data = array(
+                'status' => 'logoFormat'
+            );
+            echo json_encode($data);
+            return;
+        } elseif ($file_size1 > 5097152 && $file_size2 > 5097152 && $file_size3 > 5097152 && $file_size4 > 5097152) {
+            $data = array(
+                'status' => 'logoMB'
+            );
+            echo json_encode($data);
+            return;
+        }
+        if (!empty($file_name1)) {
+            $sql1 = "UPDATE produktet SET imazhi1 = '$filedestionation1' WHERE produktID = $updateIdProd";
+            if ($query1 = mysqli_query($con, $sql1)) {
+                move_uploaded_file($file_tmp1, $filedestionation1);
+                unlink($img1);
+            } else {
                 $data = array(
-                    'status' => 'logoFormat'
+                    'status' => 'imgFail'
                 );
                 echo json_encode($data);
                 return;
-            } elseif ($file_size1 > 5097152 && $file_size2 > 5097152 && $file_size3 > 5097152 && $file_size4 > 5097152) {
+            }
+        }
+        if (!empty($file_name2)) {
+            $sql2 = "UPDATE produktet SET imazhi2 = '$filedestionation2' WHERE produktID = $updateIdProd";
+            if ($query2 = mysqli_query($con, $sql2)) {
+                move_uploaded_file($file_tmp2, $filedestionation2);
+                unlink($img2);
+            } else {
                 $data = array(
-                    'status' => 'logoMB'
+                    'status' => 'imgFail'
                 );
                 echo json_encode($data);
                 return;
-            } elseif ($filedestionation1 != $img1) {
-                $sql = "UPDATE produktet SET imazhi1 = '$filedestionation1' WHERE produktID = $updateIdProd";
-                if ($query = mysqli_query($con, $sql)) {
-                    move_uploaded_file($file_tmp1, $filedestionation1);
-                    unlink($img1);
-                } else {
-                    $data = array(
-                        'status' => 'imgFail'
-                    );
-                    echo json_encode($data);
-                    return;
-                }
-            } elseif ($filedestionation2 != $img2) {
-                $sql = "UPDATE produktet SET imazhi2 = '$filedestionation2' WHERE produktID = $updateIdProd";
-                if ($query = mysqli_query($con, $sql)) {
-                    move_uploaded_file($file_tmp2, $filedestionation2);
-                    unlink($img2);
-                } else {
-                    $data = array(
-                        'status' => 'imgFail'
-                    );
-                    echo json_encode($data);
-                    return;
-                }
-            } elseif ($filedestionation3 != $img3) {
-                $sql = "UPDATE produktet SET imazhi3 = '$filedestionation3' WHERE produktID = $updateIdProd";
-                if ($query = mysqli_query($con, $sql)) {
-                    move_uploaded_file($file_tmp3, $filedestionation3);
-                    unlink($img3);
-                } else {
-                    $data = array(
-                        'status' => 'imgFail'
-                    );
-                    echo json_encode($data);
-                    return;
-                }
-            } elseif ($filedestionation4 != $img4) {
-                $sql = "UPDATE produktet SET imazhi4 = '$filedestionation4' WHERE produktID = $updateIdProd";
-                if ($query = mysqli_query($con, $sql)) {
-                    move_uploaded_file($file_tmp4, $filedestionation4);
-                    unlink($img4);
-                } else {
-                    $data = array(
-                        'status' => 'imgFail'
-                    );
-                    echo json_encode($data);
-                    return;
-                }
             }
         }
-        if ($uMadhesia != null) {
-            if ($uMadhesia == $oldMadhesia ) {
-                $madhesia = $uMadhesia;
+        if (!empty($file_name3)) {
+            $sql3 = "UPDATE produktet SET imazhi3 = '$filedestionation3' WHERE produktID = $updateIdProd";
+            if ($query3 = mysqli_query($con, $sql3)) {
+                move_uploaded_file($file_tmp3, $filedestionation3);
+                unlink($img3);
+            } else {
+                $data = array(
+                    'status' => 'imgFail'
+                );
+                echo json_encode($data);
+                return;
             }
-        }else {
-            $madhesia= $backupMadhesia;
         }
-        if ($uNgjyra != null) {
-            if ($uNgjyra == $oldNgjyra ) {
-                $ngjyra = $uNgjyra;
+        if (!empty($file_name4)) {
+            $sql4 = "UPDATE produktet SET imazhi4 = '$filedestionation4' WHERE produktID = $updateIdProd";
+            if ($query4 = mysqli_query($con, $sql4)) {
+                move_uploaded_file($file_tmp4, $filedestionation4);
+                unlink($img4);
+            } else {
+                $data = array(
+                    'status' => 'imgFail'
+                );
+                echo json_encode($data);
+                return;
             }
-        }else {
-            $ngjyra= $backupMadhesia;
+        }
+        if ($uMadhesia == '0') {
+            $madhesia = $oldMadhesia;
+        } else {
+            $madhesia = $uMadhesia;
         }
 
-
+        if ($uNgjyra == '0') {
+            $ngjyra = $oldNgjyra;
+        } else {
+            $ngjyra = $uNgjyra;
+        }
+        if ($uKat == '0') {
+            $madhesia = 0;
+            $ngjyra = 0;
+        }
         $sql = "UPDATE produktet SET  produkti='$uName' , kategoriaID= '$uKat', pershkrimi='$uPershkrim', qmimi='$uQmimi', stoku='$uStok', madhesiaID='$madhesia', ngjyraID='$ngjyra' WHERE produktID=$updateIdProd";
         $insert = mysqli_query($con, $sql);
         if ($insert == true) {
@@ -340,6 +341,11 @@ switch ($_POST["action"]) {
 
             echo json_encode($data);
         }
+
+
+
+
+
         break;
 
 

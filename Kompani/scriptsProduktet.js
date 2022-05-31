@@ -111,8 +111,6 @@ $(document).ready(function () {
     formData.append("action", "addProdukt");
     formData.append("ngjyra", ngjyra);
     formData.append("madhesia", madhesia);
-    console.log(madhesia);
-    console.log(ngjyra);
     if (name != "" && kat != "" && pershkrimi != "" && qmimi != "" && stok != "" && kompania != "" && image1 != "" && image2 != "" && image3 != "" && image4 != "") {
       $.ajax({
         url: "manageProduktet.php",
@@ -185,15 +183,16 @@ $(document).on("submit", "#update_produkt", function (e) {
   var updateIdProd = $("#updateIdProd").val();
   var form = document.getElementById("update_produkt");
 
-  var formData = new FormData(form);
+  
   var file_data1 = $("#uImage1").prop("file");
   var file_data2 = $("#uImage2").prop("file");
   var file_data3 = $("#uImage3").prop("file");
   var file_data4 = $("#uImage4").prop("file");
-  formData.append("#uImage1", file_data1);
-  formData.append("#uImage2", file_data2);
-  formData.append("#uImage3", file_data3);
-  formData.append("#uImage4", file_data4);
+  var formData = new FormData(form);
+  formData.append("uImage1", file_data1);
+  formData.append("uImage2", file_data2);
+  formData.append("uImage3", file_data3);
+  formData.append("uImage4", file_data4);
   formData.append("uNgjyra", uNgjyra);
   formData.append("uMadhesia", uMadhesia);
   formData.append("oldNgjyra", oldNgjyra);
@@ -263,16 +262,18 @@ $("#dtProduktet").on("click", ".editbtnProd ", function (event) {
     success: function (data) {
       var json = JSON.parse(data);
       $("#uName").val(json.produkti);
-      $("#uImage1").attr("src", json.imazhi1);
-      $("#uImage2").attr("src", json.imazhi2);
-      $("#uImage3").attr("src", json.imazhi3);
-      $("#uImage4").attr("src", json.imazhi4);
       $("#uKat").val(json.kategoriaID);
       $("#uPershkrimi").val(json.pershkrimi);
       $("#uQmimi").val(json.qmimi);
       $("#uStok").val(json.stoku);
+      $("#uMadhesia").val(json.madhesiaID);
+      $("#uNgjyra").val(json.ngjyraID);
       $("#oldMadhesia").val(json.madhesiaID);
       $("#oldNgjyra").val(json.ngjyraID);
+      $("#uImage1").attr("src", json.imazhi1);
+      $("#uImage2").attr("src", json.imazhi2);
+      $("#uImage3").attr("src", json.imazhi3);
+      $("#uImage4").attr("src", json.imazhi4);
 
       $("#updateIdProd").val(id);
       $("#trid").val(trid);
