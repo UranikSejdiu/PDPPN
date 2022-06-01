@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 31, 2022 at 03:38 PM
+-- Generation Time: Jun 01, 2022 at 01:24 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `kontaktet` (
   `moduli` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `createdDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `kontaktet`
@@ -162,7 +162,9 @@ CREATE TABLE IF NOT EXISTS `kontaktet` (
 
 INSERT INTO `kontaktet` (`id`, `subjekti`, `mesazhi`, `moduli`, `createdDate`) VALUES
 (1, 'asdasdasdasdasd', 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd', 'Admin', '2022-05-11 15:11:53'),
-(4, 'admin', 'adminadminadm', 'Admin', '2022-05-11 15:19:32');
+(4, 'admin', 'adminadminadm', 'Admin', '2022-05-11 15:19:32'),
+(5, 'asdasdasdasd', 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd', 'Moduli Kompanise', '2022-06-01 14:28:35'),
+(6, '1111111111111', '11111111111111111111111111111111111111111111111111111111111111111v', 'Moduli Kompanise', '2022-06-01 14:29:37');
 
 -- --------------------------------------------------------
 
