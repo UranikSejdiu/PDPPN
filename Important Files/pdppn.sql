@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 01, 2022 at 01:24 PM
+-- Generation Time: Jun 02, 2022 at 04:00 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `code` mediumint(50) NOT NULL,
   `status` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `admin`
@@ -64,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `code`, `status`) VALUES
 (2, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', '$2y$10$t8HEHOUB.HzLaDceZUoq2e3xLgsH4NfvP43KNdGm3AsWiRyD2qQ4q', 0, 'verified'),
-(11, 'Filan Fisteku', 'u.sejdiu56@gmail.com', '$2y$10$D7YN1dt6VXd98X9TQ7Z/Zecevy3U5CkqweVHNbTljDC6CGXW/4AXa', 0, 'verified');
+(11, 'Filan Fisteku', 'u.sejdiu56@gmail.com', '$2y$10$D7YN1dt6VXd98X9TQ7Z/Zecevy3U5CkqweVHNbTljDC6CGXW/4AXa', 0, 'verified'),
+(12, 'Filan Fisteku', 'ferizaj0004@gmail.com', '$2y$10$wvoBIQF43K0imrMbplJb.e3HLIPBvkIGG0bljcoLA5Ho8JDZxdxpS', 409943, 'notverified');
 
 -- --------------------------------------------------------
 
@@ -239,13 +240,6 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
   PRIMARY KEY (`id`),
   KEY `cityForeignKey` (`id_city`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `perdoruesit`
---
-
-INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `phone`, `email`, `password`, `code`, `status`) VALUES
-(2, 'Filan Fisteku', 2, 'Mataj', '(+383)45/333-333', 'ferizaj0004@gmail.com', '$2y$10$e5FDa2mXvJ3IiDmnEAVeIeMrzT7oUMRtEYNgE4ZCAiLHRMBctdldS', 547301, 'notverified');
 
 -- --------------------------------------------------------
 
