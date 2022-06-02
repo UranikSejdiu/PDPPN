@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 02, 2022 at 04:00 PM
+-- Generation Time: Jun 02, 2022 at 08:46 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -239,7 +239,14 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
   `status` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cityForeignKey` (`id_city`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `perdoruesit`
+--
+
+INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `phone`, `email`, `password`, `code`, `status`) VALUES
+(3, 'Uranik', 2, 'Mataj 1', '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$NBfBS5piWCA9glj4HTOgC.pkZ.xGp7x1hHb83u94SJKoMlzmY9PjG', 0, 'verified');
 
 -- --------------------------------------------------------
 
