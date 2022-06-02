@@ -69,7 +69,6 @@ $(document).ready(function () {
           var json = JSON.parse(data);
           var status = json.status;
           if (status == "true") {
-            var message = json.message;
             mytable = $("#dtAdmin").DataTable();
             mytable.draw();
             $("#addAdmin").modal('hide');

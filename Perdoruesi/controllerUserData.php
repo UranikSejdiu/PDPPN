@@ -113,7 +113,7 @@ if (isset($_POST['signup'])) {
 if (isset($_POST['check'])) {
     $_SESSION['info'] = "";
     $otp_code = mysqli_real_escape_string($con, $_POST['otp']);
-    $check_code = "SELECT * FROM kompanite WHERE code = $otp_code";
+    $check_code = "SELECT * FROM perdoruesit WHERE code = $otp_code";
     $code_res = mysqli_query($con, $check_code);
     if (mysqli_num_rows($code_res) > 0) {
         $fetch_data = mysqli_fetch_assoc($code_res);
@@ -121,12 +121,12 @@ if (isset($_POST['check'])) {
         $email = $fetch_data['email'];
         $code = 0;
         $status = 'verified';
-        $update_otp = "UPDATE kompanite SET code = $code, status = '$status' WHERE code = $fetch_code";
+        $update_otp = "UPDATE perdoruesit SET code = $code, status = '$status' WHERE code = $fetch_code";
         $update_res = mysqli_query($con, $update_otp);
         if ($update_res) {
-            $_SESSION['name'] = $name;
+            $_SESSION['fullName'] = $name;
             $_SESSION['email'] = $email;
-            header('location: index.php');
+            header('location: user-login.php');
             exit();
         } else {
             $errors['otp-error'] = "Gabim ne databazë!";
@@ -140,7 +140,7 @@ if (isset($_POST['check'])) {
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
-    $check_email = "SELECT * FROM kompanite WHERE email = '$email'";
+    $check_email = "SELECT * FROM perdoruesit WHERE email = '$email'";
     $res = mysqli_query($con, $check_email);
     if (mysqli_num_rows($res) > 0) {
         $fetch = mysqli_fetch_assoc($res);
@@ -169,13 +169,13 @@ if (isset($_POST['login'])) {
 //if user click continue button in forgot password form
 if (isset($_POST['check-email'])) {
     $email = mysqli_real_escape_string($con, $_POST['email']);
-    $check_email = "SELECT * FROM kompanite WHERE email='$email'";
+    $check_email = "SELECT * FROM perdoruesit WHERE email='$email'";
     $run_sql = mysqli_query($con, $check_email);
     $fetch_info = mysqli_fetch_assoc($run_sql);
     if (mysqli_num_rows($run_sql) > 0) {
-        $name = $fetch_info['name'];
+        $name = $fetch_info['fullName'];
         $code = rand(999999, 111111);
-        $insert_code = "UPDATE kompanite SET code = $code WHERE email = '$email'";
+        $insert_code = "UPDATE perdoruesit SET code = $code WHERE email = '$email'";
         $run_query =  mysqli_query($con, $insert_code);
         if ($run_query) {
             $subject = "Kodi për përditsimin e fjalëkalimit";
@@ -227,7 +227,7 @@ if (isset($_POST['check-email'])) {
 if (isset($_POST['check-reset-otp'])) {
     $_SESSION['info'] = "";
     $otp_code = mysqli_real_escape_string($con, $_POST['otp']);
-    $check_code = "SELECT * FROM kompanite WHERE code = $otp_code";
+    $check_code = "SELECT * FROM perdoruesit WHERE code = $otp_code";
     $code_res = mysqli_query($con, $check_code);
     if (mysqli_num_rows($code_res) > 0) {
         $fetch_data = mysqli_fetch_assoc($code_res);
@@ -253,7 +253,7 @@ if (isset($_POST['change-password'])) {
         $code = 0;
         $email = $_SESSION['email']; //getting this email using session
         $encpass = password_hash($password, PASSWORD_BCRYPT);
-        $update_pass = "UPDATE kompanite SET code = $code, password = '$encpass' WHERE email = '$email'";
+        $update_pass = "UPDATE perdoruesit SET code = $code, password = '$encpass' WHERE email = '$email'";
         $run_query = mysqli_query($con, $update_pass);
         if ($run_query) {
             $info = "Fjalëkalimi juaj u përditsua me sukses.";
@@ -263,9 +263,4 @@ if (isset($_POST['change-password'])) {
             $errors['db-error'] = "Gabim gjatë përditsimit të fjalëkalimit tuaj!";
         }
     }
-}
-
-//if login now button click
-if (isset($_POST['login-now'])) {
-    header('Location: index.php');
 }
