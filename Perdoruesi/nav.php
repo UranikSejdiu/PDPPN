@@ -28,11 +28,19 @@
             </div>
         </div>
         <!-- End MAinmenu Ares -->
-        <div class="col-md-2 col-sm-4 col-xs-3">
-            <ul class="menu-extra">
-                <?php echo '<li><a href="profile.php?ID='.$id.'"><span aria-label="Profili" data-cooltipz-dir="bottom"><i class="ti-user"></i></span></a></li>'; ?>
-                <li><a href="logout-user.php"><span aria-label="Çkyçu" data-cooltipz-dir="bottom"><i class="ti-unlink"></i></span></a></li>
-            </ul>
+
+        <div class="col-md-2 col-sm-4 col-xs-3" id="userStuff">
+            <?php if (isset($_SESSION['email'])) { ?>
+                <ul class="menu-extra">
+                    <?php echo '<li><a href="profile.php?ID=' . $id . '"><span aria-label="Profili" data-cooltipz-dir="bottom"><i class="ti-user"></i></span></a></li>'; ?>
+                    <li><a href="logout-user.php"><span aria-label="Çkyçu" data-cooltipz-dir="bottom"><i class="ti-unlink"></i></span></a></li>
+                
+                <?php } else {
+                echo '<a href="user-login.php" class="regBtn" >Kyçuni</a>';
+                ?>
+                
+                </ul>
+            <?php } ?>
         </div>
     </div>
     <div class="mobile-menu-area"></div>

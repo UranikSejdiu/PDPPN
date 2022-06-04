@@ -24,7 +24,6 @@
             <!-- Start Mainmenu Area -->
             <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header">
                 <?php include_once('nav.php'); ?>
-                <input type="hidden" id="hiddenEmail" value="<?php $email ?>"></input>
             </div>
             <!-- End Mainmenu Area -->
         </header>
@@ -33,29 +32,16 @@
         <div class="body__overlay"></div>
 
 
-        <!-- End Feature Product -->
+        <!-- End Feature Product 
         <div class="only-banner ptb--100 bg__white">
             <div class="container">
                 <div class="only-banner-img">
                     <a href="shop-sidebar.html">
-                        <?php
-                        $email = $_SESSION['email'];
-                        $sql = "SELECT * FROM kompanite where email='$email'";
-                        $result = $con->query($sql);
-                        if ($result->num_rows > 0) {
-                            // output data of each row
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<img width='1170px' height='300px' src=" . $row['logo'] . " alt='new product'>";
-                            }
-                        }
-
-                        ?>
-
-
+                        
                     </a>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <!-- End Our Product Area -->
         <div class="only-banner ptb--100 bg__white">

@@ -1,26 +1,24 @@
 <?php
 session_start();
 include_once('config.php');
-$email = $_SESSION['email'];
-$password = $_SESSION['password'];
-$id = $_SESSION['id'];
-if($email != false && $password != false){
+
+if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
+    $email = $_SESSION['email'];
+    $password = $_SESSION['password'];
+    $id = $_SESSION['id'];
     $sql = "SELECT * FROM perdoruesit WHERE email = '$email'";
     $run_Sql = mysqli_query($con, $sql);
-    if($run_Sql){
+    if ($run_Sql) {
         $fetch_info = mysqli_fetch_assoc($run_Sql);
         $status = $fetch_info['status'];
         $code = $fetch_info['code'];
-        $id= $fetch_info['id'];
-        if($status == "verified"){
-            if($code != 0){
+        $id = $fetch_info['id'];
+        if ($status == "verified") {
+            if ($code != 0) {
                 header('Location: reset-code.php');
             }
-        }else{
+        } else {
             header('Location: user-otp.php');
         }
     }
-}else{
-    header('Location: user-login.php');
 }
-?>
