@@ -3356,7 +3356,7 @@ blockquote::before {
     -moz-appearance: none;
     -ms-appearance: none;
     -o-appearance: none;
-    background: rgba(0, 0, 0, 0) url("images/icons/select-option.png") no-repeat scroll 83% 8px / 14px 9px;
+    background: rgba(0, 0, 0, 0) url("../../images/icons/select-option.png") no-repeat scroll 83% 8px / 14px 9px;
     padding-right: 50px;
 }
 /*---------------------------------------

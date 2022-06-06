@@ -1,3 +1,4 @@
+<?php include_once('config.php'); ?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -30,7 +31,7 @@
 
         <div class="body__overlay"></div>
         <section class="htc__shop__sidebar bg__white ptb--120">
-            <div class="container">
+            <div class="container" >
                 <div class="row">
                     <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                         <div class="htc__shop__left__sidebar">
@@ -56,21 +57,21 @@
                                 </div>
                             </div>
                             <!-- End Range -->
-                            <!-- Start Product Cat -->
+                            <!-- Kategorit checkboxes -->
                             <div class="htc__shop__cat">
                                 <h4 class="section-title-4">Kategorit</h4>
-                                <ul class="sidebar__list">
-                                    <li><a href="#">Accessories <span>3</span></a></li>
-                                    <li><a href="#">Book <span>4</span></a></li>
-                                    <li><a href="#">Clothing <span>3</span></a></li>
-                                    <li><a href="#">Homelife <span>6</span></a></li>
-                                    <li><a href="#">Kids & Baby <span>10</span></a></li>
-                                    <li><a href="#">Stationery <span>3</span></a></li>
-                                    <li><a href="#">Health & Beauty <span>12</span></a></li>
-                                    <li><a href="#">Home Appliances <span>15</span></a></li>
-                                </ul>
+                                <?php
+                                $sql = "SELECT * FROM kategoria WHERE kategoriaID > '0' ORDER BY kategoriaID";
+                                $result = $con->query($sql);
+                                while ($row = $result->fetch_assoc()) {
+                                ?>
+                                    <ul class="sidebar__list">
+                                        <input type="checkbox" class="form-check-input product_check" value="<?= $row['kategoriaID']; ?>" id="kategoria">
+                                        <?= $row['kategoria']; ?>
+                                    </ul>
+                                <?php } ?>
                             </div>
-                            <!-- End Product Cat -->
+                            <!-- End Kategorit checkboxes -->
                             <!-- Start Color Cat -->
                             <div class="htc__shop__cat">
                                 <h4 class="section-title-4">CHOOSE COLOUR</h4>
@@ -150,34 +151,47 @@
                                 <!-- Start Single View -->
                                 <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
                                     <!-- Start Single Product -->
-                                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
-                                        <div class="product">
-                                            <div class="product__inner">
-                                                <div class="pro__thumb">
-                                                    <a href="#">
-                                                        <img src="images/product/1.png" alt="product images">
-                                                    </a>
+                                    <?php
+                                    $sql = "SELECT * FROM produktet";
+                                    $result = $con->query($sql);
+                                    while ($row = $result->fetch_assoc()) {
+                                    ?>
+                                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12" style="border:1px solid #333;">
+                                            <div class="product">
+                                                <div class="product__inner">
+                                                    <div class="pro__thumb">
+                                                        <a href="#">
+                                                            <img style="object-fit: contain;" width="100" height="150" src="<?=$row['imazhi1']; ?>" alt="product images">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product__hover__info">
+                                                        <ul class="product__action">
+                                                            <li><a data-toggle="modal" data-target="#productModal" title="Shiko produktin" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                            <input type="hidden" id="produktID" value="<?=$row['produktID']; ?>">
+                                                            <li><a title="Dërgo në shport" href="#"><span class="ti-shopping-cart"></span></a></li>
+                                                            <li><a title="Ruaj" href="#"><span class="ti-heart"></span></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                                <div class="product__hover__info">
-                                                    <ul class="product__action">
-                                                        <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                        <li><a title="Add To Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                        <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                                <div class="product__details">
+                                                    <h2><a href="#"><?=$row['produkti']; ?></a></h2>
+                                                    <ul class="product__price">
+                                                        <li class="new__price"><?=$row['qmimi']; ?></li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div class="product__details">
-                                                <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                <ul class="product__price">
-                                                    <li class="old__price">$16.00</li>
-                                                    <li class="new__price">$10.00</li>
-                                                </ul>
-                                            </div>
                                         </div>
-                                    </div>
+                                    <?php    } ?>
                                     <!-- End Single Product -->
                                 </div>
                                 <!-- End Single View -->
+
+
+
+
+
+
+
                                 <!-- Start Single View -->
                                 <div role="tabpanel" id="list-view" class="single-grid-view tab-pane fade clearfix">
                                     <!-- Start List Content-->
