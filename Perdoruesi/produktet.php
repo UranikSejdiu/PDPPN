@@ -13,10 +13,6 @@
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
         <!-- Start Header Style -->
@@ -31,7 +27,7 @@
 
         <div class="body__overlay"></div>
         <section class="htc__shop__sidebar bg__white ptb--120">
-            <div class="container" >
+            <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                         <div class="htc__shop__left__sidebar">
@@ -156,27 +152,25 @@
                                     $result = $con->query($sql);
                                     while ($row = $result->fetch_assoc()) {
                                     ?>
-                                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12" style="border:1px solid #333;">
+                                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
                                             <div class="product">
                                                 <div class="product__inner">
                                                     <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img style="object-fit: contain;" width="100" height="150" src="<?=$row['imazhi1']; ?>" alt="product images">
-                                                        </a>
+                                                       <?php echo '<a href="detajeProduktit.php?produktID='.$row['produktID'].'">';
+                                                          echo  '<img style="object-fit: cover;" width="100" height="150" src="'.$row['imazhi1'].'" alt="product images"></a>';
+                                                        ?>
                                                     </div>
                                                     <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Shiko produktin" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <input type="hidden" id="produktID" value="<?=$row['produktID']; ?>">
+                                                        <ul class="product__action" id="produkti">
                                                             <li><a title="Dërgo në shport" href="#"><span class="ti-shopping-cart"></span></a></li>
                                                             <li><a title="Ruaj" href="#"><span class="ti-heart"></span></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="product__details">
-                                                    <h2><a href="#"><?=$row['produkti']; ?></a></h2>
+                                                   <?php echo '<h2><a href="detajeProduktit.php?produktID='.$row['produktID'].'">'.$row['produkti'].'</a></h2>'; ?>
                                                     <ul class="product__price">
-                                                        <li class="new__price"><?=$row['qmimi']; ?></li>
+                                                        <li class="new__price"><?= $row['qmimi']; ?></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -184,15 +178,6 @@
                                     <?php    } ?>
                                     <!-- End Single Product -->
                                 </div>
-                                <!-- End Single View -->
-
-
-
-
-
-
-
-                                <!-- Start Single View -->
                                 <div role="tabpanel" id="list-view" class="single-grid-view tab-pane fade clearfix">
                                     <!-- Start List Content-->
                                     <div class="single__list__content clearfix">
@@ -223,81 +208,6 @@
                 </div>
             </div>
         </section>
-        <!-- QUICKVIEW PRODUCT -->
-        <div id="quickview-wrapper">
-            <!-- Modal -->
-            <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal__container" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="modal-product">
-                                <!-- Start product images -->
-                                <div class="product-images">
-                                    <div class="main-image images">
-                                        <img alt="big images" src="images/product/big-img/1.jpg">
-                                    </div>
-                                </div>
-                                <!-- end product images -->
-                                <div class="product-info">
-                                    <h1>Simple Fabric Bags</h1>
-                                    <div class="rating__and__review">
-                                        <ul class="rating">
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                            <li><span class="ti-star"></span></li>
-                                        </ul>
-                                        <div class="review">
-                                            <a href="#">4 customer reviews</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-box-3">
-                                        <div class="s-price-box">
-                                            <span class="new-price">$17.20</span>
-                                            <span class="old-price">$45.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="quick-desc">
-                                        Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
-                                    </div>
-                                    <div class="select__color">
-                                        <h2>Select color</h2>
-                                        <ul class="color__list">
-                                            <li class="red"><a title="Red" href="#">Red</a></li>
-                                            <li class="gold"><a title="Gold" href="#">Gold</a></li>
-                                            <li class="yellow"><a title="Black" href="#">Black</a></li>
-                                            <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="select__size">
-                                        <h2>Select size</h2>
-                                        <ul class="color__list">
-                                            <li class="l__size"><a title="L" href="#">L</a></li>
-                                            <li class="m__size"><a title="M" href="#">M</a></li>
-                                            <li class="s__size"><a title="S" href="#">S</a></li>
-                                            <li class="xl__size"><a title="XL" href="#">XL</a></li>
-                                            <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="addtocart-btn">
-                                        <a href="#">Add to cart</a>
-                                    </div>
-                                </div><!-- .product-info -->
-                            </div><!-- .modal-product -->
-                        </div><!-- .modal-body -->
-                    </div><!-- .modal-content -->
-                </div><!-- .modal-dialog -->
-            </div>
-            <!-- END Modal -->
-        </div>
-        <!-- END QUICKVIEW PRODUCT -->
-
-
-
 
         <footer class="htc__foooter__area gray-bg">
             <div class="container">
