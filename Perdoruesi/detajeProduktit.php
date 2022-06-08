@@ -181,37 +181,37 @@ if (isset($_GET['produktID'])) {
                                     <div class="rating__list">
                                         <!-- Start Single List -->
                                         <ul class="rating">
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
                                         </ul>
                                         <!-- End Single List -->
                                         <!-- Start Single List -->
                                         <ul class="rating">
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
                                         </ul>
                                         <!-- End Single List -->
                                         <!-- Start Single List -->
                                         <ul class="rating">
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
                                         </ul>
                                         <!-- End Single List -->
                                         <!-- Start Single List -->
                                         <ul class="rating">
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
                                         </ul>
                                         <!-- End Single List -->
                                         <!-- Start Single List -->
                                         <ul class="rating">
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
-                                            <li><i class="zmdi zmdi-star-half"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
+                                            <li><i class="zmdi zmdi-star"></i></li>
                                         </ul>
                                         <!-- End Single List -->
                                     </div>

@@ -68,48 +68,6 @@
                                 <?php } ?>
                             </div>
                             <!-- End Kategorit checkboxes -->
-                            <!-- Start Color Cat -->
-                            <div class="htc__shop__cat">
-                                <h4 class="section-title-4">CHOOSE COLOUR</h4>
-                                <ul class="sidebar__list">
-                                    <li class="black"><a href="#"><i class="zmdi zmdi-circle"></i>Black<span>3</span></a></li>
-                                    <li class="blue"><a href="#"><i class="zmdi zmdi-circle"></i>Blue <span>4</span></a></li>
-                                    <li class="brown"><a href="#"><i class="zmdi zmdi-circle"></i>Brown <span>3</span></a></li>
-                                    <li class="red"><a href="#"><i class="zmdi zmdi-circle"></i>Red <span>6</span></a></li>
-                                    <li class="orange"><a href="#"><i class="zmdi zmdi-circle"></i>Orange <span>10</span></a></li>
-                                </ul>
-                            </div>
-                            <!-- End Color Cat -->
-                            <!-- Start Size Cat -->
-                            <div class="htc__shop__cat">
-                                <h4 class="section-title-4">PRODUCT CATEGORIES</h4>
-                                <ul class="sidebar__list">
-                                    <li><a href="#">xl <span>3</span></a></li>
-                                    <li><a href="#">l <span>4</span></a></li>
-                                    <li><a href="#">lm <span>3</span></a></li>
-                                    <li><a href="#">ml <span>6</span></a></li>
-                                    <li><a href="#">m <span>10</span></a></li>
-                                    <li><a href="#">ml <span>3</span></a></li>
-                                </ul>
-                            </div>
-                            <!-- End Size Cat -->
-                            <!-- Start Tag Area -->
-                            <div class="htc__shop__cat">
-                                <h4 class="section-title-4">Tags</h4>
-                                <ul class="htc__tags">
-                                    <li><a href="#">All</a></li>
-                                    <li><a href="#">Clothing</a></li>
-                                    <li><a href="#">Kids</a></li>
-                                    <li><a href="#">Accessories</a></li>
-                                    <li><a href="#">Stationery</a></li>
-                                    <li><a href="#">Homelife</a></li>
-                                    <li><a href="#">Appliances</a></li>
-                                    <li><a href="#">Clothing</a></li>
-                                    <li><a href="#">Baby</a></li>
-                                    <li><a href="#">Beauty</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Tag Area -->
                         </div>
                     </div>
                     <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 smt-30">
@@ -128,21 +86,11 @@
                                                 <option>Rating</option>
                                             </select>
                                         </div>
-                                        <div class="shp__pro__show">
-                                            <span>Showing 1 - 4 of 25 results</span>
-                                        </div>
                                     </div>
-                                    <!-- End Short Form -->
-                                    <!-- Start List And Grid View -->
-                                    <ul class="view__mode" role="tablist">
-                                        <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-grid"></i></a></li>
-                                        <li role="presentation" class="list-view"><a href="#list-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-view-list"></i></a></li>
-                                    </ul>
-                                    <!-- End List And Grid View -->
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="result">
                             <div class="shop__grid__view__wrap another-product-style">
                                 <!-- Start Single View -->
                                 <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
@@ -233,6 +181,32 @@
     <!-- END QUICKVIEW PRODUCT -->
     <!-- Placed js at the end of the document so the pages load faster -->
     <?php include_once('scripts.php'); ?>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".product_check").click(function(){
+                var action = 'data';
+                var kategoria = get_filter_text('kategoria');
+                $.ajax({
+                   url:'sortProduktet.php',
+                   method:'POST',
+                   data:{action:action,kategoria:kategoria},
+                   success:function(response){
+                       $("#grid-view").html(response);
+
+                   }
+                });
+            });
+
+            function get_filter_text(text_id){
+                var filterData;
+                $('#'+text_id+':checked').each(function(){
+                    filterData = $(this).val();
+                });
+                return filterData;
+            }
+
+        });
+    </script>
 </body>
 
 </html>
