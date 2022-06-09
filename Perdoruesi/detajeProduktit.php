@@ -33,9 +33,11 @@ if (isset($_GET['produktID'])) {
         <div class="body__overlay"></div>
         <!-- Start Product Details -->
         <section class="htc__product__details pt--120 pb--100 bg__white">
-            <div class="container">
+        <div id="alerts"></div>
+            <div class="container" style="margin-top:2%;">
                 <div class="row">
-                    <input type="hidden" name="prodID" id="prodID" value="<?php echo $produktID; ?>">
+                
+                <input type="hidden" name="prodID" id="prodID" value="<?php echo $produktID; ?>">
                     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                         <div class="product__details__container">
                             <!-- Start Small images -->
@@ -131,112 +133,48 @@ if (isset($_GET['produktID'])) {
         <!-- End Product Details -->
         <!-- Start Product tab -->
         <section class="htc__product__details__tab bg__white pb--120">
+        
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <ul class="product__deatils__tab mb--60" >
+                        <ul class="product__deatils__tab mb--30">
                             <li role="presentation" class="active">
                                 <a href="#reviews">Vlerësimet</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+                
+                <button type="button" name="add_review" id="add_review" class="">Vlerso</button>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product__details__tab__content">
-                            
                             <!-- Start Single Content -->
-                            <div>
-                                <div class="review__address__inner">
-                                    <!-- Start Single Review -->
-                                    <div class="pro__review">
-                                        <div class="review__thumb">
-                                            <img src="images/review/1.jpg" alt="review images">
-                                        </div>
-                                        <div class="review__details">
-                                            <div class="review__info">
-                                                <h4>Gerald Barnes</h4>
-                                                <ul class="rating">
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star-half"></i></li>
-                                                    <li><i class="zmdi zmdi-star-half"></i></li>
-                                                </ul>
-                                            </div>
-                                            <div class="review__date">
-                                                <span>27 Jun, 2016 at 2:30pm</span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
-                                        </div>
+                            <div class="review__address__inner" id="review_content">
+                                <!-- Start Single Review -->
+                                <div class="pro__review">
+                                    <div class="review__thumb">
+                                        <img src="images/review/1.jpg" alt="review images">
                                     </div>
-                                    <!-- End Single Review -->
-                                </div>
-                                <!-- Start RAting Area -->
-                                <br>
-                                <br>
-                                <div class="rating__wrap">
-                                    <h2 class="rating-title">Jepni një vlerësim</h2>
-                                    <h4 class="rating-title-2">Vlerso me yje</h4>
-                                    <div class="rating__list">
-                                        <!-- Start Single List -->
-                                        <ul class="rating">
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                        </ul>
-                                        <!-- End Single List -->
-                                        <!-- Start Single List -->
-                                        <ul class="rating">
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                        </ul>
-                                        <!-- End Single List -->
-                                        <!-- Start Single List -->
-                                        <ul class="rating">
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                        </ul>
-                                        <!-- End Single List -->
-                                        <!-- Start Single List -->
-                                        <ul class="rating">
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                        </ul>
-                                        <!-- End Single List -->
-                                        <!-- Start Single List -->
-                                        <ul class="rating">
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                            <li><i class="zmdi zmdi-star"></i></li>
-                                        </ul>
-                                        <!-- End Single List -->
+                                    <div class="review__details">
+                                        <div class="review__info">
+                                            <h4>Gerald Barnes</h4>
+                                            <ul class="rating">
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star"></i></li>
+                                                <li><i class="zmdi zmdi-star-half"></i></li>
+                                                <li><i class="zmdi zmdi-star-half"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="review__date">
+                                            <span>27 Jun, 2016 at 2:30pm</span>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
                                     </div>
                                 </div>
-                                <!-- End RAting Area -->
-                                <div class="review__box">
-                                    <form id="review-form">
-                                        <div class="single-review-form">
-                                            <div class="review-box name">
-                                                <input type="text" placeholder="Shkruaj emrin tuaj">
-                                                <input type="email" placeholder="Shkruaj email-in tuaj">
-                                            </div>
-                                        </div>
-                                        <div class="single-review-form">
-                                            <div class="review-box message">
-                                                <textarea placeholder="Jepni vlerësimin"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="review-btn">
-                                            <a class="fv-btn" href="#">Dërgo vlerësimin</a>
-                                        </div>
-                                    </form>                                
-                                </div>
+                                <!-- End Single Review -->
                             </div>
-                            <!-- End Single Content -->
                         </div>
                     </div>
                 </div>
@@ -270,7 +208,37 @@ if (isset($_GET['produktID'])) {
         <!-- End Footer Area -->
     </div>
     <!-- Body main wrapper end -->
-    <!-- Placed js at the end of the document so the pages load faster -->
+    <div id="review-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Jepni vlerësimin tuaj</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                    <div class="modal-body">
+                        <h2 class="text-center mt-2 mb-4" style="margin-bottom:5%;">
+                            <i class="fas fa-star star-light submit_star mr-1" id="submit_star_1" data-rating="1"></i>
+                            <i class="fas fa-star star-light submit_star mr-1" id="submit_star_2" data-rating="2"></i>
+                            <i class="fas fa-star star-light submit_star mr-1" id="submit_star_3" data-rating="3"></i>
+                            <i class="fas fa-star star-light submit_star mr-1" id="submit_star_4" data-rating="4"></i>
+                            <i class="fas fa-star star-light submit_star mr-1" id="submit_star_5" data-rating="5"></i>
+                        </h2>
+                        <div class="form-group">
+                            <input type="text" name="userName" id="userName" placeholder="Shkruaj emrin tuaj">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="userReview" id="userReview" placeholder="Jepni vlerësimin"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="prodID" id="prodID" value="<?php $produktID ?>">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
+                            <button type="submit" class="btn btn-info" id="save_review">Dërgo vlerësimin</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jquery latest version -->
     <?php include_once('scripts.php'); ?>

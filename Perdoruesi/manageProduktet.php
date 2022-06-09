@@ -11,4 +11,35 @@ switch ($_POST["action"]) {
         echo json_encode($row);
         break;
 
+    case "addReview":
+        if (isset($_POST["rating_data"])) {
+            $userName = $_POST['userName'];
+            $user_ratig = $_POST['rating_data'];
+            $user_review = $_POST['userReview'];
+            $prodID  = $_POST['prodID'];
+            $datetime = time();
+
+
+            $sql = "INSERT INTO produktreview (perdoruesi,starRating,reviewText,datetime,produktID) VALUES ('$userName','$user_ratig', '$user_review', '$datetime','$prodID')";
+
+            $query = mysqli_query($con, $sql);
+            if ($query == true) {
+
+                $data = array(
+                    'status' => 'true'
+                );
+                echo json_encode($data);
+            } else {
+                $data = array(
+                    'status' => 'false'
+                );
+                echo json_encode($data);
+            }
+        }else {
+            $data = array(
+                'status' => 'false'
+            );
+            echo json_encode($data);
+        }
+        break;
 }

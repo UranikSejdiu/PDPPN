@@ -16,3 +16,7 @@ https://github.com/techlab/jquery-smartcart
 
 Advance filtering with ajax and php:
 https://www.youtube.com/watch?v=6UfPmrD4VWI&list=PL6u82dzQtlfv3dm_duiZUbXkiFigoMaft&index=2
+
+
+Review and rating:
+https://www.youtube.com/watch?v=y3E6QW5LtFQ

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 02, 2022 at 08:46 PM
+-- Generation Time: Jun 09, 2022 at 01:44 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -246,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
 --
 
 INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `phone`, `email`, `password`, `code`, `status`) VALUES
-(3, 'Uranik', 2, 'Mataj 1', '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$NBfBS5piWCA9glj4HTOgC.pkZ.xGp7x1hHb83u94SJKoMlzmY9PjG', 0, 'verified');
+(3, 'Uranik', 2, 'Mataj 1', '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$F8eSZKxpslGNA7e7vDtCYuwySM3vF2iHZRF4jEk3RvJqn8Q2jcKUy', 0, 'verified');
 
 -- --------------------------------------------------------
 
@@ -287,6 +287,36 @@ INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3
 (22, 'test', '../images/produktet/1653998550-629603d62aaa2.jpg', '../images/produktet/1653998512-629603b00d7ee.jpg', '../images/produktet/1653998442-6296036aac79e.jpg', '../images/produktet/1653998442-6296036aac7b0.jpg', 2, '44545453', '45.00', 45, 4, 4, 2),
 (23, '111', '../images/produktet/1653660744-6290dc48ca7f9.png', '../images/produktet/1653998930-629605529d743.jpg', '../images/produktet/1653998930-629605529dc2d.jpg', '../images/produktet/1653998930-629605529dc3d.jpg', 1, '111', '10.00', 10, 1, 2, 2);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produktreview`
+--
+
+DROP TABLE IF EXISTS `produktreview`;
+CREATE TABLE IF NOT EXISTS `produktreview` (
+  `reviewID` int(11) NOT NULL AUTO_INCREMENT,
+  `perdoruesi` varchar(150) NOT NULL,
+  `starRating` int(1) NOT NULL,
+  `reviewText` text NOT NULL,
+  `datetime` int(11) NOT NULL,
+  `produktID` int(11) NOT NULL,
+  PRIMARY KEY (`reviewID`),
+  KEY `reviewProdukt` (`produktID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produktreview`
+--
+
+INSERT INTO `produktreview` (`reviewID`, `perdoruesi`, `starRating`, `reviewText`, `datetime`, `produktID`) VALUES
+(1, 'asdasdasd', 2, 'asdasdasd', 1654780148, 21),
+(2, 'asdasdasd', 2, 'asdasdasd', 1654780279, 21),
+(3, 'asdasdasdasd', 5, 'asdasdasdasd', 1654780353, 21),
+(4, 'asdadasdasdasd', 4, 'asdasdasdadadasdasd', 1654780399, 21),
+(5, 'asdadasdasdasd', 4, 'asdasdasdadadasdasd', 1654780427, 21),
+(6, 'test', 2, 'test', 1654782191, 17);
+
 --
 -- Constraints for dumped tables
 --
@@ -317,6 +347,12 @@ ALTER TABLE `produktet`
   ADD CONSTRAINT `katForeignKey` FOREIGN KEY (`kategoriaID`) REFERENCES `kategoria` (`kategoriaID`),
   ADD CONSTRAINT `kompaniaForeignKey` FOREIGN KEY (`kompaniaID`) REFERENCES `kompanite` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `sizeKatForeignkey` FOREIGN KEY (`madhesiaID`) REFERENCES `madhesit` (`madhesiaID`);
+
+--
+-- Constraints for table `produktreview`
+--
+ALTER TABLE `produktreview`
+  ADD CONSTRAINT `reviewProdukt` FOREIGN KEY (`produktID`) REFERENCES `produktet` (`produktID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
