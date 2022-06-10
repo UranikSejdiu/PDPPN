@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 09, 2022 at 01:44 PM
+-- Generation Time: Jun 10, 2022 at 03:44 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -299,23 +299,25 @@ CREATE TABLE IF NOT EXISTS `produktreview` (
   `perdoruesi` varchar(150) NOT NULL,
   `starRating` int(1) NOT NULL,
   `reviewText` text NOT NULL,
-  `datetime` int(11) NOT NULL,
   `produktID` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`reviewID`),
   KEY `reviewProdukt` (`produktID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produktreview`
 --
 
-INSERT INTO `produktreview` (`reviewID`, `perdoruesi`, `starRating`, `reviewText`, `datetime`, `produktID`) VALUES
-(1, 'asdasdasd', 2, 'asdasdasd', 1654780148, 21),
-(2, 'asdasdasd', 2, 'asdasdasd', 1654780279, 21),
-(3, 'asdasdasdasd', 5, 'asdasdasdasd', 1654780353, 21),
-(4, 'asdadasdasdasd', 4, 'asdasdasdadadasdasd', 1654780399, 21),
-(5, 'asdadasdasdasd', 4, 'asdasdasdadadasdasd', 1654780427, 21),
-(6, 'test', 2, 'test', 1654782191, 17);
+INSERT INTO `produktreview` (`reviewID`, `perdoruesi`, `starRating`, `reviewText`, `produktID`, `date`) VALUES
+(1, 'asdasdasd', 2, 'asdasdasd', 21, '2022-06-10 15:48:21'),
+(2, 'asdasdasd', 2, 'asdasdasd', 21, '2022-06-10 15:48:21'),
+(3, 'asdasdasdasd', 5, 'asdasdasdasd', 21, '2022-06-10 15:48:21'),
+(4, 'asdadasdasdasd', 4, 'asdasdasdadadasdasd', 21, '2022-06-10 15:48:21'),
+(5, 'asdadasdasdasd', 4, 'asdasdasdadadasdasd', 21, '2022-06-10 15:48:21'),
+(6, 'test', 2, 'test', 17, '2022-06-10 15:48:21'),
+(7, 'Uranik', 1, 'UranikUranikUranikUranik', 21, '2022-06-10 17:10:37'),
+(8, 'Filan Fisteku', 3, 'E mirë', 21, '2022-06-10 17:42:30');
 
 --
 -- Constraints for dumped tables

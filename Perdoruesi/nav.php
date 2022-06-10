@@ -21,8 +21,8 @@
                 <nav id="mobile_dropdown">
                     <ul>
                         <li><a href="index.php">Kryefaçja</a></li>
-                        <li><a href="produkt.php">Produktet</a></li>
-                        <li><a href="kontakt.php">Kontakti</a></li>
+                        <li><a href="produktet.php">Produktet</a></li>
+                        <li><a href="kontakto.php">Kontakti</a></li>
                     </ul>
                 </nav>
             </div>

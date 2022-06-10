@@ -151,29 +151,7 @@ if (isset($_GET['produktID'])) {
                         <div class="product__details__tab__content">
                             <!-- Start Single Content -->
                             <div class="review__address__inner" id="review_content">
-                                <!-- Start Single Review -->
-                                <div class="pro__review">
-                                    <div class="review__thumb">
-                                        <img src="images/review/1.jpg" alt="review images">
-                                    </div>
-                                    <div class="review__details">
-                                        <div class="review__info">
-                                            <h4>Gerald Barnes</h4>
-                                            <ul class="rating">
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star-half"></i></li>
-                                                <li><i class="zmdi zmdi-star-half"></i></li>
-                                            </ul>
-                                        </div>
-                                        <div class="review__date">
-                                            <span>27 Jun, 2016 at 2:30pm</span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
-                                    </div>
-                                </div>
-                                <!-- End Single Review -->
+                                
                             </div>
                         </div>
                     </div>

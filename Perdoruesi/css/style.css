@@ -2472,7 +2472,7 @@ select.select-color {
     background: #ff4136 none repeat scroll 0 0;
     color: #fff;
 }
-.review__info ul.rating li a {} .review__info ul.rating li i {
+.review__info{
     color: #f3c258;
     font-size: 17px;
 }
