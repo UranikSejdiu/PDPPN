@@ -37,7 +37,7 @@
            </div>';
            }
         }else{
-            $output = "<h3>Nuk u gjend asnjë produkt!</h3>";
+            $output = '<h3 class="title__line text-center">Nuk u gjend asnjë produkt!</h3>';
         }
     }
     echo $output;

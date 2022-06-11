@@ -1,4 +1,9 @@
-<?php include_once('config.php'); ?>
+<?php include_once('checkSession.php');
+
+if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
+ 
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -104,8 +109,8 @@
                                             <div class="product">
                                                 <div class="product__inner">
                                                     <div class="pro__thumb">
-                                                       <?php echo '<a href="detajeProduktit.php?produktID='.$row['produktID'].'">';
-                                                          echo  '<img style="object-fit: cover;" width="100" height="150" src="'.$row['imazhi1'].'" alt="product images"></a>';
+                                                        <?php echo '<a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">';
+                                                        echo  '<img style="object-fit: cover;" width="100" height="150" src="' . $row['imazhi1'] . '" alt="product images"></a>';
                                                         ?>
                                                     </div>
                                                     <div class="product__hover__info">
@@ -116,7 +121,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product__details">
-                                                   <?php echo '<h2><a href="detajeProduktit.php?produktID='.$row['produktID'].'">'.$row['produkti'].'</a></h2>'; ?>
+                                                    <?php echo '<h2><a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">' . $row['produkti'] . '</a></h2>'; ?>
                                                     <ul class="product__price">
                                                         <li class="new__price"><?= $row['qmimi']; ?></li>
                                                     </ul>
@@ -182,24 +187,27 @@
     <!-- Placed js at the end of the document so the pages load faster -->
     <?php include_once('scripts.php'); ?>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $(".product_check").click(function(){
+        $(document).ready(function() {
+            $(".product_check").click(function() {
                 var action = 'data';
                 var kategoria = get_filter_text('kategoria');
                 $.ajax({
-                   url:'sortProduktet.php',
-                   method:'POST',
-                   data:{action:action,kategoria:kategoria},
-                   success:function(response){
-                       $("#grid-view").html(response);
+                    url: 'sortProduktet.php',
+                    method: 'POST',
+                    data: {
+                        action: action,
+                        kategoria: kategoria
+                    },
+                    success: function(response) {
+                        $("#grid-view").html(response);
 
-                   }
+                    }
                 });
             });
 
-            function get_filter_text(text_id){
+            function get_filter_text(text_id) {
                 var filterData;
-                $('#'+text_id+':checked').each(function(){
+                $('#' + text_id + ':checked').each(function() {
                     filterData = $(this).val();
                 });
                 return filterData;
@@ -210,3 +218,10 @@
 </body>
 
 </html>
+<?php
+}else{
+    $_SESSION['location']= $_SERVER['REQUEST_URI'];
+    header("Location:user-login.php");
+}
+
+?>

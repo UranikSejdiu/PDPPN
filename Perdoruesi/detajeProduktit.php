@@ -1,9 +1,27 @@
-<?php include_once('checkSession.php'); ?>
+<?php include_once('checkSession.php');
 
-<?php
-if (isset($_GET['produktID'])) {
-    $produktID = $_GET['produktID'];
+$produktID = $_GET['produktID'];
+
+$sql = "SELECT  produktet.produkti, produktet.imazhi1, produktet.imazhi2, produktet.imazhi3, produktet.imazhi4, produktet.pershkrimi, produktet.qmimi, produktet.stoku, madhesit.madhesia, ngjyrat.ngjyra, produktet.kompaniaID
+FROM produktet
+LEFT OUTER JOIN madhesit ON produktet.madhesiaID=madhesit.madhesiaID 
+LEFT OUTER JOIN ngjyrat ON produktet.ngjyraID=ngjyrat.ngjyraID
+WHERE  produktet.produktID=$produktID";
+
+$query = mysqli_query($con, $sql);
+while ($row = mysqli_fetch_assoc($query)) {
+    $produkti = $row['produkti'];
+    $foto1 = $row['imazhi1'];
+    $foto2 = $row['imazhi2'];
+    $foto3 = $row['imazhi3'];
+    $foto4 = $row['imazhi4'];
+    $pershkrimi = $row['pershkrimi'];
+    $qmimi = $row['qmimi'];
+    $stoku = $row['stoku'];
+    $madhesia = $row['madhesia'];
+    $ngjyra = $row['ngjyra'];
 }
+
 ?>
 
 <!doctype html>
@@ -33,33 +51,33 @@ if (isset($_GET['produktID'])) {
         <div class="body__overlay"></div>
         <!-- Start Product Details -->
         <section class="htc__product__details pt--120 pb--100 bg__white">
-        <div id="alerts"></div>
+            <div id="alerts"></div>
             <div class="container" style="margin-top:2%;">
                 <div class="row">
-                
-                <input type="hidden" name="prodID" id="prodID" value="<?php echo $produktID; ?>">
+
+                    <input type="hidden" name="prodID" id="prodID" value="<?php echo $produktID; ?>">
                     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                         <div class="product__details__container">
                             <!-- Start Small images -->
                             <ul class="product__small__images" role="tablist">
                                 <li role="presentation" class="pot-small-img active">
                                     <a href="#img-tab-1" role="tab" data-toggle="tab">
-                                        <img id="foto1" style="object-fit:cover;" width="120" height="140" alt="small-image">
+                                        <img src="<?php echo $foto1; ?>" style="object-fit:cover;" width="120" height="140" alt="small-image">
                                     </a>
                                 </li>
                                 <li role="presentation" class="pot-small-img">
                                     <a href="#img-tab-2" role="tab" data-toggle="tab">
-                                        <img id="foto2" style="object-fit:cover;" width="120" height="140" alt="small-image">
+                                        <img src="<?php echo $foto2; ?>" style="object-fit:cover;" width="120" height="140" alt="small-image">
                                     </a>
                                 </li>
                                 <li role="presentation" class="pot-small-img hidden-xs">
                                     <a href="#img-tab-3" role="tab" data-toggle="tab">
-                                        <img id="foto3" style="object-fit:cover;" width="120" height="140" alt="small-image">
+                                        <img src="<?php echo $foto3; ?>" style="object-fit:cover;" width="120" height="140" alt="small-image">
                                     </a>
                                 </li>
                                 <li role="presentation" class="pot-small-img hidden-xs hidden-sm">
                                     <a href="#img-tab-4" role="tab" data-toggle="tab">
-                                        <img id="foto4" style="object-fit:cover;" width="120" height="140" alt="small-image">
+                                        <img src="<?php echo $foto4; ?>" style="object-fit:cover;" width="120" height="140" alt="small-image">
                                     </a>
                                 </li>
                             </ul>
@@ -67,7 +85,7 @@ if (isset($_GET['produktID'])) {
                             <div class="product__big__images">
                                 <div class="portfolio-full-image tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active product-video-position" id="img-tab-1">
-                                        <img id="foto5" width="440" height="590" style="object-fit: cover;" alt="full-image">
+                                        <img src="<?php echo $foto1; ?>" width="440" height="590" style="object-fit: cover;" alt="full-image">
                                     </div>
                                 </div>
                             </div>
@@ -76,36 +94,58 @@ if (isset($_GET['produktID'])) {
                     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
                         <div class="htc__product__details__inner">
                             <div class="pro__detl__title">
-                                <h2 id="produktTitulli"></h2>
-                            </div>
-                            <div class="pro__dtl__rating">
-                                <ul class="pro__rating">
-                                    <li><span class="ti-star"></span></li>
-                                    <li><span class="ti-star"></span></li>
-                                    <li><span class="ti-star"></span></li>
-                                    <li><span class="ti-star"></span></li>
-                                    <li><span class="ti-star"></span></li>
-                                </ul>
-                                <span class="rat__qun">(Nga totali)</span>
+                                <h2 id="produktTitulli"><?php echo $produkti; ?></h2>
                             </div>
                             <div class="pro__details">
-                                <p id="pershkrimi"></p>
+                                <p id="pershkrimi"><?php echo $pershkrimi; ?></p>
                             </div>
                             <ul class="pro__dtl__prize">
-                                <li id="qmimi"></li>
+                                <li id="qmimi"><?php echo $qmimi; ?></li>
                             </ul>
-                            <div class="pro__dtl__color">
+                            <?php
+                            if ($ngjyra == '0') {
+                            } else {
+                            ?>
+                                <div class="pro__dtl__color">
                                 <h2 class="title__5">Ngjyra</h2>
                                 <ul class="pro__choose__color">
-                                    <li class="red"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
+                                    <?php 
+                                        if($ngjyra == 'E Zezë'){
+                                            echo '<li class="black"><a><i class="zmdi zmdi-circle"></i></a></li>';
+                                        }elseif ($ngjyra == 'E Kuqe') {
+                                            echo '<li class="red"><a><i class="zmdi zmdi-circle"></i></a></li>';
+                                        }elseif ($ngjyra == 'E Kalter') {
+                                            echo '<li class="blue"><a><i class="zmdi zmdi-circle"></i></a></li>';
+                                        }elseif ($ngjyra == 'E Hirtë') {
+                                            echo '<li class="gray"><a><i class="zmdi zmdi-circle"></i></a></li>';
+                                        }
+                                        
+                                    ?>
+                                    
                                 </ul>
                             </div>
-                            <div class="pro__dtl__size">
-                                <h2 class="title__5">Madhësia</h2>
-                                <ul class="pro__choose__size">
-                                    <li><a href="#">xl</a></li>
-                                </ul>
-                            </div>
+                            <?php
+                            }
+                            ?>
+                            
+
+                            <?php
+                            if ($madhesia == '0') {
+                            } else {
+                            ?>
+                                <div class="pro__dtl__size" id="madhesiaWrap">
+                                    <h2 class="title__5">Madhësia</h2>
+                                    <ul class="pro__choose__size">
+                                        <li>
+                                            <h3 id="madhesia"> <?php echo $madhesia; ?></h3>
+                                        </li>
+                                    </ul>
+                                </div>
+                            <?php
+                            }
+                            ?>
+
+
                             <div class="product-action-wrap">
                                 <div class="prodict-statas"><span>Sasia :</span></div>
                                 <div class="product-quantity">
@@ -133,7 +173,7 @@ if (isset($_GET['produktID'])) {
         <!-- End Product Details -->
         <!-- Start Product tab -->
         <section class="htc__product__details__tab bg__white pb--120">
-        
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -144,14 +184,14 @@ if (isset($_GET['produktID'])) {
                         </ul>
                     </div>
                 </div>
-                
+
                 <button type="button" name="add_review" id="add_review" class="">Vlerso</button>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product__details__tab__content">
                             <!-- Start Single Content -->
                             <div class="review__address__inner" id="review_content">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -194,26 +234,26 @@ if (isset($_GET['produktID'])) {
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
-                    <div class="modal-body">
-                        <h2 class="text-center mt-2 mb-4" style="margin-bottom:5%;">
-                            <i class="fas fa-star star-light submit_star mr-1" id="submit_star_1" data-rating="1"></i>
-                            <i class="fas fa-star star-light submit_star mr-1" id="submit_star_2" data-rating="2"></i>
-                            <i class="fas fa-star star-light submit_star mr-1" id="submit_star_3" data-rating="3"></i>
-                            <i class="fas fa-star star-light submit_star mr-1" id="submit_star_4" data-rating="4"></i>
-                            <i class="fas fa-star star-light submit_star mr-1" id="submit_star_5" data-rating="5"></i>
-                        </h2>
-                        <div class="form-group">
-                            <input type="text" name="userName" id="userName" placeholder="Shkruaj emrin tuaj">
-                        </div>
-                        <div class="form-group">
-                            <textarea name="userReview" id="userReview" placeholder="Jepni vlerësimin"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" name="prodID" id="prodID" value="<?php $produktID ?>">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
-                            <button type="submit" class="btn btn-info" id="save_review">Dërgo vlerësimin</button>
-                        </div>
+                <div class="modal-body">
+                    <h2 class="text-center mt-2 mb-4" style="margin-bottom:5%;">
+                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_1" data-rating="1"></i>
+                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_2" data-rating="2"></i>
+                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_3" data-rating="3"></i>
+                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_4" data-rating="4"></i>
+                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_5" data-rating="5"></i>
+                    </h2>
+                    <div class="form-group">
+                        <input type="text" name="userName" id="userName" placeholder="Shkruaj emrin tuaj">
                     </div>
+                    <div class="form-group">
+                        <textarea name="userReview" id="userReview" placeholder="Jepni vlerësimin"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="prodID" id="prodID" value="<?php $produktID ?>">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
+                        <button type="submit" class="btn btn-info" id="save_review">Dërgo vlerësimin</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
