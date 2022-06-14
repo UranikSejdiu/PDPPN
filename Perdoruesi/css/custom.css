@@ -1077,3 +1077,28 @@ input[type=file]::file-selector-button{
   margin-right: 8px;
   border:none;
 }
+
+.blue{
+  color:#0000FF !important;
+}
+.black{
+  color: #000 !important;
+}
+.red{
+  color: #f00 !important;
+}
+.gray{
+  color:#808080 !important;
+}
+.purple{
+  color:#6a0dad !important;
+}
+.orange{
+  color:#FFA500 !important;
+}
+.yellow{
+  color:#FFFF00;
+}
+.green{
+  color: #00ff00;
+}

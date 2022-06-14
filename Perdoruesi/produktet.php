@@ -1,7 +1,7 @@
 <?php include_once('checkSession.php');
 
-if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
- 
+$_SESSION['location']= $_SERVER['REQUEST_URI'];
+
 ?>
 
 <!doctype html>
@@ -218,10 +218,3 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
 </body>
 
 </html>
-<?php
-}else{
-    $_SESSION['location']= $_SERVER['REQUEST_URI'];
-    header("Location:user-login.php");
-}
-
-?>

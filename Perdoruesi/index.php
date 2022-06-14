@@ -1,4 +1,5 @@
-<?php include_once('checkSession.php'); ?>
+<?php include_once('checkSession.php'); 
+$_SESSION['location']= $_SERVER['REQUEST_URI'];?>
 <!doctype html>
 <html class="no-js" lang="en">
 

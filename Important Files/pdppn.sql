@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 11, 2022 at 03:45 PM
+-- Generation Time: Jun 14, 2022 at 02:16 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -206,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `ngjyrat` (
   `kategoriaID` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ngjyraID`),
   KEY `ngjyraKetegorit` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `ngjyrat`
@@ -214,11 +214,13 @@ CREATE TABLE IF NOT EXISTS `ngjyrat` (
 
 INSERT INTO `ngjyrat` (`ngjyraID`, `ngjyra`, `kategoriaID`) VALUES
 (0, '0', 0),
-(1, 'E Zezë', 1),
-(2, 'E Kuqe', 1),
-(3, 'E Kaltër', 1),
-(4, 'E Hirtë', 2),
-(5, 'E Zezë', 2);
+(1, 'Black', 1),
+(2, 'Red', 1),
+(3, 'Blue', 1),
+(4, 'Gray', 2),
+(5, 'Black', 2),
+(6, 'Purple', 1),
+(7, 'Orange', 1);
 
 -- --------------------------------------------------------
 
