@@ -1,9 +1,11 @@
 <?php
 include_once('checkSession.php');
 $_SESSION['location'] = $_SERVER['REQUEST_URI'];
-if (isset($_GET['blej'])) {
-    $sasia = mysqli_real_escape_string($con, $_POST['sasia']);
-    $produktID = mysqli_real_escape_string($con, $_POST['produktID']);
+?>
+<?php
+if (isset($_POST['blej'])) {
+    $sasia = $_POST['sasia'];
+    $produktID =  $_POST['produktID'];
 
     $sql = "SELECT  produktet.produkti, produktet.imazhi1, produktet.imazhi2, produktet.imazhi3, produktet.imazhi4, produktet.pershkrimi, produktet.qmimi, produktet.stoku, madhesit.madhesia, ngjyrat.ngjyra, produktet.kompaniaID FROM produktet
     LEFT OUTER JOIN madhesit ON produktet.madhesiaID=madhesit.madhesiaID 
@@ -24,10 +26,7 @@ if (isset($_GET['blej'])) {
         $ngjyra = $row['ngjyra'];
     }
 }
-
 ?>
-
-
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -45,6 +44,8 @@ if (isset($_GET['blej'])) {
 <body>
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
+        <?php echo $sasia;
+        echo $produktID; ?>
         <!-- Start Header Style -->
         <header id="header" class="htc-header header--3 bg__white">
             <!-- Start Mainmenu Area -->
@@ -60,93 +61,99 @@ if (isset($_GET['blej'])) {
         <section class="our-checkout-area ptb--120 bg__white">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 col-lg-8">
+                    <div class="col-md-9 col-lg-9">
                         <div class="ckeckout-left-sidebar">
                             <!-- Start Checkbox Area -->
                             <div class="checkout-form">
-                                <h2 class="section-title-3">Billing details</h2>
+                                <h2 class="section-title-3">Të dhënat tuaja</h2>
                                 <div class="checkout-form-inner">
                                     <div class="single-checkout-box">
-                                        <input type="text" placeholder="First Name*">
-                                        <input type="text" placeholder="Last Name*">
+                                        <input type="text" placeholder="Emri">
+                                        <input type="email" placeholder="Email-i">
                                     </div>
                                     <div class="single-checkout-box">
-                                        <input type="email" placeholder="Emil*">
-                                        <input type="text" placeholder="Phone*">
-                                    </div>
-                                    <div class="single-checkout-box">
-                                        <textarea name="message" placeholder="Message*"></textarea>
+                                        <input type="text" name="tel" id="tel" placeholder="Nr. telefonit">
+                                        <input type="email" placeholder="Shteti" disabled value="Kosovë">
                                     </div>
                                     <div class="single-checkout-box select-option mt--40">
                                         <select>
-                                            <option>Country*</option>
+                                            <option>Qyteti</option>
                                             <option>Bangladesh</option>
                                             <option>Bangladesh</option>
                                             <option>Bangladesh</option>
                                             <option>Bangladesh</option>
                                         </select>
-                                        <input type="text" placeholder="Company Name*">
+                                        <input type="text" placeholder="Kodi postar" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="5">
                                     </div>
                                     <div class="single-checkout-box">
-                                        <input type="email" placeholder="State*">
-                                        <input type="text" placeholder="Zip Code*">
-                                    </div>
-                                    <div class="single-checkout-box checkbox">
-                                        <input id="remind-me" type="checkbox">
-                                        <label for="remind-me"><span></span>Create a Account ?</label>
+                                        <textarea name="message" placeholder="Mesazhi juaj"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <!-- End Checkbox Area -->
                             <!-- Start Payment Box -->
                             <div class="payment-form">
-                                <h2 class="section-title-3">payment details</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur kgjhyt</p>
-                                <div class="payment-form-inner">
-                                    <div class="single-checkout-box">
-                                        <input type="text" placeholder="Name on Card*">
-                                        <input type="text" placeholder="Card Number*">
-                                    </div>
-                                    <div class="single-checkout-box select-option">
-                                        <select>
-                                            <option>Date*</option>
-                                            <option>Date</option>
-                                            <option>Date</option>
-                                            <option>Date</option>
-                                            <option>Date</option>
-                                        </select>
-                                        <input type="text" placeholder="Security Code*">
-                                    </div>
+                                <h2 class="section-title-3">Mënyra e pagesës</h2>
+                                <p>Mënyra tjera të pagesës do shtohen më vonë</p>
+
+                                <div class="single-checkout-box checkbox">
+                                    <input type="text" name="pagesa" id="pagesa" disabled value="Pagesa me para në dorë">
+
                                 </div>
                             </div>
                             <!-- End Payment Box -->
-                            <!-- Start Payment Way -->
-                            <div class="our-payment-sestem">
-                                <h2 class="section-title-3">We Accept :</h2>
-                                <ul class="payment-menu">
-                                    <li><a href="#"><img src="images/payment/1.jpg" alt="payment-img"></a></li>
-                                    <li><a href="#"><img src="images/payment/2.jpg" alt="payment-img"></a></li>
-                                    <li><a href="#"><img src="images/payment/3.jpg" alt="payment-img"></a></li>
-                                    <li><a href="#"><img src="images/payment/4.jpg" alt="payment-img"></a></li>
-                                    <li><a href="#"><img src="images/payment/5.jpg" alt="payment-img"></a></li>
-                                </ul>
-                                <div class="checkout-btn">
-                                    <a class="ts-btn btn-light btn-large hover-theme" href="#">CONFIRM & BUY NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div class="checkout-right-sidebar">
+                            <div class="our-important-note">
+                                <div class="our-important-note">
+                                    <h2 class="section-title-3"><?php echo $produkti; ?></h2>
+                                    <p class="note-desc">
+                                        <?php echo  '<img width="250" height="250" style="object-fit: cover;" src="' . $foto1 . '" alt="product images"></a>';
+                                        ?>
+                                    </p>
+                                    <ul class="important-note">
+                                        <ul class="product__price">
+                                            <li class="new__price">Madhesia: <?php echo $madhesia; ?></li>
+                                        </ul>
+                                        <ul class="product__price">
+                                            <li class="new__price">Ngjyra: <?php echo $ngjyra; ?></li>
+                                        </ul>
+                                        <ul class="product__price">
+                                            <li class="new__price">Çmimi: <?php echo $qmimi; ?>€</li>
+                                        </ul>
+                                        <ul class="product__price">
+                                            <li class="new__price">Sasia: <?php echo $sasia; ?></li>
+                                        </ul>
+                                        <ul class="product__price">
+                                            <?php
+                                            $total= $sasia * $qmimi;
+                                            echo '<li class="new__price">Totali: ' . $total . '</li>'
+
+                                            ?>
+                                        </ul>
+                                    </ul>
                                 </div>
                             </div>
-                            <!-- End Payment Way -->
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
-        <!-- End Checkout Area -->
-        <!-- Start Footer Area -->
-        <?php include_once('footer.php'); ?>
-        <!-- End Footer Area -->
+    </div>
+
+    <!-- End Checkout Area -->
+    <!-- Start Footer Area -->
+    <?php include_once('footer.php'); ?>
+    <!-- End Footer Area -->
     </div>
     <?php include_once('scripts.php'); ?>
-
+    <script>
+        $(":input").inputmask();
+        $("#tel").inputmask({
+            "mask": "(+383)49/999-999"
+        });
+    </script>
 </body>
 
 </html>

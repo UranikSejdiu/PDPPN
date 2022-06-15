@@ -96,29 +96,6 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                                     <?php    } ?>
                                     <!-- End Single Product -->
                                 </div>
-                                <div role="tabpanel" id="list-view" class="single-grid-view tab-pane fade clearfix">
-                                    <!-- Start List Content-->
-                                    <div class="single__list__content clearfix">
-                                        <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
-                                            <div class="list__thumb">
-                                                <a href="product-details.html">
-                                                    <img src="images/product/1.png" alt="list images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12">
-                                            <div class="list__details__inner">
-                                                <h2><a href="product-details.html">Ninja Silhouette</a></h2>
-                                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet…</p>
-                                                <span class="product__price">$15.00</span>
-                                                <div class="shop__btn">
-                                                    <a class="htc__btn" href="cart.html"><span class="ti-shopping-cart"></span>Add to Cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End List Content-->
-                                </div>
                                 <!-- End Single View -->
                             </div>
                         </div>

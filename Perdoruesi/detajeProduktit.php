@@ -196,13 +196,13 @@ while ($row = mysqli_fetch_assoc($query)) {
                                     <div class="product-quantity">
                                         <div class="cart-plus-minus" style="cursor: default;">
                                             <input class="cart-plus-minus-box" type="text" name="sasia" id="sasia" value="1">
-                                            <input type="hidden" name="produktID" id="produktID">
+                                            <input type="hidden" name="produktID" id="produktID" value="'.$produktID.'">
                                         </div>
                                     </div>
 
                                 </div>
                                 <ul class="pro__dtl__btn">
-                                    <li class="buy__now__btn"><button type="submit" name="blej" class="regBtn">Blej</button></li>
+                                    <li class="buy__now__btn"><input type="submit" name="blej" value="Blej" class="regBtn"></li>
                                 </ul>
                             </form>';
                             } ?>
