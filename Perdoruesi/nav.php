@@ -3,7 +3,7 @@
         <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
             <div class="logo">
                 <a href="index.php">
-                    <img style="max-width: 250%;" src="images/logo/logo.png" alt="logo">
+                    <img style="max-width: 250%;" src="../images/icons/logo1.png" alt="logo">
                 </a>
             </div>
         </div>

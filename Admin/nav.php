@@ -3,7 +3,7 @@
         <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
             <div class="logo">
                 <a href="home.php">
-                    <img src="images/logo/logo.png" alt="logo" >
+                    <img style="max-width: 250%;" src="../images/icons/logo1.png" alt="logo">
                 </a>
             </div>
         </div>
@@ -11,7 +11,7 @@
         <div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
             <nav class="mainmenu__nav hidden-xs hidden-sm">
                 <ul class="main__menu">
-                <li><a href="home.php">Kryefaçja</a></li>
+                    <li><a href="home.php">Kryefaçja</a></li>
                     <li class="drop"><a href="#">Llogaritë</a>
                         <ul class="dropdown">
                             <li><a href="admin.php">Administratorët</a></li>

@@ -113,7 +113,7 @@ while ($row = mysqli_fetch_assoc($query)) {
                                 <p id="pershkrimi"><?php echo $pershkrimi; ?></p>
                             </div>
                             <ul class="pro__dtl__prize">
-                                <li id="qmimi"><?php echo $qmimi; ?></li>
+                                <li id="qmimi"><?php echo $qmimi; ?>€</li>
                             </ul>
                             <?php
                             if ($ngjyra == '0') {
@@ -124,21 +124,21 @@ while ($row = mysqli_fetch_assoc($query)) {
                                     <ul class="pro__choose__color">
                                         <?php
                                         if ($ngjyra == 'Black') {
-                                            echo '<li><a><i class="zmdi zmdi-circle black"></i></a></li>';
+                                            echo '<li><a><i title="Black" class="zmdi zmdi-circle black"></i></a></li>';
                                         } elseif ($ngjyra == 'Red') {
-                                            echo '<li><a><i class="zmdi zmdi-circle red"></i></a></li>';
+                                            echo '<li><a><i title="Red" class="zmdi zmdi-circle red"></i></a></li>';
                                         } elseif ($ngjyra == 'Blue') {
-                                            echo '<li><a><i class="zmdi zmdi-circle blue"></i></a></li>';
+                                            echo '<li><a><i title="Blue" class="zmdi zmdi-circle blue"></i></a></li>';
                                         } elseif ($ngjyra == 'Gray') {
-                                            echo '<li><a><i class="zmdi zmdi-circle gray"></i></a></li>';
+                                            echo '<li><a><i title="Gray" class="zmdi zmdi-circle gray"></i></a></li>';
                                         } elseif ($ngjyra == 'Purple') {
-                                            echo '<li><a><i class="zmdi zmdi-circle purple"></i></a></li>';
+                                            echo '<li><a><i title="Purple" class="zmdi zmdi-circle purple"></i></a></li>';
                                         } elseif ($ngjyra == 'Orange') {
-                                            echo '<li><a><i class="zmdi zmdi-circle orange"></i></a></li>';
+                                            echo '<li><a><i title="Orange"class="zmdi zmdi-circle orange"></i></a></li>';
                                         } elseif ($ngjyra == 'Yellow') {
-                                            echo '<li><a><i class="zmdi zmdi-circle yellow"></i></a></li>';
+                                            echo '<li><a><i title="Yellow" class="zmdi zmdi-circle yellow"></i></a></li>';
                                         } elseif ($ngjyra == 'Green') {
-                                            echo '<li><a><i class="zmdi zmdi-circle green"></i></a></li>';
+                                            echo '<li><a><i title="Green" class="zmdi zmdi-circle green"></i></a></li>';
                                         }
                                         ?>
                                     </ul>
@@ -163,7 +163,15 @@ while ($row = mysqli_fetch_assoc($query)) {
                             }
                             ?>
 
-                            <form id="myform" method="POST" action="blejProduktin.php">
+                            <?php if ($stoku == 0) {
+                                echo '<div class="pro__dtl__size">
+                                <h2 class="title__5" style="color: #ff4136!important; font-weight:bold;">Nuk ka në disponim!</h2>
+                            </div>';
+                            } elseif ($stoku == 1) {
+                                echo '<div class="pro__dtl__size">
+                                <h2 class="title__5" ">Disponueshmëria:<strong> Vetëm ' . $stoku . '</strong></h2>
+                            </div>';
+                                echo '<form id="myform" method="POST" action="blejProduktin.php">
                                 <div class="product-action-wrap">
                                     <div class="prodict-statas"><span>Sasia:</span></div>
                                     <div class="product-quantity">
@@ -177,7 +185,29 @@ while ($row = mysqli_fetch_assoc($query)) {
                                 <ul class="pro__dtl__btn">
                                     <li class="buy__now__btn"><button type="submit" name="blej" class="regBtn">Blej</button></li>
                                 </ul>
-                            </form>
+                            </form>';
+                            } else {
+                                echo '<div class="pro__dtl__size">
+                                <h2 class="title__5" ">Disponueshmëria:<strong> ' . $stoku . ' artikuj</strong></h2>
+                            </div>';
+                                echo '<form id="myform" method="POST" action="blejProduktin.php">
+                                <div class="product-action-wrap">
+                                    <div class="prodict-statas"><span>Sasia:</span></div>
+                                    <div class="product-quantity">
+                                        <div class="cart-plus-minus" style="cursor: default;">
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                            <input type="hidden" name="produktID" id="produktID">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <ul class="pro__dtl__btn">
+                                    <li class="buy__now__btn"><button type="submit" name="blej" class="regBtn">Blej</button></li>
+                                </ul>
+                            </form>';
+                            } ?>
+
+
                         </div>
                     </div>
                 </div>

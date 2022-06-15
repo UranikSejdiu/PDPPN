@@ -22,8 +22,7 @@
                        </div>
                        <div class="product__hover__info">
                            <ul class="product__action" id="produkti">
-                               <li><a title="Dërgo në shport" href="#"><span class="ti-shopping-cart"></span></a></li>
-                               <li><a title="Ruaj" href="#"><span class="ti-heart"></span></a></li>
+                               <li><a title="Blej tani" href="#"><span class="ti-shopping-cart"></span></a></li>
                            </ul>
                        </div>
                    </div>

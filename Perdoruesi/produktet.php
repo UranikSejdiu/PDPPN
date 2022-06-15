@@ -38,23 +38,7 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                         <div class="htc__shop__left__sidebar">
                             <!-- Start Range -->
                             <div class="htc-grid-range">
-                                <h4 class="section-title-4">Filtro nga çmimi:</h4>
                                 <div class="content-shopby">
-                                    <div class="price_filter s-filter clear">
-                                        <form action="#" method="GET">
-                                            <div id="slider-range"></div>
-                                            <div class="slider__range--output">
-                                                <div class="price__output--wrap">
-                                                    <div class="price--output">
-                                                        <span>Çmimi :</span><input type="text" id="amount" readonly>
-                                                    </div>
-                                                    <div class="price--filter">
-                                                        <a href="#">Filtro</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
                             <!-- End Range -->
@@ -76,25 +60,7 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                         </div>
                     </div>
                     <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 smt-30">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                                <div class="producy__view__container">
-                                    <!-- Start Short Form -->
-                                    <div class="product__list__option">
-                                        <div class="order-single-btn">
-                                            <select class="select-color selectpicker">
-                                                <option>Sort by newness</option>
-                                                <option>Match</option>
-                                                <option>Updated</option>
-                                                <option>Title</option>
-                                                <option>Category</option>
-                                                <option>Rating</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="row" id="result">
                             <div class="shop__grid__view__wrap another-product-style">
                                 <!-- Start Single View -->
@@ -115,8 +81,7 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                                                     </div>
                                                     <div class="product__hover__info">
                                                         <ul class="product__action" id="produkti">
-                                                            <li><a title="Dërgo në shport" href="#"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Ruaj" href="#"><span class="ti-heart"></span></a></li>
+                                                            <li><a title="Blej tani" href="#"><span class="ti-shopping-cart"></span></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>

@@ -53,12 +53,12 @@ switch ($_POST["action"]) {
             }
             $sub_array[] = $row['produktID'];
             $sub_array[] = $row['produkti'];
-            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="' . $row['imazhi1'] . '">';
-            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="' . $row['imazhi2'] . '">';
-            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="' . $row['imazhi3'] . '">';
-            $sub_array[] = '<img width="120" height="120" style="padding:2px;" src="' . $row['imazhi4'] . '">';
+            $sub_array[] = '<img width="120" height="85" style="padding:2px;" src="' . $row['imazhi1'] . '">';
+            $sub_array[] = '<img width="120" height="85" style="padding:2px;" src="' . $row['imazhi2'] . '">';
+            $sub_array[] = '<img width="120" height="85" style="padding:2px;" src="' . $row['imazhi3'] . '">';
+            $sub_array[] = '<img width="120" height="85" style="padding:2px;" src="' . $row['imazhi4'] . '">';
             $sub_array[] = $row['kategoria'];
-            $sub_array[] = '<textarea disabled style="overflow-y: auto;resize: none;border: none;">' . $row['pershkrimi'] . '</textarea>';
+            $sub_array[] = '<textarea disabled style="overflow-y: auto;resize: none;border: none;width:fit-content;">' . $row['pershkrimi'] . '</textarea>';
             $sub_array[] = $row['qmimi'] . '€';
             $sub_array[] = $row['stoku'];
             $sub_array[] = $madhesia;
