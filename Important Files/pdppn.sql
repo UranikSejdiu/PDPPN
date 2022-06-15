@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 14, 2022 at 02:16 PM
+-- Generation Time: Jun 15, 2022 at 03:56 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -234,6 +234,7 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
   `fullName` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `id_city` int(11) NOT NULL,
   `adress` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `zipCode` int(5) NOT NULL,
   `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(999) COLLATE utf8_unicode_ci NOT NULL,
@@ -247,8 +248,8 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
 -- Dumping data for table `perdoruesit`
 --
 
-INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `phone`, `email`, `password`, `code`, `status`) VALUES
-(3, 'Uranik', 2, 'Mataj 1', '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$F8eSZKxpslGNA7e7vDtCYuwySM3vF2iHZRF4jEk3RvJqn8Q2jcKUy', 0, 'verified');
+INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `zipCode`, `phone`, `email`, `password`, `code`, `status`) VALUES
+(3, 'Uranik', 2, 'Mataj 1', 10000, '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$F8eSZKxpslGNA7e7vDtCYuwySM3vF2iHZRF4jEk3RvJqn8Q2jcKUy', 0, 'verified');
 
 -- --------------------------------------------------------
 
@@ -283,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `produktet` (
 --
 
 INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3`, `imazhi4`, `kategoriaID`, `pershkrimi`, `qmimi`, `stoku`, `madhesiaID`, `ngjyraID`, `kompaniaID`) VALUES
-(17, 'Hewlet Packard', '../images/produktet/1653659980-6290d94c992e4.png', '../images/produktet/1653659980-6290d94c99601.png', '../images/produktet/1653659980-6290d94c99611.png', '../images/produktet/1653659980-6290d94c99625.png', 1, 'asdasdasdadsads', '21.00', 1, 1, 3, 5),
+(17, 'Hewlet Packard', '../images/produktet/1653659980-6290d94c992e4.png', '../images/produktet/1653659980-6290d94c99601.png', '../images/produktet/1653659980-6290d94c99611.png', '../images/produktet/1653659980-6290d94c99625.png', 1, 'asdasdasdadsads', '21.00', 5, 1, 3, 5),
 (18, 'PDPPN', '../images/produktet/1653660030-6290d97e20592.png', '../images/produktet/1654000235-62960a6b7f1bf.jpg', '../images/produktet/1654000235-62960a6b7f9b8.png', '../images/produktet/1653660030-6290d97e2088a.png', 1, 'TESTtest TESTtest TESTtest TESTtest TESTtest TESTtest', '122.00', 12, 1, 3, 5),
 (21, 'Filan Fisteku', '../images/produktet/1653660434-6290db12c4a63.jpg', '../images/produktet/1653998323-629602f37fe76.jpg', '../images/produktet/1653998323-629602f3805cd.jpg', '../images/produktet/1653998468-62960384a120e.jpg', 1, 'asdasdasdadsadsadsasd', '1.00', 1, 2, 1, 2),
 (22, 'test', '../images/produktet/1653998550-629603d62aaa2.jpg', '../images/produktet/1653998512-629603b00d7ee.jpg', '../images/produktet/1653998442-6296036aac79e.jpg', '../images/produktet/1653998442-6296036aac7b0.jpg', 2, '44545453', '45.00', 45, 4, 4, 2),
