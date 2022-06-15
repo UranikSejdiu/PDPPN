@@ -20,3 +20,6 @@ https://www.youtube.com/watch?v=6UfPmrD4VWI&list=PL6u82dzQtlfv3dm_duiZUbXkiFigoM
 
 Review and rating:
 https://www.youtube.com/watch?v=y3E6QW5LtFQ
+
+Template:
+https://freethemescloud.com/item/tmart-free-minimal-ecommerce-html5-template/

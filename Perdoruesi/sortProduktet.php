@@ -6,7 +6,8 @@
         $sql = "SELECT * FROM produktet ";
         if (isset($_POST['kategoria'])) {
             $kategoria = $_POST['kategoria'];
-            $sql .=" WHERE kategoriaID =$kategoria";
+            $sql .=" WHERE kategoriaID =$kategoria ";
+            $sql .=" AND stoku > 0";
         }
 
         $result = $con->query($sql);

@@ -64,24 +64,7 @@ if ($email == false) {
                 </div>
             </div>
         </div>
-        <footer class="htc__foooter__area gray-bg">
-            <div class="container">
-                <!-- Start Copyright Area -->
-                <div class="htc__copyright__area">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                            <div class="copyright__inner">
-                                <div class="copyright">
-                                    <p>© 2017 <a href="https://freethemescloud.com/">Free themes Cloud</a>
-                                        All Right Reserved.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Copyright Area -->
-            </div>
-        </footer>
+        <?php include_once('footer.php'); ?>
     </div>
     <?php include_once('scripts.php'); ?>
 </body>

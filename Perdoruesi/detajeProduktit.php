@@ -176,7 +176,7 @@ while ($row = mysqli_fetch_assoc($query)) {
                                     <div class="prodict-statas"><span>Sasia:</span></div>
                                     <div class="product-quantity">
                                         <div class="cart-plus-minus" style="cursor: default;">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                            <input class="cart-plus-minus-box" type="text"  name="sasia" id="sasia" value="1">
                                             <input type="hidden" name="produktID" id="produktID">
                                         </div>
                                     </div>
@@ -195,7 +195,7 @@ while ($row = mysqli_fetch_assoc($query)) {
                                     <div class="prodict-statas"><span>Sasia:</span></div>
                                     <div class="product-quantity">
                                         <div class="cart-plus-minus" style="cursor: default;">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                            <input class="cart-plus-minus-box" type="text" name="sasia" id="sasia" value="1">
                                             <input type="hidden" name="produktID" id="produktID">
                                         </div>
                                     </div>
@@ -246,24 +246,7 @@ while ($row = mysqli_fetch_assoc($query)) {
 
     <!-- End Product tab -->
     <!-- Start Footer Area -->
-    <footer class="htc__foooter__area gray-bg">
-        <div class="container">
-            <!-- Start Copyright Area -->
-            <div class="htc__copyright__area">
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div class="copyright__inner">
-                            <div class="copyright">
-                                <p>© 2017 <a href="#">your website name</a>
-                                    All Right Reserved.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Copyright Area -->
-        </div>
-    </footer>
+    <?php include_once('footer.php'); ?>
     <!-- End Footer Area -->
     </div>
     <!-- Body main wrapper end -->
