@@ -61,6 +61,48 @@ if (isset($_POST['blej'])) {
         <section class="our-checkout-area ptb--120 bg__white">
             <div class="container">
                 <div class="row">
+                    <div class="col-md-3 col-lg-3 mb--30">
+                        <div class="checkout-right-sidebar">
+                            <div class="our-important-note">
+                                <div class="our-important-note">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td colspan="2">
+                                                <h2 class="section-title-3 text-center"><?php echo $produkti; ?></h2>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <p class="note-desc">
+                                                    <img style="object-fit: cover;" src=" <?php echo $foto1; ?>" alt="product images"></a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">Madhesia:</td>
+                                            <td><?php echo $madhesia; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">Ngjyra:</td>
+                                            <td><?php echo $ngjyra; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">Çmimi:</td>
+                                            <td><?php echo $qmimi; ?>€</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">Sasia:</td>
+                                            <td><?php echo $sasia; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;"><?php $total = $sasia * $qmimi; ?>Totali:</td>
+                                            <td><?php echo $total; ?>€</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-9 col-lg-9">
                         <div class="ckeckout-left-sidebar">
                             <!-- Start Checkbox Area -->
@@ -75,7 +117,7 @@ if (isset($_POST['blej'])) {
                                         <input type="text" name="tel" id="tel" placeholder="Nr. telefonit">
                                         <input type="email" placeholder="Shteti" disabled value="Kosovë">
                                     </div>
-                                    <div class="single-checkout-box select-option mt--40">
+                                    <div class="single-checkout-box select-option">
                                         <select>
                                             <option>Qyteti</option>
                                             <option>Bangladesh</option>
@@ -102,40 +144,6 @@ if (isset($_POST['blej'])) {
                                 </div>
                             </div>
                             <!-- End Payment Box -->
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-lg-3">
-                        <div class="checkout-right-sidebar">
-                            <div class="our-important-note">
-                                <div class="our-important-note">
-                                    <h2 class="section-title-3"><?php echo $produkti; ?></h2>
-                                    <p class="note-desc">
-                                        <?php echo  '<img width="250" height="250" style="object-fit: cover;" src="' . $foto1 . '" alt="product images"></a>';
-                                        ?>
-                                    </p>
-                                    <ul class="important-note">
-                                        <ul class="product__price">
-                                            <li class="new__price">Madhesia: <?php echo $madhesia; ?></li>
-                                        </ul>
-                                        <ul class="product__price">
-                                            <li class="new__price">Ngjyra: <?php echo $ngjyra; ?></li>
-                                        </ul>
-                                        <ul class="product__price">
-                                            <li class="new__price">Çmimi: <?php echo $qmimi; ?>€</li>
-                                        </ul>
-                                        <ul class="product__price">
-                                            <li class="new__price">Sasia: <?php echo $sasia; ?></li>
-                                        </ul>
-                                        <ul class="product__price">
-                                            <?php
-                                            $total= $sasia * $qmimi;
-                                            echo '<li class="new__price">Totali: ' . $total . '</li>'
-
-                                            ?>
-                                        </ul>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

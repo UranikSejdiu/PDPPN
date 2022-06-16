@@ -167,51 +167,47 @@ while ($row = mysqli_fetch_assoc($query)) {
                                 echo '<div class="pro__dtl__size">
                                 <h2 class="title__5" style="color: #ff4136!important; font-weight:bold;">Nuk ka në disponim!</h2>
                             </div>';
-                            } elseif ($stoku == 1) {
-                                echo '<div class="pro__dtl__size">
-                                <h2 class="title__5" ">Disponueshmëria:<strong> Vetëm ' . $stoku . '</strong></h2>
-                            </div>';
-                                echo '<form id="myform" method="POST" action="blejProduktin.php">
-                                <div class="product-action-wrap">
-                                    <div class="prodict-statas"><span>Sasia:</span></div>
-                                    <div class="product-quantity">
-                                        <div class="cart-plus-minus" style="cursor: default;">
-                                            <input class="cart-plus-minus-box" type="text"  name="sasia" id="sasia" value="1">
-                                            <input type="hidden" name="produktID" id="produktID">
+                            } elseif ($stoku == 1) { ?>
+                                <div class="pro__dtl__size">
+                                    <h2 class="title__5" ">Disponueshmëria:<strong> Vetëm <?php echo $stoku; ?></strong></h2>
+                            </div>
+                                <form id=" myform" method="POST" action="blejProduktin.php">
+                                        <div class="product-action-wrap">
+                                            <div class="prodict-statas"><span>Sasia:</span></div>
+                                            <div class="product-quantity">
+                                                <div class="cart-plus-minus">
+                                                    <input class="cart-plus-minus-box" type="number" name="sasia" value="0" max="<?php echo $stoku; ?>" oninvalid="this.setCustomValidity('Vlera maksimale duhet te jete: <?php echo $stoku; ?>')">
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="produktID" id="produktID" value="<?php echo $produktID; ?>">
                                         </div>
-                                    </div>
-
-                                </div>
-                                <ul class="pro__dtl__btn">
-                                    <li class="buy__now__btn"><button type="submit" name="blej" class="regBtn">Blej</button></li>
-                                </ul>
-                            </form>';
-                            } else {
-                                echo '<div class="pro__dtl__size">
-                                <h2 class="title__5" ">Disponueshmëria:<strong> ' . $stoku . ' artikuj</strong></h2>
-                            </div>';
-                                echo '<form id="myform" method="POST" action="blejProduktin.php">
-                                <div class="product-action-wrap">
-                                    <div class="prodict-statas"><span>Sasia:</span></div>
-                                    <div class="product-quantity">
-                                        <div class="cart-plus-minus" style="cursor: default;">
-                                            <input class="cart-plus-minus-box" type="text" name="sasia" id="sasia" value="1">
-                                            <input type="hidden" name="produktID" id="produktID" value="'.$produktID.'">
+                                        <ul class="pro__dtl__btn">
+                                            <li class="buy__now__btn"><input type="submit" name="blej" value="Blej" class="regBtn"></li>
+                                        </ul>
+                                        </form>
+                                    <?php } else { ?>
+                                        <div class="pro__dtl__size">
+                                            <h2 class="title__5" ">Disponueshmëria:<strong> <?php echo $stoku; ?> artikuj</strong></h2>
                                         </div>
-                                    </div>
-
+                                    <form id=" myform" method="POST" action="blejProduktin.php">
+                                                <div class="product-action-wrap">
+                                                    <div class="prodict-statas"><span>Sasia:</span></div>
+                                                    <div class="product-quantity">
+                                                        <div class="cart-plus-minus">
+                                                            <input class="cart-plus-minus-box" type="number" name="sasia" value="0" max="<?php echo $stoku; ?>" oninvalid="this.setCustomValidity('Vlera maksimale duhet te jete: <?php echo $stoku; ?>')">
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="produktID" id="produktID" value="<?php echo $produktID; ?>">
+                                                </div>
+                                                <ul class="pro__dtl__btn">
+                                                    <li class="buy__now__btn"><input type="submit" name="blej" value="Blej" class="regBtn"></li>
+                                                </ul>
+                                                </form>
+                                            <?php } ?>
+                                        </div>
                                 </div>
-                                <ul class="pro__dtl__btn">
-                                    <li class="buy__now__btn"><input type="submit" name="blej" value="Blej" class="regBtn"></li>
-                                </ul>
-                            </form>';
-                            } ?>
-
-
                         </div>
                     </div>
-                </div>
-            </div>
         </section>
         <!-- End Product Details-->
         <!-- Start Product tab -->
