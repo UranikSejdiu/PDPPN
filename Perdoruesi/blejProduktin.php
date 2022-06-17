@@ -132,32 +132,34 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
                                                 <input type="email" disabled placeholder="Email-i" name="email" id="email" value="<?php echo $userEmail; ?>">
                                                 <input type="hidden" name="prodID" id="prodID" value="<?php echo $produktID; ?>">
                                                 <input type="hidden" name="sasia" id="sasia" value="<?php echo $sasia; ?>">
-                                                <input type="hidden" name="sasia" id="sasia" value="<?php echo $total; ?>">
+                                                <input type="hidden" name="total" id="total" value="<?php echo $total; ?>">
                                             </div>
                                             <div class="single-checkout-box">
                                                 <input type="text" disabled name="tel" id="tel" value="<?php echo $phone; ?>" placeholder="Nr. telefonit">
-                                                <input type="text" placeholder="Shteti" disabled value="Kosovë">
+                                                <input type="text" disabled name="city" id="city" value="<?php echo $name; ?>">
+
                                             </div>
                                             <div class="single-checkout-box select-option">
-                                                <input type="text" disabled name="city" id="city" value="<?php echo $name; ?>">
-                                                <input type="text" disabled value="<?php echo $zipCode; ?>" placeholder="Kodi postar" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="5">
+                                                <input type="text" name="adress" id="adress" placeholder="Adresa" value="<?php echo $adress; ?>">
+                                                <input type="text" disabled value="<?php echo $zipCode; ?>" name="zipCode" id="zipCode" placeholder="Kodi postar" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="5">
                                             </div>
                                             <div class="single-checkout-box">
-                                                <textarea name="message" id="mesazhi" placeholder="Mesazhi juaj"></textarea>
+                                                <textarea name="message" id="message" placeholder="Mesazhi juaj"></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                                <div class="payment-form">
-                                    <h2 class="section-title-3">Mënyra e pagesës</h2>
-                                    <p>Mënyra tjera të pagesës do shtohen më vonë</p>
-                                    <div class="single-checkout-box checkbox">
-                                        <input type="text" name="pagesa" id="pagesa" disabled value="Pagesa me para në dorë">
+
+                                    <div class="payment-form">
+                                        <h2 class="section-title-3">Mënyra e pagesës</h2>
+                                        <p>Mënyra tjera të pagesës do shtohen më vonë</p>
+                                        <div class="single-checkout-box checkbox">
+                                            <input type="text" name="pagesa" id="pagesa" disabled value="Pagesa me para në dorë">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="single-checkout-box">
-                                    <input type="submit" name="porosit" value="Porosit" class="regBtn">
-                                </div>
+                                    <div class="single-checkout-box">
+                                        <input type="submit" name="porosit" value="Porosit" class="regBtn">
+                                    </div>
+                                </form>
                             <?php } else { ?>
                                 <form action="porosit.php" method="POST">
                                     <div class="checkout-form">
@@ -171,11 +173,11 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
                                                 <input type="hidden" name="total" id="total" value="<?php echo $total; ?>">
                                             </div>
                                             <div class="single-checkout-box">
-                                                <input type="text"  name="tel" id="tel" value="" placeholder="Nr. telefonit">
-                                                <input type="text" placeholder="Shteti" disabled value="Kosovë">
+                                                <input type="text" name="tel" id="tel" value="" placeholder="Nr. telefonit">
+                                                <input type="text" name="adress" id="adress" placeholder="Adresa" value="">
                                             </div>
                                             <div class="single-checkout-box select-option">
-                                                <select name="city" id="city" required>
+                                            <select name="city" id="city" required>
                                                     <option hidden>Zgjedh qytetin: </option>
                                                     <?php
                                                     $res = mysqli_query($con1, "CALL selQytet()");
@@ -201,7 +203,7 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
                                             <input type="text" name="pagesa" id="pagesa" disabled value="Pagesa me para në dorë">
                                         </div>
                                     </div>
-                                    <div class="single-checkout-box" >
+                                    <div class="single-checkout-box">
                                         <input type="submit" name="porosit" value="Porosit" class="regBtn">
                                     </div>
                                 </form>
