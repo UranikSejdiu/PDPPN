@@ -79,11 +79,6 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                                                         echo  '<img style="object-fit: cover;" width="100" height="150" src="' . $row['imazhi1'] . '" alt="product images"></a>';
                                                         ?>
                                                     </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action" id="produkti">
-                                                            <li><a title="Blej tani" href="#"><span class="ti-shopping-cart"></span></a></li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
                                                 <div class="product__details">
                                                     <?php echo '<h2><a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">' . $row['produkti'] . '</a></h2>'; ?>

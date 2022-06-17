@@ -153,7 +153,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['password'] = $password;
                 $_SESSION['id'] = $id;
                 $location= $_SESSION['location'];
-                header('location: '.$location);
+                header('location: index.php');
             } else {
                 $info = "Ende nuk keni verifikuar Email adresen - $email";
                 $_SESSION['info'] = $info;

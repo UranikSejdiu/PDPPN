@@ -175,9 +175,9 @@ while ($row = mysqli_fetch_assoc($query)) {
                                         <div class="product-action-wrap">
                                             <div class="prodict-statas"><span>Sasia:</span></div>
                                             <div class="product-quantity">
-                                                <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" type="number" name="sasia" value="0" max="<?php echo $stoku; ?>" oninvalid="this.setCustomValidity('Vlera maksimale duhet te jete: <?php echo $stoku; ?>')">
-                                                </div>
+                                            <div class="cart-plus-minus" style="cursor:default;">
+                                                            <input style="cursor:default;" class="cart-plus-minus-box" type="number" name="sasia" value="1" min="1" max="<?php echo $stoku; ?>" >
+                                                        </div>
                                             </div>
                                             <input type="hidden" name="produktID" id="produktID" value="<?php echo $produktID; ?>">
                                         </div>
@@ -191,10 +191,10 @@ while ($row = mysqli_fetch_assoc($query)) {
                                         </div>
                                     <form id=" myform" method="POST" action="blejProduktin.php">
                                                 <div class="product-action-wrap">
-                                                    <div class="prodict-statas"><span>Sasia:</span></div>
-                                                    <div class="product-quantity">
-                                                        <div class="cart-plus-minus">
-                                                            <input class="cart-plus-minus-box" type="number" name="sasia" value="0" max="<?php echo $stoku; ?>" oninvalid="this.setCustomValidity('Vlera maksimale duhet te jete: <?php echo $stoku; ?>')">
+                                                    <div class="prodict-statas" ><span>Sasia:</span></div>
+                                                    <div class="product-quantity" >
+                                                        <div class="cart-plus-minus" style="cursor:default;">
+                                                            <input style="cursor:default;" class="cart-plus-minus-box" type="number" name="sasia" value="1" min="1" max="<?php echo $stoku; ?>" >
                                                         </div>
                                                     </div>
                                                     <input type="hidden" name="produktID" id="produktID" value="<?php echo $produktID; ?>">
