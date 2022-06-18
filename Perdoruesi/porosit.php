@@ -17,17 +17,17 @@
 include_once("checkSession.php");
 
 if(isset($_POST['porosit'])) {	
-	$emri = $_POST['emri'];
-	$email = $_POST['email'];
-	$prodID = $_POST['prodID'];
-	$sasia = $_POST['sasia'];
-	$total = $_POST['total'];
-    $tel = $_POST['tel'];
-    $city = $_POST['city'];
-    $adress = $_POST['adress'];
-    $zipCode = $_POST['zipCode'];
-    $message = $_POST['message'];
-	$pagesa = $_POST['pagesa'];
+	$emri = mysqli_real_escape_string($con,$_POST['emri']);
+	$email = mysqli_real_escape_string($con,$_POST['email']);
+	$prodID = mysqli_real_escape_string($con,$_POST['prodID']);
+	$sasia = mysqli_real_escape_string($con,$_POST['sasia']);
+	$total = mysqli_real_escape_string($con,$_POST['total']);
+    $tel = mysqli_real_escape_string($con,$_POST['tel']);
+    $city = mysqli_real_escape_string($con,$_POST['city']);
+    $adress = mysqli_real_escape_string($con,$_POST['adress']);
+    $zipCode = mysqli_real_escape_string($con,$_POST['zipCode']);
+    $message = mysqli_real_escape_string($con,$_POST['message']);
+	$pagesa = mysqli_real_escape_string($con,$_POST['pagesa']);
 	
 	// checking empty fields
 	if(empty($Emri) || empty($Data) || empty($Tel) || empty($Cmimi)) {
@@ -60,7 +60,7 @@ if(isset($_POST['porosit'])) {
 			echo "<script>
          setTimeout(function(){
             window.location.href = 'rezervimet.php';
-         }, 5000);
+         });
       </script>";
 		 echo"<p><b>   E dhena eshte duke u regjistruar ne sistem. Ju lutem pritni 5 sekonda. <b></p>";
 		 
