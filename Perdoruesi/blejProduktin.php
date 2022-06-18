@@ -58,6 +58,22 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
 
         <!-- Place favicon.ico in the root directory -->
         <?php include_once('links.php'); ?>
+        <style>
+            #loading {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.6);
+                z-index: 1000;
+                display: none;
+            }
+
+            #loading img {
+                position: absolute;
+            }
+        </style>
     </head>
 
     <body>
@@ -72,10 +88,10 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
                 <!-- End Mainmenu Area -->
             </header>
             <!-- End Header Style -->
-
-            <div class="body__overlay"></div>
+            <div id="loading"><img src="../images/icons/loadscreen.gif"></div>
             <!-- Start Checkout Area -->
             <section class="our-checkout-area ptb--120 bg__white">
+                <div id="alerts"></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3 col-lg-3 mb--30">
@@ -123,34 +139,32 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
                         <div class="col-md-9 col-lg-9">
                             <div class="ckeckout-left-sidebar">
                                 <!-- Start Checkbox Area -->
-
                                 <form id="porosit" method="POST">
                                     <div class="checkout-form">
                                         <h2 class="section-title-3">Të dhënat tuaja</h2>
                                         <div class="checkout-form-inner">
                                             <div class="single-checkout-box">
-                                                <input type="text" disabled placeholder="Emri" name="emri" id="emri" value="<?php echo $userName; ?>">
-                                                <input type="email" disabled placeholder="Email-i" name="email" id="email" value="<?php echo $userEmail; ?>">
+                                                <input type="text" placeholder="Emri" name="emri" id="emri" value="<?php echo $userName; ?>">
+                                                <input type="email" placeholder="Email-i" name="email" id="email" value="<?php echo $userEmail; ?>">
                                                 <input type="hidden" name="prodID" id="prodID" value="<?php echo $produktID; ?>">
-                                                <input type="hidden" name="userID" id="userID" value="<?php echo $userID; ?>">
+                                                <input type="hidden" name="prdID" id="prdID" value="<?php echo $userID; ?>">
                                                 <input type="hidden" name="sasia" id="sasia" value="<?php echo $sasia; ?>">
                                                 <input type="hidden" name="total" id="total" value="<?php echo $total; ?>">
                                             </div>
                                             <div class="single-checkout-box">
-                                                <input type="text" disabled name="tel" id="tel" value="<?php echo $phone; ?>" placeholder="Nr. telefonit">
-                                                <input type="text" disabled name="city" id="city" value="<?php echo $name; ?>">
+                                                <input type="text" name="phone" id="phone" value="<?php echo $phone; ?>" placeholder="Nr. telefonit">
+                                                <input type="text" name="qyteti" id="qyteti" value="<?php echo $name; ?>">
 
                                             </div>
                                             <div class="single-checkout-box select-option">
-                                                <input type="text" name="adress" id="adress" placeholder="Adresa" value="<?php echo $adress; ?>">
-                                                <input type="text" disabled value="<?php echo $zipCode; ?>" name="zipCode" id="zipCode" placeholder="Kodi postar" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="5">
+                                                <input type="text" name="adresa" id="adresa" placeholder="Adresa" value="<?php echo $adress; ?>">
+                                                <input type="text" value="<?php echo $zipCode; ?>" name="zipCode" id="zipCode" placeholder="Kodi postar" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="5">
                                             </div>
                                             <div class="single-checkout-box">
-                                                <textarea name="message" id="message" placeholder="Mesazhi juaj"></textarea>
+                                                <textarea name="mesazhi" id="mesazhi" placeholder="Mesazhi juaj"></textarea>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="payment-form">
                                         <h2 class="section-title-3">Mënyra e pagesës</h2>
                                         <p>Mënyra tjera të pagesës do shtohen më vonë</p>
@@ -169,6 +183,7 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
                             </div>
                         </div>
                     </div>
+                </div>
             </section>
         </div>
 
@@ -181,7 +196,7 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
         <script src="scriptsPorosi.js"></script>
         <script>
             $(":input").inputmask();
-            $("#tel").inputmask({
+            $("#phone").inputmask({
                 "mask": "(+383)49/999-999"
             });
         </script>
@@ -189,6 +204,6 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
 
     </html>
 
-<?php } else { 
+<?php } else {
     header('location:user-login.php');
- } 
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 15, 2022 at 03:56 PM
+-- Generation Time: Jun 18, 2022 at 03:58 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -249,7 +249,42 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
 --
 
 INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `zipCode`, `phone`, `email`, `password`, `code`, `status`) VALUES
-(3, 'Uranik', 2, 'Mataj 1', 10000, '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$F8eSZKxpslGNA7e7vDtCYuwySM3vF2iHZRF4jEk3RvJqn8Q2jcKUy', 0, 'verified');
+(3, 'Uranik Sejdiu', 1, 'Fashti Gaqke', 70000, '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$ptLTLy759/sIc2nEVY1vy.0xUjSboanv/bfzdx76BKt42OwqNPb92', 0, 'verified');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `porosit`
+--
+
+DROP TABLE IF EXISTS `porosit`;
+CREATE TABLE IF NOT EXISTS `porosit` (
+  `porosiaID` int(11) NOT NULL AUTO_INCREMENT,
+  `produktID` int(11) NOT NULL,
+  `perdoruesID` int(11) NOT NULL,
+  `emri` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qyteti` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adresa` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zipCode` int(5) NOT NULL,
+  `phone` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mesazhi` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `menyraPageses` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sasia` int(11) NOT NULL,
+  `qmimi` decimal(15,2) NOT NULL,
+  `statusi` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dataBlerjes` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`porosiaID`),
+  KEY `perdoruesiPorosit` (`perdoruesID`),
+  KEY `produktiPorosit` (`produktID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `porosit`
+--
+
+INSERT INTO `porosit` (`porosiaID`, `produktID`, `perdoruesID`, `emri`, `email`, `qyteti`, `adresa`, `zipCode`, `phone`, `mesazhi`, `menyraPageses`, `sasia`, `qmimi`, `statusi`, `dataBlerjes`) VALUES
+(1, 21, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', 'Te telefonohet numri para se dergohet ne adres', 'Para në dorë', 2, '2.00', 'E rezervuar', '2022-06-18 17:20:26');
 
 -- --------------------------------------------------------
 
@@ -284,11 +319,11 @@ CREATE TABLE IF NOT EXISTS `produktet` (
 --
 
 INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3`, `imazhi4`, `kategoriaID`, `pershkrimi`, `qmimi`, `stoku`, `madhesiaID`, `ngjyraID`, `kompaniaID`) VALUES
-(17, 'Hewlet Packard', '../images/produktet/1653659980-6290d94c992e4.png', '../images/produktet/1653659980-6290d94c99601.png', '../images/produktet/1653659980-6290d94c99611.png', '../images/produktet/1653659980-6290d94c99625.png', 1, 'asdasdasdadsads', '21.00', 5, 1, 3, 5),
-(18, 'PDPPN', '../images/produktet/1653660030-6290d97e20592.png', '../images/produktet/1654000235-62960a6b7f1bf.jpg', '../images/produktet/1654000235-62960a6b7f9b8.png', '../images/produktet/1653660030-6290d97e2088a.png', 1, 'TESTtest TESTtest TESTtest TESTtest TESTtest TESTtest', '122.00', 12, 1, 3, 5),
-(21, 'Filan Fisteku', '../images/produktet/1653660434-6290db12c4a63.jpg', '../images/produktet/1653998323-629602f37fe76.jpg', '../images/produktet/1653998323-629602f3805cd.jpg', '../images/produktet/1653998468-62960384a120e.jpg', 1, 'asdasdasdadsadsadsasd', '1.00', 1, 2, 1, 2),
-(22, 'test', '../images/produktet/1653998550-629603d62aaa2.jpg', '../images/produktet/1653998512-629603b00d7ee.jpg', '../images/produktet/1653998442-6296036aac79e.jpg', '../images/produktet/1653998442-6296036aac7b0.jpg', 2, '44545453', '45.00', 45, 4, 4, 2),
-(23, '111', '../images/produktet/1653660744-6290dc48ca7f9.png', '../images/produktet/1653998930-629605529d743.jpg', '../images/produktet/1653998930-629605529dc2d.jpg', '../images/produktet/1653998930-629605529dc3d.jpg', 1, '111', '10.00', 10, 0, 2, 2);
+(17, 'Hewlet Packard', '../images/produktet/1653659980-6290d94c992e4.png', '../images/produktet/1653659980-6290d94c99601.png', '../images/produktet/1653659980-6290d94c99611.png', '../images/produktet/1653659980-6290d94c99625.png', 1, 'asdasdasdadsads', '21.00', 9, 1, 3, 5),
+(18, 'PDPPN', '../images/produktet/1653660030-6290d97e20592.png', '../images/produktet/1654000235-62960a6b7f1bf.jpg', '../images/produktet/1654000235-62960a6b7f9b8.png', '../images/produktet/1653660030-6290d97e2088a.png', 1, 'TESTtest TESTtest TESTtest TESTtest TESTtest TESTtest', '122.00', 9, 1, 3, 5),
+(21, 'Filan Fisteku', '../images/produktet/1653660434-6290db12c4a63.jpg', '../images/produktet/1653998323-629602f37fe76.jpg', '../images/produktet/1653998323-629602f3805cd.jpg', '../images/produktet/1653998468-62960384a120e.jpg', 1, 'asdasdasdadsadsadsasd', '1.00', 3, 2, 1, 2),
+(22, 'test', '../images/produktet/1653998550-629603d62aaa2.jpg', '../images/produktet/1653998512-629603b00d7ee.jpg', '../images/produktet/1653998442-6296036aac79e.jpg', '../images/produktet/1653998442-6296036aac7b0.jpg', 2, '44545453', '45.00', 9, 4, 4, 2),
+(23, '111', '../images/produktet/1653660744-6290dc48ca7f9.png', '../images/produktet/1653998930-629605529d743.jpg', '../images/produktet/1653998930-629605529dc2d.jpg', '../images/produktet/1653998930-629605529dc3d.jpg', 1, '111', '10.00', 9, 0, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -306,7 +341,7 @@ CREATE TABLE IF NOT EXISTS `produktreview` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`reviewID`),
   KEY `reviewProdukt` (`produktID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produktreview`
@@ -320,7 +355,10 @@ INSERT INTO `produktreview` (`reviewID`, `perdoruesi`, `starRating`, `reviewText
 (5, 'asdadasdasdasd', 4, 'asdasdasdadadasdasd', 21, '2022-06-10 15:48:21'),
 (6, 'test', 2, 'test', 17, '2022-06-10 15:48:21'),
 (7, 'Uranik', 1, 'UranikUranikUranikUranik', 21, '2022-06-10 17:10:37'),
-(8, 'Filan Fisteku', 3, 'E mirë', 21, '2022-06-10 17:42:30');
+(8, 'Filan Fisteku', 3, 'E mirë', 21, '2022-06-10 17:42:30'),
+(9, 'Uranik', 4, '363636', 18, '2022-06-18 13:13:51'),
+(10, 'Uranik', 0, 'asdadasd', 18, '2022-06-18 13:15:00'),
+(11, 'Uranik', 1, 'jo edhe mire', 18, '2022-06-18 13:17:35');
 
 --
 -- Constraints for dumped tables
@@ -343,6 +381,13 @@ ALTER TABLE `ngjyrat`
 --
 ALTER TABLE `perdoruesit`
   ADD CONSTRAINT `cityForeignKey` FOREIGN KEY (`id_city`) REFERENCES `cities` (`id_city`);
+
+--
+-- Constraints for table `porosit`
+--
+ALTER TABLE `porosit`
+  ADD CONSTRAINT `perdoruesiPorosit` FOREIGN KEY (`perdoruesID`) REFERENCES `perdoruesit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `produktiPorosit` FOREIGN KEY (`produktID`) REFERENCES `produktet` (`produktID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `produktet`

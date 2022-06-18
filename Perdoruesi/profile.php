@@ -44,7 +44,7 @@
                                 <ul class="tab-style text-center" role="tablist">
                                     <li class="active">
                                         <div class="tab-menu-text">
-                                            <h4 class="text-center">Të dhënat e kompanisë</h4>
+                                            <h4 class="text-center">Profili Juaj</h4>
                                         </div>
                                     </li>
                                 </ul>
@@ -57,35 +57,39 @@
                                         <div class="col-md-6 col-lg-10 col-md-offset-1">
                                             <div class="checkout-left-sidebar" id="profiliDetails">
                                                 <form class="login" id="updateProfili" enctype='multipart/form-data' style="margin-top:2%;">
-                                                    <input type="hidden" name="updateIdKomp" id="updateIdKomp" value="<?php echo $id; ?>">
+                                                    <input type="hidden" name="updateIdPrd" id="updateIdPrd" value="<?php echo $id; ?>">
                                                     <div class="form-group">
-                                                        <label style="margin-bottom:0;" for="updateLogo">Logoja:</label>
-                                                        <input style="margin-top:0;border:none;" name="updateLogo" id="updateLogo" type="file">
-                                                        <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
-                                                        <div id="image-holderUP">
-                                                            <img width="100" height="100" id="logoUp" src="" alt="" />
-                                                        </div>
+                                                        <label style="margin-bottom:0;" for="emri">Emri dhe Mbiemri</label>
+                                                        <input style="margin-top:0;" type="text" name="emri" id="emri">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label style="margin-bottom:0;" for="updateName">Emri kompanisë:</label>
-                                                        <input style="margin-top:0;" type="text" name="updateName" id="updateName">
+                                                        <label style="margin-bottom:0;" for="email">Email adresa:</label>
+                                                        <input style="margin-top:0;" type="email" name="email" id="email">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label style="margin-bottom:0;" for="updateEmail">Email adresa:</label>
-                                                        <input style="margin-top:0;" type="email" name="updateEmail" id="updateEmail">
+                                                        <label style="margin-bottom:0;" for="qyteti">Qyteti:</label>
+                                                        <select name="qyteti" id="qyteti">
+                                                            <?php
+                                                            $res = mysqli_query($con, "CALL selQytet()");
+                                                            while ($row = $res->fetch_array()) {
+                                                            ?>
+                                                                <option value="<?php echo $row['id_city']; ?>"><?php echo $row['name']; ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label style="margin-bottom:0;" for="updateFiskal">Numri Fiskal:</label>
-                                                        <input style="margin-top:0;" type="number" name="updateFiskal" id="updateFiskal" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9">
+                                                        <label style="margin-bottom:0;" for="adresa">Adresa:</label>
+                                                        <input style="margin-top:0;" type="text" name="adresa" id="adresa">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label style="margin-bottom:0;" for="updatePhone">Numri telefonit:</label>
-                                                        <input style="margin-top:0;" type="tel" name="updatePhone" id="updatePhone">
+                                                        <label style="margin-bottom:0;" for="zipCode">Kodi postar:</label>
+                                                        <input style="margin-top:0;" type="number" name="zipCode" id="zipCode" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="5">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label style="margin-bottom:0;" for="updateLokacioni">Lokacioni</label>
-                                                        <input class="updateLokacioni" style="margin-top:0;" name="updateLokacioni" id="updateLokacioni" type="text" autofocus><br>
-                                                        <div id="mapContainerUpdate"></div>
+                                                        <label style="margin-bottom:0;" for="phone">Numri telefonit:</label>
+                                                        <input style="margin-top:0;" type="tel" name="phone" id="phone">
                                                     </div>
                                                     <div class="form-group text-right">
                                                         <button type="submit" value="ruaj" name="ruaj" class="btn btn-success">Ruaj</button>
@@ -118,6 +122,13 @@
 
     </div>
     <?php include_once('scripts.php'); ?>
+    <script src="scriptsProfili.js"></script>
+    <script>
+        $(":input").inputmask();
+        $("#phone").inputmask({
+            "mask": "(+383)49/999-999"
+        });
+    </script>
 </body>
 
 </html>

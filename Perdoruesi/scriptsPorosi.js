@@ -1,53 +1,54 @@
 $(document).on("submit", "#porosit", function (e) {
     e.preventDefault();
-    console.log('Success');
-  
-    /*if (name != "" && email != "" && password != "" && cpassword != "") {
-      $.ajax({
-        url: "manageAdmin.php",
-        type: "post",
-        data: {
-          name: name,
-          email: email,
-          password: password,
-          cpassword:cpassword,
-          action: "addAdmin",
-        },
-        success: function (data) {
-          var json = JSON.parse(data);
-          var status = json.status;
-          if (status == "true") {
-            mytable = $("#dtAdmin").DataTable();
-            mytable.draw();
-            $("#addAdmin").modal('hide');
-            $("#insert_Admin")[0].reset();
-            successAlert("E dhëna u shtua me sukses!");
-  
-          } else if (status == "false") {
-            $("#addAdmin").modal('hide');
-            $("#insert_Admin")[0].reset();
-            dangerAlert("Gabim gjate shtimit te dhenave ne databaze!");
-  
-          } else if (status == "passwordError") {
-            $("#addAdmin").modal('hide');
-            $("#password").val("");
-            $("#cpassword").val("");
-            warningAlert("Ju lutem plotësoni kërkesat e fjalekalimit!");
-  
-          }else if(status == "passwordVerify"){
-            $("#addAdmin").modal('hide');
-            $("#password").val("");
-            $("#cpassword").val("");
-            warningAlert("Ju lutem plotësoni fjalëkalimin e njejtë!");
 
-          } else if (status == 'emailError') {
-            $('#addAdmin').modal('hide');
-            warningAlert("Ekziston administrator me këtë email!");
-          }
-        },
-      });
+    var emri = $("#emri").val();
+    var email = $("#email").val();
+    var prodID = $("#prodID").val();
+    var prdID = $("#prdID").val();
+    var sasia = $("#sasia").val();
+    var total = $("#total").val();
+    var qyteti = $("#qyteti").val();
+    var adresa = $("#adresa").val();
+    var zipCode = $("#zipCode").val();
+    var phone = $("#phone").val();
+    var pagesa = $("#pagesa").val();
+    var mesazhi = $("#mesazhi").val();
+
+    if (emri != "" && email != "" && qyteti != "" && adresa != "" && zipCode != "" && phone != "" && prodID != "" && prdID != "" && sasia != "" && total != "" && pagesa != "" && mesazhi != "") {
+        $.ajax({
+            url: "managePorosit.php",
+            type: "post",
+            data: {
+                emri: emri,
+                email: email,
+                qyteti: qyteti,
+                adresa: adresa,
+                zipCode: zipCode,
+                phone: phone,
+                prodID: prodID,
+                prdID: prdID,
+                sasia: sasia,
+                total: total,
+                pagesa: pagesa,
+                mesazhi:mesazhi,
+                action: "bejPorosi"
+            },
+            success: function (data) {
+                var json = JSON.parse(data);
+                var status = json.status;
+
+                if (status == "true") {
+                    
+
+                } else if(status == "false") {
+                    dangerAlert("Gabim gjatë ruajtjes së ndryshimit në databazë!");
+
+                }
+
+            },
+        });
     } else {
-      $("#addAdmin").modal('hide');
-      warningAlert("Ju lutem plotësoni të gjitha fushat!");
-    }*/
-  });
+        warningAlert("Ju lutem plotësoni të gjitha fushat!");
+        
+    }
+});
