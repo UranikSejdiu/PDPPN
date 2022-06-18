@@ -139,7 +139,6 @@
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
                             <button type="submit" class="btn btn-info">Shto</button>
                         </div>
-
                     </form>
                 </div>
 

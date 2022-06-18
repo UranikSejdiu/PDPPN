@@ -27,7 +27,6 @@ if(isset($_POST['porosit'])) {
     $adress = mysqli_real_escape_string($con,$_POST['adress']);
     $zipCode = mysqli_real_escape_string($con,$_POST['zipCode']);
     $message = mysqli_real_escape_string($con,$_POST['message']);
-	$pagesa = mysqli_real_escape_string($con,$_POST['pagesa']);
 	
 	// checking empty fields
 	if(empty($Emri) || empty($Data) || empty($Tel) || empty($Cmimi)) {
