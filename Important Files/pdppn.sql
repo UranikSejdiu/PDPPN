@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 21, 2022 at 07:42 AM
+-- Generation Time: Jun 21, 2022 at 03:38 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -271,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `porosit` (
   `mesazhi` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `menyraPageses` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sasia` int(11) NOT NULL,
-  `qmimi` decimal(15,2) NOT NULL,
+  `pagesa` decimal(15,2) NOT NULL,
   `statusi` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dataBlerjes` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`porosiaID`),
@@ -283,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `porosit` (
 -- Dumping data for table `porosit`
 --
 
-INSERT INTO `porosit` (`porosiaID`, `produktID`, `perdoruesID`, `emri`, `email`, `qyteti`, `adresa`, `zipCode`, `phone`, `mesazhi`, `menyraPageses`, `sasia`, `qmimi`, `statusi`, `dataBlerjes`) VALUES
+INSERT INTO `porosit` (`porosiaID`, `produktID`, `perdoruesID`, `emri`, `email`, `qyteti`, `adresa`, `zipCode`, `phone`, `mesazhi`, `menyraPageses`, `sasia`, `pagesa`, `statusi`, `dataBlerjes`) VALUES
 (1, 21, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', 'Te telefonohet numri para se dergohet ne adres', 'Para në dorë', 2, '2.00', 'E rezervuar', '2022-06-18 17:20:26'),
 (2, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 'E rezervuar', '2022-06-21 09:12:13'),
 (3, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 'E rezervuar', '2022-06-21 09:28:19'),

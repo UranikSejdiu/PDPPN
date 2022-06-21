@@ -18,7 +18,7 @@ switch ($_POST["action"]) {
         $mesazhi = mysqli_real_escape_string($con,  $_POST['mesazhi']);
         $statusi = 'E rezervuar';
 
-        $sql = "INSERT INTO porosit (produktID, perdoruesID, emri, email, qyteti, adresa, zipCode, phone, mesazhi, menyraPageses, sasia, qmimi, statusi)VALUES('$prodID', '$prdID', '$emri', '$email', '$qyteti', '$adresa',' $zipCode', '$phone', '$mesazhi', '$pagesa', '$sasia', '$total', '$statusi')";
+        $sql = "INSERT INTO porosit (produktID, perdoruesID, emri, email, qyteti, adresa, zipCode, phone, mesazhi, menyraPageses, sasia, pagesa, statusi)VALUES('$prodID', '$prdID', '$emri', '$email', '$qyteti', '$adresa',' $zipCode', '$phone', '$mesazhi', '$pagesa', '$sasia', '$total', '$statusi')";
         $query = mysqli_query($con, $sql);
         if ($query == true) {
 
@@ -54,8 +54,4 @@ switch ($_POST["action"]) {
 
         break;
 
-
-
-    case "singlePrdData":
-        break;
 }
