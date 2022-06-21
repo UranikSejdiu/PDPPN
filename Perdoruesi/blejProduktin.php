@@ -61,22 +61,33 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
         <style>
             #loading {
                 position: fixed;
-                top: 0;
-                left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(255, 255, 255, 0.6);
+                background-color: rgba(255, 255, 255, 1);
                 z-index: 1000;
                 display: none;
             }
 
             #loading img {
                 position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: none;
+            }
+            #loading h2{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: none;
             }
         </style>
     </head>
 
     <body>
+        <div id="loading">
+            <img src="../images/icons/loadscreen.gif">
+            <h2 class="text-center mt--150">Duke procesuar blerjen tuaj!</h2>
+        </div>
         <!-- Body main wrapper start -->
         <div class="wrapper fixed__footer">
             <!-- Start Header Style -->
@@ -88,7 +99,7 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
                 <!-- End Mainmenu Area -->
             </header>
             <!-- End Header Style -->
-            <div id="loading"><img src="../images/icons/loadscreen.gif"></div>
+
             <!-- Start Checkout Area -->
             <section class="our-checkout-area ptb--120 bg__white">
                 <div id="alerts"></div>

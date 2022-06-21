@@ -14,7 +14,7 @@ $(document).on("submit", "#porosit", function (e) {
     var pagesa = $("#pagesa").val();
     var mesazhi = $("#mesazhi").val();
 
-    if (emri != "" && email != "" && qyteti != "" && adresa != "" && zipCode != "" && phone != "" && prodID != "" && prdID != "" && sasia != "" && total != "" && pagesa != "" && mesazhi != "") {
+    if (emri != "" && email != "" && qyteti != "" && adresa != "" && zipCode != "" && phone != "" && prodID != "" && prdID != "" && sasia != "" && total != "" && pagesa != "") {
         $.ajax({
             url: "managePorosit.php",
             type: "post",
@@ -38,6 +38,11 @@ $(document).on("submit", "#porosit", function (e) {
                 var status = json.status;
 
                 if (status == "true") {
+                    $("#loading").show();
+                    window.setTimeout(function() {
+                      
+                        window.location.href = 'porosit.php';
+                    }, 3000);
                     
 
                 } else if(status == "false") {
