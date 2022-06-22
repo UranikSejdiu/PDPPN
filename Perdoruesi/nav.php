@@ -8,7 +8,7 @@
             </div>
         </div>
         <!-- Start MAinmenu Ares -->
-        <div class="col-md-8 col-lg-8 col-sm-6 col-xs-3">
+        <div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
             <nav class="mainmenu__nav hidden-xs hidden-sm">
                 <ul class="main__menu">
                     <li><a href="index.php">Kryefaçja</a></li>

@@ -62,6 +62,7 @@
                                                 <th data-orderable="false">Qyteti</th>
                                                 <th data-orderable="false">Adresa</th>
                                                 <th data-orderable="false">Kodi postar</th>
+                                                <th data-orderable="false">Nr. telefonit</th>
                                                 <th data-orderable="false">Statusi</th>
                                             </tr>
                                         </thead>

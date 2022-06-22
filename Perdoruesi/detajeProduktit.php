@@ -175,9 +175,9 @@ while ($row = mysqli_fetch_assoc($query)) {
                                         <div class="product-action-wrap">
                                             <div class="prodict-statas"><span>Sasia:</span></div>
                                             <div class="product-quantity">
-                                            <div class="cart-plus-minus" style="cursor:default;">
-                                                            <input style="cursor:default;" class="cart-plus-minus-box" type="number" name="sasia" value="1" min="1" max="<?php echo $stoku; ?>" >
-                                                        </div>
+                                                <div class="cart-plus-minus" style="cursor:default;">
+                                                    <input style="cursor:default;" class="cart-plus-minus-box" type="number" name="sasia" value="1" min="1" max="<?php echo $stoku; ?>">
+                                                </div>
                                             </div>
                                             <input type="hidden" name="produktID" id="produktID" value="<?php echo $produktID; ?>">
                                         </div>
@@ -191,10 +191,10 @@ while ($row = mysqli_fetch_assoc($query)) {
                                         </div>
                                     <form id=" myform" method="POST" action="blejProduktin.php">
                                                 <div class="product-action-wrap">
-                                                    <div class="prodict-statas" ><span>Sasia:</span></div>
-                                                    <div class="product-quantity" >
+                                                    <div class="prodict-statas"><span>Sasia:</span></div>
+                                                    <div class="product-quantity">
                                                         <div class="cart-plus-minus" style="cursor:default;">
-                                                            <input style="cursor:default;" class="cart-plus-minus-box" type="number" name="sasia" value="1" min="1" max="<?php echo $stoku; ?>" >
+                                                            <input style="cursor:default;" class="cart-plus-minus-box" type="number" name="sasia" value="1" min="1" max="<?php echo $stoku; ?>">
                                                         </div>
                                                     </div>
                                                     <input type="hidden" name="produktID" id="produktID" value="<?php echo $produktID; ?>">
@@ -212,7 +212,7 @@ while ($row = mysqli_fetch_assoc($query)) {
         <!-- End Product Details-->
         <!-- Start Product tab -->
 
-        <section class="htc__product__details__tab bg__white pb--120">
+        <section class="htc__product__details__tab bg__white pb--30">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -222,18 +222,11 @@ while ($row = mysqli_fetch_assoc($query)) {
                             </li>
                         </ul>
                     </div>
+                    <button style="float: right;" type="button" name="add_review" id="add_review" class="regBtn pb--20">Vlerso</button>
                 </div>
+                   
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="product__details__tab__content">
-                            <!-- Start Single Content -->
-                            <div class="review__address__inner" style="float:right;">
-                                <button type="button" name="add_review" id="add_review" class="regBtn">Vlerso</button>
-                            </div>
-                        </div>
-                        <div class="review__address__inner" id="review_content">
-
-                        </div>
+                    <div class="review__address__inner" id="review_content">
                     </div>
                 </div>
             </div>

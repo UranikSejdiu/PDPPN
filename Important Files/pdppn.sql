@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 21, 2022 at 03:38 PM
+-- Generation Time: Jun 22, 2022 at 03:38 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -277,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `porosit` (
   PRIMARY KEY (`porosiaID`),
   KEY `perdoruesiPorosit` (`perdoruesID`),
   KEY `produktiPorosit` (`produktID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `porosit`
@@ -290,7 +290,8 @@ INSERT INTO `porosit` (`porosiaID`, `produktID`, `perdoruesID`, `emri`, `email`,
 (4, 22, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '45.00', 'E rezervuar', '2022-06-21 09:28:33'),
 (5, 22, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '45.00', 'E rezervuar', '2022-06-21 09:28:56'),
 (6, 23, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '10.00', 'E rezervuar', '2022-06-21 09:29:39'),
-(7, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 'E rezervuar', '2022-06-21 09:41:26');
+(7, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 'E rezervuar', '2022-06-21 09:41:26'),
+(8, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', 'Try this number too +388 44 565 996', 'Para në dorë', 2, '244.00', 'E rezervuar', '2022-06-22 17:01:36');
 
 -- --------------------------------------------------------
 
@@ -326,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `produktet` (
 
 INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3`, `imazhi4`, `kategoriaID`, `pershkrimi`, `qmimi`, `stoku`, `madhesiaID`, `ngjyraID`, `kompaniaID`) VALUES
 (17, 'Hewlet Packard', '../images/produktet/1653659980-6290d94c992e4.png', '../images/produktet/1653659980-6290d94c99601.png', '../images/produktet/1653659980-6290d94c99611.png', '../images/produktet/1653659980-6290d94c99625.png', 1, 'asdasdasdadsads', '21.00', 9, 1, 3, 5),
-(18, 'PDPPN', '../images/produktet/1653660030-6290d97e20592.png', '../images/produktet/1654000235-62960a6b7f1bf.jpg', '../images/produktet/1654000235-62960a6b7f9b8.png', '../images/produktet/1653660030-6290d97e2088a.png', 1, 'TESTtest TESTtest TESTtest TESTtest TESTtest TESTtest', '122.00', 6, 1, 3, 5),
+(18, 'PDPPN', '../images/produktet/1653660030-6290d97e20592.png', '../images/produktet/1654000235-62960a6b7f1bf.jpg', '../images/produktet/1654000235-62960a6b7f9b8.png', '../images/produktet/1653660030-6290d97e2088a.png', 1, 'TESTtest TESTtest TESTtest TESTtest TESTtest TESTtest', '122.00', 4, 1, 3, 5),
 (21, 'Filan Fisteku', '../images/produktet/1653660434-6290db12c4a63.jpg', '../images/produktet/1653998323-629602f37fe76.jpg', '../images/produktet/1653998323-629602f3805cd.jpg', '../images/produktet/1653998468-62960384a120e.jpg', 1, 'asdasdasdadsadsadsasd', '1.00', 3, 2, 1, 2),
 (22, 'test', '../images/produktet/1653998550-629603d62aaa2.jpg', '../images/produktet/1653998512-629603b00d7ee.jpg', '../images/produktet/1653998442-6296036aac79e.jpg', '../images/produktet/1653998442-6296036aac7b0.jpg', 2, '44545453', '45.00', 7, 4, 4, 2),
 (23, '111', '../images/produktet/1653660744-6290dc48ca7f9.png', '../images/produktet/1653998930-629605529d743.jpg', '../images/produktet/1653998930-629605529dc2d.jpg', '../images/produktet/1653998930-629605529dc3d.jpg', 1, '111', '10.00', 8, 0, 2, 2);

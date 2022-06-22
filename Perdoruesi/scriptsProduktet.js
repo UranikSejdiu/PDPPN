@@ -80,7 +80,7 @@ $(document).ready(function () {
           for (var count = 0; count < data.review_data.length; count++) {
             html += '<div class="pro__review mb--30">';
             html += '<div class="review__thumb">';
-            html += '<img width="88" height="88" src="../images/icons/user.png" alt="review images" class="img-circle">';
+            html += '<img width="75" height="75" src="../images/icons/user.png" alt="review images" class="img-circle">';
             html += '</div>';
             html += '<div class="review__details">';
             html += '<div class="review__info">';

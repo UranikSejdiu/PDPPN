@@ -19,12 +19,6 @@ $("#dtPorosit").DataTable({
         action: "fetchalldata",
       },
     },
-    columnDefs: [
-      {
-        target: [14],
-        orderable: false,
-      },
-    ],
     rowCallback: function (nRow, aData, iDisplayIndex) {
       var oSettings = this.fnSettings();
       $("td:first", nRow).html(oSettings._iDisplayStart + iDisplayIndex + 1);

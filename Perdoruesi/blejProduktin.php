@@ -74,7 +74,8 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
                 height: 100%;
                 object-fit: none;
             }
-            #loading h2{
+
+            #loading h2 {
                 position: absolute;
                 width: 100%;
                 height: 100%;
@@ -105,49 +106,47 @@ if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
                 <div id="alerts"></div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3 col-lg-3 mb--30">
+                        <div class="col-md-4 col-lg-4 mb--30">
                             <div class="checkout-right-sidebar">
-                                <div class="our-important-note">
-                                    <div class="our-important-note">
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <td colspan="2">
-                                                    <h2 class="section-title-3 text-center"><?php echo $produkti; ?></h2>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <p class="note-desc text-center">
-                                                        <img style="object-fit: cover;" src=" <?php echo $foto1; ?>" alt="product images"></a>
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;">Madhesia:</td>
-                                                <td><?php echo $madhesia; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;">Ngjyra:</td>
-                                                <td><?php echo $ngjyra; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;">Çmimi:</td>
-                                                <td><?php echo $qmimi; ?>€</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;">Sasia:</td>
-                                                <td><?php echo $sasia; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;"><?php $total = $sasia * $qmimi; ?>Totali:</td>
-                                                <td><?php echo $total; ?>€</td>
-                                            </tr>
-                                        </table>
-                                    </div>
+                                <div class="our-important-note ">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td colspan="2">
+                                                <h2 class="section-title-3 text-center"><?php echo $produkti; ?></h2>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <p class="note-desc text-center">
+                                                    <img width="250" style="object-fit: cover;" src=" <?php echo $foto1; ?>" alt="product images"></a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">Madhesia:</td>
+                                            <td><?php echo $madhesia; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">Ngjyra:</td>
+                                            <td><?php echo $ngjyra; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">Çmimi:</td>
+                                            <td><?php echo $qmimi; ?>€</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">Sasia:</td>
+                                            <td><?php echo $sasia; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;"><?php $total = $sasia * $qmimi; ?>Totali:</td>
+                                            <td><?php echo $total; ?>€</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-9 col-lg-9">
+                        <div class="col-md-8 col-lg-8">
                             <div class="ckeckout-left-sidebar">
                                 <!-- Start Checkbox Area -->
                                 <form id="porosit" method="POST">
