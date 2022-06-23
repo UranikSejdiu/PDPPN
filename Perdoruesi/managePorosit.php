@@ -16,7 +16,7 @@ switch ($_POST["action"]) {
         $total = mysqli_real_escape_string($con,  $_POST['total']);
         $pagesa = mysqli_real_escape_string($con,  $_POST['pagesa']);
         $mesazhi = mysqli_real_escape_string($con,  $_POST['mesazhi']);
-        $statusi = 'E rezervuar';
+        $statusi = '1';
 
         $sql = "INSERT INTO porosit (produktID, perdoruesID, emri, email, qyteti, adresa, zipCode, phone, mesazhi, menyraPageses, sasia, pagesa, statusi)VALUES('$prodID', '$prdID', '$emri', '$email', '$qyteti', '$adresa',' $zipCode', '$phone', '$mesazhi', '$pagesa', '$sasia', '$total', '$statusi')";
         $query = mysqli_query($con, $sql);

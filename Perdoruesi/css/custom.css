@@ -1109,7 +1109,7 @@ html {
 	width:100%;
 	margin:0 auto;
 	background-color:#FFFFFF;
-	box-shadow: 0 3px 8px -6px rgba(0,0,0,.50);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 .md-stepper-horizontal .md-step {
 	display:table-cell;
@@ -1163,6 +1163,11 @@ html {
 	font-family:'FontAwesome';
 	font-weight:100;
 	content: "\f00c";
+}
+.md-stepper-horizontal .md-step.cancel .md-step-circle:before {
+	font-family:'FontAwesome';
+	font-weight: 500;
+	content: "\f00d";
 }
 .md-stepper-horizontal .md-step.done .md-step-circle *,
 .md-stepper-horizontal .md-step.editable .md-step-circle * {

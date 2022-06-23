@@ -12,14 +12,7 @@ switch ($_POST["action"]) {
 
         $totalQuery = mysqli_query($con, $sql);
         $total_all_rows = mysqli_num_rows($totalQuery);
-/*
-        if (isset($_POST['search']['value'])) {
-            $search_value = $_POST['search']['value'];
-            $sql .= " WHERE name like '" . $search_value . "%'";
-            $sql .= " OR nrfiskal like '" . $search_value . "%'";
-            $sql .= " OR email like '" . $search_value . "%'";
-        }
-*/
+
         if (isset($_POST['order'])) {
             $column_name = $_POST['order'][0]['column'];
             $order = $_POST['order'][0]['dir'];
@@ -33,11 +26,25 @@ switch ($_POST["action"]) {
             $length = $_POST['length'];
             $sql .= " LIMIT  " . $start . ", " . $length;
         }
+        
 
         $query = mysqli_query($con, $sql);
         $count_rows = mysqli_num_rows($query);
         $data = array();
         while ($row = mysqli_fetch_assoc($query)) {
+            if ($row['statusi']=='0') {
+                $status = "E Anuluar";
+            }elseif ($row['statusi']=='1') {
+                $status = "E Hapur";
+            }elseif ($row['statusi']=='2') {
+                $status = "E Verefikuar";
+            }elseif ($row['statusi']=='3') {
+                $status = "Në Postë";
+            }elseif ($row['statusi']=='4') {
+                $status = "E Nisur";
+            }elseif ($row['statusi']=='5') {
+                $status = "E Realizuar";
+            }
             $sub_array = array();
             $sub_array[] = $row['porosiaID'];
             $sub_array[] = '<a href="porosia-details.php?porosiID='.$row['porosiaID'].'">'.$row['produkti'].'</a>' ;
@@ -51,7 +58,7 @@ switch ($_POST["action"]) {
             $sub_array[] = $row['adresa'];
             $sub_array[] = $row['zipCode'];
             $sub_array[] = $row['phone'];
-            $sub_array[] = $row['statusi'];
+            $sub_array[] = $status;
             $data[] = $sub_array;
         }
 
@@ -63,6 +70,20 @@ switch ($_POST["action"]) {
         );
         echo  json_encode($output);
 
+        break;
+
+    case 'fetchPorosiData':
+
+        $id = $_POST['id'];
+
+
+        $sql = "SELECT porosit.porosiaID, produktet.produkti, produktet.imazhi1, produktet.imazhi2, produktet.imazhi3, produktet.imazhi4, porosit.email, porosit.qyteti, porosit.adresa, porosit.zipCode, porosit.phone, porosit.mesazhi, porosit.menyraPageses, porosit.sasia, porosit.pagesa, porosit.statusi, produktet.qmimi, porosit.statusi, porosit.dataBlerjes
+        FROM porosit
+        LEFT OUTER JOIN produktet ON produktet.produktID = porosit.produktID
+        WHERE porosit.porosiaID=$id LIMIT 1";
+        $query = mysqli_query($con, $sql);
+        $row = mysqli_fetch_assoc($query);
+        echo json_encode($row);
         break;
 
     }

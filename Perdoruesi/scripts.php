@@ -10,10 +10,11 @@
 <!-- Main js file that contents all jQuery plugins activation. -->
 <script src="js/main.js"></script>
 <script src="js/alert.js"></script>
-<script type="text/javascript" src="js/datatables.min.js"></script>
+<script src="js/datatables.min.js"></script>
 <script src="js/passwordVerify.js"></script>
 <script src="js/showPassword.js"></script>
 <script src="js/leaflet.js"></script>
 <script src="js/leaflet-locationpicker.src.js"></script>
 <script src="js/jquery.inputmask.bundle.js"></script>
 <script src="js/jquery-image-upload-resizer.js"></script>
+<script src="js/all.min.js"></script>

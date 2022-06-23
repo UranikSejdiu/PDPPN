@@ -27,176 +27,89 @@ $porosiID = $_GET['porosiID'];
         <!-- End Header Style -->
 
         <div class="body__overlay"></div>
-        <?php echo "Porosia ID eshte " . $porosiID;
-        ?>
-        <div class="md-stepper-horizontal orange">
-            <div class="md-step active done">
-                <div class="md-step-circle"><span>1</span></div>
-                <div class="md-step-title">E Hapur</div>
-                <div class="md-step-optional">Porosia juaj është e Hapur</div>
-                <div class="md-step-bar-left"></div>
-                <div class="md-step-bar-right"></div>
-            </div>
-            <div class="md-step active done">
-                <div class="md-step-circle"><span>1</span></div>
-                <div class="md-step-title">E Verefikuar</div>
-                <div class="md-step-optional">Porosia juaj është verifikuar</div>
-                <div class="md-step-bar-left"></div>
-                <div class="md-step-bar-right"></div>
-            </div>
-            <div class="md-step active done">
-                <div class="md-step-circle"><span>2</span></div>
-                <div class="md-step-title">Në Postë</div>
-                <div class="md-step-optional">Porosia juaj është gati dhe do të niset së shpejti</div>
-                <div class="md-step-bar-left"></div>
-                <div class="md-step-bar-right"></div>
-            </div>
-            <div class="md-step active">
-                <div class="md-step-circle"><span>3</span></div>
-                <div class="md-step-title">E Nisur</div>
-                <div class="md-step-optional">Porosia juaj është duke ardhur</div>
-                <div class="md-step-bar-left"></div>
-                <div class="md-step-bar-right"></div>
-            </div>
-            <div class="md-step">
-                <div class="md-step-circle"><span>4</span></div>
-                <div class="md-step-title">E Realizuar</div>
-                <div class="md-step-optional">Porosia juaj është realizuar</div>
-                <div class="md-step-bar-left"></div>
-                <div class="md-step-bar-right"></div>
-            </div>
-        </div>
-        <div class="only-banner ptb--100 bg__white">
+        <input type="hidden" name="porosiaID" id="porosiaID" value="<?php echo $porosiID; ?>">
+        <div class="only-banner ptb--40 bg__white">
             <div class="container">
                 <div class="only-banner-img">
-                    <a href="shop-sidebar.html"><img src="images/new-product/3.jpg" alt="new product"></a>
-                </div>
-            </div>
-        </div>
-        <div class="only-banner ptb--100 bg__white">
-            <div class="container">
-                <div class="only-banner-img">
-                    <a href="shop-sidebar.html"><img src="images/new-product/6.jpg" alt="new product"></a>
-                </div>
-            </div>
-        </div>
-        <div class="only-banner bg__white">
-            <div class="container">
-                <div class="only-banner-img">
-                    <a href="shop-sidebar.html"><img src="images/new-product/7.jpg" alt="new product"></a>
+                    <div class="md-stepper-horizontal orange">
+                        <div id="step1" class="md-step ">
+                            <div class="md-step-circle"><span>1</span></div>
+                            <div class="md-step-title">E Hapur</div>
+                            <div class="md-step-optional">Porosia juaj është e Hapur</div>
+                            <div class="md-step-bar-left"></div>
+                            <div class="md-step-bar-right"></div>
+                        </div>
+                        <div id="step2" class="md-step">
+                            <div class="md-step-circle"><span>1</span></div>
+                            <div class="md-step-title">E Verefikuar</div>
+                            <div class="md-step-optional">Porosia juaj është verifikuar</div>
+                            <div class="md-step-bar-left"></div>
+                            <div class="md-step-bar-right"></div>
+                        </div>
+                        <div id="step3" class="md-step">
+                            <div class="md-step-circle"><span>2</span></div>
+                            <div class="md-step-title">Në Postë</div>
+                            <div class="md-step-optional">Porosia juaj është gati dhe do të niset së shpejti</div>
+                            <div class="md-step-bar-left"></div>
+                            <div class="md-step-bar-right"></div>
+                        </div>
+                        <div id="step4" class="md-step">
+                            <div class="md-step-circle"><span>3</span></div>
+                            <div class="md-step-title">E Nisur</div>
+                            <div class="md-step-optional">Porosia juaj është duke ardhur</div>
+                            <div class="md-step-bar-left"></div>
+                            <div class="md-step-bar-right"></div>
+                        </div>
+                        <div id="step5" class="md-step">
+                            <div class="md-step-circle"><span>4</span></div>
+                            <div class="md-step-title">E Realizuar</div>
+                            <div class="md-step-optional">Porosia juaj është realizuar</div>
+                            <div class="md-step-bar-left"></div>
+                        </div>
+                        <div id="anulim" class="md-step cancel active" style="display:none;">
+                            <div class="md-step-circle"><span></span></div>
+                            <div class="md-step-title">E Anuluar</div>
+                            <div class="md-step-optional">Porosia juaj është anuluar</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- Start Blog Area -->
-        <section class="htc__blog__area bg__white pb--130">
+        <div class="single-portfolio-area bg__white ptb--100">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="section__title section__title--2 text-center">
-                            <h2 class="title__line">Latest News</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod temp incididunt ut labore et dolore magna aliqua. </p>
+                    <div class="col-md-7">
+                        <div class="single-portfolio-img single-portfolio-slider owl-carousel mb--50">
+                            <img id="img1" width="470" height="450" style="object-fit:contain;" src="">
+                            <img id="img2" width="470" height="450" style="object-fit:contain;" src="">
+                            <img id="img3" width="470" height="450" style="object-fit:contain;" src="">
+                            <img id="img4" width="470" height="450" style="object-fit:contain;" src="">
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="blog__wrap clearfix mt--60 xmt-30">
-                        <!-- Start Single Blog -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="blog foo">
-                                <div class="blog__inner">
-                                    <div class="blog__thumb">
-                                        <a href="blog-details.html">
-                                            <img src="images/blog/blog-img/1.jpg" alt="blog images">
-                                        </a>
-                                        <div class="blog__post__time">
-                                            <div class="post__time--inner">
-                                                <span class="date">14</span>
-                                                <span class="month">sep</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog__hover__info">
-                                        <div class="blog__hover__action">
-                                            <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                            <ul class="bl__meta">
-                                                <li>By :<a href="#">Admin</a></li>
-                                                <li>Product</li>
-                                            </ul>
-                                            <div class="blog__btn">
-                                                <a class="read__more__btn" href="blog-details.html">read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="col-md-5">
+                        <div class="portfolio-description mrg-sm">
+                            <h2 id="titulli"></h2>
+                            <p id="pershkrimi"></p>
+                            <div class="portfolio-info">
+                                <ul>
+                                    <li>Data e blerjes: <span style="text-transform:none;" id="date"></span></li>
+                                    <li>Email: <span style="text-transform:none;" id="email"></span></li>
+                                    <li>Qyteti: <span style="text-transform:none;" id="qyteti"></span></li>
+                                    <li>Adresa: <span style="text-transform:none;" id="adresa"></span></li>
+                                    <li>Kodi Postar: <span style="text-transform:none;" id="zipCode"></span></li>
+                                    <li>Telefoni: <span style="text-transform:none;" id="phone"></span></li>
+                                    <li>Menyra e pageses: <span style="text-transform:none;" id="payMethod"></span></li>
+                                    <li>Çmimi: <span style="text-transform:none;" id="qmimi"></span>€</li>
+                                    <li>Sasia: <span style="text-transform:none;" id="sasia"></span></li>
+                                    <li>Totali: <span style="text-transform:none;" id="total"></span>€</li>
+                                </ul>
                             </div>
                         </div>
-                        <!-- End Single Blog -->
-                        <!-- Start Single Blog -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="blog foo">
-                                <div class="blog__inner">
-                                    <div class="blog__thumb">
-                                        <a href="blog-details.html">
-                                            <img src="images/blog/blog-img/2.jpg" alt="blog images">
-                                        </a>
-                                        <div class="blog__post__time">
-                                            <div class="post__time--inner">
-                                                <span class="date">14</span>
-                                                <span class="month">sep</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog__hover__info">
-                                        <div class="blog__hover__action">
-                                            <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                            <ul class="bl__meta">
-                                                <li>By :<a href="#">Admin</a></li>
-                                                <li>Product</li>
-                                            </ul>
-                                            <div class="blog__btn">
-                                                <a class="read__more__btn" href="blog-details.html">read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
-                        <!-- Start Single Blog -->
-                        <div class="col-md-4 col-lg-4 hidden-sm col-xs-12">
-                            <div class="blog foo">
-                                <div class="blog__inner">
-                                    <div class="blog__thumb">
-                                        <a href="blog-details.html">
-                                            <img src="images/blog/blog-img/3.jpg" alt="blog images">
-                                        </a>
-                                        <div class="blog__post__time">
-                                            <div class="post__time--inner">
-                                                <span class="date">14</span>
-                                                <span class="month">sep</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog__hover__info">
-                                        <div class="blog__hover__action">
-                                            <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                            <ul class="bl__meta">
-                                                <li>By :<a href="#">Admin</a></li>
-                                                <li>Product</li>
-                                            </ul>
-                                            <div class="blog__btn">
-                                                <a class="read__more__btn" href="blog-details.html">read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
         <!-- End Blog Area -->
         <!-- Start Footer Area -->
         <?php include_once('footer.php'); ?>
@@ -207,7 +120,72 @@ $porosiID = $_GET['porosiID'];
 
     <!-- jquery latest version -->
     <?php include_once('scripts.php'); ?>
+    <script src="scriptsPorosi.js"></script>
+    <script>
+        $(document).ready(function() {
+            fetchPorosiData();
+        })
 
+
+        function fetchPorosiData() {
+            var id = $('#porosiaID').val();
+            $.ajax({
+                url: "manageAllPorosit.php",
+                data: {
+                    id: id,
+                    action: "fetchPorosiData",
+                },
+                type: "post",
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    $("#img1").attr("src", json.imazhi1);
+                    $("#img2").attr("src", json.imazhi2);
+                    $("#img3").attr("src", json.imazhi3);
+                    $("#img4").attr("src", json.imazhi4);
+                    $("#titulli").html(json.produkti);
+                    $("#email").html(json.email);
+                    $("#qyteti").html(json.qyteti);
+                    $("#adresa").html(json.adresa);
+                    $("#zipCode").html(json.zipCode);
+                    $("#phone").html(json.phone);
+                    $("#payMethod").html(json.menyraPageses);
+                    $("#qmimi").html(json.qmimi);
+                    $("#sasia").html(json.sasia);
+                    $("#total").html(json.pagesa);
+                    $("#date").html(json.dataBlerjes);
+                    var statusi = json.statusi;
+                    if (statusi == '1') {
+                        $("#step1").addClass('active done');
+                    } else if (statusi == '2') {
+                        $("#step1").addClass('active done');
+                        $("#step2").addClass('active done');
+                    } else if (statusi == '3') {
+                        $("#step1").addClass('active done');
+                        $("#step2").addClass('active done');
+                        $("#step3").addClass('active done');
+                    } else if (statusi == '4') {
+                        $("#step1").addClass('active done');
+                        $("#step2").addClass('active done');
+                        $("#step3").addClass('active done');
+                        $("#step4").addClass('active done');
+                    } else if (statusi == '5') {
+                        $("#step1").addClass('active done');
+                        $("#step2").addClass('active done');
+                        $("#step3").addClass('active done');
+                        $("#step4").addClass('active done');
+                        $("#step5").addClass('active done');
+                    } else {
+                        $("#step1").hide();
+                        $("#step2").hide();
+                        $("#step3").hide();
+                        $("#step4").hide();
+                        $("#step5").hide();
+                        $("#anulim").show();
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

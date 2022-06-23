@@ -30,7 +30,7 @@ $(document).on("submit", "#porosit", function (e) {
                 sasia: sasia,
                 total: total,
                 pagesa: pagesa,
-                mesazhi:mesazhi,
+                mesazhi: mesazhi,
                 action: "bejPorosi"
             },
             success: function (data) {
@@ -39,13 +39,13 @@ $(document).on("submit", "#porosit", function (e) {
 
                 if (status == "true") {
                     $("#loading").show();
-                    window.setTimeout(function() {
-                      
+                    window.setTimeout(function () {
+
                         window.location.href = 'porosit.php';
                     }, 3000);
-                    
 
-                } else if(status == "false") {
+
+                } else if (status == "false") {
                     dangerAlert("Gabim gjatë ruajtjes së ndryshimit në databazë!");
 
                 }
@@ -54,6 +54,6 @@ $(document).on("submit", "#porosit", function (e) {
         });
     } else {
         warningAlert("Ju lutem plotësoni të gjitha fushat!");
-        
+
     }
 });

@@ -13,6 +13,7 @@
                 <ul class="main__menu">
                     <li><a href="index.php">Kryefaçja</a></li>
                     <li><a href="produktet.php">Produktet</a></li>
+                    <li><a href="porosit.php">Porosit</a></li>
                     <li><a href="kontakto.php">Kontakti</a></li>
                 </ul>
 
@@ -22,6 +23,7 @@
                     <ul>
                         <li><a href="index.php">Kryefaçja</a></li>
                         <li><a href="produktet.php">Produktet</a></li>
+                        <li><a href="porosit.php">Porosit</a></li>
                         <li><a href="kontakto.php">Kontakti</a></li>
                     </ul>
                 </nav>
