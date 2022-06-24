@@ -81,10 +81,10 @@ $porosiID = $_GET['porosiID'];
                 <div class="row">
                     <div class="col-md-7">
                         <div class="single-portfolio-img single-portfolio-slider owl-carousel mb--50">
-                            <img id="img1" width="470" height="450" style="object-fit:contain;" src="">
-                            <img id="img2" width="470" height="450" style="object-fit:contain;" src="">
-                            <img id="img3" width="470" height="450" style="object-fit:contain;" src="">
-                            <img id="img4" width="470" height="450" style="object-fit:contain;" src="">
+                            <img id="img1" width="470" height="450" style="object-fit:contain;">
+                            <img id="img2" width="470" height="450" style="object-fit:contain;">
+                            <img id="img3" width="470" height="450" style="object-fit:contain;">
+                            <img id="img4" width="470" height="450" style="object-fit:contain;">
                         </div>
                     </div>
                     <div class="col-md-5">

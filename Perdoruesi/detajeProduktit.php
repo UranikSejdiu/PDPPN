@@ -56,55 +56,55 @@ while ($row = mysqli_fetch_assoc($query)) {
         <!-- Start Product Details -->
         <section class="htc__product__details pt--120 pb--100 bg__white">
             <div id="alerts"></div>
-            <div class="container" style="margin-top:2%;">
+            <div class="container">
                 <div class="row">
 
                     <input type="hidden" name="prodID" id="prodID" value="<?php echo $produktID; ?>">
-                    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                    <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
                         <div class="product__details__container">
                             <!-- Start Small images -->
-                            <ul class="product__small__images" role="tablist">
+                            <ul class="product__small__images" role="tablist" style="width:120;height:140;">
                                 <li role="presentation" class="pot-small-img active">
                                     <a href="#img-tab-1" role="tab" data-toggle="tab">
-                                        <img src="<?php echo $foto1; ?>" style="object-fit:cover;" width="120" height="140" alt="small-image">
+                                        <img src="<?php echo $foto1; ?>" style="object-fit:contain;" width="120" height="140">
                                     </a>
                                 </li>
                                 <li role="presentation" class="pot-small-img">
                                     <a href="#img-tab-2" role="tab" data-toggle="tab">
-                                        <img src="<?php echo $foto2; ?>" style="object-fit:cover;" width="120" height="140" alt="small-image">
+                                        <img src="<?php echo $foto2; ?>" style="object-fit:contain;" width="120" height="140">
                                     </a>
                                 </li>
-                                <li role="presentation" class="pot-small-img hidden-xs">
+                                <li role="presentation" class="pot-small-img">
                                     <a href="#img-tab-3" role="tab" data-toggle="tab">
-                                        <img src="<?php echo $foto3; ?>" style="object-fit:cover;" width="120" height="140" alt="small-image">
+                                        <img src="<?php echo $foto3; ?>" style="object-fit:contain;" width="120" height="140">
                                     </a>
                                 </li>
-                                <li role="presentation" class="pot-small-img hidden-xs hidden-sm">
+                                <li role="presentation" class="pot-small-img">
                                     <a href="#img-tab-4" role="tab" data-toggle="tab">
-                                        <img src="<?php echo $foto4; ?>" style="object-fit:cover;" width="120" height="140" alt="small-image">
+                                        <img src="<?php echo $foto4; ?>" style="object-fit:contain;" width="120" height="140">
                                     </a>
                                 </li>
                             </ul>
                             <!-- End Small images -->
                             <div class="product__big__images">
-                                <div class="portfolio-full-image tab-content">
-                                    <div role="tabpanel" class="tab-pane fade in active product-video-position" id="img-tab-1">
+                                <div class="portfolio-full-image tab-content" style="width:440px;height:590px;">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
                                         <img src="<?php echo $foto1; ?>" width="440" height="590" style="object-fit:contain;" alt="full-image">
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-2">
+                                    <div role="tabpanel" class="tab-pane fade" id="img-tab-2">
                                         <img src="<?php echo $foto2; ?>" width="440" height="590" style="object-fit:contain;" alt="full-image">
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-3">
+                                    <div role="tabpanel" class="tab-pane fade" id="img-tab-3">
                                         <img src="<?php echo $foto3; ?>" width="440" height="590" style="object-fit:contain;" alt="full-image">
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-4">
+                                    <div role="tabpanel" class="tab-pane fade" id="img-tab-4">
                                         <img src="<?php echo $foto4; ?>" width="440" height="590" style="object-fit:contain;" alt="full-image">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
+                    <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 smt-30 xmt-30">
                         <div class="htc__product__details__inner">
                             <div class="pro__detl__title">
                                 <h2 id="produktTitulli"><?php echo $produkti; ?></h2>
@@ -218,15 +218,19 @@ while ($row = mysqli_fetch_assoc($query)) {
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <ul class="product__deatils__tab mb--30">
                             <li role="presentation" class="active">
-                                <a href="#reviews">Vlerësimet</a>
+                                <a>Vlerësimet</a>
                             </li>
                         </ul>
                     </div>
-                    <button style="float: right;" type="button" name="add_review" id="add_review" class="regBtn pb--20">Vlerso</button>
+
                 </div>
-                   
-                <div class="row">
-                    <div class="review__address__inner" id="review_content">
+                <div class="row col-md-9">
+                    <div class="review__address__inner " id="review_content">
+                    </div>
+                </div>
+                <div class="row  col-md-3">
+                    <div class="review__address__inner">
+                        <button style="float: right;" type="button" name="add_review" id="add_review" class="regBtn pb--20">Vlerso</button>
                     </div>
                 </div>
             </div>
@@ -260,7 +264,7 @@ while ($row = mysqli_fetch_assoc($query)) {
 
                     </div>
                     <div class="form-group">
-                        <textarea name="userReview" id="userReview" placeholder="Jepni vlerësimin"></textarea>
+                        <textarea rows="4" style="width:100%;" name="userReview" id="userReview" placeholder="Jepni vlerësimin"></textarea>
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="prodID" id="prodID" value="<?php $produktID ?>">

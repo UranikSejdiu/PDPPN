@@ -2451,7 +2451,6 @@ select.select-color {
 }
 .review__info {
   display: block;
-  margin-bottom: 5px;
 }
 .rating__send {
   display: inline-block;
@@ -2472,7 +2471,7 @@ select.select-color {
     background: #ff4136 none repeat scroll 0 0;
     color: #fff;
 }
-.review__info{
+.review__info {
     color: #f3c258;
     font-size: 17px;
 }
