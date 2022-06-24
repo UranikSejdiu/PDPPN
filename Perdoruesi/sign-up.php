@@ -73,17 +73,10 @@
                         <!-- End Single Content -->
                         <!-- Start Single Content -->
                         <div id="register" class="single__tabs__panel">
-                            <form class="login" action="user-login.php" method="POST" enctype='multipart/form-data'>
-                                <div class="form-group typeFile" style="border-bottom: 1px solid #8e8e8e;">
-                                    <label style="margin-bottom:0;" for="name">Logoja:</label>
-                                    <small><i>Formatet e lejuara jpg,jpeg,png</i></small><br>
-                                    <input style="margin-top:0;border:none;" name="logo" id="logo" type="file">
-                                    <label for="logo" class="btnGet">Zgjedh logon tuaj</label>
-                                    <br>
-                                    <div id="image-holder" style="margin-bottom:5px;"></div>
-                                </div>
+                            <form class="login" action="user-login.php" method="POST">
+
                                 <div class="form-group">
-                                    <label style="margin-bottom:0;" for="name">Emri kompanisë:</label>
+                                    <label style="margin-bottom:0;" for="name">Emri dhe Mbiemri:</label>
                                     <input style="margin-top:0;" type="text" name="name" id="name">
                                 </div>
                                 <div class="form-group">
@@ -101,17 +94,30 @@
                                     <span toggle="#cpassword" class="fa fa-fw fa-eye field-icon toggle-password" id="cspanPass"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label style="margin-bottom:0;" for="fiskal">Numri Fiskal:</label>
-                                    <input style="margin-top:0;" type="number" name="fiskal" id="fiskal" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9">
+                                    <label style="margin-bottom:0;" for="city">Qyteti:</label>
+                                    <select name="city" id="city" required>
+                                        <option selected="selected" hidden>Zgjedh qytetin: </option>
+                                        <?php
+                                        $res = mysqli_query($con, "CALL selQytet()");
+                                        while ($row = $res->fetch_array()) {
+                                        ?>
+                                            <option value="<?php echo $row['id_city']; ?>"><?php echo $row['name']; ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label style="margin-bottom:0;" for="zipCode">Kodi Postar:</label>
+                                    <input style="margin-top:0;" type="number" name="zipCode" id="zipCode" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label style="margin-bottom:0;" for="adresa">Adresa:</label>
+                                    <input style="margin-top:0;" type="text" name="adresa" id="adresa">
                                 </div>
                                 <div class="form-group">
                                     <label style="margin-bottom:0;" for="phone">Numri telefonit:</label>
                                     <input style="margin-top:0;" type="tel" name="phone" id="phone">
-                                </div>
-                                <div class="form-group">
-                                    <label style="margin-bottom:0;" for="lokacioni">Lokacioni</label>
-                                    <input class="lokacioni_add" style="margin-top:0;" name="lokacioni" id="lokacioni" type="text" value="42.560057,20.855082" autofocus><br>
-                                    <div id="mapContainer"></div>
                                 </div>
                                 <div class="htc__login__btn">
                                     <button type="submit" name="signup" class="regBtn">Regjistrohu</button>
@@ -135,30 +141,9 @@
     <!-- jquery latest version -->
     <?php include_once('scripts.php'); ?>
     <script>
-        $("#logo").on('change', function() {
-            if (typeof(FileReader) != "undefined") {
-                var image_holder = $("#image-holder");
-                image_holder.empty();
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $("<img />", {
-                        "src": e.target.result,
-                        "class": "thumb-image"
-                    }).appendTo(image_holder);
-
-                }
-                image_holder.show();
-                reader.readAsDataURL($(this)[0].files[0]);
-            } else {
-                alert("This browser does not support FileReader.");
-            }
-        });
         $(":input").inputmask();
         $("#phone").inputmask({
             "mask": "(+383)49/999-999"
-        });
-        $('#addKompani').on('shown.bs.modal', function() {
-            $('#lokacioni').focus();
         });
         $('#password').PassRequirements({
             popoverPlacement: 'auto',
@@ -167,13 +152,6 @@
         $('#cpassword').PassRequirements({
             popoverPlacement: 'auto',
             trigger: 'focus'
-        });
-        $('.lokacioni_add').leafletLocationPicker({
-            alwaysOpen: true,
-            height: 300,
-            width: 500,
-            cursorSize: '15px',
-            mapContainer: "#mapContainer"
         });
     </script>
 </body>

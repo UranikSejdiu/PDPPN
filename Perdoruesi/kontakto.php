@@ -84,7 +84,7 @@
                                 <form id="contact-form" method="post">
                                     <div class="single-contact-form">
                                         <div class="contact-box subject message">
-                                            <input type="text" style="width:100%;" name="subjekti" id="subjekti" placeholder="Subjekti*">
+                                            <input style="width:100%;" type="text" name="subjekti" id="subjekti" placeholder="Subjekti*">
                                         </div>
                                     </div>
                                     <div class="single-contact-form">
@@ -95,7 +95,7 @@
                                     <div class="contact-btn">
                                         <button type="submit" class="fv-btn">Dërgo</button>
                                     </div>
-                                    <input type="hidden" name="moduli" id="moduli" value="Moduli Kompanise">
+                                    <input type="hidden" name="moduli" id="moduli" value="Moduli Perdoruesit">
                                 </form>
                             </div>
                         </div>

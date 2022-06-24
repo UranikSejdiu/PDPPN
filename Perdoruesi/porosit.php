@@ -54,7 +54,7 @@
                                                 <th data-orderable="false">Nr.</th>
                                                 <th>Produkti</th>
                                                 <th data-orderable="false">Foto</th>
-                                                <th>Çmimi</th>
+                                                <th data-orderable="false">Çmimi</th>
                                                 <th data-orderable="false">Sasia</th>
                                                 <th data-orderable="false">Totali</th>
                                                 <th data-orderable="false">Menyra e pageses</th>
