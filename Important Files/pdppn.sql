@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 24, 2022 at 12:41 PM
+-- Generation Time: Jun 24, 2022 at 03:25 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -56,16 +56,17 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `code` mediumint(50) NOT NULL,
   `status` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `code`, `status`) VALUES
-(2, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', '$2y$10$t8HEHOUB.HzLaDceZUoq2e3xLgsH4NfvP43KNdGm3AsWiRyD2qQ4q', 277621, 'verified'),
+(2, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', '$2y$10$aw2Ijo1bAPcerfbpf6K6zuvNpkgy/2BRP1Q0cD3SZyuVifMl7bXLi', 0, 'verified'),
 (11, 'Filan Fisteku', 'u.sejdiu56@gmail.com', '$2y$10$D7YN1dt6VXd98X9TQ7Z/Zecevy3U5CkqweVHNbTljDC6CGXW/4AXa', 0, 'verified'),
-(12, 'Filan Fisteku', 'ferizaj0004@gmail.com', '$2y$10$wvoBIQF43K0imrMbplJb.e3HLIPBvkIGG0bljcoLA5Ho8JDZxdxpS', 409943, 'notverified');
+(12, 'Filan Fisteku', 'ferizaj0004@gmail.com', '$2y$10$wvoBIQF43K0imrMbplJb.e3HLIPBvkIGG0bljcoLA5Ho8JDZxdxpS', 753793, 'verified'),
+(13, 'test', 'ferizaj0006@gmail.com', '$2y$10$xcKrazJ3SbA2XNB7aBDXX.U7lYLcV.OXMqDeb3fA3ZRQUWSYBhyum', 0, 'verified');
 
 -- --------------------------------------------------------
 
