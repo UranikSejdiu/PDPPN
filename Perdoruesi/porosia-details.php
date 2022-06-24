@@ -80,7 +80,7 @@ $porosiID = $_GET['porosiID'];
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
-                        <div class="single-portfolio-img single-portfolio-slider owl-carousel mb--50">
+                        <div class="carousel">
                             <img id="img1" width="470" height="450" style="object-fit:contain;">
                             <img id="img2" width="470" height="450" style="object-fit:contain;">
                             <img id="img3" width="470" height="450" style="object-fit:contain;">
@@ -124,6 +124,10 @@ $porosiID = $_GET['porosiID'];
     <script>
         $(document).ready(function() {
             fetchPorosiData();
+            $('.carousel').slick({
+                speed: 500,
+                fade: true
+            });
         })
 
 
