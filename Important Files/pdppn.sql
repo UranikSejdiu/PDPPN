@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 24, 2022 at 10:19 AM
+-- Generation Time: Jun 24, 2022 at 12:41 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `code`, `status`) VALUES
-(2, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', '$2y$10$t8HEHOUB.HzLaDceZUoq2e3xLgsH4NfvP43KNdGm3AsWiRyD2qQ4q', 0, 'verified'),
+(2, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', '$2y$10$t8HEHOUB.HzLaDceZUoq2e3xLgsH4NfvP43KNdGm3AsWiRyD2qQ4q', 277621, 'verified'),
 (11, 'Filan Fisteku', 'u.sejdiu56@gmail.com', '$2y$10$D7YN1dt6VXd98X9TQ7Z/Zecevy3U5CkqweVHNbTljDC6CGXW/4AXa', 0, 'verified'),
 (12, 'Filan Fisteku', 'ferizaj0004@gmail.com', '$2y$10$wvoBIQF43K0imrMbplJb.e3HLIPBvkIGG0bljcoLA5Ho8JDZxdxpS', 409943, 'notverified');
 
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `kontaktet` (
   `moduli` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `createdDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `kontaktet`
@@ -165,7 +165,8 @@ INSERT INTO `kontaktet` (`id`, `subjekti`, `mesazhi`, `moduli`, `createdDate`) V
 (1, 'asdasdasdasdasd', 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd', 'Admin', '2022-05-11 15:11:53'),
 (4, 'admin', 'adminadminadm', 'Admin', '2022-05-11 15:19:32'),
 (5, 'asdasdasdasd', 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd', 'Moduli Kompanise', '2022-06-01 14:28:35'),
-(6, '1111111111111', '11111111111111111111111111111111111111111111111111111111111111111v', 'Moduli Kompanise', '2022-06-01 14:29:37');
+(6, '1111111111111', '11111111111111111111111111111111111111111111111111111111111111111v', 'Moduli Kompanise', '2022-06-01 14:29:37'),
+(7, 'TEstim', 'TestimTestimTestimTestimTestimTestimTestimTestim', 'Moduli Perdoruesit', '2022-06-24 14:11:04');
 
 -- --------------------------------------------------------
 
