@@ -17,4 +17,3 @@
 <script src="js/leaflet-locationpicker.src.js"></script>
 <script src="js/jquery.inputmask.bundle.js"></script>
 <script src="js/jquery-image-upload-resizer.js"></script>
-<script src="js/all.min.js"></script>
