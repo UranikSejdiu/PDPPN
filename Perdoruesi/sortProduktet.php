@@ -15,7 +15,7 @@
         if (!empty($result) && $result->num_rows > 0) {
            while($row=$result->fetch_assoc()){
                $output .= '<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 hvr-grow">
-               <div class="product">
+               <div class="product" style="border:1px solid #b7b7b7;padding-bottom:10px;">
                    <div class="product__inner">
                        <div class="pro__thumb">
                            <a href="detajeProduktit.php?produktID='.$row['produktID'].'">

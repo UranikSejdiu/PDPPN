@@ -72,7 +72,7 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                                     while ($row = $result->fetch_assoc()) {
                                     ?>
                                         <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 hvr-grow">
-                                            <div class="product">
+                                            <div class="product" style="border:1px solid #b7b7b7;padding-bottom:10px;">
                                                 <div class="product__inner">
                                                     <div class="pro__thumb">
                                                         <?php echo '<a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">';
