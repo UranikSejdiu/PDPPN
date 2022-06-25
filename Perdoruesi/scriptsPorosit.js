@@ -10,7 +10,7 @@ $("#dtPorosit").DataTable({
     dom: "tip",
     order: [],
     language: {
-      emptyTable: "Nuk ka të dhëna në databazë.",
+      emptyTable: "Nuk keni bërë asnjë porosi.",
     },
     ajax: {
       url: "manageAllPorosit.php",

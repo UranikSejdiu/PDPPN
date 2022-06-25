@@ -8,33 +8,23 @@ $errors = array();
 //if user signup button
 if (isset($_POST['signup'])) {
     $name = mysqli_real_escape_string($con, $_POST['name']);
-    $fiskal = mysqli_real_escape_string($con, $_POST['fiskal']);
-    $lokacioni = mysqli_real_escape_string($con, $_POST['lokacioni']);
-    $phone = mysqli_real_escape_string($con, $_POST['phone']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
     $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
+    $city = mysqli_real_escape_string($con, $_POST['city']);
+    $zipCode = mysqli_real_escape_string($con, $_POST['zipCode']);
+    $adresa = mysqli_real_escape_string($con, $_POST['adresa']);
+    $phone = mysqli_real_escape_string($con, $_POST['phone']);
 
     if ($password !== $cpassword) {
         $errors['password'] = "Fjalëkalimi jo i njejtë!";
     }
 
-    $email_check = "SELECT * FROM kompanite WHERE email = '$email'";
+    $email_check = "SELECT * FROM perdoruesit WHERE email = '$email'";
     $res = mysqli_query($con, $email_check);
     if (mysqli_num_rows($res) > 0) {
         $errors['email'] = "Email-i ekziston në sistemin tonë!";
     }
-    if (isset($_FILES['logo'])) {
-        $file_name = $_FILES['logo']['name'];
-        $uniquename = time() . '-' . uniqid();
-        $file_size = $_FILES['logo']['size'];
-        $file_tmp = $_FILES['logo']['tmp_name'];
-        $file_type = $_FILES['logo']['type'];
-        $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-        $extensions = array("jpeg", "jpg", "png");
-        $filedestionation = "../images/kompani/" . $uniquename . '.' . $ext;
-    }
-
     if (strlen($password) < '8') {
         $errors['password'] = "Plotëso kërkesat e fjalëkalimit!";
         return;
@@ -47,20 +37,11 @@ if (isset($_POST['signup'])) {
     } elseif (!preg_match("#[a-z]+#", $password)) {
         $errors['password'] = "Plotëso kërkesat e fjalëkalimit!";
         return;
-    } elseif ($fetch !== null) {
-        $errors['email'] = "Email-i ekziston në sistemin tonë!";
-        return;
-    } elseif ($file_name && in_array($ext, $extensions) === false) {
-        $errors['format'] = "Provoni njërin nga formatet e lejuara!";
-        return;
-    } elseif ($file_size > 5097152) {
-        $errors['madhesia'] = "Logoja kalon madhësinë e lejuar prej 5MB!";
-        return;
     } else {
         $hashPassword = password_hash($password, PASSWORD_BCRYPT);
         $status = "notverified";
         $code = rand(999999, 111111);
-        $sql = "INSERT INTO kompanite (logo, name, nrfiskal, lokacioni, telefoni, email, password, code, status) values ('$filedestionation', '$name','$fiskal', '$lokacioni','$phone','$email','$hashPassword','$code','$status')";
+        $sql = "INSERT INTO perdoruesit (fullName, id_city, adress, zipCode, phone, email, password, code, status) values ('$name', '$city','$adresa', '$zipCode','$phone','$email','$hashPassword','$code','$status')";
         $insertData = mysqli_query($con, $sql);
         if ($insertData) {
             $subject = "Kodi i verifikimit të Email-it";
