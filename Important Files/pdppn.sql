@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 25, 2022 at 12:17 PM
+-- Generation Time: Jun 25, 2022 at 03:09 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -244,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
   `status` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cityForeignKey` (`id_city`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `perdoruesit`
@@ -288,14 +288,14 @@ CREATE TABLE IF NOT EXISTS `porosit` (
 
 INSERT INTO `porosit` (`porosiaID`, `produktID`, `perdoruesID`, `emri`, `email`, `qyteti`, `adresa`, `zipCode`, `phone`, `mesazhi`, `menyraPageses`, `sasia`, `pagesa`, `statusi`, `dataBlerjes`) VALUES
 (1, 21, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', 'Te telefonohet numri para se dergohet ne adres', 'Para në dorë', 2, '2.00', 1, '2022-06-18 17:20:26'),
-(2, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 1, '2022-06-21 09:12:13'),
-(3, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 1, '2022-06-21 09:28:19'),
+(2, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 5, '2022-06-21 09:12:13'),
+(3, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 2, '2022-06-21 09:28:19'),
 (4, 22, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '45.00', 1, '2022-06-21 09:28:33'),
 (5, 22, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '45.00', 1, '2022-06-21 09:28:56'),
 (6, 23, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '10.00', 1, '2022-06-21 09:29:39'),
-(7, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 1, '2022-06-21 09:41:26'),
-(8, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', 'Try this number too +388 44 565 996', 'Para në dorë', 2, '244.00', 1, '2022-06-22 17:01:36'),
-(9, 17, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '21.00', 3, '2022-06-23 16:26:39');
+(7, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 2, '2022-06-21 09:41:26'),
+(8, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', 'Try this number too +388 44 565 996', 'Para në dorë', 2, '244.00', 3, '2022-06-22 17:01:36'),
+(9, 17, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '21.00', 0, '2022-06-23 16:26:39');
 
 -- --------------------------------------------------------
 
