@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 24, 2022 at 03:25 PM
+-- Generation Time: Jun 25, 2022 at 12:17 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -244,14 +244,15 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
   `status` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cityForeignKey` (`id_city`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `perdoruesit`
 --
 
 INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `zipCode`, `phone`, `email`, `password`, `code`, `status`) VALUES
-(3, 'Uranik Sejdiu', 1, 'Fashti Gaqke', 70000, '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$ptLTLy759/sIc2nEVY1vy.0xUjSboanv/bfzdx76BKt42OwqNPb92', 0, 'verified');
+(3, 'Uranik Sejdiu', 1, 'Fashti Gaqke', 70000, '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$ptLTLy759/sIc2nEVY1vy.0xUjSboanv/bfzdx76BKt42OwqNPb92', 0, 'verified'),
+(4, 'Uranik Sejdiu', 1, 'Gaçkë', 70000, '(+383)48/434-177', 'u.sejdiu4@gmail.com', '$2y$10$C7hErg/XX.8ZY8a/H5hzT.cKrJ73BkOTpS.GA4LaUv4VXe.m3VI0y', 0, 'verified');
 
 -- --------------------------------------------------------
 
