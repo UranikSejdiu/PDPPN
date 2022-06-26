@@ -145,7 +145,7 @@
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="pershkrimi">Përshkrimi:</label>
-                            <textarea rows="5" name="pershkrimi" id="pershkrimi"></textarea>
+                            <textarea style="width: 100%;" rows="5" name="pershkrimi" id="pershkrimi"></textarea>
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="qmimi">Çmimi:</label>
@@ -230,7 +230,7 @@
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="uPershkrimi">Përshkrimi:</label>
-                            <textarea rows="5" name="uPershkrimi" id="uPershkrimi"></textarea>
+                            <textarea style="width: 100%;" rows="5" name="uPershkrimi" id="uPershkrimi"></textarea>
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="uQmimi">Çmimi:</label>

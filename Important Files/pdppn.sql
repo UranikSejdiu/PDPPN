@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 25, 2022 at 03:09 PM
+-- Generation Time: Jun 26, 2022 at 12:55 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `code` mediumint(50) NOT NULL,
   `status` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `admin`
@@ -66,7 +66,8 @@ INSERT INTO `admin` (`id`, `name`, `email`, `password`, `code`, `status`) VALUES
 (2, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', '$2y$10$aw2Ijo1bAPcerfbpf6K6zuvNpkgy/2BRP1Q0cD3SZyuVifMl7bXLi', 0, 'verified'),
 (11, 'Filan Fisteku', 'u.sejdiu56@gmail.com', '$2y$10$D7YN1dt6VXd98X9TQ7Z/Zecevy3U5CkqweVHNbTljDC6CGXW/4AXa', 0, 'verified'),
 (12, 'Filan Fisteku', 'ferizaj0004@gmail.com', '$2y$10$wvoBIQF43K0imrMbplJb.e3HLIPBvkIGG0bljcoLA5Ho8JDZxdxpS', 753793, 'verified'),
-(13, 'test', 'ferizaj0006@gmail.com', '$2y$10$xcKrazJ3SbA2XNB7aBDXX.U7lYLcV.OXMqDeb3fA3ZRQUWSYBhyum', 0, 'verified');
+(13, 'test', 'ferizaj0006@gmail.com', '$2y$10$xcKrazJ3SbA2XNB7aBDXX.U7lYLcV.OXMqDeb3fA3ZRQUWSYBhyum', 0, 'verified'),
+(14, 'TEST', 'ferizaj0001@gmail.com', '$2y$10$tinzB5QyLorvUFA/7ovuDeMeayTLjQr932ayxkNkwrXac6bxx08W6', 0, 'verified');
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `kompanite` (
 
 INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefoni`, `email`, `password`, `code`, `status`) VALUES
 (2, '../images/kompani/1652531410-627fa0d2304fc.jpg', 'Filan', 111111111, '42.349188,21.17604', '(+383)48/434-177', 'ferizaj0006@gmail.com', '$2y$10$Yvf3/GQmVlvMNrda83SKHe/rwYhYkr8EAV2v2swvUqD4eDDNn6ieS', 0, 'verified'),
-(5, '../images/kompani/1652963525-628638c5308e5.png', 'Uranik Sejdiu', 545454598, '41.521431,14.106445', '(+383)44/879-569', 'u.sejdiu4@gmail.com', '$2y$10$eWY04Hw/SIYuioxO1zKc7OcQNDLkm/FWC.Fz/OpIGN1eay7YayU7i', 0, 'verified'),
+(5, '../images/kompani/1652963525-628638c5308e5.png', 'Uranik Sejdiu', 545454598, '41.521431,14.106445', '(+383)44/879-569', 'u.sejdiu4@gmail.com', '$2y$10$Rk0FywflrhKlxYf.PQNYEumQBFhYZQd9OtGaelnlE4IIR35Utv72u', 0, 'verified'),
 (10, '../images/kompani/1652791679-6283997f66b8b.png', 'Hewlet Packard', 555555555, '42.697829,23.322001', '(+383)45/555-555', 'u.sejdiu56@gmail.com', '$2y$10$uoDe4GN.X/1H..VgaZDo4uau5pynsWtfYzEfc4yQKVXHWb5KkLNna', 0, 'verified');
 
 -- --------------------------------------------------------
@@ -280,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `porosit` (
   PRIMARY KEY (`porosiaID`),
   KEY `perdoruesiPorosit` (`perdoruesID`),
   KEY `produktiPorosit` (`produktID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `porosit`
@@ -295,7 +296,8 @@ INSERT INTO `porosit` (`porosiaID`, `produktID`, `perdoruesID`, `emri`, `email`,
 (6, 23, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '10.00', 1, '2022-06-21 09:29:39'),
 (7, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 2, '2022-06-21 09:41:26'),
 (8, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', 'Try this number too +388 44 565 996', 'Para në dorë', 2, '244.00', 3, '2022-06-22 17:01:36'),
-(9, 17, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '21.00', 0, '2022-06-23 16:26:39');
+(9, 17, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '21.00', 2, '2022-06-23 16:26:39'),
+(10, 17, 4, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', 'Ferizaj', 'Gaçkë', 70000, '(+383)48/444-444', '', 'Para në dorë', 3, '63.00', 0, '2022-06-26 14:39:32');
 
 -- --------------------------------------------------------
 
@@ -330,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `produktet` (
 --
 
 INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3`, `imazhi4`, `kategoriaID`, `pershkrimi`, `qmimi`, `stoku`, `madhesiaID`, `ngjyraID`, `kompaniaID`) VALUES
-(17, 'Hewlet Packard', '../images/produktet/1653659980-6290d94c992e4.png', '../images/produktet/1653659980-6290d94c99601.png', '../images/produktet/1653659980-6290d94c99611.png', '../images/produktet/1653659980-6290d94c99625.png', 1, 'asdasdasdadsads', '21.00', 8, 1, 3, 5),
+(17, 'Hewlet Packard', '../images/produktet/1653659980-6290d94c992e4.png', '../images/produktet/1653659980-6290d94c99601.png', '../images/produktet/1653659980-6290d94c99611.png', '../images/produktet/1653659980-6290d94c99625.png', 1, 'asdasdasdadsads', '21.00', 5, 1, 3, 5),
 (18, 'PDPPN', '../images/produktet/1653660030-6290d97e20592.png', '../images/produktet/1654000235-62960a6b7f1bf.jpg', '../images/produktet/1654000235-62960a6b7f9b8.png', '../images/produktet/1653660030-6290d97e2088a.png', 1, 'TESTtest TESTtest TESTtest TESTtest TESTtest TESTtest', '122.00', 4, 1, 3, 5),
 (21, 'Filan Fisteku', '../images/produktet/1653660434-6290db12c4a63.jpg', '../images/produktet/1653998323-629602f37fe76.jpg', '../images/produktet/1653998323-629602f3805cd.jpg', '../images/produktet/1653998468-62960384a120e.jpg', 1, 'asdasdasdadsadsadsasd', '1.00', 3, 2, 1, 2),
 (22, 'test', '../images/produktet/1653998550-629603d62aaa2.jpg', '../images/produktet/1653998512-629603b00d7ee.jpg', '../images/produktet/1653998442-6296036aac79e.jpg', '../images/produktet/1653998442-6296036aac7b0.jpg', 2, '44545453', '45.00', 7, 4, 4, 2),
@@ -352,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `produktreview` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`reviewID`),
   KEY `reviewProdukt` (`produktID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produktreview`
@@ -369,7 +371,8 @@ INSERT INTO `produktreview` (`reviewID`, `perdoruesi`, `starRating`, `reviewText
 (8, 'Filan Fisteku', 3, 'E mirë', 21, '2022-06-10 17:42:30'),
 (9, 'Uranik', 4, '363636', 18, '2022-06-18 13:13:51'),
 (10, 'Uranik', 0, 'asdadasd', 18, '2022-06-18 13:15:00'),
-(11, 'Uranik', 1, 'jo edhe mire', 18, '2022-06-18 13:17:35');
+(11, 'Uranik', 1, 'jo edhe mire', 18, '2022-06-18 13:17:35'),
+(12, 'Uranik Sejdiu', 1, 'JO', 17, '2022-06-26 14:38:30');
 
 --
 -- Constraints for dumped tables
