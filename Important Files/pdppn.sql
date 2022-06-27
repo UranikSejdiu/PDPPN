@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 26, 2022 at 12:55 PM
+-- Generation Time: Jun 27, 2022 at 03:11 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fullName` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `id_city` int(11) NOT NULL,
-  `adress` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `adress` tinytext COLLATE utf8_unicode_ci NOT NULL,
   `zipCode` int(5) NOT NULL,
   `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
 --
 
 INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `zipCode`, `phone`, `email`, `password`, `code`, `status`) VALUES
-(3, 'Uranik Sejdiu', 1, 'Fashti Gaqke', 70000, '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$ptLTLy759/sIc2nEVY1vy.0xUjSboanv/bfzdx76BKt42OwqNPb92', 0, 'verified'),
+(3, 'Uranik Sejdiu', 1, 'Gaçkë', 70000, '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$ptLTLy759/sIc2nEVY1vy.0xUjSboanv/bfzdx76BKt42OwqNPb92', 0, 'verified'),
 (4, 'Uranik Sejdiu', 1, 'Gaçkë', 70000, '(+383)48/434-177', 'u.sejdiu4@gmail.com', '$2y$10$C7hErg/XX.8ZY8a/H5hzT.cKrJ73BkOTpS.GA4LaUv4VXe.m3VI0y', 0, 'verified');
 
 -- --------------------------------------------------------
