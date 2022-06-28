@@ -1,6 +1,7 @@
 <?php include('checkSession.php');
-?>
 
+if (isset($_SESSION['email']) || isset($_SESSION['password'])) { ?>
+   
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -89,3 +90,8 @@
 </body>
 
 </html>
+<?php
+}else {
+    header("location:user-login.php");
+}
+?>

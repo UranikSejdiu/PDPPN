@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 27, 2022 at 03:11 PM
+-- Generation Time: Jun 28, 2022 at 03:58 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `kategoria` (
   `kategoriaID` int(11) NOT NULL AUTO_INCREMENT,
   `kategoria` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `kategoria`
@@ -111,7 +111,8 @@ INSERT INTO `kategoria` (`kategoriaID`, `kategoria`) VALUES
 (0, 'E pa cekur'),
 (1, 'Veshje'),
 (2, 'Këpucë'),
-(3, 'Teknologji');
+(3, 'Teknologji'),
+(5, 'Sanitari');
 
 -- --------------------------------------------------------
 
@@ -183,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `madhesit` (
   `kategoriaID` int(11) NOT NULL,
   PRIMARY KEY (`madhesiaID`),
   KEY `kategoriaMadhesia` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `madhesit`
@@ -194,7 +195,9 @@ INSERT INTO `madhesit` (`madhesiaID`, `madhesia`, `kategoriaID`) VALUES
 (1, 'M', 1),
 (2, 'L', 1),
 (3, '40', 2),
-(4, '41', 2);
+(4, '41', 2),
+(5, '39', 2),
+(6, 'S', 1);
 
 -- --------------------------------------------------------
 
@@ -245,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
   `status` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cityForeignKey` (`id_city`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `perdoruesit`
@@ -253,7 +256,8 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
 
 INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `zipCode`, `phone`, `email`, `password`, `code`, `status`) VALUES
 (3, 'Uranik Sejdiu', 1, 'Gaçkë', 70000, '(+383)44/444-444', 'ferizaj0004@gmail.com', '$2y$10$ptLTLy759/sIc2nEVY1vy.0xUjSboanv/bfzdx76BKt42OwqNPb92', 0, 'verified'),
-(4, 'Uranik Sejdiu', 1, 'Gaçkë', 70000, '(+383)48/434-177', 'u.sejdiu4@gmail.com', '$2y$10$C7hErg/XX.8ZY8a/H5hzT.cKrJ73BkOTpS.GA4LaUv4VXe.m3VI0y', 0, 'verified');
+(4, 'Uranik Sejdiu', 1, 'Gaçkë', 70000, '(+383)48/434-177', 'u.sejdiu4@gmail.com', '$2y$10$C7hErg/XX.8ZY8a/H5hzT.cKrJ73BkOTpS.GA4LaUv4VXe.m3VI0y', 0, 'verified'),
+(5, 'Filan Fisteku', 2, 'Mataj 1', 10000, '(+383)44/444-444', 'ferizaj0006@gmail.com', '$2y$10$WNAlMRIIVx4T43gfF3XfH.GDyAvo.djZONzwrkY6NEQSTbisseQs6', 0, 'verified');
 
 -- --------------------------------------------------------
 

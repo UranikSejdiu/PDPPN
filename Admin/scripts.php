@@ -16,3 +16,4 @@
 <script src="js/leaflet.js"></script>
 <script src="js/leaflet-locationpicker.src.js"></script>
 <script src="js/jquery.inputmask.bundle.js"></script>
+<script src="js/canvasjs.min.js"></script>
