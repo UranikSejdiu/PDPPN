@@ -28,7 +28,7 @@
             <!-- End Mainmenu Area -->
         </header>
         <!-- End Login Register Content -->
-        <section class="htc__product__area bg__white">
+        <section class="htc__product__area bg__white ptb--30">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

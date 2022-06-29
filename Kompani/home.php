@@ -37,144 +37,10 @@
         <div class="only-banner ptb--100 bg__white">
             <div class="container">
                 <div class="only-banner-img">
-                    <a href="shop-sidebar.html">
-                        <?php
-                        $email = $_SESSION['email'];
-                        $sql = "SELECT * FROM kompanite where email='$email'";
-                        $result = $con->query($sql);
-                        if ($result->num_rows > 0) {
-                            // output data of each row
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<img width='1170px' height='300px' src=" . $row['logo'] . " alt='new product'>";
-                            }
-                        }
-
-                        ?>
-
-
-                    </a>
+                    <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
                 </div>
             </div>
         </div>
-
-        <!-- End Our Product Area -->
-        <div class="only-banner ptb--100 bg__white">
-            <div class="container">
-                <div class="only-banner-img">
-                    <a href="shop-sidebar.html"><img src="images/new-product/6.jpg" alt="new product"></a>
-                </div>
-            </div>
-        </div>
-        <section class="htc__blog__area bg__white pb--130">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="section__title section__title--2 text-center">
-                            <h2 class="title__line">Latest News</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod temp incididunt ut labore et dolore magna aliqua. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="blog__wrap clearfix mt--60 xmt-30">
-                        <!-- Start Single Blog -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="blog foo">
-                                <div class="blog__inner">
-                                    <div class="blog__thumb">
-                                        <a href="blog-details.html">
-                                            <img src="images/blog/blog-img/1.jpg" alt="blog images">
-                                        </a>
-                                        <div class="blog__post__time">
-                                            <div class="post__time--inner">
-                                                <span class="date">14</span>
-                                                <span class="month">sep</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog__hover__info">
-                                        <div class="blog__hover__action">
-                                            <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                            <ul class="bl__meta">
-                                                <li>By :<a href="#">Admin</a></li>
-                                                <li>Product</li>
-                                            </ul>
-                                            <div class="blog__btn">
-                                                <a class="read__more__btn" href="blog-details.html">read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
-                        <!-- Start Single Blog -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="blog foo">
-                                <div class="blog__inner">
-                                    <div class="blog__thumb">
-                                        <a href="blog-details.html">
-                                            <img src="images/blog/blog-img/2.jpg" alt="blog images">
-                                        </a>
-                                        <div class="blog__post__time">
-                                            <div class="post__time--inner">
-                                                <span class="date">14</span>
-                                                <span class="month">sep</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog__hover__info">
-                                        <div class="blog__hover__action">
-                                            <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                            <ul class="bl__meta">
-                                                <li>By :<a href="#">Admin</a></li>
-                                                <li>Product</li>
-                                            </ul>
-                                            <div class="blog__btn">
-                                                <a class="read__more__btn" href="blog-details.html">read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
-                        <!-- Start Single Blog -->
-                        <div class="col-md-4 col-lg-4 hidden-sm col-xs-12">
-                            <div class="blog foo">
-                                <div class="blog__inner">
-                                    <div class="blog__thumb">
-                                        <a href="blog-details.html">
-                                            <img src="images/blog/blog-img/3.jpg" alt="blog images">
-                                        </a>
-                                        <div class="blog__post__time">
-                                            <div class="post__time--inner">
-                                                <span class="date">14</span>
-                                                <span class="month">sep</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog__hover__info">
-                                        <div class="blog__hover__action">
-                                            <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                            <ul class="bl__meta">
-                                                <li>By :<a href="#">Admin</a></li>
-                                                <li>Product</li>
-                                            </ul>
-                                            <div class="blog__btn">
-                                                <a class="read__more__btn" href="blog-details.html">read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Blog Area -->
         <!-- Start Footer Area -->
         <?php include_once('footer.php'); ?>
         <!-- End Footer Area -->
@@ -183,6 +49,69 @@
     <!-- END QUICKVIEW PRODUCT -->
     <!-- Placed js at the end of the document so the pages load faster -->
     <?php include_once('scripts.php'); ?>
+
+    <?php
+
+    $sql1 = "SELECT produktreview.starRating, produktet.kompaniaID FROM produktreview 
+    LEFT JOIN produktet ON produktet.produktID = produktreview.produktID WHERE produktreview.starRating = '1' AND produktet.kompaniaID = $id";
+    $query1 = mysqli_query($con, $sql1);
+    $one = mysqli_num_rows($query1);
+
+    $sql2 = "SELECT produktreview.starRating, produktet.kompaniaID FROM produktreview 
+    LEFT JOIN produktet ON produktet.produktID = produktreview.produktID WHERE produktreview.starRating = '2' AND produktet.kompaniaID = $id";
+    $query2 = mysqli_query($con, $sql2);
+    $two = mysqli_num_rows($query2);
+
+    $sql3 = "SELECT produktreview.starRating, produktet.kompaniaID FROM produktreview 
+    LEFT JOIN produktet ON produktet.produktID = produktreview.produktID WHERE produktreview.starRating = '3' AND produktet.kompaniaID = $id";
+    $query3 = mysqli_query($con, $sql3);
+    $three = mysqli_num_rows($query3);
+
+    $sql4 = "SELECT produktreview.starRating, produktet.kompaniaID FROM produktreview 
+    LEFT JOIN produktet ON produktet.produktID = produktreview.produktID WHERE produktreview.starRating = '4' AND produktet.kompaniaID = $id";
+    $query4 = mysqli_query($con, $sql4);
+    $four = mysqli_num_rows($query4);
+
+    $sql5 = "SELECT produktreview.starRating, produktet.kompaniaID FROM produktreview 
+    LEFT JOIN produktet ON produktet.produktID = produktreview.produktID WHERE produktreview.starRating = '5' AND produktet.kompaniaID = $id";
+    $query5 = mysqli_query($con, $sql5);
+    $five = mysqli_num_rows($query5);
+
+
+    $dataPoints = array(
+        array("label" => "1 star", "y" => $one),
+        array("label" => "2 stars", "y" => $two),
+        array("label" => "3 stars", "y" => $three),
+        array("label" => "4 stars", "y" => $four),
+        array("label" => "5 stars", "y" => $five)
+    );
+    ?>
+    <script>
+        window.onload = function() {
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "Vlersimet per produktet e juaja",
+                    fontFamily: "Poppins",
+                },
+                subtitles: [{
+                    text: "E shfaqur në %",
+                    fontFamily: "Poppins",
+                }],
+                data: [{
+                    type: "pie",
+                    showInLegend: "true",
+                    legendText: "{label}",
+                    indexLabelFontSize: 16,
+                    indexLabel: "{label} - #percent%",
+                    yValueFormatString: "#,##0",
+                    fontFamily: "Poppins",
+                    dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+            chart.render();
+        }
+    </script>
 </body>
 
 </html>

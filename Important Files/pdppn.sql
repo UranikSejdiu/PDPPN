@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 28, 2022 at 03:58 PM
+-- Generation Time: Jun 29, 2022 at 03:57 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `kategoria` (
 --
 
 INSERT INTO `kategoria` (`kategoriaID`, `kategoria`) VALUES
-(0, 'E pa cekur'),
+(0, 'Pa kategori'),
 (1, 'Veshje'),
 (2, 'Këpucë'),
 (3, 'Teknologji'),
@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `madhesit` (
   `kategoriaID` int(11) NOT NULL,
   PRIMARY KEY (`madhesiaID`),
   KEY `kategoriaMadhesia` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `madhesit`
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `ngjyrat` (
   `kategoriaID` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ngjyraID`),
   KEY `ngjyraKetegorit` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `ngjyrat`
@@ -226,7 +226,10 @@ INSERT INTO `ngjyrat` (`ngjyraID`, `ngjyra`, `kategoriaID`) VALUES
 (4, 'Gray', 2),
 (5, 'Black', 2),
 (6, 'Purple', 1),
-(7, 'Orange', 1);
+(7, 'Orange', 1),
+(9, 'Orange', 2),
+(10, 'Blue', 2),
+(11, 'Red', 2);
 
 -- --------------------------------------------------------
 
@@ -358,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `produktreview` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`reviewID`),
   KEY `reviewProdukt` (`produktID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produktreview`
@@ -376,7 +379,9 @@ INSERT INTO `produktreview` (`reviewID`, `perdoruesi`, `starRating`, `reviewText
 (9, 'Uranik', 4, '363636', 18, '2022-06-18 13:13:51'),
 (10, 'Uranik', 0, 'asdadasd', 18, '2022-06-18 13:15:00'),
 (11, 'Uranik', 1, 'jo edhe mire', 18, '2022-06-18 13:17:35'),
-(12, 'Uranik Sejdiu', 1, 'JO', 17, '2022-06-26 14:38:30');
+(12, 'Uranik Sejdiu', 1, 'JO', 17, '2022-06-26 14:38:30'),
+(13, 'Uranik Sejdiu', 5, 'Shume e mire', 17, '2022-06-29 17:52:03'),
+(14, 'Uranik Sejdiu', 3, 'e mire', 17, '2022-06-29 17:52:41');
 
 --
 -- Constraints for dumped tables

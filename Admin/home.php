@@ -14,7 +14,7 @@
 
 <body>
     <!-- Body main wrapper start -->
-    <div class="wrapper fixed__footer mb--80">
+    <div class="wrapper fixed__footer">
         <!-- Start Header Style -->
         <header id="header" class="htc-header header--3 bg__white ">
             <!-- Start Mainmenu Area -->
@@ -24,7 +24,7 @@
             <!-- End Mainmenu Area -->
         </header>
         <!-- Canvas JS -->
-        <section class="htc__product__area bg__white mb--70">
+        <section class="htc__product__area bg__white ptb--70">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -45,12 +45,11 @@
                             </div>
                         </div>
                     </div>
+
+                    
                 </div>
-            </div>
-        </section>
-        <!-- Kategorit  -->
-        <section class="htc__product__area bg__white mb--30">
-            <div class="container">
+            </div><br><br>
+            <div class="container mt--30">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-style-tab">
@@ -67,11 +66,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- Madhesit -->
-        <section class="htc__product__area bg__white mb--30">
-            <div class="container">
+            </div><br>
+            <div class="container mt--10">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-style-tab">
@@ -88,11 +84,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="htc__product__area bg__white">
-            <div class="container">
+            </div><br>
+            <div class="container mt--10">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-style-tab">
@@ -101,7 +94,7 @@
                                 <ul class="tab-style text-right" role="tablist">
                                     <li class="active">
                                         <div class="tab-menu-text">
-                                            <h4 class="text-center" style="text-transform:none; color:black;">Kliko <a href="madhesit.php">KËTU</a> për të menaxhuar ngjyrat në bazë të kategorive</h4>
+                                            <h4 class="text-center" style="text-transform:none; color:black;">Kliko <a href="ngjyrat.php">KËTU</a> për të menaxhuar ngjyrat në bazë të kategorive</h4>
                                         </div>
                                     </li>
                                 </ul>
@@ -110,12 +103,9 @@
                     </div>
                 </div>
             </div>
-        </section>
-        
+        </section><br>
+        <?php include_once('footer.php'); ?>
     </div>
-    <!-- Start Footer Area -->
-    <?php include_once('footer.php'); ?>
-    <!-- End Footer Area -->
     <!-- Placed js at the end of the document so the pages load faster -->
     <?php include_once('scripts.php'); ?>
 

@@ -284,6 +284,10 @@ while ($row = mysqli_fetch_assoc($query)) {
         function buttonHide() {
             $('#add_review').hide();
         }
+
+        $('#review-modal').on('hidden.bs.modal', function() {
+            $(this).find('form').trigger('reset');
+        });
     </script>
     <?php
     if (!isset($_SESSION['email']) || !isset($_SESSION['password'])) {

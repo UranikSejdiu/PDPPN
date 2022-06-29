@@ -28,7 +28,7 @@
             <!-- End Mainmenu Area -->
         </header>
         <!-- End Login Register Content -->
-        <section class="htc__product__area bg__white">
+        <section class="htc__product__area bg__white ptb--30">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -84,10 +84,11 @@
                 </div>
             </div>
         </section>
+        <?php include_once('footer.php'); ?>
     </div>
     <!-- End Login Register Area -->
     <!-- Start Footer Area -->
-    <?php include_once('footer.php'); ?>
+    
     <!-- End Footer Area -->
     <!-- Body main wrapper end -->
     <!-- Placed js at the end of the document so the pages load faster -->
