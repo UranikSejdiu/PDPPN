@@ -956,7 +956,6 @@
     }
     .review__info {
         display: block;
-        overflow: hidden;
     }
     .rating__send {
         float: left;

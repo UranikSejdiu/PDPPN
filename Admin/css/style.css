@@ -2451,7 +2451,6 @@ select.select-color {
 }
 .review__info {
   display: block;
-  margin-bottom: 5px;
 }
 .rating__send {
   display: inline-block;
@@ -2472,7 +2471,7 @@ select.select-color {
     background: #ff4136 none repeat scroll 0 0;
     color: #fff;
 }
-.review__info ul.rating li a {} .review__info ul.rating li i {
+.review__info {
     color: #f3c258;
     font-size: 17px;
 }
@@ -2565,20 +2564,7 @@ select.select-color {
     margin-left: 13px;
 }
 .pro__choose__color li i {
-    color: #000;
     font-size: 22px;
-}
-.pro__choose__color li.red i {
-    color: #ff5d42;
-}
-.pro__choose__color li.blue i {
-    color: #425dff;
-}
-.pro__choose__color li.perpal i {
-    color: #fd42ff;
-}
-.pro__choose__color li.yellow i {
-    color: #ffd542;
 }
 .product-action-wrap {
     align-items: center;
@@ -3356,7 +3342,7 @@ blockquote::before {
     -moz-appearance: none;
     -ms-appearance: none;
     -o-appearance: none;
-    background: rgba(0, 0, 0, 0) url("images/icons/select-option.png") no-repeat scroll 83% 8px / 14px 9px;
+    background: rgba(0, 0, 0, 0) url("../../images/icons/select-option.png") no-repeat scroll 83% 8px / 14px 9px;
     padding-right: 50px;
 }
 /*---------------------------------------

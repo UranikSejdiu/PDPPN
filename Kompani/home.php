@@ -1,7 +1,6 @@
 <?php include_once('checkSession.php'); ?>
 <!doctype html>
 <html class="no-js" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -38,6 +37,24 @@
             <div class="container">
                 <div class="only-banner-img">
                     <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+                </div>
+            </div><br><br>
+            <div class="container mt--10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-style-tab">
+                            <div class="product-tab-list">
+                                <!-- Nav tabs -->
+                                <ul class="tab-style text-right" role="tablist">
+                                    <li class="active">
+                                        <div class="tab-menu-text">
+                                            <h4 class="text-center" style="text-transform:none; color:black;">Kliko <a href="vlersimet.php">KËTU</a> për të parë të gjitha vlersimet e blersëve</h4>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
