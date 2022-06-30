@@ -122,7 +122,7 @@
                                 <div class="htc__login__btn">
                                     <button type="submit" name="signup" class="regBtn">Regjistrohu</button>
                                 </div>
-                                <div style="margin-top: 15px;" class="link login-link text-center">Keni llogari? <a href="index.php">Kyçu këtu</a></div>
+                                <div style="margin-top: 15px;" class="link login-link text-center">Keni llogari? <a href="user-login.php">Kyçu këtu</a></div>
                             </form>
                         </div>
                         <!-- End Single Content -->

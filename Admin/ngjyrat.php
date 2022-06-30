@@ -152,7 +152,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label style="margin-bottom:0;" for="uNgjyra">Ngjyra:</label>
+                            <label style="margin-bottom:0;" for="uNgjyra">Ngjyra <small>(duhet të jetë ne gjuhen angleze)</small>:</label>
                             <input style="margin-top:0;" type="text" name="uNgjyra" id="uNgjyra">
                         </div>
                         <div class="modal-footer">

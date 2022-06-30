@@ -52,7 +52,7 @@ switch ($_POST["action"]) {
                 $ngjyra = $row['ngjyra'];
             }
             $sub_array[] = $row['produktID'];
-            $sub_array[] = $row['produkti'];
+            $sub_array[] = '<a href="produkti.php?produktID='.$row['produktID'].'">'.$row['produkti'].'</a>';
             $sub_array[] = '<img width="120" height="85" style="padding:2px;" src="' . $row['imazhi1'] . '">';
             $sub_array[] = '<img width="120" height="85" style="padding:2px;" src="' . $row['imazhi2'] . '">';
             $sub_array[] = '<img width="120" height="85" style="padding:2px;" src="' . $row['imazhi3'] . '">';

@@ -32,9 +32,28 @@
 
         <div class="body__overlay"></div>
         <!-- Start Testimonial Area -->
-        <div class="htc__testimonial__area ptb--120 bg__white">
+        <div class="htc__testimonial__area ptb--50 bg__white">
+            <div class="container mb--30">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-style-tab">
+                            <div class="product-tab-list">
+                                <!-- Nav tabs -->
+                                <ul class="tab-style text-center" role="tablist">
+                                    <li class="active">
+                                        <div class="tab-menu-text">
+                                            <h4> Lista e vlersimeve te produkteve tuaja </h4>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container">
                 <div class="row">
+
                     <div class="col-md-12" id="review_content">
                     </div>
                 </div>
