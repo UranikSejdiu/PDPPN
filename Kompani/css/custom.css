@@ -1328,3 +1328,7 @@ html {
   content: "\f105";
   font-size: 30px;
 }
+.slick-slide {
+  width: 470px;
+  height: 450px;
+}
