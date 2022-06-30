@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 29, 2022 at 03:57 PM
+-- Generation Time: Jun 30, 2022 at 01:11 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -302,7 +302,7 @@ INSERT INTO `porosit` (`porosiaID`, `produktID`, `perdoruesID`, `emri`, `email`,
 (5, 22, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '45.00', 1, '2022-06-21 09:28:56'),
 (6, 23, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '10.00', 1, '2022-06-21 09:29:39'),
 (7, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '122.00', 2, '2022-06-21 09:41:26'),
-(8, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', 'Try this number too +388 44 565 996', 'Para në dorë', 2, '244.00', 3, '2022-06-22 17:01:36'),
+(8, 18, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', 'Try this number too +388 44 565 996', 'Para në dorë', 2, '244.00', 4, '2022-06-22 17:01:36'),
 (9, 17, 3, 'Uranik Sejdiu', 'ferizaj0004@gmail.com', 'Ferizaj', 'Fashti Gaqke', 70000, '(+383)44/444-444', '', 'Para në dorë', 1, '21.00', 2, '2022-06-23 16:26:39'),
 (10, 17, 4, 'Uranik Sejdiu', 'u.sejdiu4@gmail.com', 'Ferizaj', 'Gaçkë', 70000, '(+383)48/444-444', '', 'Para në dorë', 3, '63.00', 0, '2022-06-26 14:39:32');
 
@@ -377,7 +377,7 @@ INSERT INTO `produktreview` (`reviewID`, `perdoruesi`, `starRating`, `reviewText
 (7, 'Uranik', 1, 'UranikUranikUranikUranik', 21, '2022-06-10 17:10:37'),
 (8, 'Filan Fisteku', 3, 'E mirë', 21, '2022-06-10 17:42:30'),
 (9, 'Uranik', 4, '363636', 18, '2022-06-18 13:13:51'),
-(10, 'Uranik', 0, 'asdadasd', 18, '2022-06-18 13:15:00'),
+(10, 'Uranik', 3, 'asdadasd', 18, '2022-06-18 13:15:00'),
 (11, 'Uranik', 1, 'jo edhe mire', 18, '2022-06-18 13:17:35'),
 (12, 'Uranik Sejdiu', 1, 'JO', 17, '2022-06-26 14:38:30'),
 (13, 'Uranik Sejdiu', 5, 'Shume e mire', 17, '2022-06-29 17:52:03'),
