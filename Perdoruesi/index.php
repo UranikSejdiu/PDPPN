@@ -36,68 +36,80 @@
             <div class="container">
                 <div class="row">
                     <!-- Start Left Feature -->
-                    <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12">
-                        <div class="feature foo">
-                            <div class="feature__thumb">
-                                <a href="product-details.html">
-                                    <img src="images/feature-img/1.jpg" alt="feature product">
-                                </a>
-                            </div>
-                            <div class="feature__details">
-                                <h4><a href="product-details.html">New Products</a></h4>
-                                <div class="feature__btn">
-                                    <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                    <?php
+                    $result = mysqli_query($con, "SELECT * FROM produktet ORDER BY RAND() LIMIT 1;");
+                    while ($row = mysqli_fetch_array($result)) {
+                        extract($row);
+                    ?>
+                        <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12">
+                            <div class="feature foo">
+                                <div class="feature__thumb">
+                                    <a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>">
+                                        <img width="470" height="678" style="object-fit:cover;" src="<?php echo $imazhi1; ?>" alt="feature product">
+                                    </a>
+                                </div>
+                                <div class="feature__details">
+                                    <h4 style="color:white;text-shadow: 0em 0em 0.2em rgba(10,10,10,0.9);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
                     <!-- End Left Feature -->
                     <div class="col-md-7 col-lg-7 col-sm-6 col-xs-12">
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12 xmt-30">
-                                <div class="feature foo">
-                                    <div class="feature__thumb">
-                                        <a href="product-details.html">
-                                            <img src="images/feature-img/2.jpg" alt="feature product">
-                                        </a>
-                                    </div>
-                                    <div class="feature__details">
-                                        <h4><a href="product-details.html">Latest Lamp</a></h4>
-                                        <div class="feature__btn">
-                                            <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                            <?php
+                            $result = mysqli_query($con, "SELECT * FROM produktet ORDER BY RAND() LIMIT 1;");
+                            while ($row = mysqli_fetch_array($result)) {
+                                extract($row);
+                            ?>
+                                <div class="col-md-12 col-sm-12 col-xs-12 xmt-30">
+                                    <div class="feature foo">
+                                        <div class="feature__thumb">
+                                            <a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>">
+                                                <img width="670" height="324" style="object-fit:cover;" src="<?php echo $imazhi1; ?>" alt="feature product">
+                                            </a>
+                                        </div>
+                                        <div class="feature__details">
+                                            <h4 style="color:white;text-shadow: 0em 0em 0.2em rgba(10,10,10,0.9);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php } ?>
                             <div class="col-md-5 mt--30 hidden-sm hidden-xs">
-                                <div class="feature text__pos--top foo">
-                                    <div class="feature__thumb--2">
-                                        <a href="product-details.html">
-                                            <img src="images/feature-img/3.jpg" alt="feature product">
-                                        </a>
-                                    </div>
-                                    <div class="feature__details">
-                                        <h4><a href="product-details.html">Bag Collection</a></h4>
-                                        <div class="feature__btn">
-                                            <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                                <?php
+                                $result = mysqli_query($con, "SELECT * FROM produktet ORDER BY RAND() LIMIT 1;");
+                                while ($row = mysqli_fetch_array($result)) {
+                                    extract($row);
+                                ?>
+                                    <div class="feature foo">
+                                        <div class="feature__thumb--2">
+                                            <a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>">
+                                                <img width="270" height="324" style="object-fit:cover;" src="<?php echo $imazhi1; ?>" alt="feature product">
+                                            </a>
+                                        </div>
+                                        <div class="feature__details">
+                                            <h4 style="color:white;text-shadow: 0em 0em 0.2em rgba(10,10,10,0.9);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
                                         </div>
                                     </div>
-                                </div>
+                                <?php } ?>
                             </div>
                             <div class="col-md-7 mt--30 col-sm-12 col-xs-12 xmt-30">
-                                <div class="feature foo">
-                                    <div class="feature__thumb">
-                                        <a href="product-details.html">
-                                            <img src="images/feature-img/4.jpg" alt="feature product">
-                                        </a>
-                                    </div>
-                                    <div class="feature__details">
-                                        <h4><a href="product-details.html">New Clock</a></h4>
-                                        <div class="feature__btn">
-                                            <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                                <?php
+                                $result = mysqli_query($con, "SELECT * FROM produktet ORDER BY RAND() LIMIT 1;");
+                                while ($row = mysqli_fetch_array($result)) {
+                                    extract($row);
+                                ?>
+                                    <div class="feature foo">
+                                        <div class="feature__thumb">
+                                            <a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>">
+                                                <img width="370" height="324" style="object-fit:cover;" src="<?php echo $imazhi1; ?>" alt="feature product">
+                                            </a>
+                                        </div>
+                                        <div class="feature__details">
+                                            <h4 style="color:white;text-shadow: 0em 0em 0.2em rgba(10,10,10,0.9);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
                                         </div>
                                     </div>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -109,251 +121,57 @@
         <section class="htc__popular__product pb--130 bg__white">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="section__title section__title--2 text-center">
-                            <h2 class="title__line">Popular Products</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod temp incididunt ut labore et dolore magna aliqua. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="popular__product__wrap clearfix owl-carousel owl-theme another-product-style">
-                        <!-- Start Single Popular Product -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="product">
-                                <div class="product__inner">
-                                    <div class="pro__thumb">
-                                        <a href="#">
-                                            <img src="images/popular-pro/1.jpg" alt="product images">
-                                        </a>
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="htc__choose__wrap bg__cat--4">
+                            <h2 class="choose__title">Përse ne?</h2>
+                            <div class="choose__container">
+                                <div class="single__chooose">
+                                    <div class="choose__us">
+                                        <div class="choose__icon">
+                                            <span class="ti-heart"></span>
+                                        </div>
+                                        <div class="choose__details">
+                                            <h4>Dhurata të shumta</h4>
+                                            <p>Gjatë eventeve dhe festave do ketë edhe dhurata për ju. </p>
+                                        </div>
                                     </div>
-                                    <div class="product__hover__info">
-                                        <ul class="product__action">
-                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add To Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                        </ul>
+                                    <div class="choose__us">
+                                        <div class="choose__icon">
+                                            <span class="ti-truck"></span>
+                                        </div>
+                                        <div class="choose__details">
+                                            <h4>Transporti pa pagesë</h4>
+                                            <p>Të gjitha produktet dërgohen tek ju pa paguar për asgjë. </p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="product__details">
-                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                    <span class="popular__pro__prize">$16.00</span>
+                                <div class="single__chooose">
+                                    <div class="choose__us">
+                                        <div class="choose__icon">
+                                            <span class="ti-reload"></span>
+                                        </div>
+                                        <div class="choose__details">
+                                            <h4>Mundësi kthimi</h4>
+                                            <p>Produktin mundë ta hapni dhe ta ktheni prapë nëse nuk është si në porosi. </p>
+                                        </div>
+                                    </div>
+                                    <div class="choose__us">
+                                        <div class="choose__icon">
+                                            <span class="ti-time"></span>
+                                        </div>
+                                        <div class="choose__details">
+                                            <h4>Kontakto 24/7</h4>
+                                            <p>Për gjdo nevojë ekipi ynë është i gatshëm të ju ndihmojë. </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Popular Product -->
-                        <!-- Start Single Popular Product -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="product">
-                                <div class="product__inner">
-                                    <div class="pro__thumb">
-                                        <a href="#">
-                                            <img src="images/popular-pro/2.jpg" alt="product images">
-                                        </a>
-                                    </div>
-                                    <div class="product__hover__info">
-                                        <ul class="product__action">
-                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add To Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product__details">
-                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                    <span class="popular__pro__prize">$16.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Popular Product -->
-                        <!-- Start Single Popular Product -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="product">
-                                <div class="product__inner">
-                                    <div class="pro__thumb">
-                                        <a href="#">
-                                            <img src="images/popular-pro/3.jpg" alt="product images">
-                                        </a>
-                                    </div>
-                                    <div class="product__hover__info">
-                                        <ul class="product__action">
-                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add To Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product__details">
-                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                    <span class="popular__pro__prize">$16.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Popular Product -->
-                        <!-- Start Single Popular Product -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="product">
-                                <div class="product__inner">
-                                    <div class="pro__thumb">
-                                        <a href="#">
-                                            <img src="images/popular-pro/1.jpg" alt="product images">
-                                        </a>
-                                    </div>
-                                    <div class="product__hover__info">
-                                        <ul class="product__action">
-                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add To Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product__details">
-                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                    <span class="popular__pro__prize">$16.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Popular Product -->
-                        <!-- Start Single Popular Product -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="product">
-                                <div class="product__inner">
-                                    <div class="pro__thumb">
-                                        <a href="#">
-                                            <img src="images/popular-pro/2.jpg" alt="product images">
-                                        </a>
-                                    </div>
-                                    <div class="product__hover__info">
-                                        <ul class="product__action">
-                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add To Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product__details">
-                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                    <span class="popular__pro__prize">$16.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Popular Product -->
                     </div>
                 </div>
             </div>
         </section>
         <!-- End Popular Courses -->
-        <!-- Start Blog Area -->
-        <section class="htc__blog__area bg__white pb--130">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="section__title section__title--2 text-center">
-                            <h2 class="title__line">Latest News</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod temp incididunt ut labore et dolore magna aliqua. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="blog__wrap clearfix mt--60 xmt-30">
-                        <!-- Start Single Blog -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="blog foo">
-                                <div class="blog__inner">
-                                    <div class="blog__thumb">
-                                        <a href="blog-details.html">
-                                            <img src="images/blog/blog-img/1.jpg" alt="blog images">
-                                        </a>
-                                        <div class="blog__post__time">
-                                            <div class="post__time--inner">
-                                                <span class="date">14</span>
-                                                <span class="month">sep</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog__hover__info">
-                                        <div class="blog__hover__action">
-                                            <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                            <ul class="bl__meta">
-                                                <li>By :<a href="#">Admin</a></li>
-                                                <li>Product</li>
-                                            </ul>
-                                            <div class="blog__btn">
-                                                <a class="read__more__btn" href="blog-details.html">read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
-                        <!-- Start Single Blog -->
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                            <div class="blog foo">
-                                <div class="blog__inner">
-                                    <div class="blog__thumb">
-                                        <a href="blog-details.html">
-                                            <img src="images/blog/blog-img/2.jpg" alt="blog images">
-                                        </a>
-                                        <div class="blog__post__time">
-                                            <div class="post__time--inner">
-                                                <span class="date">14</span>
-                                                <span class="month">sep</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog__hover__info">
-                                        <div class="blog__hover__action">
-                                            <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                            <ul class="bl__meta">
-                                                <li>By :<a href="#">Admin</a></li>
-                                                <li>Product</li>
-                                            </ul>
-                                            <div class="blog__btn">
-                                                <a class="read__more__btn" href="blog-details.html">read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
-                        <!-- Start Single Blog -->
-                        <div class="col-md-4 col-lg-4 hidden-sm col-xs-12">
-                            <div class="blog foo">
-                                <div class="blog__inner">
-                                    <div class="blog__thumb">
-                                        <a href="blog-details.html">
-                                            <img src="images/blog/blog-img/3.jpg" alt="blog images">
-                                        </a>
-                                        <div class="blog__post__time">
-                                            <div class="post__time--inner">
-                                                <span class="date">14</span>
-                                                <span class="month">sep</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog__hover__info">
-                                        <div class="blog__hover__action">
-                                            <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                            <ul class="bl__meta">
-                                                <li>By :<a href="#">Admin</a></li>
-                                                <li>Product</li>
-                                            </ul>
-                                            <div class="blog__btn">
-                                                <a class="read__more__btn" href="blog-details.html">read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Blog Area -->
         <!-- Start Footer Area -->
         <?php include_once('footer.php'); ?>
         <!-- End Footer Area -->
