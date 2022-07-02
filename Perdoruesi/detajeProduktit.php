@@ -64,26 +64,36 @@ while ($row = mysqli_fetch_assoc($query)) {
                         <div class="product__details__container">
                             <!-- Start Small images -->
                             <ul class="product__small__images" role="tablist" style="width:120;height:140;">
-                                <li role="presentation" class="pot-small-img active">
-                                    <a href="#img-tab-1" role="tab" data-toggle="tab">
-                                        <img src="<?php echo $foto1; ?>" style="object-fit:contain;" width="120" height="140">
-                                    </a>
-                                </li>
-                                <li role="presentation" class="pot-small-img">
-                                    <a href="#img-tab-2" role="tab" data-toggle="tab">
-                                        <img src="<?php echo $foto2; ?>" style="object-fit:contain;" width="120" height="140">
-                                    </a>
-                                </li>
-                                <li role="presentation" class="pot-small-img">
-                                    <a href="#img-tab-3" role="tab" data-toggle="tab">
-                                        <img src="<?php echo $foto3; ?>" style="object-fit:contain;" width="120" height="140">
-                                    </a>
-                                </li>
-                                <li role="presentation" class="pot-small-img">
-                                    <a href="#img-tab-4" role="tab" data-toggle="tab">
-                                        <img src="<?php echo $foto4; ?>" style="object-fit:contain;" width="120" height="140">
-                                    </a>
-                                </li>
+                                <?php if ($foto1 != '') { ?>
+                                    <li role="presentation" class="pot-small-img active">
+
+                                        <a href="#img-tab-1" role="tab" data-toggle="tab">
+                                            <img src="<?php echo $foto1; ?>" style="object-fit:contain;" width="120" height="140">
+                                        </a>
+
+                                    </li>
+                                <?php } ?>
+                                <?php if ($foto2 != '') { ?>
+                                    <li role="presentation" class="pot-small-img">
+                                        <a href="#img-tab-2" role="tab" data-toggle="tab">
+                                            <img src="<?php echo $foto2; ?>" style="object-fit:contain;" width="120" height="140">
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($foto3 != '') { ?>
+                                    <li role="presentation" class="pot-small-img">
+                                        <a href="#img-tab-3" role="tab" data-toggle="tab">
+                                            <img src="<?php echo $foto3; ?>" style="object-fit:contain;" width="120" height="140">
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($foto4 != '') { ?>
+                                    <li role="presentation" class="pot-small-img">
+                                        <a href="#img-tab-4" role="tab" data-toggle="tab">
+                                            <img src="<?php echo $foto4; ?>" style="object-fit:contain;" width="120" height="140">
+                                        </a>
+                                    </li>
+                                <?php } ?>
                             </ul>
                             <!-- End Small images -->
                             <div class="product__big__images">
