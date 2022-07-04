@@ -60,15 +60,19 @@
                             }
                             ?>
                             <form id="login" class="login" method="POST" autocomplete="">
-                                <input type="text" name="email" id="email" placeholder="Email-i*" value="<?php echo $email ?>" required>
-                                <input type="password" name="password" id="password" placeholder="Fjalëkalimi*" required>
+                                <div class="form-group">
+                                    <input type="text" name="email" id="email" placeholder="Email-i*" value="<?php echo $email ?>" required>
+                                </div>
+                                <div class="from-group mt--20">
+                                    <input type="password" name="password" id="password" placeholder="Fjalëkalimi*" required>
+                                    <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password" id="spanPass"></span>
+                                </div>
                                 <div class="tabs__checkbox">
                                     <span class="forgetPass"><a href="forgetPassword.php">Harruat fjalëkalimin?</a></span>
                                 </div>
                                 <div class="htc__login__btn">
                                     <button type="submit" class="regBtn" name="login">Kyçu</button>
                                 </div>
-                                <div class="tabs__checkbox text-center">Nuk keni llogari ende? <a href="sign-up.php">Krijo tani</a></div>
                             </form>
 
                         </div>
