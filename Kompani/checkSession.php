@@ -3,7 +3,6 @@ session_start();
 include_once('config.php');
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
-$id = $_SESSION['id'];
 if($email != false && $password != false){
     $sql = "SELECT * FROM kompanite WHERE email = '$email'";
     $run_Sql = mysqli_query($con, $sql);

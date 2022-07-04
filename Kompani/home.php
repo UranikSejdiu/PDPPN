@@ -17,7 +17,7 @@
     <![endif]-->
 
     <!-- Body main wrapper start -->
-    <div class="wrapper fixed__footer">
+    <div class="wrapper fixed__footer pb--60">
         <!-- Start Header Style -->
         <header id="header" class="htc-header header--3 bg__white">
             <!-- Start Mainmenu Area -->
@@ -33,7 +33,7 @@
 
 
         <!-- End Feature Product -->
-        <div class="only-banner ptb--100 bg__white">
+        <div class="only-banner ptb--50 bg__white">
             <div class="container">
                 <div class="only-banner-img">
                     <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>

@@ -18,7 +18,7 @@
     <![endif]-->
 
     <!-- Body main wrapper start -->
-    <div class="wrapper fixed__footer">
+    <div class="wrapper fixed__footer pb--60">
         <!-- Start Header Style -->
         <header id="header" class="htc-header header--3 bg__white">
             <!-- Start Mainmenu Area -->

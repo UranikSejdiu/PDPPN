@@ -47,9 +47,6 @@ if (isset($_POST['signup'])) {
     } elseif (!preg_match("#[a-z]+#", $password)) {
         $errors['password'] = "Plotëso kërkesat e fjalëkalimit!";
         return;
-    } elseif ($fetch !== null) {
-        $errors['email'] = "Email-i ekziston në sistemin tonë!";
-        return;
     } elseif ($file_name && in_array($ext, $extensions) === false) {
         $errors['format'] = "Provoni njërin nga formatet e lejuara!";
         return;
