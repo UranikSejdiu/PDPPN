@@ -119,7 +119,7 @@ switch ($_POST["action"]) {
             $ext3 = pathinfo($file_name3, PATHINFO_EXTENSION);
             $extensions3 = array("jpeg", "jpg", "png");
             $filedestionation3 = "../images/produktet/" . $uniquename3 . '.' . $ext3;
-        } else
+        }
 
         if (isset($_FILES['image4'])) {
             $file_name4 = $_FILES['image4']['name'];
