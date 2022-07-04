@@ -105,7 +105,7 @@
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="mesazhi">Mesazhi:</label>
-                            <textarea name="mesazhi" id="mesazhi"></textarea>
+                            <textarea style="width: 100%;" name="mesazhi" id="mesazhi"></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>
@@ -135,7 +135,7 @@
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="uMesazhi">Mesazhi:</label>
-                            <textarea name="uMesazhi" id="uMesazhi"></textarea>
+                            <textarea style="width: 100%;" name="uMesazhi" id="uMesazhi"></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Anulo</button>

@@ -23,7 +23,7 @@
                        </div>
                    </div>
                    <div class="product__details">
-                      <h2><a href="detajeProduktit.php?produktID='.$row['produktID'].'">'.$row['produkti'].'</a></h2>
+                      <h2><a href="detajeProduktit.php?produktID='.$row['produktID'].'">'. substr($row['produkti'],0,21) .' ...' .'</a></h2>
                       <ul class="product__price">
                            <li class="new__price">'.$row['qmimi'].'</li>
                        </ul>

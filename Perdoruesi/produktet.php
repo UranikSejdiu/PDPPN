@@ -1,6 +1,6 @@
 <?php include_once('checkSession.php');
 
-$_SESSION['location']= $_SERVER['REQUEST_URI'];
+$_SESSION['location'] = $_SERVER['REQUEST_URI'];
 
 ?>
 
@@ -60,7 +60,7 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                         </div>
                     </div>
                     <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 smt-30">
-                        
+
                         <div class="row" id="result">
                             <div class="shop__grid__view__wrap another-product-style">
                                 <!-- Start Single View -->
@@ -71,7 +71,7 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                                     $result = $con->query($sql);
                                     while ($row = $result->fetch_assoc()) {
                                     ?>
-                                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 hvr-grow">
+                                        <div style="height:fit-content;" class="col-md-3 col-lg-3 col-sm-3 col-xs-12 hvr-grow">
                                             <div class="product" style="border:1px solid #b7b7b7;padding-bottom:10px;">
                                                 <div class="product__inner">
                                                     <div class="pro__thumb">
@@ -81,7 +81,7 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                                                     </div>
                                                 </div>
                                                 <div class="product__details">
-                                                    <?php echo '<h2><a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">' . $row['produkti'] . '</a></h2>'; ?>
+                                                    <?php echo '<h2><a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">' . substr($row['produkti'], 0, 21) . ' ...' . '</a></h2>'; ?>
                                                     <ul class="product__price">
                                                         <li class="new__price"><?= $row['qmimi']; ?></li>
                                                     </ul>
@@ -98,8 +98,8 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                 </div>
             </div>
         </section>
-<!-- Start Footer Area -->
-        
+        <!-- Start Footer Area -->
+
         <!-- End Footer Area -->
     </div>
     <?php include_once('footer.php'); ?>
@@ -109,6 +109,7 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
     <?php include_once('scripts.php'); ?>
     <script type="text/javascript">
         $(document).ready(function() {
+            
             $(".product_check").click(function() {
                 var action = 'data';
                 var kategoria = get_filter_text('kategoria');
@@ -133,6 +134,8 @@ $_SESSION['location']= $_SERVER['REQUEST_URI'];
                 });
                 return filterData;
             }
+
+            $("input:checkbox:checked").attr("checked", "");
 
         });
     </script>

@@ -49,7 +49,7 @@
                                     </a>
                                 </div>
                                 <div class="feature__details">
-                                    <h4 style="color:white;text-shadow: 0em 0em 0.2em rgba(10,10,10,0.9);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
+                                    <h4 style="color:white;text-shadow: 5px 4px 11px rgb(0,0,0), 0 2px 5px rgb(0,0,0);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                             </a>
                                         </div>
                                         <div class="feature__details">
-                                            <h4 style="color:white;text-shadow: 0em 0em 0.2em rgba(10,10,10,0.9);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
+                                            <h4 style="color:white;text-shadow: 5px 4px 11px rgb(0,0,0), 0 2px 5px rgb(0,0,0);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                             </a>
                                         </div>
                                         <div class="feature__details">
-                                            <h4 style="color:white;text-shadow: 0em 0em 0.2em rgba(10,10,10,0.9);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
+                                            <h4 style="color:white;text-shadow: 5px 4px 11px rgb(0,0,0), 0 2px 5px rgb(0,0,0);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
                                         </div>
                                     </div>
                                 <?php } ?>
@@ -106,7 +106,7 @@
                                             </a>
                                         </div>
                                         <div class="feature__details">
-                                            <h4 style="color:white;text-shadow: 0em 0em 0.2em rgba(10,10,10,0.9);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
+                                            <h4 style="color:white;text-shadow: 5px 4px 11px rgb(0,0,0), 0 2px 5px rgb(0,0,0);"><a href="detajeProduktit.php?produktID=<?php echo $produktID; ?>"><?php echo $produkti; ?></a></h4>
                                         </div>
                                     </div>
                                 <?php } ?>
