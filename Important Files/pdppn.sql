@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 05, 2022 at 09:32 PM
+-- Generation Time: Jul 05, 2022 at 09:35 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -184,8 +184,7 @@ INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefon
 (8, '../images/kompani/1656925838-62c2ae8e71c66.jpg', 'Libraria Dukagjini', 776897878, '42.635987,21.152147', '(+383)44/456-678', 'ferizaj0006@gmail.com', '$2y$10$mvEOhHXkdjEaDSDoViLB5O8uhSuhKsxC9Z5BZFIt63tLazUul/oRe', 0, 'verified'),
 (9, '../images/kompani/1656926127-62c2afafa1592.jpg', 'Rimida Online', 133768859, '42.606011,21.140442', '(+383)44/978-867', 'ferizaj0007@hotmail.com', '$2y$10$UejkgxZsbm.ZV7HT3CeLPebXu5wIsw1kfGya3ZozH47CjQ.ZfAy5i', 0, 'verified'),
 (10, '../images/kompani/1656926237-62c2b01d7c1ea.png', 'Idea-M', 477869586, '42.384062,21.167049', '(+383)44/487-865', 'ferizaj0008@hotmail.com', '$2y$10$T0sU6U9kUzInTSST8Te.l.DNyF/3NRZS2Muae7lt/KXOVfTEvY75a', 0, 'verified'),
-(11, '../images/kompani/1656926843-62c2b27b5574a.jpg', 'Koton', 655745345, '42.384257,21.167033', '(+383)44/843-417', 'ferizaj0009@hotmail.com', '$2y$10$Vgno0Z4mi6KjRGnHlWeQnOfi2cPsNh0aLjNFDDMcOb489upZt9hkK', 0, 'verified'),
-(13, '../images/kompani/1657055317-62c4a855d42a7.png', 'Bliss cosmetics', 123345674, '42.366662,21.172028', '(+383)44/567-898', 'u.sejdiu56@gmail.com', '$2y$10$j2neHAl7cvV0.VvBWCq3VOdFxty0BLr9yVQtDn85tvPMnAZOe7zoC', 0, 'verified');
+(11, '../images/kompani/1656926843-62c2b27b5574a.jpg', 'Koton', 655745345, '42.384257,21.167033', '(+383)44/843-417', 'ferizaj0009@hotmail.com', '$2y$10$Vgno0Z4mi6KjRGnHlWeQnOfi2cPsNh0aLjNFDDMcOb489upZt9hkK', 0, 'verified');
 
 -- --------------------------------------------------------
 
