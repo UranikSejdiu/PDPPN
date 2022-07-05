@@ -26,16 +26,16 @@ if (isset($_POST["action"])) {
     $output = '';
     if ($total_row > 0) {
         foreach ($result as $row) {
-            $output .= '<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 hvr-grow">
+            $output .= '<div class="col-md-4 col-lg-4 col-sm-4 col-xs-12 hvr-grow">
    <div class="product" style="border:1px solid #b7b7b7;padding-bottom:10px;">
        <div class="product__inner">
            <div class="pro__thumb">
                <a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">
-                  <img style="object-fit: cover;" width="100" height="150" src="' . $row['imazhi1'] . '" alt="product images"></a>
+                  <img style="object-fit: contain;" width="100" height="150" src="' . $row['imazhi1'] . '" alt="product images"></a>
            </div>
        </div>
        <div class="product__details">
-       <h2><a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">' .substr($row['produkti'], 0, 30). ' ...' .'</a></h2>
+       <h2><a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">' .mb_substr($row['produkti'], 0, 25, "utf-8"). '...' .'</a></h2>
           <ul class="product__price">
                <li class="new__price">' . $row['qmimi'] . '</li>
            </ul>
