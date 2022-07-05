@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 04, 2022 at 02:43 PM
+-- Generation Time: Jul 05, 2022 at 02:11 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
   `id_city` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id_city`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cities`
@@ -84,7 +84,43 @@ CREATE TABLE IF NOT EXISTS `cities` (
 
 INSERT INTO `cities` (`id_city`, `name`) VALUES
 (1, 'Ferizaj'),
-(2, 'Prishtine');
+(2, 'Prishtinë'),
+(3, 'Prizren'),
+(4, 'Pejë'),
+(5, 'Gjakovë'),
+(6, 'Gjilan'),
+(7, 'Mitrovicë'),
+(8, 'Podujevë'),
+(9, 'Vushtrri'),
+(10, 'Suharekë'),
+(11, 'Rahovec'),
+(12, 'Drenas'),
+(13, 'Lipjan'),
+(14, 'Malishevë'),
+(15, 'Kamenicë'),
+(16, 'Viti'),
+(17, 'Deçan'),
+(18, 'Istog'),
+(19, 'Klinë'),
+(20, 'Skenderaj'),
+(21, 'Dragash'),
+(22, 'Fushë Kosovë'),
+(23, 'Kaçanik'),
+(24, 'Shtime'),
+(25, 'Obiliq'),
+(26, 'Leposaviq'),
+(27, 'Graçanicë'),
+(28, 'Hani Elezit'),
+(29, 'Zveçan'),
+(30, 'Shtërpcë'),
+(31, 'Novobërdë'),
+(32, 'Zubin Potok'),
+(33, 'Junik'),
+(34, 'Mamushë'),
+(35, 'Ranillug'),
+(36, 'Kllokot'),
+(37, 'Partesh'),
+(38, 'Mitrovica Veriore');
 
 -- --------------------------------------------------------
 
@@ -186,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `madhesit` (
   `kategoriaID` int(11) NOT NULL,
   PRIMARY KEY (`madhesiaID`),
   KEY `kategoriaMadhesia` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `madhesit`
@@ -271,7 +307,15 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
   `status` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cityForeignKey` (`id_city`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `perdoruesit`
+--
+
+INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `zipCode`, `phone`, `email`, `password`, `code`, `status`) VALUES
+(1, 'Uranik Sejdiu', 1, 'Gaçkë, Rruga Shaban Viqa', 70000, '(+383)48/434-177', 'u.sejdiu4@gmail.com', '$2y$10$joflk9QYsrgpXUX7LhxiS.iEu424PAItXPCH3hu1L.OudK0igzzmi', 0, 'verified'),
+(2, 'Granit Sejdiu', 1, 'Greme, Rruga Spahiaj', 70000, '(+383)46/899-758', 'ferizaj0004@gmail.com', '$2y$10$SVJ3e7wl5jDU0mqJ1GXmM.8KQfQ3/kvu9NR1YVzoy3d1fU89Miytq', 0, 'verified');
 
 -- --------------------------------------------------------
 
