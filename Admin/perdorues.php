@@ -64,6 +64,7 @@
                                                 <th>Emri dhe Mbiemri</th>
                                                 <th>Qyteti</th>
                                                 <th data-orderable="false">Adresa</th>
+                                                <th data-orderable="false">Kodi postar</th>
                                                 <th data-orderable="false">Telefoni</th>
                                                 <th data-orderable="false">Email-i</th>
                                                 <th data-orderable="false">Fjalëkalimi</th>
@@ -122,6 +123,10 @@
                             <input style="margin-top:0;" type="text" name="adress" id="adress">
                         </div>
                         <div class="form-group">
+                            <label style="margin-bottom:0;" for="zipCode">Kodi Postar:</label>
+                            <input style="margin-top:0;" type="number" name="zipCode" id="zipCode" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="5">
+                        </div>
+                        <div class="form-group">
                             <label style="margin-bottom:0;" for="phone">Numri telefonit:</label>
                             <input style="margin-top:0;" type="tel" name="phone" id="phone">
                         </div>
@@ -177,6 +182,10 @@
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="uAdress">Adresa:</label>
                             <input style="margin-top:0;" type="text" name="uAdress" id="uAdress">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-bottom:0;" for="uZipCode">Kodi Postar:</label>
+                            <input style="margin-top:0;" type="number" name="uZipCode" id="uZipCode" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="5">
                         </div>
                         <div class="form-group">
                             <label style="margin-bottom:0;" for="uPhone">Numri telefonit:</label>

@@ -6,7 +6,7 @@ switch ($_POST["action"]) {
     case "fetchallprddata":
 
         $output = array();
-        $sql = "SELECT perdoruesit.id,perdoruesit.fullName, cities.name, perdoruesit.adress, perdoruesit.phone, perdoruesit.email, perdoruesit.password, perdoruesit.code, perdoruesit.status
+        $sql = "SELECT perdoruesit.id,perdoruesit.fullName, cities.name, perdoruesit.adress, perdoruesit.zipCode, perdoruesit.phone, perdoruesit.email, perdoruesit.password, perdoruesit.code, perdoruesit.status
         FROM perdoruesit LEFT OUTER JOIN cities ON perdoruesit.id_city=cities.id_city";
 
         $totalQuery = mysqli_query($con, $sql);
@@ -41,6 +41,7 @@ switch ($_POST["action"]) {
             $sub_array[] = $row['fullName'];
             $sub_array[] = $row['name'];
             $sub_array[] = $row['adress'];
+            $sub_array[] = $row['zipCode'];
             $sub_array[] = $row['phone'];
             $sub_array[] = $row['email'];
             $sub_array[] = '<textarea disabled style="overflow-y: auto;resize: none;border: none;">' . $row['password'] . '</textarea>';
@@ -64,6 +65,7 @@ switch ($_POST["action"]) {
         $name = mysqli_real_escape_string($con, $_POST['name']);
         $city = mysqli_real_escape_string($con, $_POST['city']);
         $adress = mysqli_real_escape_string($con, $_POST['adress']);
+        $zipCode = mysqli_real_escape_string($con,$_POST['zipCode']);
         $phone = mysqli_real_escape_string($con, $_POST['phone']);
         $email = mysqli_real_escape_string($con, $_POST['email']);
         $password = mysqli_real_escape_string($con, $_POST['password']);
@@ -136,7 +138,7 @@ switch ($_POST["action"]) {
                 'Reply-To: PDPPN <noreplay@pdppn.com>' . PHP_EOL .
                 'X-Mailer: PHP/' . PHP_EOL . 'Content-type: text/html; charset=UTF-8' . phpversion();
             if (mail($email, $subject, $message, $sender)) {
-                $sql = "INSERT INTO perdoruesit (fullName, id_city, adress, phone, email, password, code, status) values ('$name', '$city', '$adress', '$phone', '$email', '$Fjalekalimi', '$code', '$status')";
+                $sql = "INSERT INTO perdoruesit (fullName, id_city, adress,zipCode, phone, email, password, code, status) values ('$name', '$city', '$adress', '$zipCode','$phone', '$email', '$Fjalekalimi', '$code', '$status')";
                 $query = mysqli_query($con, $sql);
                 if ($query) {
                     $data = array(
@@ -157,6 +159,7 @@ switch ($_POST["action"]) {
         $uName = mysqli_real_escape_string($con,  $_POST['uName']);
         $uCity = mysqli_real_escape_string($con,  $_POST['uCity']);
         $uAdress = mysqli_real_escape_string($con,  $_POST['uAdress']);
+        $uZipCode = mysqli_real_escape_string($con,  $_POST['uZipCode']);
         $uPhone = mysqli_real_escape_string($con,  $_POST['uPhone']);
         $uEmail = mysqli_real_escape_string($con,  $_POST['uEmail']);
         $uPassword = mysqli_real_escape_string($con,  $_POST['uPassword']);
@@ -214,7 +217,7 @@ switch ($_POST["action"]) {
         }
 
 
-        $sql = "UPDATE perdoruesit SET  fullName='$uName' , id_city= '$uCity', adress='$uAdress', phone='$uPhone', email='$uEmail', password='$newPassword' WHERE id=$updateIdPrd";
+        $sql = "UPDATE perdoruesit SET  fullName='$uName' , id_city= '$uCity', adress='$uAdress',zipCode='$uZipCode', phone='$uPhone', email='$uEmail', password='$newPassword' WHERE id=$updateIdPrd";
         $query = mysqli_query($con, $sql);
         if ($query == true) {
 

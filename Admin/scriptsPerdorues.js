@@ -52,11 +52,12 @@ $(document).ready(function () {
     var name = $("#name").val();
     var city = $("#city").val();
     var adress = $("#adress").val();
+    var zipCode = $("#zipCode").val();
     var phone = $("#phone").val();
     var email = $("#email").val();
     var password = $("#password").val();
   
-    if (name != "" && city != "" && adress != "" && phone != "" && email != "" && password != "") {
+    if (name != "" && city != "" && adress != "" && zipCode != "" && phone != "" && email != "" && password != "") {
       $.ajax({
         url: "managePerdorues.php",
         type: "post",
@@ -64,6 +65,7 @@ $(document).ready(function () {
           name: name,
           city: city,
           adress: adress,
+          zipCode:zipCode,
           phone: phone,
           email: email,
           password: password,
@@ -108,12 +110,13 @@ $(document).ready(function () {
     var uName = $("#uName").val();
     var uCity = $("#uCity").val();
     var uAdress = $("#uAdress").val();
+    var uZipCode = $("#uZipCode").val();
     var uPhone = $("#uPhone").val();
     var uEmail = $("#uEmail").val();
     var uPassword = $("#uPassword").val();
     var trid = $("#trid").val();
     var updateIdPrd = $("#updateIdPrd").val();
-    if (uName != "" && uCity != "" && uAdress != "" && uPhone != "" && uEmail != "" && uPassword != "") {
+    if (uName != "" && uCity != "" && uAdress != "" && uZipCode!= "" && uPhone != "" && uEmail != "" && uPassword != "") {
       $.ajax({
         url: "managePerdorues.php",
         type: "post",
@@ -121,6 +124,7 @@ $(document).ready(function () {
           uName: uName,
           uCity: uCity,
           uAdress: uAdress,
+          uZipCode:uZipCode,
           uPhone:uPhone,
           uEmail:uEmail,
           uPassword:uPassword,
@@ -182,6 +186,7 @@ $(document).ready(function () {
         $("#uName").val(json.fullName);
         $("#uCity").val(json.id_city);
         $("#uAdress").val(json.adress);
+        $("#uZipCode").val(json.zipCode);
         $("#uPhone").val(json.phone);
         $("#uEmail").val(json.email);
         $("#updateIdPrd").val(id);
