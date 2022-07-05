@@ -39,6 +39,11 @@ $_SESSION['location'] = $_SERVER['REQUEST_URI'];
                             <!-- Start Range -->
                             <div class="htc-grid-range">
                                 <div class="content-shopby">
+                                    <h3>Çmimi:</h3>
+                                    <input type="hidden" id="hidden_minimum_price" value="1" />
+                                    <input type="hidden" id="hidden_maximum_price" value="1000" />
+                                    <p id="price_show">1 - 1000</p>
+                                    <div id="price_range"></div>
                                 </div>
                             </div>
                             <!-- End Range -->
@@ -51,7 +56,7 @@ $_SESSION['location'] = $_SERVER['REQUEST_URI'];
                                 while ($row = $result->fetch_assoc()) {
                                 ?>
                                     <ul class="sidebar__list">
-                                        <input type="checkbox" class="form-check-input product_check" value="<?= $row['kategoriaID']; ?>" id="kategoria">
+                                        <input type="checkbox" class="form-check-input kategoria product_check" value="<?= $row['kategoriaID']; ?>" id="kategoria" autocomplete="off">
                                         <?= $row['kategoria']; ?>
                                     </ul>
                                 <?php } ?>
@@ -65,31 +70,6 @@ $_SESSION['location'] = $_SERVER['REQUEST_URI'];
                             <div class="shop__grid__view__wrap another-product-style">
                                 <!-- Start Single View -->
                                 <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
-                                    <!-- Start Single Product -->
-                                    <?php
-                                    $sql = "SELECT * FROM produktet WHERE stoku > 0";
-                                    $result = $con->query($sql);
-                                    while ($row = $result->fetch_assoc()) {
-                                    ?>
-                                        <div style="height:fit-content;" class="col-md-3 col-lg-3 col-sm-3 col-xs-12 hvr-grow">
-                                            <div class="product" style="border:1px solid #b7b7b7;padding-bottom:10px;">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <?php echo '<a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">';
-                                                        echo  '<img style="object-fit: cover;" width="100" height="150" src="' . $row['imazhi1'] . '" alt="product images"></a>';
-                                                        ?>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <?php echo '<h2><a href="detajeProduktit.php?produktID=' . $row['produktID'] . '">' . substr($row['produkti'], 0, 21) . ' ...' . '</a></h2>'; ?>
-                                                    <ul class="product__price">
-                                                        <li class="new__price"><?= $row['qmimi']; ?></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php    } ?>
-                                    <!-- End Single Product -->
                                 </div>
                                 <!-- End Single View -->
                             </div>
@@ -107,35 +87,56 @@ $_SESSION['location'] = $_SERVER['REQUEST_URI'];
     <!-- END QUICKVIEW PRODUCT -->
     <!-- Placed js at the end of the document so the pages load faster -->
     <?php include_once('scripts.php'); ?>
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
-            
-            $(".product_check").click(function() {
-                var action = 'data';
-                var kategoria = get_filter_text('kategoria');
+            filter_data();
+
+            function filter_data() {
+                var action = 'fetch_data';
+                var minimum_price = $('#hidden_minimum_price').val();
+                var maximum_price = $('#hidden_maximum_price').val();
+                var kategoria = get_filter('kategoria');
+                console.log(kategoria);
                 $.ajax({
-                    url: 'sortProduktet.php',
-                    method: 'POST',
+                    url: "sortProduktet.php",
+                    method: "POST",
                     data: {
                         action: action,
+                        minimum_price: minimum_price,
+                        maximum_price: maximum_price,
                         kategoria: kategoria
                     },
-                    success: function(response) {
-                        $("#grid-view").html(response);
-
+                    success: function(data) {
+                        $('#grid-view').html(data);
                     }
                 });
-            });
-
-            function get_filter_text(text_id) {
-                var filterData;
-                $('#' + text_id + ':checked').each(function() {
-                    filterData = $(this).val();
-                });
-                return filterData;
             }
 
-            $("input:checkbox:checked").attr("checked", "");
+            function get_filter(class_name) {
+                var filter = [];
+                $('#' + class_name + ':checked').each(function() {
+                    filter.push($(this).val());
+                });
+                return filter;
+            }
+
+            $('.product_check').click(function() {
+                filter_data();
+            });
+
+            $('#price_range').slider({
+                range: true,
+                min: 1,
+                max: 1000,
+                values: [1, 1000],
+                step: 10,
+                stop: function(event, ui) {
+                    $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+                    $('#hidden_minimum_price').val(ui.values[0]);
+                    $('#hidden_maximum_price').val(ui.values[1]);
+                    filter_data();
+                }
+            });
 
         });
     </script>
