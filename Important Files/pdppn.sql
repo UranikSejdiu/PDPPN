@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 05, 2022 at 02:11 PM
+-- Generation Time: Jul 05, 2022 at 09:32 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `code` mediumint(50) NOT NULL,
   `status` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `kategoria` (
   `kategoriaID` int(11) NOT NULL AUTO_INCREMENT,
   `kategoria` varchar(50) NOT NULL,
   PRIMARY KEY (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kategoria`
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `kompanite` (
   `code` mediumint(50) NOT NULL,
   `status` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kompanite`
@@ -184,7 +184,8 @@ INSERT INTO `kompanite` (`id`, `logo`, `name`, `nrfiskal`, `lokacioni`, `telefon
 (8, '../images/kompani/1656925838-62c2ae8e71c66.jpg', 'Libraria Dukagjini', 776897878, '42.635987,21.152147', '(+383)44/456-678', 'ferizaj0006@gmail.com', '$2y$10$mvEOhHXkdjEaDSDoViLB5O8uhSuhKsxC9Z5BZFIt63tLazUul/oRe', 0, 'verified'),
 (9, '../images/kompani/1656926127-62c2afafa1592.jpg', 'Rimida Online', 133768859, '42.606011,21.140442', '(+383)44/978-867', 'ferizaj0007@hotmail.com', '$2y$10$UejkgxZsbm.ZV7HT3CeLPebXu5wIsw1kfGya3ZozH47CjQ.ZfAy5i', 0, 'verified'),
 (10, '../images/kompani/1656926237-62c2b01d7c1ea.png', 'Idea-M', 477869586, '42.384062,21.167049', '(+383)44/487-865', 'ferizaj0008@hotmail.com', '$2y$10$T0sU6U9kUzInTSST8Te.l.DNyF/3NRZS2Muae7lt/KXOVfTEvY75a', 0, 'verified'),
-(11, '../images/kompani/1656926843-62c2b27b5574a.jpg', 'Koton', 655745345, '42.384257,21.167033', '(+383)44/843-417', 'ferizaj0009@hotmail.com', '$2y$10$Vgno0Z4mi6KjRGnHlWeQnOfi2cPsNh0aLjNFDDMcOb489upZt9hkK', 0, 'verified');
+(11, '../images/kompani/1656926843-62c2b27b5574a.jpg', 'Koton', 655745345, '42.384257,21.167033', '(+383)44/843-417', 'ferizaj0009@hotmail.com', '$2y$10$Vgno0Z4mi6KjRGnHlWeQnOfi2cPsNh0aLjNFDDMcOb489upZt9hkK', 0, 'verified'),
+(13, '../images/kompani/1657055317-62c4a855d42a7.png', 'Bliss cosmetics', 123345674, '42.366662,21.172028', '(+383)44/567-898', 'u.sejdiu56@gmail.com', '$2y$10$j2neHAl7cvV0.VvBWCq3VOdFxty0BLr9yVQtDn85tvPMnAZOe7zoC', 0, 'verified');
 
 -- --------------------------------------------------------
 
@@ -200,14 +201,16 @@ CREATE TABLE IF NOT EXISTS `kontaktet` (
   `moduli` varchar(50) NOT NULL,
   `createdDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kontaktet`
 --
 
 INSERT INTO `kontaktet` (`id`, `subjekti`, `mesazhi`, `moduli`, `createdDate`) VALUES
-(1, 'Problem', 'Tek produktet fotoja e 4 nuk po shtohet si duhet ', 'Moduli Kompanise', '2022-07-04 12:30:50');
+(1, 'Problem', 'Tek produktet fotoja e 4 nuk po shtohet si duhet ', 'Moduli Kompanise', '2022-07-04 12:30:50'),
+(3, 'Hello', 'This is great!', 'Moduli Kompanise', '2022-07-05 23:15:10'),
+(4, 'Perdoruesi', 'Perdorues', 'Moduli Perdoruesit', '2022-07-05 23:20:33');
 
 -- --------------------------------------------------------
 
@@ -222,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `madhesit` (
   `kategoriaID` int(11) NOT NULL,
   PRIMARY KEY (`madhesiaID`),
   KEY `kategoriaMadhesia` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `madhesit`
@@ -260,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `ngjyrat` (
   `kategoriaID` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ngjyraID`),
   KEY `ngjyraKetegorit` (`kategoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ngjyrat`
@@ -307,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
   `status` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cityForeignKey` (`id_city`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `perdoruesit`
@@ -315,7 +318,8 @@ CREATE TABLE IF NOT EXISTS `perdoruesit` (
 
 INSERT INTO `perdoruesit` (`id`, `fullName`, `id_city`, `adress`, `zipCode`, `phone`, `email`, `password`, `code`, `status`) VALUES
 (1, 'Uranik Sejdiu', 1, 'Gaçkë, Rruga Shaban Viqa', 70000, '(+383)48/434-177', 'u.sejdiu4@gmail.com', '$2y$10$joflk9QYsrgpXUX7LhxiS.iEu424PAItXPCH3hu1L.OudK0igzzmi', 0, 'verified'),
-(2, 'Granit Sejdiu', 1, 'Greme, Rruga Spahiaj', 70000, '(+383)46/899-758', 'ferizaj0004@gmail.com', '$2y$10$SVJ3e7wl5jDU0mqJ1GXmM.8KQfQ3/kvu9NR1YVzoy3d1fU89Miytq', 0, 'verified');
+(2, 'Granit Sejdiu', 1, 'Greme, Rruga Spahiaj', 70000, '(+383)46/899-758', 'ferizaj0004@gmail.com', '$2y$10$SVJ3e7wl5jDU0mqJ1GXmM.8KQfQ3/kvu9NR1YVzoy3d1fU89Miytq', 0, 'verified'),
+(4, 'Ermal Konjufca', 1, 'Gaçkë', 70000, '(+383)46/555-555', 'u.sejdiu56@gmail.com', '$2y$10$QdgijIKIHaXHo5vYs70xPeSski49ncE4lmVyaQO5OtoladHqz8.qm', 0, 'verified');
 
 -- --------------------------------------------------------
 
@@ -343,7 +347,14 @@ CREATE TABLE IF NOT EXISTS `porosit` (
   PRIMARY KEY (`porosiaID`),
   KEY `perdoruesiPorosit` (`perdoruesID`),
   KEY `produktiPorosit` (`produktID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `porosit`
+--
+
+INSERT INTO `porosit` (`porosiaID`, `produktID`, `perdoruesID`, `emri`, `email`, `qyteti`, `adresa`, `zipCode`, `phone`, `mesazhi`, `menyraPageses`, `sasia`, `pagesa`, `statusi`, `dataBlerjes`) VALUES
+(1, 48, 4, 'Ermal Konjufca', 'u.sejdiu56@gmail.com', 'Ferizaj', 'Gaçkë', 70000, '(+383)46/555-555', '', 'Para në dorë', 5, '89.95', 2, '2022-07-05 23:27:04');
 
 -- --------------------------------------------------------
 
@@ -371,7 +382,7 @@ CREATE TABLE IF NOT EXISTS `produktet` (
   KEY `colorForeignKey` (`ngjyraID`),
   KEY `kompaniaForeignKey` (`kompaniaID`),
   KEY `sizeKatForeignkey` (`madhesiaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `produktet`
@@ -422,7 +433,7 @@ INSERT INTO `produktet` (`produktID`, `produkti`, `imazhi1`, `imazhi2`, `imazhi3
 (45, 'Atlete Puma Graviton Pro', '../images/produktet/1656939084-62c2e24c7b7a0.jpg', '../images/produktet/1656939084-62c2e24c7b7ae.jpg', '../images/produktet/1656939084-62c2e24c7b7b4.jpg', '../images/produktet/1656939084-62c2e24c7b7b9.jpg', 10, 'Graviton Pro merr frymëzim nga koleksioni i trashëgimisë së vrapimit të PUMA me një estetikë të qetë, por me një ndjenjë të së ardhmes. Një mbështjellje që rreth zonës së përparme të këmbës, logon tërheqëse dhe një kapëse modulare të guximshme tek thembra, të gjitha spërkasin magjinë e tyre ultramoderne mbi këtë këpucë. Gjithashtu me një shtresë të mesme të lehtë me jastëk \'SoftFoam+\', do të keni një pranverë në hap sado larg të udhëtoni me Graviton Pro. Janë punuar nga sintetika, tekstili dhe goma.', '75.00', 18, 12, 9, 11),
 (46, 'Atlete Nike Star Runner 3', '../images/produktet/1656939119-62c2e26f5b6f2.jpg', '../images/produktet/1656939119-62c2e26f5b701.jpg', '../images/produktet/1656939119-62c2e26f5b707.jpg', '../images/produktet/1656939119-62c2e26f5b70d.jpg', 10, 'Nike Star Runner 3 janë këpucë të gjithanshme për të vrapuar, kërcyer dhe luajtur. Ato rriten me qëndrueshmëri dhe frymëmarrje aty ku ju nevojitet. Plus, shkuma super e butë dhe ngarkesat e fleksibilitetit krijojnë rehati me çdo lëvizje. Të dizajnuara me planetin në mendje, ato janë bërë nga të paktën 20% përmbajtje të ricikluar ndaj peshës.', '52.00', 15, 9, 9, 11),
 (47, 'Atlete Nike Star Runner 3', '../images/produktet/1656939149-62c2e28d05ab7.jpg', '../images/produktet/1656939149-62c2e28d05ac6.jpg', '../images/produktet/1656939149-62c2e28d05acc.jpg', '../images/produktet/1656939149-62c2e28d05ad1.jpg', 10, 'Nike Star Runner 3 janë këpucë të gjithanshme për të vrapuar, kërcyer dhe luajtur. Ato rriten me qëndrueshmëri dhe frymëmarrje aty ku ju nevojitet. Plus, shkuma super e butë dhe ngarkesat e fleksibilitetit krijojnë rehati me çdo lëvizje. Të dizajnuara me planetin në mendje, ato janë bërë nga të paktën 20% përmbajtje të ricikluar ndaj peshës.', '52.00', 8, 10, 9, 11),
-(48, 'Sandale për meshkuj Jack&jones Footwear', '../images/produktet/1656939187-62c2e2b3e9c29.jpg', '../images/produktet/1656939187-62c2e2b3e9c38.jpg', '../images/produktet/1656939187-62c2e2b3e9c3e.jpg', '../images/produktet/1656939187-62c2e2b3e9c43.jpg', 10, 'Sandale për meshkuj Jack&jones Footwear 195663, Anthracite, 44 Përmbajtja: 100%Poliester 100% Upper Rubber 100% Sole Rubber', '17.99', 29, 15, 9, 11),
+(48, 'Sandale për meshkuj Jack&jones Footwear', '../images/produktet/1656939187-62c2e2b3e9c29.jpg', '../images/produktet/1656939187-62c2e2b3e9c38.jpg', '../images/produktet/1656939187-62c2e2b3e9c3e.jpg', '../images/produktet/1656939187-62c2e2b3e9c43.jpg', 10, 'Sandale për meshkuj Jack&jones Footwear 195663, Anthracite, 44 Përmbajtja: 100%Poliester 100% Upper Rubber 100% Sole Rubber', '17.99', 24, 15, 9, 11),
 (49, 'Atlete për femra Nike', '../images/produktet/1656939224-62c2e2d858885.jpg', '../images/produktet/1656939224-62c2e2d858896.jpg', '../images/produktet/1656939224-62c2e2d85889c.jpg', '../images/produktet/1656939224-62c2e2d8588a2.jpg', 10, 'Atletet \'Nike Air Max Fusion\' kombinojnë gjithçka që ju nevojitet. Stili retro që të kujton vitet \'90. Jastëku \'Air Max\' me shkumë e bën çdo hap të këndshëm dhe të lehtë gjatë ecjes.', '77.00', 3, 8, 9, 11),
 (50, 'Atlete për femra Nike', '../images/produktet/1656939252-62c2e2f49e901.jpg', '../images/produktet/1656939252-62c2e2f49e915.jpg', '../images/produktet/1656939252-62c2e2f49e91c.jpg', '../images/produktet/1656939252-62c2e2f49e923.jpg', 10, 'Atletet \'Nike Air Max Fusion\' kombinojnë gjithçka që ju nevojitet. Stili retro që të kujton vitet \'90. Jastëku \'Air Max\' me shkumë e bën çdo hap të këndshëm dhe të lehtë gjatë ecjes.', '77.00', 12, 9, 9, 11);
 
@@ -442,7 +453,15 @@ CREATE TABLE IF NOT EXISTS `produktreview` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`reviewID`),
   KEY `reviewProdukt` (`produktID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `produktreview`
+--
+
+INSERT INTO `produktreview` (`reviewID`, `perdoruesi`, `starRating`, `reviewText`, `produktID`, `date`) VALUES
+(1, 'Ermal Konjufca', 3, 'Mesatare', 48, '2022-07-05 23:24:05'),
+(2, 'Ermal Konjufca', 5, 'Shum me mir', 48, '2022-07-05 23:25:36');
 
 --
 -- Constraints for dumped tables
