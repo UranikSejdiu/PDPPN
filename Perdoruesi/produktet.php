@@ -39,7 +39,7 @@ $_SESSION['location'] = $_SERVER['REQUEST_URI'];
                             <!-- Start Range -->
                             <div class="htc-grid-range">
                                 <div class="content-shopby">
-                                    <h3>Çmimi:</h3>
+                                    <h3>Filtro në bazë të çmimit:</h3>
                                     <input type="hidden" id="hidden_minimum_price" value="1" />
                                     <input type="hidden" id="hidden_maximum_price" value="1000" />
                                     <p id="price_show">1 - 1000</p>
@@ -49,7 +49,7 @@ $_SESSION['location'] = $_SERVER['REQUEST_URI'];
                             <!-- End Range -->
                             <!-- Kategorit checkboxes -->
                             <div class="htc__shop__cat">
-                                <h4 class="section-title-4">Kategorit</h4>
+                                <h4 class="section-title-4">Filtro në bazë të kategorive:</h4>
                                 <?php
                                 $sql = "SELECT * FROM kategoria WHERE kategoriaID > '0' ORDER BY kategoriaID";
                                 $result = $con->query($sql);
