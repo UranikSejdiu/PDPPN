@@ -11,9 +11,9 @@
         <div class="col-md-8 col-lg-8 col-sm-5 col-xs-5">
             <nav class="mainmenu__nav hidden-xs hidden-sm">
                 <ul class="main__menu">
-                    <li><a href="home.php">Kryefaçja</a></li>
+                    <li><a href="home.php">Ballina</a></li>
                     <li><a href="produktet.php">Produktet</a></li>
-                    <li><a href="porosit.php">Porosite</a></li>
+                    <li><a href="porosit.php">Porositë</a></li>
                     <li><a href="kontakto.php">Kontakti</a></li>
                 </ul>
 
@@ -21,9 +21,9 @@
             <div class="mobile-menu clearfix visible-xs visible-sm">
                 <nav id="mobile_dropdown">
                     <ul>
-                        <li><a href="home.php">Kryefaçja</a></li>
+                        <li><a href="home.php">Ballina</a></li>
                         <li><a href="produktet.php">Produktet</a></li>
-                        <li><a href="porosit.php">Porosite</a></li>
+                        <li><a href="porosit.php">Porositë</a></li>
                         <li><a href="kontakto.php">Kontakti</a></li>
                     </ul>
                 </nav>
@@ -33,7 +33,7 @@
         <div class="col-md-2 col-sm-4 col-xs-3">
             <ul class="menu-extra">
                 <?php echo '<li><a href="profile.php?ID=' . $id . '"><span aria-label="Profili" data-cooltipz-dir="bottom"><i class="ti-user"></i></span></a></li>'; ?>
-                <li><a href="logout-user.php"><span aria-label="Çkyçu" data-cooltipz-dir="bottom"><i class="ti-unlink"></i></span></a></li>
+                <li><a href="logout-user.php"><span aria-label="Dil" data-cooltipz-dir="bottom"><i class="ti-unlink"></i></span></a></li>
             </ul>
         </div>
     </div>
