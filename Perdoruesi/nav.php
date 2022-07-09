@@ -14,7 +14,7 @@
                     <li><a href="index.php">Ballina</a></li>
                     <li><a href="produktet.php">Produktet</a></li>
                     <?php if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
-                        echo '<li><a href="porosit.php">Porosite</a></li>';
+                        echo '<li><a href="porosit.php">Porositë</a></li>';
                     } ?>
                     <li><a href="kontakto.php">Kontakti</a></li>
                 </ul>
@@ -25,7 +25,7 @@
                         <li><a href="index.php">Ballina</a></li>
                         <li><a href="produktet.php">Produktet</a></li>
                         <?php if (isset($_SESSION['email']) || isset($_SESSION['password'])) {
-                            echo '<li><a href="porosit.php">Porosite</a></li>';
+                            echo '<li><a href="porosit.php">Porositë</a></li>';
                         } ?>
                         <li><a href="kontakto.php">Kontakti</a></li>
                     </ul>
