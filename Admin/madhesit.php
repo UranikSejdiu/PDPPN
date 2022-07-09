@@ -93,7 +93,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3 class="modal-title" id="myModalLabel">Shto kategorin e re</h3>
+                    <h3 class="modal-title" id="myModalLabel">Shto madhësi të re</h3>
                 </div>
                 <div class="modal-body">
                     <form class="login" id="insert_madhesi">
@@ -131,7 +131,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3 class="modal-title" id="myModalLabel">Ndrysho të dhënat e administratorëve</h3>
+                    <h3 class="modal-title" id="myModalLabel">Ndrysho të dhënat e madhësisë</h3>
                 </div>
                 <div class="modal-body">
                     <form class="login" id="update_madhesi">
