@@ -240,7 +240,7 @@ while ($row = mysqli_fetch_assoc($query)) {
                 </div>
                 <div class="row  col-md-3">
                     <div class="review__address__inner">
-                        <button style="float: right;" type="button" name="add_review" id="add_review" class="regBtn pb--20">Vlerso</button>
+                        <button style="float: right;" type="button" name="add_review" id="add_review" class="regBtn pb--20">Vlerëso</button>
                     </div>
                 </div>
             </div>
